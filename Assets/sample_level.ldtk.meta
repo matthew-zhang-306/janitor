@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: b3518b149cdc8234ab7a268452b3844e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: b3518b149cdc8234ab7a268452b3844e,
+    type: 3}
+  _pixelsPerUnit: 16
+  _atlas: {fileID: 4343727234628468602, guid: 20f2af5dbaafe0d488d6a6296c4bffa7, type: 2}
+  _customLevelPrefab: {instanceID: 0}
+  _deparentInRuntime: 0
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
+  _intGridValues:
+  - _key: Collisions_1
+    _asset: {fileID: 11400000, guid: c60b4de34e307864ea45660c2b3e0bb5, type: 2}
+  _entities:
+  - _key: Player
+    _asset: {instanceID: 0}
+  - _key: Door
+    _asset: {instanceID: 0}
+  - _key: Interactive
+    _asset: {instanceID: 0}
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 

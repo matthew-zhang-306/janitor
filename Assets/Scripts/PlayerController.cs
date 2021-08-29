@@ -26,4 +26,8 @@ public class PlayerController : MonoBehaviour
         velocity = Vector2.MoveTowards(velocity, moveInput * maxSpeed, acceleration);
         rb2d.velocity = velocity;
     }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log("yeah");
+    }
 }
