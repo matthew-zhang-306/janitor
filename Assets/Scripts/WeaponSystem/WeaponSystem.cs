@@ -37,7 +37,7 @@ public class WeaponSystem : MonoBehaviour
         
         Vector2 dir = new Vector2(dir3.x, dir3.y);
         dir.Normalize();
-        Debug.Log(dir);
+        // Debug.Log(dir);
 
         //Maybe change to Entity System Later
         GameObject created = GameObject.Instantiate(prefab, this.transform.position, Quaternion.identity);
