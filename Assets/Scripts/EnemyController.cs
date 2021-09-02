@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
 public class EnemyController : MonoBehaviour
 {
     private Tilemap tm;
@@ -12,7 +13,7 @@ public class EnemyController : MonoBehaviour
     private HealthAddon health;
     private Rigidbody2D rb2d;
 
-    [SerializeField] private float actionTimer = 2f;
+    [SerializeField] private float actionTimer = 1.5f;
     private float m_time;
 
     private string[] actions;
@@ -50,8 +51,9 @@ public class EnemyController : MonoBehaviour
     //Action Methods should only be called from itself
     protected virtual void Action_Stay ()
     {
-        Debug.Log("doing nothing");
+        // Debug.Log("doing nothing");
         //do nothing
+        m_time += 0.5f;
         return;
     }
     protected virtual void Action_Move ()
@@ -59,15 +61,30 @@ public class EnemyController : MonoBehaviour
         //Get closest 'player'
         GameObject player = GameObject.Find("/Player");
         if (player == null) {
-            Debug.Log("no player detected");
+            // Debug.Log("no player detected");
             //no player detected
             return;
         }
 
         Vector3 dir = player.transform.position - this.transform.position;
-        rb2d.AddForce(dir * 10);
+        rb2d.AddForce(dir * 40 * rb2d.mass);
         //do nothing
         return;
     }
     
+    void OnCollisionEnter2D (Collision2D col) {
+        if (col.gameObject.tag == "PlayerProjectile") {
+            if (health != null) {
+                health.ChangeHealth(-1);
+                float per = (1 - health.GetHealthPercent())/2 + health.GetHealthPercent();
+                this.transform.localScale = new Vector3(per,per,per);
+            }
+            Destroy(col.gameObject);
+        }
+        Debug.Log("hi there");
+
+        if (health.GetHealth() <= 0) {
+            Destroy(gameObject);
+        }
+    }
 }

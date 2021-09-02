@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 public class BaseProjectile : MonoBehaviour
 {
-    public float lifetime = 3f;
+    public float lifetime = 1f;
     private float m_time = 0f;
     private Tilemap tm;
     public Tile tile;
@@ -33,7 +34,10 @@ public class BaseProjectile : MonoBehaviour
             }
         }
     }
-
+    void OnDestroy()
+    {
+        this.OnDespawn();
+    }
     //Virtual Func for where this projectile should go
     public virtual void GetNextPosition()
     {
@@ -43,4 +47,5 @@ public class BaseProjectile : MonoBehaviour
     public virtual void OnDespawn() {
 
     }
+    
 }

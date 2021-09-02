@@ -31,4 +31,9 @@ public class HealthAddon : MonoBehaviour
     {
         return currentHealth;
     }
+
+    public float GetHealthPercent()
+    {
+        return currentHealth / maxHealth;
+    }
 }
