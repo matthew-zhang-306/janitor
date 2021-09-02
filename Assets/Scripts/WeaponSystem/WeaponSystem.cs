@@ -43,7 +43,9 @@ public class WeaponSystem : MonoBehaviour
         GameObject created = GameObject.Instantiate(prefab, this.transform.position, Quaternion.identity);
         created.transform.LookAt(transform.position + dir3 * 300, Vector3.forward);
         created.SetActive(true);
-        created.GetComponent<Rigidbody2D>().AddForce(dir * 1000);
+        var rb = created.GetComponent<Rigidbody2D>();
+        rb.AddForce(dir * 1000 * rb.mass);
+        
         // Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), created.GetComponent<Collider2D>());
     }
 }
