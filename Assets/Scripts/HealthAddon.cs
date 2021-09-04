@@ -6,7 +6,7 @@ using UnityEngine;
 public class HealthAddon : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 1f;
-    public float currentHealth = 1f;
+    [SerializeField] private float currentHealth = 1f;
     
     
     // Start is called before the first frame update
@@ -33,5 +33,10 @@ public class HealthAddon : MonoBehaviour
     public float GetHealthPercent()
     {
         return currentHealth / maxHealth;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
     }
 }

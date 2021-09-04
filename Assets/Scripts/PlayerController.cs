@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
 
         if (hitbox.IsColliding && invincibilityTimer == 0) {
-            health.ChangeHealth(-1);
+            health.ChangeHealth(-25);
             if (health.GetHealth() <= 0) {
                 Destroy(gameObject);
             }

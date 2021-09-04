@@ -5,19 +5,22 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    GameObject Player;
+    public GameObject Player;
     public Slider healthBar;
+    private HealthAddon health;
+
     // Start is called before the first frame update
     void Start()
     {
-        Player.GetComponent<HealthAddon>();
+        health = Player.GetComponent<HealthAddon>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       // healthBar.maxValue = HealthAddon.maxHealth;
-       // healthBar.value = HealthAddon.currentHealth;
+        healthBar.maxValue = health.GetMaxHealth();
+        healthBar.value = health.GetHealth();
+        
     }
 
 }
