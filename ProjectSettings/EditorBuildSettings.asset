@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/School.unity
     guid: 467b5dd54057ef44f9b8e214a0839245
+  - enabled: 1
+    path: Assets/Scenes/Mission2.unity
+    guid: cd7b9f937fa19354b84b34e1560d6eed
+  - enabled: 1
+    path: Assets/Scenes/Mission3.unity
+    guid: a2ce3c9b4dd331d4db673af1e661b653
   m_configObjects: {}
