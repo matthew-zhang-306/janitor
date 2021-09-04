@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 2212885}
   - component: {fileID: 2212884}
   - component: {fileID: 2212883}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3787,7 +3787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 636314295}
   - component: {fileID: 636314294}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LevelMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4015,7 +4015,7 @@ GameObject:
   - component: {fileID: 1122475607}
   - component: {fileID: 1122475608}
   m_Layer: 0
-  m_Name: Floor
+  m_Name: DirtyMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11000,6 +11000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010aa83583d087340b4ab1a62c589764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelBounds: {fileID: 1478532961}
   tiles:
   - {fileID: 11400000, guid: d0bee87130f32f34ba59b2b8edcd8fb1, type: 2}
   - {fileID: 11400000, guid: 0efa012a31a330947a5bc81cd964253f, type: 2}
@@ -11405,7 +11406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1101723960}
   firerate: 0.5
-  meleerate: 0.1
+  meleerate: 0.15
   bulletPrefab: {fileID: 3762954094245314928, guid: c9850af6ebba24545af793c2893f1edf,
     type: 3}
   meleePrefab: {fileID: 5219044330624146800, guid: e187dfc48e2b33544a61633816c22589,
@@ -11706,6 +11707,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1478532960}
   - component: {fileID: 1478532959}
+  - component: {fileID: 1478532961}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -11740,6 +11742,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1478532961
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478532958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.018220901, y: -0.0000023841858}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 20.059216, y: 14.119155}
+  m_EdgeRadius: 0
 --- !u!1 &1496864455
 GameObject:
   m_ObjectHideFlags: 0

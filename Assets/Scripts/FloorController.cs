@@ -18,6 +18,9 @@ public class FloorMarkerData
 [RequireComponent(typeof(TilemapCollider2D))]
 public class FloorController : MonoBehaviour
 {
+    [Tooltip("Use a BoxCollider2D to specify the area in which the dirty floor should spawn.")]
+    public BoxCollider2D levelBounds;
+
     private Tilemap tm;
     public Tile[] tiles;
 
@@ -30,11 +33,22 @@ public class FloorController : MonoBehaviour
         floorMarkers = new Dictionary<Collider2D, FloorMarkerData>();
 
         tm = this.GetComponent<Tilemap>();
-        var bounds = tm.cellBounds;
-        foreach (var cell in bounds.allPositionsWithin) {
-            // do this later
-            
+        tm.ClearAllTiles();
+
+        Vector3Int min = tm.WorldToCell(levelBounds.bounds.min);
+        Vector3Int max = tm.WorldToCell(levelBounds.bounds.max);
+        for (int x = min.x; x <= max.x; x++) {
+            for (int y = min.y; y <= max.y; y++) {
+                var cell = new Vector3Int(x, y, 0);
+
+                // check if this is an open space
+                if (Physics2D.OverlapPoint(tm.GetCellCenterWorld(cell), LayerMask.GetMask("Wall")) == null) {
+                    tm.SetTile(cell, tiles[tiles.Length - 1]);
+                }
+            }
         }
+
+        levelBounds.enabled = false;
     }
 
     // Update is called once per frame
@@ -90,7 +104,6 @@ public class FloorController : MonoBehaviour
                         continue;
                     }
                     tileHealth -= floorMarkers[col].floorMarker.markAmount;
-                    Debug.Log("setting " + cell + " to Dirty" + tileHealth);
                     tm.SetTile(cell, tiles[Mathf.Clamp(tileHealth, 0, tiles.Length - 1)]);
                 }
             }    
