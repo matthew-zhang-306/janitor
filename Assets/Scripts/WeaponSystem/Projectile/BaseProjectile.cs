@@ -45,7 +45,7 @@ public class BaseProjectile : MonoBehaviour
     }
 
     void OnTriggerStay2D (Collider2D col) {
-        Debug.Log (col.gameObject.name);
+        // Debug.Log (col.gameObject.name);
         // if (col.gameObject.tag == "PlayerProjectile") {
         //     if (health != null) {
         //         health.ChangeHealth(-1);

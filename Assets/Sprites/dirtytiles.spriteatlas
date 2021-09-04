@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: dirtytiles
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: c6760b0c9434e6c43ad99a3391c7bbc7, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -129883259673448980, guid: c6760b0c9434e6c43ad99a3391c7bbc7, type: 3}
+  - {fileID: -8900678430344195395, guid: c6760b0c9434e6c43ad99a3391c7bbc7, type: 3}
+  - {fileID: -4400280058993387692, guid: c6760b0c9434e6c43ad99a3391c7bbc7, type: 3}
+  - {fileID: 6360361782442926089, guid: c6760b0c9434e6c43ad99a3391c7bbc7, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - dirtytiles_1
+  - dirtytiles_0
+  - dirtytiles_3
+  - dirtytiles_2
+  m_Tag: dirtytiles
+  m_IsVariant: 0

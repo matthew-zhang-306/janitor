@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BroomSweepCircle : MonoBehaviour
+public class TemporaryFloorMarker : FloorMarker
 {
     public float lifetime = 0.2f;
 

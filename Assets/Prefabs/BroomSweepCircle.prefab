@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5219044330624146797}
   - component: {fileID: 5219044330624146802}
-  - component: {fileID: 5219044330624146803}
   - component: {fileID: 4664909919976244597}
+  - component: {fileID: 6698480797935077051}
   m_Layer: 0
   m_Name: BroomSweepCircle
-  m_TagString: PlayerProjectile
+  m_TagString: FloorMarker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,19 +49,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.3429873}
   serializedVersion: 2
   m_Radius: 0.90298724
---- !u!114 &5219044330624146803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5219044330624146800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31be4e275b035140b5e9cfa6767e23c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifetime: 0.2
 --- !u!50 &4664909919976244597
 Rigidbody2D:
   serializedVersion: 4
@@ -83,3 +70,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &6698480797935077051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219044330624146800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5b555c26c1273408c8addee2fd1d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markAmount: 1
+  lifetime: 0.2

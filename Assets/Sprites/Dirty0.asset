@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Dirty
+  m_Name: Dirty0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: e21f992f92ae54343a3c01a23a9727d9, type: 3}
-  m_Color: {r: 0.06448024, g: 0.6509434, b: 0.12245772, a: 1}
+  m_Sprite: {fileID: -4400280058993387692, guid: c6760b0c9434e6c43ad99a3391c7bbc7,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
