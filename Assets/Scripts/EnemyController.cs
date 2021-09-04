@@ -77,7 +77,7 @@ public class EnemyController : MonoBehaviour
             if (health != null) {
                 health.ChangeHealth(-1);
                 float per = (1 - health.GetHealthPercent())/2 + health.GetHealthPercent();
-                this.transform.localScale = new Vector3(per,per,per);
+                this.transform.localScale = Vector3.one * per;
             }
             Destroy(col.gameObject);
         }
