@@ -36,6 +36,7 @@ public class PauseMenu : MonoBehaviour
         GamePaused = true;
         
     }
+    
     public void QuitGame()
     {
         Application.Quit();
