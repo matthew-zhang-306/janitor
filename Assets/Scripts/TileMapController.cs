@@ -12,6 +12,11 @@ public class TileMapController : MonoBehaviour
     void Start()
     {
         tm = this.GetComponent<Tilemap>();
+        var bounds = tm.cellBounds;
+        foreach (var cell in bounds.allPositionsWithin) {
+            // do this later
+            
+        }
     }
 
     // Update is called once per frame
@@ -23,20 +28,26 @@ public class TileMapController : MonoBehaviour
     void OnTriggerStay2D (Collider2D col) {
         // Debug.Log (col.gameObject.name);
         if (col.gameObject.tag == "PlayerProjectile") {
-            // Vector3 p = col.gameObject.transform.position;
-            // Vector3Int pos = tm.WorldToCell(p);
-            // TileBase c_tile = tm.GetTile(pos);
-            // if (c_tile != null) {
-            //     tm.SetTile(pos, tiles[0]);
-            // }
+            Vector3 p = col.gameObject.transform.position;
+            Vector3Int pos = tm.WorldToCell(p);
+            TileBase c_tile = tm.GetTile(pos);
+            if (c_tile != null) {
+                tm.SetTile(pos, tiles[0]);
+            }
 
             //Gets 
             Vector3 min = col.bounds.min;
             Vector3 max = col.bounds.max;
-            for (float x_min = min.x; x_min < max.x; x_min+=0.5f) {
-                for (float y_min = min.y; y_min < max.y; y_min+=0.5f) {
-                    Vector3Int pos = tm.WorldToCell(new Vector3(x_min, y_min,0));
-                    TileBase c_tile = tm.GetTile(pos);
+            for (float x_min = min.x; x_min < max.x; x_min+=tm.cellSize.x) {
+                for (float y_min = min.y; y_min < max.y; y_min+=tm.cellSize.y) {
+                    Vector3 point = new Vector3(x_min, y_min,0);
+                    var otherClosestPoint = col.ClosestPoint(point);
+                    Vector3Int otherClosestCell = tm.WorldToCell(otherClosestPoint);
+                    pos = tm.WorldToCell(point);
+                    if (otherClosestCell != pos) {
+                        continue;
+                    }
+                    c_tile = tm.GetTile(pos);
                     if (c_tile != null) {
                         tm.SetTile(pos, tiles[0]);
                     }
