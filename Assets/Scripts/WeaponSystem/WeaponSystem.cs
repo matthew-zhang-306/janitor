@@ -9,9 +9,12 @@ public class WeaponSystem : MonoBehaviour
 
     //Change later (move to weapon)
     public float firerate = 0.5f;
+    public float meleerate = 0.2f;
     private float m_ftime = 0f;
 
-    public GameObject prefab;
+    public GameObject bulletPrefab;
+    public GameObject meleePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,26 +29,35 @@ public class WeaponSystem : MonoBehaviour
             Fire (mousePos);
             m_ftime = 0;
         }
+        if (Input.GetButton("Fire2") && m_ftime > meleerate) {
+            Vector3 mousePos = Input.mousePosition;
+
+            Swing (mousePos);
+            m_ftime = 0;
+        }
         m_ftime += Time.deltaTime;
     }
 
     public void Fire (Vector3 p) {
         
         Vector3 hit = cam.ScreenToWorldPoint(p);
-
-        Vector3 dir3 = hit - transform.position;
-        
-        Vector2 dir = new Vector2(dir3.x, dir3.y);
-        dir.Normalize();
-        // Debug.Log(dir);
+        Vector2 dir = (hit - transform.position).ToVector2().normalized;
+        Quaternion bulletRotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, dir));
 
         //Maybe change to Entity System Later
-        GameObject created = GameObject.Instantiate(prefab, this.transform.position, Quaternion.identity);
-        created.transform.LookAt(transform.position + dir3 * 300, Vector3.forward);
-        created.SetActive(true);
+        GameObject created = GameObject.Instantiate(bulletPrefab, this.transform.position, bulletRotation);
         var rb = created.GetComponent<Rigidbody2D>();
         rb.AddForce(dir * 1000 * rb.mass);
         
         // Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), created.GetComponent<Collider2D>());
+    }
+
+
+    public void Swing (Vector3 p) {
+        Vector3 hit = cam.ScreenToWorldPoint(p);
+        Vector2 dir = (hit - transform.position).ToVector2().normalized;
+        Quaternion bulletRotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, dir));
+
+        GameObject created = GameObject.Instantiate(meleePrefab, this.transform.position, bulletRotation);
     }
 }
