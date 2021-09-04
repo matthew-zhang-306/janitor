@@ -15,7 +15,7 @@ public class BaseProjectile : MonoBehaviour
     void Start()
     {
         m_time = 0f;
-        tm = GameObject.Find("/Grid").transform.GetChild(0).GetComponent<Tilemap>();
+        
     }
 
     // Update is called once per frame
@@ -27,11 +27,7 @@ public class BaseProjectile : MonoBehaviour
             Destroy(gameObject);
         }
         else {
-            Vector3Int pos = tm.WorldToCell(this.transform.position);
-            TileBase c_tile = tm.GetTile(pos);
-            if (c_tile != null) {
-                tm.SetTile(pos, tile);
-            }
+            
         }
     }
     void OnDestroy()
@@ -46,6 +42,23 @@ public class BaseProjectile : MonoBehaviour
     
     public virtual void OnDespawn() {
 
+    }
+
+    void OnTriggerStay2D (Collider2D col) {
+        Debug.Log (col.gameObject.name);
+        // if (col.gameObject.tag == "PlayerProjectile") {
+        //     if (health != null) {
+        //         health.ChangeHealth(-1);
+        //         float per = (1 - health.GetHealthPercent())/2 + health.GetHealthPercent();
+        //         this.transform.localScale = new Vector3(per,per,per);
+        //     }
+        //     Destroy(col.gameObject);
+        // }
+        // Debug.Log("hi there");
+
+        // if (health.GetHealth() <= 0) {
+        //     Destroy(gameObject);
+        // }
     }
     
 }

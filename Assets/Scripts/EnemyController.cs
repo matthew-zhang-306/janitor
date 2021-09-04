@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
         //note an enemy does not 'have' to have health so health may be null.
         health = this.GetComponent<HealthAddon>();
         rb2d = GetComponent<Rigidbody2D>();
-        tm = GameObject.Find("/Grid").transform.GetChild(0).GetComponent<Tilemap>();
+        // tm = GameObject.Find("/Grid").transform.GetChild(0).GetComponent<Tilemap>();
 
         m_time = 0f;
         actions = new string[]{"Move", "Stay"};
@@ -41,11 +41,11 @@ public class EnemyController : MonoBehaviour
         m_time += Time.deltaTime;
 
         //Put this somewhere else after proto
-        Vector3Int pos = tm.WorldToCell(this.transform.position);
-        TileBase c_tile = tm.GetTile(pos);
-        if (c_tile != null) {
-            tm.SetTile(pos, tile);
-        }
+        // Vector3Int pos = tm.WorldToCell(this.transform.position);
+        // TileBase c_tile = tm.GetTile(pos);
+        // if (c_tile != null) {
+        //     tm.SetTile(pos, tile);
+        // }
     }
 
     //Action Methods should only be called from itself
