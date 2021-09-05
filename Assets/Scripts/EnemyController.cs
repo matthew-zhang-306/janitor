@@ -41,7 +41,8 @@ public class EnemyController : MonoBehaviour
             .InsertCallback(0f, () => floorMarker.SetActive(true))
             .InsertCallback(0.2f, () => floorMarker.SetActive(false))
             .InsertCallback(dirtyTime, () => floorMarker.SetActive(true))
-            .SetLoops(-1, LoopType.Restart);
+            .SetLoops(-1, LoopType.Restart)
+            .SetLink(gameObject);
     }  
  
 

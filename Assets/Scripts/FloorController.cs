@@ -114,7 +114,7 @@ public class FloorController : MonoBehaviour
                     tileHealth = Mathf.Clamp(tileHealth, 0, maxTileHealth);
 
                     tm.SetTile(cell, tiles[tileHealth]);
-                    currentFloorHealth -= tileHealth;
+                    currentFloorHealth += tileHealth - oldTileHealth;
                 }
             }
 
