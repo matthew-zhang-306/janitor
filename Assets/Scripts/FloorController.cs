@@ -23,8 +23,12 @@ public class FloorController : MonoBehaviour
 
     private Tilemap tm;
     public Tile[] tiles;
+    public int maxTileHealth => tiles.Length - 1;
 
     private Dictionary<Collider2D, FloorMarkerData> floorMarkers;
+
+    private int currentFloorHealth;
+    private int totalFloorHealth;
 
 
     // Start is called before the first frame update
@@ -43,11 +47,13 @@ public class FloorController : MonoBehaviour
 
                 // check if this is an open space
                 if (Physics2D.OverlapPoint(tm.GetCellCenterWorld(cell), LayerMask.GetMask("Wall")) == null) {
-                    tm.SetTile(cell, tiles[tiles.Length - 1]);
+                    tm.SetTile(cell, tiles[maxTileHealth]);
+                    totalFloorHealth += maxTileHealth;
                 }
             }
         }
 
+        currentFloorHealth = totalFloorHealth;
         levelBounds.enabled = false;
     }
 
@@ -103,10 +109,14 @@ public class FloorController : MonoBehaviour
                         Debug.LogError("The floor tile " + c_tile.name + " does not look like 'DirtyX' where X is a number");
                         continue;
                     }
+                    var oldTileHealth = tileHealth;
                     tileHealth -= floorMarkers[col].floorMarker.markAmount;
-                    tm.SetTile(cell, tiles[Mathf.Clamp(tileHealth, 0, tiles.Length - 1)]);
+                    tileHealth = Mathf.Clamp(tileHealth, 0, maxTileHealth);
+
+                    tm.SetTile(cell, tiles[tileHealth]);
+                    currentFloorHealth -= tileHealth;
                 }
-            }    
+            }
 
             floorMarkers[col].previousPositions = cells;        
         }
@@ -114,5 +124,10 @@ public class FloorController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) {
         floorMarkers.Remove(other);
+    }
+
+
+    public float GetCleanPercent() {
+        return 1f - (float)currentFloorHealth / (float)totalFloorHealth;
     }
 }

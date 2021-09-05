@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class HealthAddon : MonoBehaviour
+public class Health : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 1f;
-    [SerializeField] private float currentHealth = 1f;
+    [SerializeField] private int maxHealth = 1;
+    [SerializeField] private int currentHealth = 1;
     
     
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class HealthAddon : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void ChangeHealth (float delta) 
+    public void ChangeHealth (int delta) 
     {   
         currentHealth += delta;
         
@@ -24,18 +24,17 @@ public class HealthAddon : MonoBehaviour
         }
     }
 
-    public float GetHealth ()
+    public int GetHealth ()
     {
         return currentHealth;
-        
     }
 
     public float GetHealthPercent()
     {
-        return currentHealth / maxHealth;
+        return (float)currentHealth / (float)maxHealth;
     }
 
-    public float GetMaxHealth()
+    public int GetMaxHealth()
     {
         return maxHealth;
     }

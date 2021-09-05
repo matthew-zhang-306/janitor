@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb2d;
     private Hitbox hitbox;
-    private HealthAddon health;
+    private Health health;
 
     private Vector2 knockback;
     private float knockbackTimer;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb2d = GetComponent<Rigidbody2D>();
         hitbox = GetComponentInChildren<Hitbox>();
-        health = GetComponent<HealthAddon>();
+        health = GetComponent<Health>();
     }
 
     private void Update() {
@@ -35,7 +35,13 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
 
         if (hitbox.IsColliding && invincibilityTimer == 0) {
-            health.ChangeHealth(-25);
+            int hitAmount = 1;
+            var damage = hitbox.OtherCollider.GetComponent<Damage>();
+            if (damage != null) {
+                hitAmount = damage.damage;
+            }
+            
+            health.ChangeHealth(-hitAmount);
             if (health.GetHealth() <= 0) {
                 Destroy(gameObject);
             }

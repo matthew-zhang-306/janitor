@@ -7,12 +7,12 @@ public class PlayerHP : MonoBehaviour
 {
     public GameObject Player;
     public Slider healthBar;
-    private HealthAddon health;
+    private Health health;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = Player.GetComponent<HealthAddon>();
+        health = Player.GetComponent<Health>();
     }
 
     // Update is called once per frame
