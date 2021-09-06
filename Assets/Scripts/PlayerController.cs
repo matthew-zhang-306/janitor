@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxSpeed = 1f;
 
     public SpriteRenderer spriteRenderer;
+    private Animator animator;
     private Rigidbody2D rb2d;
     private Hitbox hitbox;
     private Health health;
@@ -24,12 +25,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float invincibilityTime = 1f;
 
     private void Start() {
+        animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         hitbox = GetComponentInChildren<Hitbox>();
         health = GetComponent<Health>();
     }
 
     private void Update() {
+        var animation = "Idle";
+        if (rb2d.velocity.magnitude >= acceleration) {
+            animation = "Run";
+            if (Mathf.Abs(rb2d.velocity.x) >= Mathf.Abs(rb2d.velocity.y)) {
+                animation += Mathf.Sign(rb2d.velocity.x) > 0 ? "Right" : "Left";
+            } else {
+                animation += Mathf.Sign(rb2d.velocity.y) > 0 ? "Up" : "Down";
+            }
+        }
+
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != animation) {
+            animator.Play("Player" + animation, 0);
+        }
+    }
+
+    private void FixedUpdate() {
+        HandleHitbox();
+        HandleMotion();
+    }
+
+
+    private void HandleHitbox() {
         invincibilityTimer = Mathf.MoveTowards(invincibilityTimer, 0, Time.deltaTime);
         spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
 
@@ -54,7 +78,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() {
+    private void HandleMotion() {
         if (knockbackTimer > 0f) {
             // handle knockback
             knockbackTimer -= Time.deltaTime;
