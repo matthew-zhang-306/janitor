@@ -114,12 +114,12 @@ TextureImporter:
       name: player_forward_wip_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 887
-        width: 436
-        height: 894
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 891
+        width: 890
+        height: 891
+      alignment: 9
+      pivot: {x: 0.26, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -135,12 +135,12 @@ TextureImporter:
       name: player_forward_wip_1
       rect:
         serializedVersion: 2
-        x: 902
-        y: 1376
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 890
+        y: 891
+        width: 890
+        height: 891
+      alignment: 9
+      pivot: {x: 0.26, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,12 +156,12 @@ TextureImporter:
       name: player_forward_wip_2
       rect:
         serializedVersion: 2
-        x: 906
-        y: 890
-        width: 392
-        height: 892
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1780
+        y: 891
+        width: 890
+        height: 891
+      alignment: 9
+      pivot: {x: 0.26, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: player_forward_wip_3
       rect:
         serializedVersion: 2
-        x: 1801
-        y: 890
-        width: 374
-        height: 890
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 890
+        height: 891
+      alignment: 9
+      pivot: {x: 0.26, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,12 +198,12 @@ TextureImporter:
       name: player_forward_wip_4
       rect:
         serializedVersion: 2
-        x: 903
-        y: 1368
-        width: 5
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 890
+        y: 0
+        width: 890
+        height: 891
+      alignment: 9
+      pivot: {x: 0.26, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +219,12 @@ TextureImporter:
       name: player_forward_wip_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
-        width: 427
-        height: 890
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1780
+        y: 0
+        width: 890
+        height: 891
+      alignment: 9
+      pivot: {x: 0.26, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -232,48 +232,6 @@ TextureImporter:
       bones: []
       spriteID: a549d8678efd50a50800000000000000
       internalID: 6486837027811464282
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_forward_wip_6
-      rect:
-        serializedVersion: 2
-        x: 904
-        y: 0
-        width: 379
-        height: 895
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8e111b5c68624930800000000000000
-      internalID: 4125975023218400911
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_forward_wip_7
-      rect:
-        serializedVersion: 2
-        x: 1835
-        y: 0
-        width: 374
-        height: 894
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 803c45f1d54ee6a20800000000000000
-      internalID: 3057632285639885576
       vertices: []
       indices: 
       edges: []
