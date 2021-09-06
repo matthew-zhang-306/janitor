@@ -13,7 +13,6 @@ public class FloorTilePopulator : MonoBehaviour
     {
 
         sprites = Resources.LoadAll<Sprite>("FloorTileSprites/FloorTileVersion2");
-        Debug.Log(sprites.Length);
         if (sprites.Length < 1) {
             Debug.LogError("Not enough sprites to generate floor");
             return;
