@@ -6,11 +6,18 @@ using System;
 public class FloorTilePopulator : MonoBehaviour
 {
     private Tile[] tiles;
-    public Sprite[] sprites;
+    private Sprite[] sprites;
     private Tilemap tilemap;
     // Start is called before the first frame update
     void Start()
     {
+
+        sprites = Resources.LoadAll<Sprite>("FloorTileSprites/FloorTileVersion2");
+        Debug.Log(sprites.Length);
+        if (sprites.Length < 1) {
+            Debug.LogError("Not enough sprites to generate floor");
+            return;
+        }
         tiles = new Tile[sprites.Length];
         for (int i = 0; i < sprites.Length; i++) {
             //Apparently you need to create initializations here :/
