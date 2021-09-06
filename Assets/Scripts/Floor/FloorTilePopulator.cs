@@ -27,7 +27,27 @@ public class FloorTilePopulator : MonoBehaviour
                 var cell = new Vector3Int(x, y, 0);
 
                 //Alternate between light and dark tile
-                var alt = (Math.Abs (x) + Math.Abs(y)%2)%2;
+
+                var x_val = Math.Abs(x);
+                var y_val = Math.Abs(y);
+
+                //Center lined
+
+                // var x_val = Math.Abs (x/2);
+                // var y_val = Math.Abs (y/2);
+
+                //Alternate between two chunk by two chunk tiles
+                // var x_val = x/2;
+                // var y_val = y/2;
+                // if (x <= 0) {
+                //     x_val = Math.Abs((x - 1)/2);
+                // }
+                // if (y <= 0) {
+                //     y_val = Math.Abs((y - 1)/2);
+                // }
+                var alt = (x_val + y_val%2)%2;
+
+
                 //currently assuming that first half of sprites is LIGHT
                 //second half should be 'dirty'
                 //We can also do other tiling later so it doesn't allows look like
