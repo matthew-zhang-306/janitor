@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float acceleration = 1f;
     [SerializeField] private float maxSpeed = 1f;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private Rigidbody2D rb2d;
     private Hitbox hitbox;
     private Health health;
@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float invincibilityTime = 1f;
 
     private void Start() {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         rb2d = GetComponent<Rigidbody2D>();
         hitbox = GetComponentInChildren<Hitbox>();
         health = GetComponent<Health>();

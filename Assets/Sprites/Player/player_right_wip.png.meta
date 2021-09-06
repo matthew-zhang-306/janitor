@@ -1,7 +1,28 @@
 fileFormatVersion: 2
 guid: 2fa4797b45cb036449628dd72e4d0058
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3254881721982972418
+    second: player_right_wip_0
+  - first:
+      213: 8312720862398047599
+    second: player_right_wip_1
+  - first:
+      213: -8444866749086842324
+    second: player_right_wip_2
+  - first:
+      213: -8480672883224369882
+    second: player_right_wip_3
+  - first:
+      213: 4028666846775937323
+    second: player_right_wip_4
+  - first:
+      213: 3497241807998175326
+    second: player_right_wip_5
+  - first:
+      213: -3067914061334689291
+    second: player_right_wip_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,9 +61,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -71,9 +92,168 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: player_right_wip_0
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 888
+        width: 688
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd0b47a15654d2d0800000000000000
+      internalID: -3254881721982972418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_right_wip_1
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 896
+        width: 526
+        height: 882
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f65e638e497bc5370800000000000000
+      internalID: 8312720862398047599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_right_wip_2
+      rect:
+        serializedVersion: 2
+        x: 2052
+        y: 897
+        width: 487
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c22cb2d3f6ecdca80800000000000000
+      internalID: -8444866749086842324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_right_wip_3
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 3
+        width: 690
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 625af1bf1f89e4a80800000000000000
+      internalID: -8480672883224369882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_right_wip_4
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 0
+        width: 526
+        height: 890
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2909700723b8e730800000000000000
+      internalID: 4028666846775937323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_right_wip_5
+      rect:
+        serializedVersion: 2
+        x: 2025
+        y: 359
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e58406b25e2b88030800000000000000
+      internalID: 3497241807998175326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_right_wip_6
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 8
+        width: 478
+        height: 835
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f948bc6a649c65d0800000000000000
+      internalID: -3067914061334689291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

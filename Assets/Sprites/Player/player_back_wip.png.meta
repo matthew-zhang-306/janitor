@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: e2d576bf92f4edf4e968815b6fdf7e33
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2519978929426577129
+    second: player_back_wip_0
+  - first:
+      213: 2210262236215945457
+    second: player_back_wip_1
+  - first:
+      213: 7677995583709442849
+    second: player_back_wip_2
+  - first:
+      213: -3587266417373171509
+    second: player_back_wip_3
+  - first:
+      213: 6455317281363569273
+    second: player_back_wip_4
+  - first:
+      213: -5707964789345871606
+    second: player_back_wip_5
+  - first:
+      213: -4294449941810852873
+    second: player_back_wip_6
+  - first:
+      213: -7315105800787449967
+    second: player_back_wip_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,9 +64,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -71,9 +95,189 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: player_back_wip_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 887
+        width: 372
+        height: 892
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e6b0f12c73c8f220800000000000000
+      internalID: 2519978929426577129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_back_wip_1
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 887
+        width: 393
+        height: 892
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f8ac1a1bcd6cae10800000000000000
+      internalID: 2210262236215945457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_back_wip_2
+      rect:
+        serializedVersion: 2
+        x: 1810
+        y: 888
+        width: 449
+        height: 891
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 123f40abd48bd8a60800000000000000
+      internalID: 7677995583709442849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_back_wip_3
+      rect:
+        serializedVersion: 2
+        x: 2256
+        y: 1423
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0b8c51338773ec0800000000000000
+      internalID: -3587266417373171509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_back_wip_4
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 523
+        width: 5
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97aad1c9dd4e59950800000000000000
+      internalID: 6455317281363569273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_back_wip_5
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 370
+        height: 892
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a091a94244c39c0b0800000000000000
+      internalID: -5707964789345871606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_back_wip_6
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 0
+        width: 398
+        height: 893
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fbcaa8e78c0764c0800000000000000
+      internalID: -4294449941810852873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_back_wip_7
+      rect:
+        serializedVersion: 2
+        x: 1779
+        y: 0
+        width: 437
+        height: 892
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1972aa108068b7a90800000000000000
+      internalID: -7315105800787449967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
