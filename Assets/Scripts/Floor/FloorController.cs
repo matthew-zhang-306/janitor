@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
+using System;
 public class FloorMarkerData
 {
     public FloorMarker floorMarker;
@@ -22,9 +22,10 @@ public class FloorController : MonoBehaviour
     public BoxCollider2D levelBounds;
 
     private Tilemap tm;
-    public Tile[] tiles;
-    public int maxTileHealth => tiles.Length - 1;
-
+    private Tile[][] tiles;
+    private Sprite[][] sprites;
+    // public int maxTileHealth => tiles.Length - 1;
+    public int maxTileHealth = 3;
     private Dictionary<Collider2D, FloorMarkerData> floorMarkers;
 
     private int currentFloorHealth;
@@ -34,6 +35,35 @@ public class FloorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Load sprite
+        //Lower number is lower health
+        sprites = new Sprite[4][];
+        sprites[0] = new Sprite[36];
+        sprites[1] = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_150");
+        sprites[2] = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_200");
+        sprites[3] = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_255");
+        if (sprites[3].Length < 1) {
+            Debug.LogError("Sprite Loading has failed for dirty floor");
+            return;
+        }
+
+        tiles = new Tile[4][];
+        for (int health = 0; health < 4; health++) {
+            tiles[health] = new Tile[sprites[health].Length];
+            for (int i = 0; i < sprites[health].Length; i++) {
+                
+                tiles[health][i] = ScriptableObject.CreateInstance<Tile>();
+                // Sprite op_sprite = Instantiate<Sprite>(sprites[0]);
+                
+                tiles[health][i].sprite = sprites[health][i];
+                tiles[health][i].name = "Dirty" + health.ToString();
+                
+            }
+        }
+        
+
+        // Instantiate<Sprite>(sprites[0]);
+
         floorMarkers = new Dictionary<Collider2D, FloorMarkerData>();
 
         tm = this.GetComponent<Tilemap>();
@@ -47,7 +77,9 @@ public class FloorController : MonoBehaviour
 
                 // check if this is an open space
                 if (Physics2D.OverlapPoint(tm.GetCellCenterWorld(cell), LayerMask.GetMask("Wall")) == null) {
-                    tm.SetTile(cell, tiles[maxTileHealth]);
+                    Debug.Log(GetCoords(x,y));
+
+                    tm.SetTile(cell, tiles[maxTileHealth][GetCoords(x,y)]);
                     totalFloorHealth += maxTileHealth;
                 }
             }
@@ -113,7 +145,7 @@ public class FloorController : MonoBehaviour
                     tileHealth -= floorMarkers[col].floorMarker.markAmount;
                     tileHealth = Mathf.Clamp(tileHealth, 0, maxTileHealth);
 
-                    tm.SetTile(cell, tiles[tileHealth]);
+                    tm.SetTile(cell, tiles[tileHealth][GetCoords(x,y)]);
                     currentFloorHealth += tileHealth - oldTileHealth;
                 }
             }
@@ -129,5 +161,23 @@ public class FloorController : MonoBehaviour
 
     public float GetCleanPercent() {
         return 1f - (float)currentFloorHealth / (float)totalFloorHealth;
+    }
+
+    private int GetCoords (int x, int y) {
+        //ASSUMING SPRITE SHEET IS 6 x 6!
+        var x_val = x % 6;
+        var y_val = y % 6;
+
+        
+        if (x_val < 0) {
+            x_val += 6;
+        }
+        if (y_val < 0) {
+            y_val += 6;
+        }
+
+        //flip y
+        y_val = 5 - y_val;
+        return x_val + y_val * 6;
     }
 }
