@@ -12,7 +12,7 @@ public class FloorMarkerData
         floorMarker = fm;
         previousPositions = new HashSet<Vector3Int>();
     }
-}
+}   
 
 
 [RequireComponent(typeof(TilemapCollider2D))]
@@ -25,30 +25,61 @@ public class FloorController : MonoBehaviour
     private Tile[][] tiles;
     private Sprite[][] sprites;
     // public int maxTileHealth => tiles.Length - 1;
-    public int maxTileHealth = 3;
+    public int maxTileHealth = 1;
     private Dictionary<Collider2D, FloorMarkerData> floorMarkers;
 
     private int currentFloorHealth;
     private int totalFloorHealth;
 
-
+    private int sideLength;
     // Start is called before the first frame update
     void Start()
     {
-        //Load sprite
-        //Lower number is lower health
-        sprites = new Sprite[4][];
-        sprites[0] = new Sprite[36];
-        sprites[1] = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_150");
-        sprites[2] = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_200");
-        sprites[3] = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_255");
-        if (sprites[3].Length < 1) {
+        Sprite[] original = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_small");
+        if (original.Length < 1) {
             Debug.LogError("Sprite Loading has failed for dirty floor");
             return;
         }
+        sideLength = 6;
 
-        tiles = new Tile[4][];
-        for (int health = 0; health < 4; health++) {
+        // sprites = new Sprite[2][];
+        // sprites[1] = original;
+        //Load sprite
+        //Lower number is lower health
+        sprites = new Sprite[maxTileHealth + 1][];
+        int size = original[0].texture.width;
+        if (size != original[0].texture.height) {
+            Debug.LogError("Sprite Not Square!");
+            return;
+        }
+
+        sideLength = (int) Math.Sqrt (original.Length);
+
+        sprites[0] = new Sprite[36];
+
+        Debug.Log(original[1].rect);
+        Debug.Log(original[1].pivot);
+        Debug.Log(original[1].pixelsPerUnit);
+        Debug.Log(original[1].name);
+        for (int i = 1; i < maxTileHealth; i++) {
+            sprites[i] = new Sprite[original.Length];
+            ////May need to look into removing these texture on destroy in case it sticks in memory for some reason
+            Texture2D text = new Texture2D(size, size, TextureFormat.RGBA32, 1, true);
+            Graphics.CopyTexture(original[0].texture, text);
+            
+            for (int j = 0; j < original.Length; j++) {
+                sprites[i][j] = Sprite.Create(text, original[j].rect, original[j].pivot, 100);
+                Debug.Log(sprites[i][j].rect);
+            }
+        }
+        
+        sprites[maxTileHealth] = original;
+        //Sprite.Create()        
+        
+
+        tiles = new Tile[maxTileHealth + 1][];
+        for (int health = 0; health < maxTileHealth + 1; health++) {
+            Debug.Log(health);
             tiles[health] = new Tile[sprites[health].Length];
             for (int i = 0; i < sprites[health].Length; i++) {
                 
@@ -60,9 +91,18 @@ public class FloorController : MonoBehaviour
                 
             }
         }
-        
 
-        // Instantiate<Sprite>(sprites[0]);
+        ////This is code for changing the texture itself. Do note that it will change the underlying textures unless there
+        ////are some kind of resize algo
+        // var test = sprites[3][0].texture;
+        // var colors = test.GetPixels();
+        // Debug.Log(colors.Length);
+        // for (int i = 0; i < colors.Length; i++) {
+        //     colors[i].a = 0.5f;
+        // }
+        // test.SetPixels(colors);
+        // test.Apply(true);
+        
 
         floorMarkers = new Dictionary<Collider2D, FloorMarkerData>();
 
@@ -77,7 +117,6 @@ public class FloorController : MonoBehaviour
 
                 // check if this is an open space
                 if (Physics2D.OverlapPoint(tm.GetCellCenterWorld(cell), LayerMask.GetMask("Wall")) == null) {
-                    Debug.Log(GetCoords(x,y));
 
                     tm.SetTile(cell, tiles[maxTileHealth][GetCoords(x,y)]);
                     totalFloorHealth += maxTileHealth;
@@ -146,6 +185,7 @@ public class FloorController : MonoBehaviour
                     tileHealth = Mathf.Clamp(tileHealth, 0, maxTileHealth);
 
                     tm.SetTile(cell, tiles[tileHealth][GetCoords(x,y)]);
+                    
                     currentFloorHealth += tileHealth - oldTileHealth;
                 }
             }
@@ -164,20 +204,19 @@ public class FloorController : MonoBehaviour
     }
 
     private int GetCoords (int x, int y) {
-        //ASSUMING SPRITE SHEET IS 6 x 6!
-        var x_val = x % 6;
-        var y_val = y % 6;
+        var x_val = x % sideLength;
+        var y_val = y % sideLength;
 
         
         if (x_val < 0) {
-            x_val += 6;
+            x_val += sideLength;
         }
         if (y_val < 0) {
-            y_val += 6;
+            y_val += sideLength;
         }
 
         //flip y
-        y_val = 5 - y_val;
-        return x_val + y_val * 6;
+        y_val = sideLength - 1 - y_val;
+        return x_val + y_val * sideLength;
     }
 }
