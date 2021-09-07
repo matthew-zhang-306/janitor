@@ -58,7 +58,7 @@ public class FloorController : MonoBehaviour
         sprites[0] = new Sprite[36];
 
         float pivot = original[0].pivot.x / (size / sideLength);
-        
+        Debug.Log(pivot);
         for (int i = 1; i < maxTileHealth + 1; i++) {
             sprites[i] = new Sprite[original.Length];
             ////May need to look into removing these texture on destroy in case it sticks in memory for some reason
