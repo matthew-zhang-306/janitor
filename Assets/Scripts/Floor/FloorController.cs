@@ -57,23 +57,30 @@ public class FloorController : MonoBehaviour
 
         sprites[0] = new Sprite[36];
 
-        Debug.Log(original[1].rect);
-        Debug.Log(original[1].pivot);
-        Debug.Log(original[1].pixelsPerUnit);
-        Debug.Log(original[1].name);
-        for (int i = 1; i < maxTileHealth; i++) {
+        float pivot = original[0].pivot.x / (size / sideLength);
+        
+        for (int i = 1; i < maxTileHealth + 1; i++) {
             sprites[i] = new Sprite[original.Length];
             ////May need to look into removing these texture on destroy in case it sticks in memory for some reason
             Texture2D text = new Texture2D(size, size, TextureFormat.RGBA32, 1, true);
-            Graphics.CopyTexture(original[0].texture, text);
             
-            for (int j = 0; j < original.Length; j++) {
-                sprites[i][j] = Sprite.Create(text, original[j].rect, original[j].pivot, 100);
-                Debug.Log(sprites[i][j].rect);
+            // Graphics.CopyTexture(original[0].texture, text);
+            var colors = original[0].texture.GetPixels();
+            Debug.Log(colors.Length);
+            for (int j = 0; j < colors.Length; j++) {
+                colors[j].a = i * (1f / maxTileHealth);
             }
+            text.SetPixels(colors);
+            text.Apply(true);
+            for (int j = 0; j < original.Length; j++) {
+                sprites[i][j] = Sprite.Create(text, original[j].rect, new Vector2(pivot,pivot), 2 * size / sideLength);
+                // sprites[i][j] = Instantiate<Sprite>(original[j]);
+                
+            }
+            
         }
         
-        sprites[maxTileHealth] = original;
+        // sprites[maxTileHealth] = original;
         //Sprite.Create()        
         
 
