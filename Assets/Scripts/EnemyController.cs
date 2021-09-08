@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using DG.Tweening;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -25,9 +26,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float dirtyTime = 1f;
 
     private string[] actions;
+
+    private UnityEvent deathEvent;
     // Start is called before the first frame update
     void Start()
     {
+        
         //note an enemy does not 'have' to have health so health may be null.
         hitbox = GetComponentInChildren<Hitbox>();
         health = this.GetComponent<Health>();
@@ -44,7 +48,10 @@ public class EnemyController : MonoBehaviour
             .SetLoops(-1, LoopType.Restart)
             .SetLink(gameObject);
     }  
- 
+    void Awake() {
+        if (deathEvent == null)
+            deathEvent = new UnityEvent();
+    }
 
     // Update is called once per frame
     void Update()
@@ -75,30 +82,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //Action Methods should only be called from itself
-    protected virtual void Action_Stay ()
+    void OnDestroy()
     {
-        // Debug.Log("doing nothing");
-        //do nothing
-        m_time += 0.5f;
-        return;
+        Debug.Log("Destroying obj");
+        deathEvent.Invoke();
+        deathEvent.RemoveAllListeners();
     }
-    protected virtual void Action_Move ()
-    {
-        //Get closest 'player'
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) {
-            // Debug.Log("no player detected");
-            //no player detected
-            return;
-        }
 
-        Vector3 dir = player.transform.position - this.transform.position;
-        rb2d.AddForce(dir * 40 * rb2d.mass);
-        //do nothing
-        return;
-    }
-    
     void OnCollisionEnter2D (Collision2D col) {
         if (health != null && col.gameObject.tag == "PlayerProjectile") {
             TakeDamage(col.collider);
@@ -124,4 +114,38 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //Please change this to normal events later thx
+    //unityevent be really inefficient
+    public UnityEvent GetDeathEvent () 
+    {
+        return deathEvent;
+    }
+
+
+        //Action Methods should only be called from itself
+    protected virtual void Action_Stay ()
+    {
+        // Debug.Log("doing nothing");
+        //do nothing
+        m_time += 0.5f;
+        return;
+    }
+    protected virtual void Action_Move ()
+    {
+        //Get closest 'player'
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) {
+            // Debug.Log("no player detected");
+            //no player detected
+            return;
+        }
+
+        Vector3 dir = player.transform.position - this.transform.position;
+        rb2d.AddForce(dir * 40 * rb2d.mass);
+        //do nothing
+        return;
+    }
+    
+    
 }
