@@ -3,95 +3,146 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
+
 public class RoomManager : MonoBehaviour
 {
+    [Header("Specify the boundary where the room camera will live. (White)")]
+    public PolygonCollider2D roomCameraBounds;
+    [Header("Specify the boundary where the room will be dirty. (Cyan)")]
+    public BoxCollider2D roomFloorBounds;
+    [Header("Specify the boundary where the player will trigger the doors to close. (Red)")]
+    public BoxCollider2D roomTriggerBounds;
+    private Hitbox roomTriggerHitbox;
+
+    public Canvas roomUI;
+    public Cinemachine.CinemachineVirtualCamera vcam;
+
+    private bool roomActive;
+
     public GameObject room;
-    public GameObject[] doors;
+    public Transform doorsContainer;
+    public Transform enemiesContainer;
     public Grid levelGrid; 
     private int enemyCount;
 
-    private UnityEvent roomClearEvent;
+    private UnityEvent allEnemiesDefeatedEvent;
 
-    private FloorController dirty;
+    public FloorController dirtyTiles;
     private FloorTilePopulator tiles;
+
+    [Header("Put the Player into this")]
+    public PlayerController player; // later we need to load this in some other way
+
+
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var go in doors) {
-            go.SetActive(false);
+        enemyCount = 0;    
+        if (allEnemiesDefeatedEvent == null)
+            allEnemiesDefeatedEvent = new UnityEvent();
+
+        roomTriggerHitbox = roomTriggerBounds.GetComponent<Hitbox>();
+
+        // Eventually the plan will be to reuse Grid instances when entering rooms
+        // Each level will not store either own dirtyTiles
+        // tiles = levelGrid.gameObject.transform.GetChild(0).GetComponent<FloorTilePopulator>();
+        // dirtyTiles = levelGrid.gameObject.transform.GetChild(1).GetComponent<FloorController>();
+
+        InitializeRoom();
+    }
+    
+
+    public void InitializeRoom () {
+        // make new room
+        foreach (Transform doorTransform in doorsContainer) {
+            doorTransform.gameObject.SetActive(false);
         }
-        enemyCount = 0;
-        
-        if (roomClearEvent == null)
-            roomClearEvent = new UnityEvent();
 
-        roomClearEvent.AddListener(OnRoomClear);
-
-        //Do something better here lol
-        tiles = levelGrid.gameObject.transform.GetChild(0).GetComponent<FloorTilePopulator>();
-        dirty = levelGrid.gameObject.transform.GetChild(1).GetComponent<FloorController>();
-        //plan is, reuse Grid instance when entering rooms.
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            room.SetActive(true);
-
-            int c = room.transform.childCount;
-            for (int i = 0; i < c; i++) {
-                var ec = room.transform.GetChild(i).GetComponent<EnemyController>();
-                if (ec != null) {
-                    enemyCount += 1;
-                    ec.GetDeathEvent().AddListener(DecreaseEnemyCount);
-                }
-            }
-
-            foreach (var go in doors) {
-                go.SetActive(true);
+        foreach (Transform enemyTransform in enemiesContainer) {
+            var ec = enemyTransform.GetComponent<EnemyController>();
+            if (ec != null) {
+                ec.player = player;
             }
         }
-        
-        var col = this.GetComponent<Collider2D>();
-        col.enabled = false;
 
+        dirtyTiles.InitializeFloor(roomFloorBounds.bounds);
+
+        roomUI.enabled = false;
+        vcam.Priority = 0;
+        vcam.Follow = player.cameraPos;
     }
 
-    public void SetRoom () {
-        //make new room
+
+    void FixedUpdate()
+    {
+        if (!roomActive && roomTriggerHitbox.IsColliding) {
+            OnEnterRoom(roomTriggerHitbox.OtherCollider.GetComponent<PlayerController>());
+            roomTriggerHitbox.enabled = false;
+        }
+        
+        if (roomActive && enemyCount == 0 && dirtyTiles.GetCleanPercent() >= 0.6f) {
+            OnClearRoom();
+            roomActive = false;
+        }
+    }
+
+
+    private void OnEnterRoom(PlayerController player) {
+        roomActive = true;
+        room.SetActive(true);
+
+        foreach (Transform enemyTransform in enemiesContainer) {
+            var ec = enemyTransform.GetComponent<EnemyController>();
+            if (ec != null) {
+                enemyCount += 1;
+                ec.GetDeathEvent().AddListener(DecreaseEnemyCount);
+            }
+        }
+
+        foreach (Transform doorTransform in doorsContainer) {
+            doorTransform.gameObject.SetActive(true);
+        }
+
+        roomUI.enabled = true;
+        vcam.Priority = 20;
+    }
+
+    private void OnClearRoom() {
+        roomActive = false;
+
+        foreach (Transform doorTransform in doorsContainer) {
+            doorTransform.gameObject.SetActive(false);
+        }
+
+        roomUI.enabled = false;
+        vcam.Priority = 0;
+
+        //Cancel enemy spawn here
     }
 
     private void DecreaseEnemyCount () {
-        Debug.Log("dead here");
         enemyCount -= 1;
         if (enemyCount == 0) {
-            roomClearEvent.Invoke();
+            allEnemiesDefeatedEvent.Invoke();
         }
         else if (enemyCount < 0) {
             Debug.LogError("Oh no, why are there negative enemies?");
         }
     }
 
-    private void OnRoomClear () {
-        InvokeRepeating ("CheckPercent", 0f, 1f);
-    }
 
-    private void CheckPercent () {
-        if (dirty.GetCleanPercent() > .80) {
-            Debug.Log("hi there");
-            foreach (var go in doors) {
-                go.SetActive(false);
-            }
-            
-            CancelInvoke();
-            //Cancel enemy spawn here
+    private void OnDrawGizmos() {
+        if (roomCameraBounds != null) {
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireCube(roomCameraBounds.bounds.center, roomCameraBounds.bounds.size);
+        }
+        if (roomFloorBounds != null) {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireCube(roomFloorBounds.bounds.center, roomFloorBounds.bounds.size);
+        }
+        if (roomTriggerBounds != null) {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(roomTriggerBounds.bounds.center, roomTriggerBounds.bounds.size);
         }
     }
 }
