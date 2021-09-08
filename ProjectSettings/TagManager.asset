@@ -7,6 +7,7 @@ TagManager:
   - PlayerProjectile
   - Enemy
   - FloorMarker
+  - SongPlayer
   layers:
   - Default
   - TransparentFX
