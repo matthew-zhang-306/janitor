@@ -31,7 +31,6 @@ public class SongPlayer : MonoBehaviour
 
     private void Update() {
         foreach (var song in songAudioSources.Keys) {
-            Debug.Log("song player " + songAudioSources[song].isPlaying);
             AudioSource audioSource = songAudioSources[song];
             if (song.loopEndTime > song.loopStartTime && audioSource.time > song.loopEndTime) {
                 audioSource.time -= song.loopEndTime - song.loopStartTime;
