@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
+
 public class RoomManager : MonoBehaviour
 {
     [Header("Specify the boundary where the room camera will live. (White)")]
@@ -12,6 +13,9 @@ public class RoomManager : MonoBehaviour
     [Header("Specify the boundary where the player will trigger the doors to close. (Red)")]
     public BoxCollider2D roomTriggerBounds;
     private Hitbox roomTriggerHitbox;
+
+    public Canvas roomUI;
+    public Cinemachine.CinemachineVirtualCamera vcam;
 
     private bool roomActive;
 
@@ -50,6 +54,9 @@ public class RoomManager : MonoBehaviour
         }
 
         dirtyTiles.InitializeFloor(roomFloorBounds.bounds);
+
+        roomUI.enabled = false;
+        vcam.Priority = 0;
     }
 
 
@@ -83,6 +90,9 @@ public class RoomManager : MonoBehaviour
         foreach (Transform doorTransform in doorsContainer) {
             doorTransform.gameObject.SetActive(true);
         }
+
+        roomUI.enabled = true;
+        vcam.Priority = 20;
     }
 
     private void OnClearRoom() {
@@ -91,6 +101,9 @@ public class RoomManager : MonoBehaviour
         foreach (Transform doorTransform in doorsContainer) {
             doorTransform.gameObject.SetActive(false);
         }
+
+        roomUI.enabled = false;
+        vcam.Priority = 0;
 
         //Cancel enemy spawn here
     }
