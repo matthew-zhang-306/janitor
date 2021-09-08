@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using DG.Tweening;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -27,10 +28,13 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float dirtyTime = 1f;
 
+    private string[] actions;
 
+    private UnityEvent deathEvent;
     // Start is called before the first frame update
     void Start()
     {
+        
         //note an enemy does not 'have' to have health so health may be null.
         health = this.GetComponent<Health>();
         rb2d = GetComponent<Rigidbody2D>();
@@ -44,7 +48,10 @@ public class EnemyController : MonoBehaviour
             .SetLoops(-1, LoopType.Restart)
             .SetLink(gameObject);
     }  
- 
+    void Awake() {
+        if (deathEvent == null)
+            deathEvent = new UnityEvent();
+    }
 
     // Update is called once per frame
     void Update()
@@ -70,6 +77,13 @@ public class EnemyController : MonoBehaviour
             // take a hit
             TakeDamage(hitbox.OtherCollider);
         }
+    }
+
+    void OnDestroy()
+    {
+        Debug.Log("Destroying obj");
+        deathEvent.Invoke();
+        deathEvent.RemoveAllListeners();
     }
 
     //Action Methods should only be called from itself
@@ -111,4 +125,14 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //Please change this to normal events later thx
+    //unityevent be really inefficient
+    public UnityEvent GetDeathEvent () 
+    {
+        return deathEvent;
+    }
+
+    
+    
 }

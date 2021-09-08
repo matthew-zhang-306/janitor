@@ -35,6 +35,7 @@ public class FloorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Requires a sliced sprite map for this to work.
         Sprite[] original = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_small");
         if (original.Length < 1) {
             Debug.LogError("Sprite Loading has failed for dirty floor");
@@ -42,11 +43,12 @@ public class FloorController : MonoBehaviour
         }
         sideLength = 6;
 
-        // sprites = new Sprite[2][];
-        // sprites[1] = original;
+        
         //Load sprite
         //Lower number is lower health
         sprites = new Sprite[maxTileHealth + 1][];
+
+        //Size refers the the original texture size (non cut)
         int size = original[0].texture.width;
         if (size != original[0].texture.height) {
             Debug.LogError("Sprite Not Square!");
@@ -55,61 +57,48 @@ public class FloorController : MonoBehaviour
 
         sideLength = (int) Math.Sqrt (original.Length);
 
-        sprites[0] = new Sprite[36];
+        if (original.Length - sideLength * sideLength != 0) {
+            Debug.LogError("Sprite sheet slice went wrong");
+        }
 
+        //honestly I have no clue how pivot works but eh I think this does it
         float pivot = original[0].pivot.x / (size / sideLength);
-        Debug.Log(pivot);
-        for (int i = 1; i < maxTileHealth + 1; i++) {
+        
+        for (int i = 0; i < maxTileHealth + 1; i++) {
             sprites[i] = new Sprite[original.Length];
             ////May need to look into removing these texture on destroy in case it sticks in memory for some reason
             Texture2D text = new Texture2D(size, size, TextureFormat.RGBA32, 1, true);
             
-            // Graphics.CopyTexture(original[0].texture, text);
             var colors = original[0].texture.GetPixels();
-            Debug.Log(colors.Length);
             for (int j = 0; j < colors.Length; j++) {
                 colors[j].a = i * (1f / maxTileHealth);
             }
             text.SetPixels(colors);
             text.Apply(true);
+
+            //Create sprites sheet for each layer here. 
             for (int j = 0; j < original.Length; j++) {
                 sprites[i][j] = Sprite.Create(text, original[j].rect, new Vector2(pivot,pivot), 2 * size / sideLength);
-                // sprites[i][j] = Instantiate<Sprite>(original[j]);
-                
             }
             
         }
-        
-        // sprites[maxTileHealth] = original;
-        //Sprite.Create()        
-        
 
         tiles = new Tile[maxTileHealth + 1][];
         for (int health = 0; health < maxTileHealth + 1; health++) {
-            Debug.Log(health);
             tiles[health] = new Tile[sprites[health].Length];
+
+            //Tile create per sprite.
+            //Separate from sprite creation because importing tiles is too tedious
             for (int i = 0; i < sprites[health].Length; i++) {
                 
-                tiles[health][i] = ScriptableObject.CreateInstance<Tile>();
-                // Sprite op_sprite = Instantiate<Sprite>(sprites[0]);
-                
+                tiles[health][i] = ScriptableObject.CreateInstance<Tile>();                
                 tiles[health][i].sprite = sprites[health][i];
+
+                //we probs shouldn't base the dirtyness of a tile by its name...
                 tiles[health][i].name = "Dirty" + health.ToString();
                 
             }
         }
-
-        ////This is code for changing the texture itself. Do note that it will change the underlying textures unless there
-        ////are some kind of resize algo
-        // var test = sprites[3][0].texture;
-        // var colors = test.GetPixels();
-        // Debug.Log(colors.Length);
-        // for (int i = 0; i < colors.Length; i++) {
-        //     colors[i].a = 0.5f;
-        // }
-        // test.SetPixels(colors);
-        // test.Apply(true);
-        
 
         floorMarkers = new Dictionary<Collider2D, FloorMarkerData>();
 
@@ -133,6 +122,9 @@ public class FloorController : MonoBehaviour
 
         currentFloorHealth = totalFloorHealth;
         levelBounds.enabled = false;
+
+        var col = this.GetComponent<TilemapCollider2D>();
+        
     }
 
     // Update is called once per frame
@@ -158,6 +150,8 @@ public class FloorController : MonoBehaviour
             // loop over the collider's bounds to see what tiles it might be in
             Vector3Int min = tm.WorldToCell(col.bounds.min);
             Vector3Int max = tm.WorldToCell(col.bounds.max);
+
+            int changed = 0;
             for (int x = min.x; x <= max.x; x++) {
                 for (int y = min.y; y <= max.y; y++) {
                     Vector3Int cell = new Vector3Int(x, y, 0);
@@ -192,7 +186,7 @@ public class FloorController : MonoBehaviour
                     tileHealth = Mathf.Clamp(tileHealth, 0, maxTileHealth);
 
                     tm.SetTile(cell, tiles[tileHealth][GetCoords(x,y)]);
-                    
+                    changed += oldTileHealth - tileHealth;
                     currentFloorHealth += tileHealth - oldTileHealth;
                 }
             }
@@ -207,7 +201,7 @@ public class FloorController : MonoBehaviour
 
 
     public float GetCleanPercent() {
-        return 1f - (float)currentFloorHealth / (float)totalFloorHealth;
+        return 1f - currentFloorHealth / (totalFloorHealth + (float) 1e-6);
     }
 
     private int GetCoords (int x, int y) {
