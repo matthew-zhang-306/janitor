@@ -102,11 +102,15 @@ public class FloorController : MonoBehaviour
 
         floorMarkers = new Dictionary<Collider2D, FloorMarkerData>();
 
+        var col = this.GetComponent<TilemapCollider2D>();
+    }
+
+    public void InitializeFloor(Bounds levelBounds) {
         tm = this.GetComponent<Tilemap>();
         tm.ClearAllTiles();
 
-        Vector3Int min = tm.WorldToCell(levelBounds.bounds.min);
-        Vector3Int max = tm.WorldToCell(levelBounds.bounds.max);
+        Vector3Int min = tm.WorldToCell(levelBounds.min);
+        Vector3Int max = tm.WorldToCell(levelBounds.max);
         for (int x = min.x; x <= max.x; x++) {
             for (int y = min.y; y <= max.y; y++) {
                 var cell = new Vector3Int(x, y, 0);
@@ -121,19 +125,16 @@ public class FloorController : MonoBehaviour
         }
 
         currentFloorHealth = totalFloorHealth;
-        levelBounds.enabled = false;
-
-        var col = this.GetComponent<TilemapCollider2D>();
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     private void OnTriggerEnter2D(Collider2D col) {
+        if (tm == null) {
+            // floor has not been initialized, ignore collisions
+            return;
+        }
+
         if (col.gameObject.tag == "FloorMarker") {
             FloorMarker floorMarker = col.GetComponent<FloorMarker>();
             if (floorMarker != null) {
