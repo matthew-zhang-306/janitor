@@ -13,12 +13,14 @@ public class EnemyController : MonoBehaviour
     public Tile tile;
 
     public Hitbox hitbox;
-    public Hitbox agroRegion;
     public SpriteRenderer spriteRenderer;
 
     private Health health;
     private Rigidbody2D rb2d;
     public GameObject floorMarker;
+
+    public float agroRadius;
+    [HideInInspector] public PlayerController player;
 
     [SerializeField] private float actionTimer = 1.5f;
     private float m_time;
@@ -34,7 +36,6 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         //note an enemy does not 'have' to have health so health may be null.
         health = this.GetComponent<Health>();
         rb2d = GetComponent<Rigidbody2D>();
@@ -60,7 +61,9 @@ public class EnemyController : MonoBehaviour
             m_time -= actionTimer;
 
             // chose action
-            if (agroRegion.IsColliding) {
+            if (player != null &&
+                Vector3.Distance(player.transform.position, this.transform.position) <= agroRadius)
+            {
                 Action_Move();
             } else {
                 Action_Wander();
@@ -95,8 +98,10 @@ public class EnemyController : MonoBehaviour
 
     protected virtual void Action_Move ()
     {
-        Vector3 playerPos = agroRegion.OtherCollider.transform.position;
-        Vector3 dir = playerPos - this.transform.position;
+        Vector3 dir = player.transform.position - this.transform.position;
+        // randomize direction a little bit
+        dir = Quaternion.Euler(0, 0, Random.Range(-15f, 15f)) * dir;
+
         rb2d.AddForce(dir * 40 * rb2d.mass);
     }
     

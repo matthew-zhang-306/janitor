@@ -386,6 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 3
   maxSpeed: 10
+  cameraPos: {fileID: 1177657900237155362}
   spriteRenderer: {fileID: 1177657899049150887}
   knockbackPower: 15
   knockbackTime: 0.2

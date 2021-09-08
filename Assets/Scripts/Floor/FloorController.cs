@@ -33,7 +33,7 @@ public class FloorController : MonoBehaviour
 
     private int sideLength;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //Requires a sliced sprite map for this to work.
         Sprite[] original = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_small");
@@ -117,7 +117,6 @@ public class FloorController : MonoBehaviour
 
                 // check if this is an open space
                 if (Physics2D.OverlapPoint(tm.GetCellCenterWorld(cell), LayerMask.GetMask("Wall")) == null) {
-
                     tm.SetTile(cell, tiles[maxTileHealth][GetCoords(x,y)]);
                     totalFloorHealth += maxTileHealth;
                 }

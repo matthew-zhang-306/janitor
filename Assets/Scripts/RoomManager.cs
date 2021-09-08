@@ -21,6 +21,7 @@ public class RoomManager : MonoBehaviour
 
     public GameObject room;
     public Transform doorsContainer;
+    public Transform enemiesContainer;
     public Grid levelGrid; 
     private int enemyCount;
 
@@ -28,6 +29,10 @@ public class RoomManager : MonoBehaviour
 
     public FloorController dirtyTiles;
     private FloorTilePopulator tiles;
+
+    [Header("Put the Player into this")]
+    public PlayerController player; // later we need to load this in some other way
+
 
     // Start is called before the first frame update
     void Start()
@@ -53,10 +58,18 @@ public class RoomManager : MonoBehaviour
             doorTransform.gameObject.SetActive(false);
         }
 
+        foreach (Transform enemyTransform in enemiesContainer) {
+            var ec = enemyTransform.GetComponent<EnemyController>();
+            if (ec != null) {
+                ec.player = player;
+            }
+        }
+
         dirtyTiles.InitializeFloor(roomFloorBounds.bounds);
 
         roomUI.enabled = false;
         vcam.Priority = 0;
+        vcam.Follow = player.cameraPos;
     }
 
 
@@ -67,7 +80,7 @@ public class RoomManager : MonoBehaviour
             roomTriggerHitbox.enabled = false;
         }
         
-        if (roomActive && enemyCount == 0 && dirtyTiles.GetCleanPercent() >= 0.8f) {
+        if (roomActive && enemyCount == 0 && dirtyTiles.GetCleanPercent() >= 0.6f) {
             OnClearRoom();
             roomActive = false;
         }
@@ -78,9 +91,8 @@ public class RoomManager : MonoBehaviour
         roomActive = true;
         room.SetActive(true);
 
-        int c = room.transform.childCount;
-        for (int i = 0; i < c; i++) {
-            var ec = room.transform.GetChild(i).GetComponent<EnemyController>();
+        foreach (Transform enemyTransform in enemiesContainer) {
+            var ec = enemyTransform.GetComponent<EnemyController>();
             if (ec != null) {
                 enemyCount += 1;
                 ec.GetDeathEvent().AddListener(DecreaseEnemyCount);

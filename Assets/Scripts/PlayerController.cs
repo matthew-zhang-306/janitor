@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float acceleration = 1f;
     [SerializeField] private float maxSpeed = 1f;
 
+    public Transform cameraPos;
     public SpriteRenderer spriteRenderer;
     private Animator animator;
     private Rigidbody2D rb2d;
