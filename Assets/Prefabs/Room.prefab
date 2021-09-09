@@ -210,6 +210,7 @@ MonoBehaviour:
   enemiesContainer: {fileID: 2499273327667139766}
   levelGrid: {fileID: 4960979558482759710}
   dirtyTiles: {fileID: 4803664296904731265}
+  player: {fileID: 0}
 --- !u!1 &2843721370339062034
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,9 +633,9 @@ GameObject:
   - component: {fileID: 5692269848699006629}
   - component: {fileID: 2655759560758236343}
   - component: {fileID: 6707088723671100265}
-  - component: {fileID: 7957443720243828657}
   - component: {fileID: 5101791322251588990}
   - component: {fileID: 4803664296904731265}
+  - component: {fileID: 4716983670666038546}
   m_Layer: 0
   m_Name: DirtyMap
   m_TagString: Untagged
@@ -7572,22 +7573,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!19719996 &7957443720243828657
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5110317255198002279}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!50 &5101791322251588990
 Rigidbody2D:
   serializedVersion: 4
@@ -7623,6 +7608,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelBounds: {fileID: 0}
   maxTileHealth: 3
+--- !u!61 &4716983670666038546
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5110317255198002279}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 17, y: 10}
+  m_EdgeRadius: 0
 --- !u!1 &5256161693606362418
 GameObject:
   m_ObjectHideFlags: 0

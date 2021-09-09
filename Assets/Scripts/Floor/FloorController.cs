@@ -15,7 +15,7 @@ public class FloorMarkerData
 }   
 
 
-[RequireComponent(typeof(TilemapCollider2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class FloorController : MonoBehaviour
 {
     [Tooltip("Use a BoxCollider2D to specify the area in which the dirty floor should spawn.")]
@@ -36,7 +36,7 @@ public class FloorController : MonoBehaviour
     void Awake()
     {
         //Requires a sliced sprite map for this to work.
-        Sprite[] original = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_small");
+        Sprite[] original = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_continuous");
         if (original.Length < 1) {
             Debug.LogError("Sprite Loading has failed for dirty floor");
             return;
@@ -102,7 +102,6 @@ public class FloorController : MonoBehaviour
 
         floorMarkers = new Dictionary<Collider2D, FloorMarkerData>();
 
-        var col = this.GetComponent<TilemapCollider2D>();
     }
 
     public void InitializeFloor(Bounds levelBounds) {
@@ -124,6 +123,10 @@ public class FloorController : MonoBehaviour
         }
 
         currentFloorHealth = totalFloorHealth;
+        var col = GetComponent<BoxCollider2D>();
+        col.size = levelBounds.size;
+        col.offset = levelBounds.center;
+
     }
 
 
