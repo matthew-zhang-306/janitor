@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Tilemaps;
 using DG.Tweening;
 using UnityEngine.Events;
@@ -15,11 +16,13 @@ public class EnemyController : MonoBehaviour
     public Hitbox hitbox;
     public SpriteRenderer spriteRenderer;
 
+    private NavMeshAgent navMeshAgent;
     private Health health;
     private Rigidbody2D rb2d;
     public GameObject floorMarker;
 
     public float agroRadius;
+    public float seekSpeed;
     [HideInInspector] public PlayerController player;
 
     [SerializeField] private float actionTimer = 1.5f;
@@ -33,15 +36,19 @@ public class EnemyController : MonoBehaviour
     private string[] actions;
 
     private UnityEvent deathEvent;
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
+
         //note an enemy does not 'have' to have health so health may be null.
         health = this.GetComponent<Health>();
         rb2d = GetComponent<Rigidbody2D>();
 
-        m_time = 0f;
+        m_time = Random.Range(0f, actionTimer);
 
         DOTween.Sequence()
             .InsertCallback(0f, () => floorMarker.SetActive(true))
@@ -60,6 +67,8 @@ public class EnemyController : MonoBehaviour
     {
         if (m_time > actionTimer) {
             m_time -= actionTimer;
+
+            navMeshAgent.isStopped = true;
 
             // chose action
             if (player != null &&
@@ -99,11 +108,13 @@ public class EnemyController : MonoBehaviour
 
     protected virtual void Action_Move ()
     {
-        Vector3 dir = player.transform.position - this.transform.position;
-        // randomize direction a little bit
-        dir = Quaternion.Euler(0, 0, Random.Range(-15f, 15f)) * dir;
+        navMeshAgent.isStopped = false;
+        navMeshAgent.SetDestination(player.transform.position);
 
-        rb2d.AddForce(dir * 40 * rb2d.mass);
+        navMeshAgent.DOKill();
+        navMeshAgent.speed = seekSpeed;
+        DOTween.To(() => navMeshAgent.speed, s => navMeshAgent.speed = s, seekSpeed / 4f, actionTimer)
+            .SetLink(gameObject).SetTarget(navMeshAgent);
     }
     
     void OnCollisionEnter2D (Collision2D col) {
