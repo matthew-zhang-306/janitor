@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour
     private string[] actions;
 
     private UnityEvent deathEvent;
+    
     // Start is called before the first frame update
     void Start()
     {
