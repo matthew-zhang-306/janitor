@@ -46,10 +46,11 @@ public class FloorTilePopulator : MonoBehaviour
                 var x_val = x/2;
                 var y_val = y/2;
                 if (x <= 0) {
+                    x_val = Math.Abs((x - 1)/2);
                 }
                 if (y <= 0) {
                     y_val = Math.Abs((y - 1)/2);
-                }     x_val = Math.Abs((x - 1)/2);
+                }     
                 
                 var alt = (x_val + y_val%2)%2;
 
