@@ -9,6 +9,7 @@ TagManager:
   - FloorMarker
   - SongPlayer
   - Gunk
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -46,7 +46,7 @@ public class Turret : MonoBehaviour
     IEnumerator Cooldown()
     {
         canShoot = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(cooldown + Random.Range(1.0f, 3.0f));
         
         
 
