@@ -71,7 +71,7 @@ public class FloorController : MonoBehaviour
             
             var colors = original[0].texture.GetPixels();
             for (int j = 0; j < colors.Length; j++) {
-                colors[j].a = i * (1f / maxTileHealth);
+                colors[j].a = i * (1f / maxTileHealth) * 0.65f;
             }
             text.SetPixels(colors);
             text.Apply(true);
@@ -91,7 +91,7 @@ public class FloorController : MonoBehaviour
             //Separate from sprite creation because importing tiles is too tedious
             for (int i = 0; i < sprites[health].Length; i++) {
                 
-                tiles[health][i] = ScriptableObject.CreateInstance<Tile>();                
+                tiles[health][i] = ScriptableObject.CreateInstance<DirtyTile>();                
                 tiles[health][i].sprite = sprites[health][i];
 
                 //we probs shouldn't base the dirtyness of a tile by its name...
