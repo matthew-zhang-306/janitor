@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscene.unity
     guid: 453d75129ccaf9149afc36afc8c449e0
   - enabled: 1
-    path: Assets/Scenes/School-edit.unity
+    path: Assets/Scenes/School.unity
     guid: 467b5dd54057ef44f9b8e214a0839245
   - enabled: 1
     path: Assets/Scenes/City.unity
