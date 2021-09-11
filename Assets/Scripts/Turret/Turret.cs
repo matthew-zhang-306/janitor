@@ -13,12 +13,14 @@ public class Turret : MonoBehaviour
 
     public float cooldown = 1f;
 
-    
-
+    private Animation turret_shoots;
+    private Animator turret;
     // Start is called before the first frame update
     void Start()
     {
-
+        turret_shoots = gameObject.GetComponent<Animation>();
+        turret = gameObject.GetComponent<Animator>();
+        turret_shoots.Play();
     }
 
     // Update is called once per frame
@@ -32,12 +34,12 @@ public class Turret : MonoBehaviour
                     
                     GameObject go = (GameObject)Instantiate(gunk, (Vector2)transform.position + Offset * transform.localScale.x, Quaternion.identity);
                     go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
-
+                    turret.SetTrigger("Play");
                     StartCoroutine("Cooldown");
                     
 
 
-                }
+            }
             
 
         }
@@ -45,6 +47,7 @@ public class Turret : MonoBehaviour
 
     IEnumerator Cooldown()
     {
+        
         canShoot = false;
         yield return new WaitForSeconds(cooldown + Random.Range(1.0f, 3.0f));
         
@@ -52,6 +55,8 @@ public class Turret : MonoBehaviour
 
         canShoot = true;
     }
+
+    
 
 
 }
