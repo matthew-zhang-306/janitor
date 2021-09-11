@@ -6,8 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Hitbox : MonoBehaviour
 {
-    [SerializeField]
-    protected string[] targetTags = default;
+    public string[] targetTags = default;
 
     protected Collider2D coll;
 

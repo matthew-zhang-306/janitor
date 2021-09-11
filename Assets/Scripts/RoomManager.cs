@@ -59,7 +59,7 @@ public class RoomManager : MonoBehaviour
         }
 
         foreach (Transform enemyTransform in enemiesContainer) {
-            var ec = enemyTransform.GetComponent<EnemyController>();
+            var ec = enemyTransform.GetComponent<BaseEnemy>();
             if (ec != null) {
                 ec.player = player;
             }
@@ -92,10 +92,11 @@ public class RoomManager : MonoBehaviour
         room.SetActive(true);
 
         foreach (Transform enemyTransform in enemiesContainer) {
-            var ec = enemyTransform.GetComponent<EnemyController>();
+            var ec = enemyTransform.GetComponent<BaseEnemy>();
             if (ec != null) {
                 enemyCount += 1;
-                ec.GetDeathEvent().AddListener(DecreaseEnemyCount);
+                ec.CanAct = true;
+                ec.DeathEvent.AddListener(DecreaseEnemyCount);
             }
         }
 
