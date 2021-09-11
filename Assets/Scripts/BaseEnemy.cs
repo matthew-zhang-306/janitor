@@ -9,14 +9,15 @@ public class BaseEnemy : MonoBehaviour
     [HideInInspector] public bool CanAct = false;
 
     [Header("Components")]
+    public SpriteRenderer spriteRenderer;
     protected Rigidbody2D rb2d;
     protected Health health;
     public Hitbox hitbox;
-    public SpriteRenderer spriteRenderer;
+    
 
     [Header("Optional Components")]
-    protected NavMeshAgent navMeshAgent; // enemy will not necessarily have one
     public GameObject floorMarker; // enemy will not necessarily have one
+    protected NavMeshAgent navMeshAgent; // enemy will not necessarily have one
 
     [HideInInspector] public PlayerController player;
 
@@ -39,6 +40,7 @@ public class BaseEnemy : MonoBehaviour
             navMeshAgent.updateRotation = false;
             navMeshAgent.updateUpAxis = false;
         }
+        navMeshAgent.isStopped = true;
 
         health = GetComponent<Health>();
         rb2d = GetComponent<Rigidbody2D>();
@@ -74,6 +76,7 @@ public class BaseEnemy : MonoBehaviour
         invincibilityTimer = invincibilityTime;
 
         if (health.GetHealth() <= 0) {
+            CanAct = false;
             Die();
 
             // i call the deathevent here instead of in Die() because i expect subclasses to not call base.Die()

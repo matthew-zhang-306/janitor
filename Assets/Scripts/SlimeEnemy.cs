@@ -22,12 +22,9 @@ public class SlimeEnemy : BaseEnemy
 
     
 
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-
-        navMeshAgent.isStopped = true;
 
         m_time = Random.Range(0f, actionTimer);
         DOTween.Sequence()
