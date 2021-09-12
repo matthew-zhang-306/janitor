@@ -93,7 +93,7 @@ public class RoomManager : MonoBehaviour
 
         foreach (Transform enemyTransform in enemiesContainer) {
             var ec = enemyTransform.GetComponent<BaseEnemy>();
-            if (ec != null) {
+            if (ec != null && ec.isActiveAndEnabled) {
                 enemyCount += 1;
                 ec.CanAct = true;
                 ec.DeathEvent.AddListener(DecreaseEnemyCount);
