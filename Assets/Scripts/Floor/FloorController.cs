@@ -22,7 +22,7 @@ public class FloorController : MonoBehaviour
     public BoxCollider2D levelBounds;
 
     private Tilemap tm;
-    private Tile[][] tiles;
+    private DirtyTile[][] tiles;
     private Sprite[][] sprites;
     // public int maxTileHealth => tiles.Length - 1;
     public int maxTileHealth = 1;
@@ -83,9 +83,9 @@ public class FloorController : MonoBehaviour
             
         }
 
-        tiles = new Tile[maxTileHealth + 1][];
+        tiles = new DirtyTile[maxTileHealth + 1][];
         for (int health = 0; health < maxTileHealth + 1; health++) {
-            tiles[health] = new Tile[sprites[health].Length];
+            tiles[health] = new DirtyTile[sprites[health].Length];
 
             //Tile create per sprite.
             //Separate from sprite creation because importing tiles is too tedious
@@ -93,7 +93,7 @@ public class FloorController : MonoBehaviour
                 
                 tiles[health][i] = ScriptableObject.CreateInstance<DirtyTile>();                
                 tiles[health][i].sprite = sprites[health][i];
-
+                tiles[health][i].SetDirty(health);
                 //we probs shouldn't base the dirtyness of a tile by its name...
                 tiles[health][i].name = "Dirty" + health.ToString();
                 
@@ -161,10 +161,10 @@ public class FloorController : MonoBehaviour
 
                     // check if this position actually has a valid tile on it
                     var c_tile = tm.GetTile(cell);
-                    if (c_tile == null || !c_tile.name.StartsWith("Dirty")) {
+                    if (c_tile == null || c_tile.GetType() != typeof (DirtyTile)) {
                         continue;
                     }
-
+                    DirtyTile d_tile = (DirtyTile) c_tile;
                     // check if the collider is actually touching this cell
                     var otherClosestPoint = col.ClosestPoint(tm.CellToWorld(cell));
                     Vector3Int otherClosestCell = tm.WorldToCell(otherClosestPoint);
@@ -179,11 +179,13 @@ public class FloorController : MonoBehaviour
                         continue;
                     }
 
+                    
                     // deal "damage" to the floor
-                    if (!int.TryParse(c_tile.name.Substring("Dirty".Length), out int tileHealth)) {
-                        Debug.LogError("The floor tile " + c_tile.name + " does not look like 'DirtyX' where X is a number");
-                        continue;
-                    }
+                    // if (!int.TryParse(c_tile.name.Substring("Dirty".Length), out int tileHealth)) {
+                    //     Debug.LogError("The floor tile " + d_tile.name + " does not look like 'DirtyX' where X is a number");
+                    //     continue;
+                    // }
+                    int tileHealth = d_tile.GetDirty();
                     var oldTileHealth = tileHealth;
                     tileHealth -= floorMarkers[col].floorMarker.markAmount;
                     tileHealth = Mathf.Clamp(tileHealth, 0, maxTileHealth);

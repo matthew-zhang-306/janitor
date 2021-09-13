@@ -180,6 +180,10 @@ MonoBehaviour:
   floorMarker: {fileID: 6114331370540110220}
   player: {fileID: 0}
   invincibilityTime: 0.2
+  actions:
+  - Wait
+  - Swipe
+  - Seek
   seekSpeed: 7
   startupTime: 0.5
   swipeDelay: 0.1
