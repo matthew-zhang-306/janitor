@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
+using System.Reflection;
 public class RatEnemy : BaseEnemy
 {
     private bool shouldPickAction;
@@ -14,13 +15,12 @@ public class RatEnemy : BaseEnemy
 
     public GameObject swipe;
 
-    private string[] actions; // daniel, refactor to use this when you need to
 
     protected override void Start() {
         base.Start();
 
         navMeshAgent.speed = seekSpeed;
-        startupTimer = Random.Range(startupTime / 2f, startupTime);
+        startupTimer = UnityEngine.Random.Range(startupTime / 2f, startupTime);
         swipe.SetActive(false);
         shouldPickAction = true;
     }
@@ -44,12 +44,17 @@ public class RatEnemy : BaseEnemy
             }
 
             shouldPickAction = false;
-            StartCoroutine("Action_" + selectedAction);
+
+            //If action was specified in inspector then go ahead and do the action
+            if (actionTable.ContainsKey(selectedAction)) {
+                StartCoroutine(actionTable[selectedAction]());
+            }
+            
         }
         else if (!CanAct) {
             // set up a startup time if the rat is set to act again later
             if (startupTimer == 0)
-                startupTimer = Random.Range(startupTime / 2f, startupTime);
+                startupTimer = UnityEngine.Random.Range(startupTime / 2f, startupTime);
         }
 
         navMeshAgent.speed = invincibilityTimer == 0 ? seekSpeed : seekSpeed / 3f;

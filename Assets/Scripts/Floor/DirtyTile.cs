@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
+[CreateAssetMenu]
 public class DirtyTile : Tile
 {
-    private Texture2D text = null;
-    private double baseOpacity = 1f;
+    [SerializeField] private int dirtyLevel = 0;
     public override void RefreshTile(Vector3Int position, ITilemap tilemap)
     {
         // this.sprite = null;
@@ -30,4 +29,16 @@ public class DirtyTile : Tile
         return false;
     }
     
+    public void SetDirty (int val)
+    {
+        if (val < 0) {
+            Debug.LogError("Dirty value cannot be less than 0!");
+        }
+        dirtyLevel = val;
+    }
+
+    public int GetDirty () 
+    {
+        return dirtyLevel;        
+    }
 }
