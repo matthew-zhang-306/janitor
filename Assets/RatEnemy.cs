@@ -4,48 +4,95 @@ using UnityEngine;
 
 public class RatEnemy : BaseEnemy
 {
+    private bool shouldPickAction;
+
     public float seekSpeed;
     public float startupTime;
     private float startupTimer;
+    public float swipeDelay;
+    public float swipeTime;
+
+    public GameObject swipe;
 
     private string[] actions; // daniel, refactor to use this when you need to
 
     protected override void Start() {
         base.Start();
+
         navMeshAgent.speed = seekSpeed;
-        startupTimer = Random.Range(0, startupTime);
+        startupTimer = Random.Range(startupTime / 2f, startupTime);
+        swipe.SetActive(false);
+        shouldPickAction = true;
     }
 
     protected override void FixedUpdate() {
         base.FixedUpdate();
 
-        if (CanAct) {
-            startupTimer = Mathf.MoveTowards(startupTimer, 0, Time.deltaTime);
-            if (startupTimer == 0) {
-                // pick something to do this frame
-                Action_Seek();
+        if (CanAct && shouldPickAction) {
+            string selectedAction = "";
+
+            if (startupTimer > 0) {
+                selectedAction = "Wait";
+            }
+            else if ((player.transform.position - transform.position).sqrMagnitude <=
+                        navMeshAgent.stoppingDistance *  navMeshAgent.stoppingDistance * 1.1f)
+            {
+                selectedAction = "Swipe";
             }
             else {
-                navMeshAgent.isStopped = true;
+                selectedAction = "Seek";
             }
 
-            navMeshAgent.speed = invincibilityTimer == 0 ? seekSpeed : seekSpeed / 3f;
+            shouldPickAction = false;
+            StartCoroutine("Action_" + selectedAction);
         }
-        else {
+        else if (!CanAct) {
+            // set up a startup time if the rat is set to act again later
             if (startupTimer == 0)
-                startupTimer = Random.Range(0, startupTime);
+                startupTimer = Random.Range(startupTime / 2f, startupTime);
         }
+
+        navMeshAgent.speed = invincibilityTimer == 0 ? seekSpeed : seekSpeed / 3f;
+        spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
     }
 
     protected override void TakeDamage(Collider2D other) {
         base.TakeDamage(other);
-
         float per = (1 - health.GetHealthPercent())/2 + health.GetHealthPercent();
     }
 
 
-    private void Action_Seek() {
+    private IEnumerator Action_Wait() {
+        navMeshAgent.isStopped = true;
+        while (startupTimer != 0) {
+            yield return 0;
+            startupTimer = Mathf.MoveTowards(startupTimer, 0, Time.deltaTime);
+        }
+        shouldPickAction = true;
+    }
+
+    private IEnumerator Action_Seek() {
         navMeshAgent.isStopped = false;
         navMeshAgent.SetDestination(player.transform.position);
+        yield return 0;
+        shouldPickAction = true;
+    }
+
+    private IEnumerator Action_Swipe() {
+        navMeshAgent.isStopped = true;
+
+        yield return new WaitForSeconds(swipeDelay);
+
+        float swipeAngle = Vector2.SignedAngle(Vector2.right, player.transform.position - transform.position);
+        swipe.transform.rotation = Quaternion.Euler(0, 0, swipeAngle);
+        swipe.SetActive(true);
+
+        // play some animation here
+
+        yield return new WaitForSeconds(swipeTime);
+
+        swipe.SetActive(false);
+        startupTimer = startupTime;
+        shouldPickAction = true;
     }
 }
