@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Reflection;
+
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+
 
 public class BaseEnemy : MonoBehaviour
 {
@@ -27,7 +31,11 @@ public class BaseEnemy : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] protected float invincibilityTime = 0.2f;
     protected float invincibilityTimer;
-
+    [SerializeField]protected List<string> actions; // daniel, refactor to use this when you need to
+    //Note that this delegate doesn't take any parameters, though that can defo change.
+    public delegate IEnumerator EnemyActionDelegate();
+    protected Dictionary<string, EnemyActionDelegate> actionTable;
+   
 
     protected virtual void Awake() {
         if (deathEvent == null)
@@ -44,6 +52,25 @@ public class BaseEnemy : MonoBehaviour
 
         health = GetComponent<Health>();
         rb2d = GetComponent<Rigidbody2D>();
+
+        actionTable = new Dictionary<string, EnemyActionDelegate>();
+        // actions.Add("Test");
+        var classType = this.GetType();
+        //Make action table
+        foreach (string s in actions) {
+            if (Char.IsLower (s[0])) {
+                Debug.LogWarning("Enemy " + gameObject.name + " has an invalid action name");
+            }
+            //Get action method
+            var m = classType.GetMethod("Action_" + s, BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.Instance | BindingFlags.Public);
+            if (m != null) {
+                // Add to the action table. You can call the method by:
+                // actionTable["Test"]();
+                actionTable.Add(s, (EnemyActionDelegate) m.CreateDelegate(typeof (EnemyActionDelegate), this));
+            }
+        }
+
+        
     }
 
 
@@ -88,5 +115,10 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void Die() {
         Destroy(gameObject);
+    }
+
+    protected IEnumerator Action_Test () {
+        Debug.Log("Action test pass");
+        yield return 0;
     }
 }
