@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 4271501809376710232}
   - component: {fileID: 4271501809376710239}
   - component: {fileID: 4271501809376710238}
+  - component: {fileID: 242227366}
   m_Layer: 10
   m_Name: Slime
   m_TagString: Untagged
@@ -260,14 +261,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4f68ad2ac1e0a4fb649960bbac62a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 11400000, guid: 13229480d41f60b43964bbc0838e728e, type: 2}
-  hitbox: {fileID: 4271501809849760517}
+  CanAct: 0
   spriteRenderer: {fileID: 4271501809168021281}
+  hitbox: {fileID: 4271501809849760517}
   floorMarker: {fileID: 4271501808992719050}
-  agroRadius: 7.5
   player: {fileID: 0}
-  actionTimer: 2
   invincibilityTime: 0.2
+  actions: []
+  agroRadius: 14
+  seekSpeed: 5
+  actionTimer: 1.2
   dirtyTime: 1
 --- !u!114 &4271501809376710238
 MonoBehaviour:
@@ -283,6 +286,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 30
   currentHealth: 1
+--- !u!195 &242227366
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271501809376710233}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.57
+  m_Speed: 3.5
+  m_Acceleration: 20
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4271501809849760519
 GameObject:
   m_ObjectHideFlags: 0
