@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     private Hitbox hitbox;
     private Health health;
+    public static bool PlayerDead;
 
     private Vector2 knockback;
     private float knockbackTimer;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         hitbox = GetComponentInChildren<Hitbox>();
         health = GetComponent<Health>();
+        PlayerDead = false;
     }
 
     private void Update() {
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
             
             health.ChangeHealth(-hitAmount);
             if (health.GetHealth() <= 0) {
+                PlayerDead = true;
                 Destroy(gameObject);
             }
 
