@@ -46,6 +46,7 @@ public class FloorController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        sideLength = 6;
 
         if (tiles == null || sprites == null) {
             //Requires a sliced sprite map for this to work.
@@ -54,7 +55,6 @@ public class FloorController : MonoBehaviour
                 Debug.LogError("Sprite Loading has failed for dirty floor");
                 return;
             }
-            sideLength = 6;
 
             
             //Load sprite
