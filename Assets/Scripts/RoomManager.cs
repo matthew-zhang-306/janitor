@@ -43,6 +43,7 @@ public class RoomManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         enemyCount = 0;    
         if (allEnemiesDefeatedEvent == null)
             allEnemiesDefeatedEvent = new UnityEvent();
