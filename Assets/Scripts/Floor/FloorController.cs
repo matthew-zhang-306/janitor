@@ -31,7 +31,7 @@ public class FloorController : MonoBehaviour
     private int currentFloorHealth;
     private int totalFloorHealth;
 
-    private int sideLength;
+    private static int sideLength;
 
     private Vector3Int _min;
     public Vector3Int Min
@@ -46,7 +46,6 @@ public class FloorController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        sideLength = 6;
 
         if (tiles == null || sprites == null) {
             //Requires a sliced sprite map for this to work.
