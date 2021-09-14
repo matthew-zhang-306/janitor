@@ -17,6 +17,9 @@ public class SlimeEnemy : BaseEnemy
     private float m_time;
 
     [SerializeField] private float dirtyTime = 1f;
+
+    private bool shouldSetNewMoveAnimation;
+    public Animator animator;
     
     protected override void Start()
     {
@@ -36,6 +39,21 @@ public class SlimeEnemy : BaseEnemy
     // Update is called once per frame
     void Update()
     {
+        // we set the animation here because we have to wait one frame after telling the navmeshagent to move
+        // to know which direction it wants to go in order to get there
+        if (shouldSetNewMoveAnimation && navMeshAgent.hasPath) {
+            shouldSetNewMoveAnimation = false;
+
+            // select animation
+            float moveAngle = Vector2.SignedAngle(Vector2.right, navMeshAgent.desiredVelocity);
+            int moveDir = Mathf.RoundToInt(moveAngle / 90f).Mod(4);
+            string moveString = new string[] { "Right", "Up", "Left", "Down" }[moveDir];
+            Debug.Log("selecting animation " + navMeshAgent.desiredVelocity);
+
+            // i have no idea what the "0f" parameter in this does. all i know is that it doesn't work without it
+            animator.Play("SlimeMove" + moveString, -1, 0f);
+        }
+
         if (CanAct && m_time > actionTimer) {
             m_time -= actionTimer;
 
@@ -46,6 +64,7 @@ public class SlimeEnemy : BaseEnemy
                 Vector3.Distance(player.transform.position, this.transform.position) <= agroRadius)
             {
                 Action_Move();
+                shouldSetNewMoveAnimation = true;
             } else {
                 Action_Wander();
             }
@@ -65,6 +84,8 @@ public class SlimeEnemy : BaseEnemy
     {
         Vector3 randomDir = Quaternion.Euler(0, 0, Random.Range(0f, 360f)) * Vector3.right;
         rb2d.AddForce(randomDir * 30 * rb2d.mass);
+
+        animator.Play("SlimeIdle");
     }
 
     protected virtual void Action_Move ()

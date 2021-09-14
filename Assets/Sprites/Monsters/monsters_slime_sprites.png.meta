@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: 78f814f556d5d814486364535e488858
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3727802899999217345
+    second: monsters_slime_sprites_0
+  - first:
+      213: 3535372169130037169
+    second: monsters_slime_sprites_1
+  - first:
+      213: 6995856627646494809
+    second: monsters_slime_sprites_2
+  - first:
+      213: -130440561470279101
+    second: monsters_slime_sprites_3
+  - first:
+      213: 7871592268642114824
+    second: monsters_slime_sprites_4
+  - first:
+      213: 4381396667781515046
+    second: monsters_slime_sprites_5
+  - first:
+      213: 485075944449264766
+    second: monsters_slime_sprites_6
+  - first:
+      213: -7808847170788342716
+    second: monsters_slime_sprites_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,9 +64,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -71,9 +95,189 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: monsters_slime_sprites_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1600
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3920e0630f244cc0800000000000000
+      internalID: -3727802899999217345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_slime_sprites_1
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 1600
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bf4cc1b14a201130800000000000000
+      internalID: 3535372169130037169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_slime_sprites_2
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 1600
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9587e668986461160800000000000000
+      internalID: 6995856627646494809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_slime_sprites_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 342f24d1005903ef0800000000000000
+      internalID: -130440561470279101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_slime_sprites_4
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 800
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80ddf1d76738d3d60800000000000000
+      internalID: 7871592268642114824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_slime_sprites_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62782334e09ddcc30800000000000000
+      internalID: 4381396667781515046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_slime_sprites_6
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 0
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7c4cfd50065bb600800000000000000
+      internalID: 485075944449264766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_slime_sprites_7
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 0
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 444c8d70fd661a390800000000000000
+      internalID: -7808847170788342716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

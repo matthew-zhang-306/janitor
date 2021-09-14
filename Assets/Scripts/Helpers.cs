@@ -11,20 +11,15 @@ public static class Helpers {
   }
 
 
-/*
   public static float Mod(this float a, float mod)
   {
-      return a - mod * Mathf.Floor(a / mod);
+    return a - mod * Mathf.Floor(a / mod);
   }
 
-
-  public static Vector2 FloorToNearest(this Vector2 vector2, float increment) {
-
+  public static int Mod(this int a, int mod)
+  {
+    return a - mod * Mathf.FloorToInt((float)a / (float)mod);
   }
 
-  public static Vector2 CeilToNearest(this Vector2 vector2, float increment) {
-
-  }
-*/
 
 }
