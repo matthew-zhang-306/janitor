@@ -22,8 +22,8 @@ public class FloorController : MonoBehaviour
     public BoxCollider2D levelBounds;
 
     private Tilemap tm;
-    private DirtyTile[][] tiles;
-    private Sprite[][] sprites;
+    private static DirtyTile[][] tiles = null;
+    private static Sprite[][] sprites = null;
     // public int maxTileHealth => tiles.Length - 1;
     public int maxTileHealth = 1;
     private Dictionary<Collider2D, FloorMarkerData> floorMarkers;
@@ -31,74 +31,88 @@ public class FloorController : MonoBehaviour
     private int currentFloorHealth;
     private int totalFloorHealth;
 
-    private int sideLength;
+    private static int sideLength;
+
+    private Vector3Int _min;
+    public Vector3Int Min
+    {
+        get => _min;
+    }
+    private Vector3Int _max;
+    public Vector3Int Max
+    {
+        get => _max;
+    }
     // Start is called before the first frame update
     void Awake()
     {
-        //Requires a sliced sprite map for this to work.
-        Sprite[] original = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_continuous");
-        if (original.Length < 1) {
-            Debug.LogError("Sprite Loading has failed for dirty floor");
-            return;
-        }
-        sideLength = 6;
 
-        
-        //Load sprite
-        //Lower number is lower health
-        sprites = new Sprite[maxTileHealth + 1][];
-
-        //Size refers the the original texture size (non cut)
-        int size = original[0].texture.width;
-        if (size != original[0].texture.height) {
-            Debug.LogError("Sprite Not Square!");
-            return;
-        }
-
-        sideLength = (int) Math.Sqrt (original.Length);
-
-        if (original.Length - sideLength * sideLength != 0) {
-            Debug.LogError("Sprite sheet slice went wrong");
-        }
-
-        //honestly I have no clue how pivot works but eh I think this does it
-        float pivot = original[0].pivot.x / (size / sideLength);
-        
-        for (int i = 0; i < maxTileHealth + 1; i++) {
-            sprites[i] = new Sprite[original.Length];
-            ////May need to look into removing these texture on destroy in case it sticks in memory for some reason
-            Texture2D text = new Texture2D(size, size, TextureFormat.RGBA32, 1, true);
-            
-            var colors = original[0].texture.GetPixels();
-            for (int j = 0; j < colors.Length; j++) {
-                colors[j].a = i * (1f / maxTileHealth) * 0.65f;
+        if (tiles == null || sprites == null) {
+            //Requires a sliced sprite map for this to work.
+            Sprite[] original = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_continuous");
+            if (original.Length < 1) {
+                Debug.LogError("Sprite Loading has failed for dirty floor");
+                return;
             }
-            text.SetPixels(colors);
-            text.Apply(true);
 
-            //Create sprites sheet for each layer here. 
-            for (int j = 0; j < original.Length; j++) {
-                sprites[i][j] = Sprite.Create(text, original[j].rect, new Vector2(pivot,pivot), 2 * size / sideLength);
-            }
             
-        }
+            //Load sprite
+            //Lower number is lower health
+            sprites = new Sprite[maxTileHealth + 1][];
 
-        tiles = new DirtyTile[maxTileHealth + 1][];
-        for (int health = 0; health < maxTileHealth + 1; health++) {
-            tiles[health] = new DirtyTile[sprites[health].Length];
+            //Size refers the the original texture size (non cut)
+            int size = original[0].texture.width;
+            if (size != original[0].texture.height) {
+                Debug.LogError("Sprite Not Square!");
+                return;
+            }
 
-            //Tile create per sprite.
-            //Separate from sprite creation because importing tiles is too tedious
-            for (int i = 0; i < sprites[health].Length; i++) {
+            sideLength = (int) Math.Sqrt (original.Length);
+
+            if (original.Length - sideLength * sideLength != 0) {
+                Debug.LogError("Sprite sheet slice went wrong");
+            }
+
+            //honestly I have no clue how pivot works but eh I think this does it
+            float pivot = original[0].pivot.x / (size / sideLength);
+            
+            for (int i = 0; i < maxTileHealth + 1; i++) {
+                sprites[i] = new Sprite[original.Length];
+                ////May need to look into removing these texture on destroy in case it sticks in memory for some reason
+                Texture2D text = new Texture2D(size, size, TextureFormat.RGBA32, 1, true);
                 
-                tiles[health][i] = ScriptableObject.CreateInstance<DirtyTile>();                
-                tiles[health][i].sprite = sprites[health][i];
-                tiles[health][i].SetDirty(health);
-                //we probs shouldn't base the dirtyness of a tile by its name...
-                tiles[health][i].name = "Dirty" + health.ToString();
+                var colors = original[0].texture.GetPixels();
+                for (int j = 0; j < colors.Length; j++) {
+                    colors[j].a = i * (1f / maxTileHealth) * 0.65f;
+                }
+                text.SetPixels(colors);
+                text.Apply(true);
+
+                //Create sprites sheet for each layer here. 
+                for (int j = 0; j < original.Length; j++) {
+                    sprites[i][j] = Sprite.Create(text, original[j].rect, new Vector2(pivot,pivot), 2 * size / sideLength);
+                }
                 
             }
+
+            tiles = new DirtyTile[maxTileHealth + 1][];
+            for (int health = 0; health < maxTileHealth + 1; health++) {
+                tiles[health] = new DirtyTile[sprites[health].Length];
+
+                //Tile create per sprite.
+                //Separate from sprite creation because importing tiles is too tedious
+                for (int i = 0; i < sprites[health].Length; i++) {
+                    
+                    tiles[health][i] = ScriptableObject.CreateInstance<DirtyTile>();                
+                    tiles[health][i].sprite = sprites[health][i];
+                    tiles[health][i].SetDirty(health);
+                    //we probs shouldn't base the dirtyness of a tile by its name...
+                    tiles[health][i].name = "Dirty" + health.ToString();
+                    
+                }
+            }
         }
+        
 
         floorMarkers = new Dictionary<Collider2D, FloorMarkerData>();
 
@@ -108,10 +122,10 @@ public class FloorController : MonoBehaviour
         tm = this.GetComponent<Tilemap>();
         tm.ClearAllTiles();
 
-        Vector3Int min = tm.WorldToCell(levelBounds.min);
-        Vector3Int max = tm.WorldToCell(levelBounds.max);
-        for (int x = min.x; x <= max.x; x++) {
-            for (int y = min.y; y <= max.y; y++) {
+        _min = tm.WorldToCell(levelBounds.min);
+        _max = tm.WorldToCell(levelBounds.max);
+        for (int x = _min.x; x <= _max.x; x++) {
+            for (int y = _min.y; y <= _max.y; y++) {
                 var cell = new Vector3Int(x, y, 0);
 
                 // check if this is an open space
@@ -125,11 +139,9 @@ public class FloorController : MonoBehaviour
         currentFloorHealth = totalFloorHealth;
         var col = GetComponent<BoxCollider2D>();
         col.size = levelBounds.size;
-        col.offset = levelBounds.center;
+        // col.offset = levelBounds.center;
 
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D col) {
         if (tm == null) {
@@ -225,4 +237,31 @@ public class FloorController : MonoBehaviour
         y_val = sideLength - 1 - y_val;
         return x_val + y_val * sideLength;
     }
+
+    public bool IsTileDirty (Vector2Int cell, float threshold)
+    {
+        //Look in a 5x5 box around called tile and check how 'dirty' it is
+        int total = 0;
+        for (int x = -2; x <= 2; x++) {
+            for (int y = -2; y <= 2; y++) {
+                var loc = new Vector3Int (cell.x + x, cell.y + y, 0);
+                var tile = tm.GetTile<DirtyTile>(loc);
+                if (tile != null) {
+                    total += tile.GetDirty();
+                    
+                }
+                else {
+                    //penalty for being a non tile
+                    total -= 1;
+                }
+            }
+        }
+
+        //If area around cell is somewhat dirty
+        if (total / (maxTileHealth * 25f) >= threshold) {
+            return true;
+        }
+        return false;
+    }
 }
+

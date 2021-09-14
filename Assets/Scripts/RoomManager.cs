@@ -18,13 +18,20 @@ public class RoomManager : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera vcam;
 
     private bool roomActive;
-
+    public bool IsRoomActive 
+    {
+        get => roomActive;
+    }
     public GameObject room;
     public Transform doorsContainer;
     public Transform enemiesContainer;
     public Grid levelGrid; 
     private int enemyCount;
-
+    
+    public int NumEnemy
+    {
+        get => enemyCount;
+    }
     private UnityEvent allEnemiesDefeatedEvent;
 
     public FloorController dirtyTiles;
@@ -32,7 +39,6 @@ public class RoomManager : MonoBehaviour
 
     [Header("Put the Player into this")]
     public PlayerController player; // later we need to load this in some other way
-
 
     // Start is called before the first frame update
     void Start()
@@ -43,11 +49,12 @@ public class RoomManager : MonoBehaviour
 
         roomTriggerHitbox = roomTriggerBounds.GetComponent<Hitbox>();
 
+
+
         // Eventually the plan will be to reuse Grid instances when entering rooms
         // Each level will not store either own dirtyTiles
         // tiles = levelGrid.gameObject.transform.GetChild(0).GetComponent<FloorTilePopulator>();
         // dirtyTiles = levelGrid.gameObject.transform.GetChild(1).GetComponent<FloorController>();
-
         InitializeRoom();
     }
     
@@ -72,6 +79,15 @@ public class RoomManager : MonoBehaviour
         vcam.Follow = player.cameraPos;
     }
 
+    public void InitEnemy (Transform enemy) {
+        var ec = enemy.GetComponent<BaseEnemy>();
+        if (ec != null && ec.isActiveAndEnabled) {
+            ec.player = player;
+            enemyCount += 1;
+            ec.CanAct = true;
+            ec.DeathEvent.AddListener(DecreaseEnemyCount);
+        }
+    }
 
     void FixedUpdate()
     {
@@ -84,20 +100,16 @@ public class RoomManager : MonoBehaviour
             OnClearRoom();
             roomActive = false;
         }
+
+        
     }
-
-
+    
     private void OnEnterRoom(PlayerController player) {
         roomActive = true;
         room.SetActive(true);
 
         foreach (Transform enemyTransform in enemiesContainer) {
-            var ec = enemyTransform.GetComponent<BaseEnemy>();
-            if (ec != null && ec.isActiveAndEnabled) {
-                enemyCount += 1;
-                ec.CanAct = true;
-                ec.DeathEvent.AddListener(DecreaseEnemyCount);
-            }
+            InitEnemy (enemyTransform);
         }
 
         foreach (Transform doorTransform in doorsContainer) {
