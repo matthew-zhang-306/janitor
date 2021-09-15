@@ -1,0 +1,740 @@
+fileFormatVersion: 2
+guid: 798e5eb06f31d41cab4a45fb9109b809
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3918988136793970244
+    second: SchoolProps_0
+  - first:
+      213: -7955794692584726771
+    second: SchoolProps_1
+  - first:
+      213: -778952818058971600
+    second: SchoolProps_2
+  - first:
+      213: -6512897871659047786
+    second: SchoolProps_3
+  - first:
+      213: -9130766814022999889
+    second: SchoolProps_4
+  - first:
+      213: -525066344107850302
+    second: SchoolProps_5
+  - first:
+      213: 8267686554186710973
+    second: SchoolProps_6
+  - first:
+      213: 3734940917768597535
+    second: SchoolProps_7
+  - first:
+      213: -4806065895220598941
+    second: SchoolProps_8
+  - first:
+      213: -9505270749436092
+    second: SchoolProps_9
+  - first:
+      213: -9117779450257584070
+    second: SchoolProps_10
+  - first:
+      213: 2589555009811891298
+    second: SchoolProps_11
+  - first:
+      213: -4675046972258047880
+    second: SchoolProps_12
+  - first:
+      213: 3785049444670764921
+    second: SchoolProps_13
+  - first:
+      213: 2261775586125904158
+    second: SchoolProps_14
+  - first:
+      213: 7709033270774147180
+    second: SchoolProps_15
+  - first:
+      213: -4807899976338606663
+    second: SchoolProps_16
+  - first:
+      213: -6310359897949641645
+    second: SchoolProps_17
+  - first:
+      213: 3594851834361319769
+    second: SchoolProps_18
+  - first:
+      213: -8325430647241954829
+    second: SchoolProps_19
+  - first:
+      213: -8294270281204976438
+    second: SchoolProps_20
+  - first:
+      213: 5454356569422449194
+    second: SchoolProps_21
+  - first:
+      213: -2696666010245878289
+    second: SchoolProps_22
+  - first:
+      213: 9137582019446066615
+    second: SchoolProps_23
+  - first:
+      213: 953070486311444722
+    second: SchoolProps_24
+  - first:
+      213: 6801538656670969737
+    second: SchoolProps_25
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SchoolProps_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1657
+        width: 248
+        height: 372
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9ec63ad05fc99c0800000000000000
+      internalID: -3918988136793970244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_1
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1659
+        width: 244
+        height: 373
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f9c82f0e6579190800000000000000
+      internalID: -7955794692584726771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_2
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 1658
+        width: 257
+        height: 372
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0363ecef98a9035f0800000000000000
+      internalID: -778952818058971600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_3
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 1903
+        width: 4
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6946d5d74e98d95a0800000000000000
+      internalID: -6512897871659047786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_4
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 1657
+        width: 247
+        height: 372
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa0eb33a5fff84180800000000000000
+      internalID: -9130766814022999889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_5
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 1656
+        width: 357
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c540f321f696b8f0800000000000000
+      internalID: -525066344107850302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_6
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 1656
+        width: 352
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbf7290fd19bcb270800000000000000
+      internalID: 8267686554186710973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_7
+      rect:
+        serializedVersion: 2
+        x: 2140
+        y: 1824
+        width: 87
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f103ba4e9fc25d330800000000000000
+      internalID: 3734940917768597535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_8
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 1824
+        width: 85
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 367a14c288c6d4db0800000000000000
+      internalID: -4806065895220598941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_9
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 1717
+        width: 5
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4476c71b10b3edff0800000000000000
+      internalID: -9505270749436092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_10
+      rect:
+        serializedVersion: 2
+        x: 2140
+        y: 1656
+        width: 138
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a305a07e5e3277180800000000000000
+      internalID: -9117779450257584070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_11
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 1656
+        width: 137
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 264cb26bf82ffe320800000000000000
+      internalID: 2589555009811891298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_12
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1341
+        width: 370
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8782b465c85ee1fb0800000000000000
+      internalID: -4675046972258047880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_13
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 1341
+        width: 370
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977f3e67a62378430800000000000000
+      internalID: 3785049444670764921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_14
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 1343
+        width: 289
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e197fa489e0736f10800000000000000
+      internalID: 2261775586125904158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_15
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 1343
+        width: 296
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6829226aecfbfa60800000000000000
+      internalID: 7709033270774147180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_16
+      rect:
+        serializedVersion: 2
+        x: 1608
+        y: 1343
+        width: 293
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b57ab2e178e64db0800000000000000
+      internalID: -4807899976338606663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_17
+      rect:
+        serializedVersion: 2
+        x: 1942
+        y: 1343
+        width: 286
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35467d54b191d68a0800000000000000
+      internalID: -6310359897949641645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_18
+      rect:
+        serializedVersion: 2
+        x: 2293
+        y: 1353
+        width: 244
+        height: 243
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 951944f62ba73e130800000000000000
+      internalID: 3594851834361319769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_19
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1004
+        width: 511
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f92ef4bfe0267c80800000000000000
+      internalID: -8325430647241954829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_20
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1005
+        width: 511
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac4b2b9cf15d4ec80800000000000000
+      internalID: -8294270281204976438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_21
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 1003
+        width: 140
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a4eb6c664c1bb40800000000000000
+      internalID: 5454356569422449194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_22
+      rect:
+        serializedVersion: 2
+        x: 1498
+        y: 926
+        width: 138
+        height: 363
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fedac6d1d84839ad0800000000000000
+      internalID: -2696666010245878289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_23
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 926
+        width: 135
+        height: 363
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bd44170f663fce70800000000000000
+      internalID: 9137582019446066615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_24
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 84
+        width: 1222
+        height: 777
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f0a086ce8cf93d00800000000000000
+      internalID: 953070486311444722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SchoolProps_25
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 91
+        width: 1221
+        height: 777
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98fe5f44f5be36e50800000000000000
+      internalID: 6801538656670969737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
