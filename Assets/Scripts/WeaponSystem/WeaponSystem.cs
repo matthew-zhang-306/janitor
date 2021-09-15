@@ -14,10 +14,13 @@ public class WeaponSystem : MonoBehaviour
 
     public GameObject bulletPrefab;
     public GameObject meleePrefab;
-
+    public AudioSource gunSound;
+    public AudioSource meleeSound;
+    public AudioClip[] meleeEffects;
     // Start is called before the first frame update
     void Start()
     {
+       // meleeSound = meleeSE.GetComponent<AudioClip>();
     }
 
     // Update is called once per frame
@@ -27,12 +30,15 @@ public class WeaponSystem : MonoBehaviour
             Vector3 mousePos = Input.mousePosition;
 
             Fire (mousePos);
+            gunSound.Play();
             m_ftime = 0;
         }
         if (Input.GetButton("Fire2") && m_ftime > meleerate) {
             Vector3 mousePos = Input.mousePosition;
 
             Swing (mousePos);
+            meleeSound.clip = meleeEffects[Random.Range(0, meleeEffects.Length)];
+            meleeSound.Play();
             m_ftime = 0;
         }
         m_ftime += Time.deltaTime;
