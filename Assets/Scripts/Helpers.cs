@@ -10,6 +10,10 @@ public static class Helpers {
     return new Vector3(vector3.x, vector3.y);
   }
 
+  public static Vector2Int ToVector2Int(this Vector3Int vector3) {
+    return new Vector2Int(vector3.x, vector3.y);
+  }
+
 
   public static float Mod(this float a, float mod)
   {
