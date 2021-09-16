@@ -1,13 +1,26 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Priority_Queue;
-
 public class Pathfinding : MonoBehaviour
 {
+    public class NodeComp : IComparer<(int, float)>
+    {
+        // Compares by Height, Length, and Width.
+        public int Compare((int, float) x, (int, float) y)
+        {
+            if (x.Item1 == y.Item1) {
+                return 0;
+            }
+
+            return x.Item2 <= y.Item2 ? -1 : 1;
+        }
+    }
     public Tile pathTile;
+    public Tile pathTile2;
     public Transform player;
     public Tilemap dirtyMap;
     public Camera cam;
@@ -16,11 +29,12 @@ public class Pathfinding : MonoBehaviour
 
     private void Start() {
         pathMap = GetComponent<Tilemap>();
-        InvokeRepeating("FindPath", 0f, 0.2f);
+        InvokeRepeating("FindPath", 3f, 1000f);
     }
 
 
     private void FindPath() {
+        Debug.Log("Hi there");
         pathMap.ClearAllTiles();
 
         Vector2 startPos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -34,12 +48,17 @@ public class Pathfinding : MonoBehaviour
         }
 
         var visitedNodes = new Dictionary<Vector3Int, float>();
-        var search = new SimplePriorityQueue<Vector3Int, float>();
-        search.Enqueue(startCell, 0);
-
+        var search = new SortedDictionary<(int,float), Vector3Int>(new NodeComp());
+        int count = 0;
+        search.Add((count, 0), startCell);
+        
         while (search.Count > 0) {
-            float cost = search.GetPriority(search.First);
-            Vector3Int node = search.Dequeue();
+            (int id, float cost) = search.Keys.First();
+            var node = search[(id,cost)];
+            Debug.Log(cost);
+            search.Remove(search.Keys.First()); 
+            pathMap.SetTile(node, pathTile2);
+
             if (visitedNodes.ContainsKey(node)) {
                 continue;
             }
@@ -61,9 +80,11 @@ public class Pathfinding : MonoBehaviour
                     if (Mathf.Abs(dx) == Mathf.Abs(dy))
                         nextCost = 1.4f;
 
-                    Vector3Int nextNode = node + new Vector3Int(dx, dy, 0);
+                    // Vector3Int nextNode = node + new Vector3Int(dx, dy, 0);
+                    var nextNode = new Vector3Int (node.x + dx, node.y + dy, 0);
                     if (dirtyMap.GetTile(nextNode) != null) {
-                        search.Enqueue(nextNode, cost + nextCost);
+                        count += 1;
+                        search.Add((count,cost + nextCost), nextNode);
                     }
                 }
             }
