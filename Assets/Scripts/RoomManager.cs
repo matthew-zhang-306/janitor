@@ -35,6 +35,7 @@ public class RoomManager : MonoBehaviour
     private UnityEvent allEnemiesDefeatedEvent;
 
     public FloorController dirtyTiles;
+    public Pathfinding pathfinding;
     private FloorTilePopulator tiles;
 
     [Header("Put the Player into this")]
@@ -49,8 +50,6 @@ public class RoomManager : MonoBehaviour
             allEnemiesDefeatedEvent = new UnityEvent();
 
         roomTriggerHitbox = roomTriggerBounds.GetComponent<Hitbox>();
-
-
 
         // Eventually the plan will be to reuse Grid instances when entering rooms
         // Each level will not store either own dirtyTiles
@@ -74,6 +73,7 @@ public class RoomManager : MonoBehaviour
         }
 
         dirtyTiles.InitializeFloor(roomFloorBounds.bounds);
+        pathfinding.InitializePathfinding();
 
         roomUI.enabled = false;
         vcam.Priority = 0;

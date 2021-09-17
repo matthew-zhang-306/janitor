@@ -25,13 +25,64 @@ public class Pathfinding : MonoBehaviour
     public Tilemap dirtyMap;
     public Camera cam;
 
+    public float defaultUnitSize;
+
     private Tilemap pathMap;
+
+    // a mapping of how close each cell position is to its nearest wall.
+    // this will help produce pathfinding costs for units of different sizes.
+    private Dictionary<Vector3Int, int> wallProximityMap;
 
     private List<Vector3> currentPath;
 
     private void Start() {
         pathMap = GetComponent<Tilemap>();
         InvokeRepeating("FindPath", 0.2f, 0.2f);
+    }
+
+
+    public void InitializePathfinding() {
+        pathMap = GetComponent<Tilemap>();
+
+        wallProximityMap = new Dictionary<Vector3Int, int>();
+        Queue<Vector3Int> searchQueue = new Queue<Vector3Int>();
+
+        // find all of the walls
+        for (int x = dirtyMap.cellBounds.xMin - 1; x < dirtyMap.cellBounds.xMax + 1; x++) {
+            for (int y = dirtyMap.cellBounds.yMin - 1; y < dirtyMap.cellBounds.yMax + 1; y++) {
+                Vector3Int cell = new Vector3Int(x, y, 0);
+                if (dirtyMap.GetTile(cell) == null) {
+                    // this cell is a wall. we'll start searching from here
+                    wallProximityMap[cell] = 0;
+                    searchQueue.Enqueue(cell);
+                }
+            }
+        }
+
+        while (searchQueue.Count > 0) {
+            Vector3Int cell = searchQueue.Dequeue();
+            int proximity = wallProximityMap[cell];
+
+            for (int dx = -1; dx <= 1; dx++) {
+                for (int dy = -1; dy <= 1; dy++) {
+                    if (dx == 0 && dy == 0)
+                        continue;
+                    
+                    Vector3Int neighborCell = new Vector3Int(cell.x + dx, cell.y + dy, 0);
+                    if (!wallProximityMap.ContainsKey(neighborCell) && dirtyMap.GetTile(neighborCell) != null) {
+                        // this is an empty cell next to a marked cell, so mark it
+                        wallProximityMap[neighborCell] = proximity + 1;
+                        searchQueue.Enqueue(neighborCell);
+                    }
+                }
+            }
+        }
+    }
+
+    private int GetWallProximity(Vector3Int cell) {
+        if (wallProximityMap.ContainsKey(cell))
+            return wallProximityMap[cell];
+        return 0;
     }
 
 
@@ -47,7 +98,6 @@ public class Pathfinding : MonoBehaviour
 
 
     private void FindPath() {
-        Debug.Log("Hi there");
         pathMap.ClearAllTiles();
 
         Vector2 startPos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -56,9 +106,13 @@ public class Pathfinding : MonoBehaviour
         Vector3Int startCell = pathMap.WorldToCell(startPos);
         Vector3Int destCell = pathMap.WorldToCell(destPos);
 
-        if (dirtyMap.GetTile(startCell) == null || dirtyMap.GetTile(destCell) == null) {
+        int minimumProximity = Mathf.Max(Mathf.CeilToInt((defaultUnitSize - pathMap.cellSize.x) / 2f / pathMap.cellSize.x) + 1, 1);
+
+        if (GetWallProximity(startCell) < minimumProximity || GetWallProximity(destCell) < minimumProximity) {
             return;
         }
+
+        Debug.Log(wallProximityMap[startCell]);
 
         var visitedNodes = new Dictionary<Vector3Int, float>();
         var search = new SortedDictionary<(int,float), (Vector3Int,float)>(new NodeComp());
@@ -94,7 +148,7 @@ public class Pathfinding : MonoBehaviour
                         nextCost = 1.414f;
 
                     var nextNode = new Vector3Int (node.x + dx, node.y + dy, 0);
-                    if (dirtyMap.GetTile(nextNode) != null) {
+                    if (GetWallProximity(nextNode) >= minimumProximity) {
                         count += 1;
                         search.Add((count, pathCost + nextCost + GetHeuristic(nextNode, destCell)), (nextNode, pathCost + nextCost));
                     }
