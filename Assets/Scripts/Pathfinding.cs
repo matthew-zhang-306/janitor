@@ -27,9 +27,22 @@ public class Pathfinding : MonoBehaviour
 
     private Tilemap pathMap;
 
+    private List<Vector3> currentPath;
+
     private void Start() {
         pathMap = GetComponent<Tilemap>();
-        InvokeRepeating("FindPath", 3f, 1000f);
+        InvokeRepeating("FindPath", 0.2f, 0.2f);
+    }
+
+
+    private void FixedUpdate() {
+        if (currentPath != null) {
+            Vector3 prevWaypoint = currentPath.First();
+            foreach (Vector3 waypoint in currentPath) {
+                Debug.DrawLine(prevWaypoint, waypoint, Color.white, Time.deltaTime);
+                prevWaypoint = waypoint;
+            }
+        }
     }
 
 
@@ -48,14 +61,13 @@ public class Pathfinding : MonoBehaviour
         }
 
         var visitedNodes = new Dictionary<Vector3Int, float>();
-        var search = new SortedDictionary<(int,float), Vector3Int>(new NodeComp());
+        var search = new SortedDictionary<(int,float), (Vector3Int,float)>(new NodeComp());
         int count = 0;
-        search.Add((count, 0), startCell);
+        search.Add((count, 0), (startCell, 0));
         
         while (search.Count > 0) {
-            (int id, float cost) = search.Keys.First();
-            var node = search[(id,cost)];
-            Debug.Log(cost);
+            (int id, float totalCost) = search.Keys.First();
+            (var node, float pathCost) = search[(id,totalCost)];
             search.Remove(search.Keys.First()); 
             pathMap.SetTile(node, pathTile2);
 
@@ -63,11 +75,12 @@ public class Pathfinding : MonoBehaviour
                 continue;
             }
 
-            visitedNodes.Add(node, cost);
+            visitedNodes.Add(node, pathCost);
 
             if (node == destCell) {
                 // path has been found
-                TracePath(visitedNodes, startCell, destCell);
+                var rawPath = TracePath(visitedNodes, startCell, destCell);
+                currentPath = SimplifyPath(rawPath);
                 return;
             }
 
@@ -78,49 +91,73 @@ public class Pathfinding : MonoBehaviour
                     
                     float nextCost = 1;
                     if (Mathf.Abs(dx) == Mathf.Abs(dy))
-                        nextCost = 1.4f;
+                        nextCost = 1.414f;
 
-                    // Vector3Int nextNode = node + new Vector3Int(dx, dy, 0);
                     var nextNode = new Vector3Int (node.x + dx, node.y + dy, 0);
                     if (dirtyMap.GetTile(nextNode) != null) {
                         count += 1;
-                        search.Add((count,cost + nextCost), nextNode);
+                        search.Add((count, pathCost + nextCost + GetHeuristic(nextNode, destCell)), (nextNode, pathCost + nextCost));
                     }
                 }
             }
         }
     }
 
-
-    private void TracePath(Dictionary<Vector3Int, float> nodeCosts, Vector3Int start, Vector3Int dest) {
-        Debug.Log("has path");
-
+    private LinkedList<(Vector3Int, int)> TracePath(Dictionary<Vector3Int, float> nodeCosts, Vector3Int start, Vector3Int dest) {
+        var path = new LinkedList<(Vector3Int, int)>();
         Vector3Int current = dest;
+
+        int dir = -1;
         while (current != start) {
+            path.AddFirst((current, dir));
             pathMap.SetTile(current, pathTile);
 
             Vector3Int bestNext = current;
             for (int dx = -1; dx <= 1; dx++) {
                 for (int dy = -1; dy <= 1; dy++) {
-                    if (Mathf.Abs(dx) == Mathf.Abs(dy))
+                    if (dx == 0 && dy == 0)
                         continue;
 
                     Vector3Int next = current + new Vector3Int(dx, dy, 0);
                     if (nodeCosts.ContainsKey(next) && nodeCosts[next] < nodeCosts[bestNext]) {
                         bestNext = next;
+                        dir = (dx + 1) + (dy + 1) * 3;
                     }
                 }
             }
 
             if (bestNext == current) {
                 Debug.LogError("nope nope nope");
-                return;
+                return null;
             }
 
             current = bestNext;
         }
 
+        path.AddFirst((start, dir));
         pathMap.SetTile(start, pathTile);
+        return path;
+    }
+
+    private List<Vector3> SimplifyPath(LinkedList<(Vector3Int, int)> path) {
+        List<Vector3> newPath = new List<Vector3>();
+
+        var halfCellSize = pathMap.cellSize / 2f;
+        int prevDir = -2;
+        foreach ((Vector3Int node, int dir) in path) {
+            if (dir != prevDir) {
+                prevDir = dir;
+                newPath.Add(pathMap.CellToWorld(node) + halfCellSize);
+            }
+        }
+
+        return newPath;
+    }
+
+
+    private float GetHeuristic(Vector3Int node, Vector3Int dest) {
+        // return Vector3Int.Distance(node, dest);
+        return Mathf.Abs(dest.x - node.x) + Mathf.Abs(dest.y - node.y);
     }
 
 }
