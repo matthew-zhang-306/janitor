@@ -125,15 +125,23 @@ public class PlayerController : MonoBehaviour
         rb2d.velocity = velocity;
         
         bool isDash = Input.GetButton("Jump");
-        if (isDash && dashTimer <= 0f) {
-            Debug.Log("hi there");
+        if (isDash && dashTimer <= 0f) {            
+            DisableEnemyCollision();
+
             rb2d.AddForce(moveInput * dashSpeedBonus, ForceMode2D.Impulse);
             dashTimer = dashCooldown;
-
+            Invoke("EnableEnemyCollision", dashTime);
             //might fuck things up
             invincibilityTimer += dashIframe;
         }
     }
 
-    
+    private void DisableEnemyCollision ()
+    {
+        Physics2D.IgnoreLayerCollision(8, 10, true);
+    }
+    private void EnableEnemyCollision ()
+    {   
+        Physics2D.IgnoreLayerCollision(8, 10, false);
+    }
 }
