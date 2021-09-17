@@ -4,43 +4,38 @@ using UnityEngine;
 
 public class GunkController : MonoBehaviour
 {
-    Vector3 start_Position;
     
+    [SerializeField] private GameObject gunk;
+    [SerializeField] Vector2 velocity;
+
+    //GunkBulletPooler gunkPooler;
+
     // Start is called before the first frame update
     void Start()
     {
 
-        Vector3 start_position = transform.position;
+        //gunk.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        gunk.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            //Destroy(this.gameObject);
-            HideGunk();
+            this.gameObject.SetActive(false);
         }
         if (other.tag == "Wall")
         {
-            HideGunk();
+            this.gameObject.SetActive(false);
         }
     }
 
-    public void HideGunk()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public void ResetGunk()
-    {
-        gameObject.SetActive(true);
-        transform.position = start_Position;
-        
-    }
+    
 }

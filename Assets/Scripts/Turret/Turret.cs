@@ -20,47 +20,54 @@ public class Turret : MonoBehaviour
 
     private GunkController gunkcontroller;
 
-    bool cooldownShoot;
+    public bool PlayerInRange;
+
+    GunkBulletPooler gunkPooler;
     // Start is called before the first frame update
     void Start()
     {
+        gunkPooler = GunkBulletPooler.Instance;
         turret = gameObject.GetComponent<Animator>();
-        turret.SetTrigger("Play");
-        GameObject go = (GameObject)Instantiate(gunk, (Vector2)transform.position + Offset * transform.localScale.x, gunk.transform.rotation);
-        go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
-        //turret_shoots = gameObject.GetComponent<Animation>();
-        
-        //turret_shoots.Play();
+         
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            canShoot = true;
+            PlayerInRange = true;
         }
-        else
+        
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
         {
-            canShoot = false;
+            PlayerInRange = false;
         }
     }
     // Update is called once per frame
     void Update()
     {
+
         if (!PauseMenu.GamePaused)
         {
             
-                if (cooldownShoot == true && canShoot == true)
+                if (PlayerInRange == true && canShoot == true)
                 {
-                //  GameObject go = (GameObject)Instantiate(gunk, (Vector2)transform.position + Offset * transform.localScale.x, gunk.transform.rotation);
-                // go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
+                    
+                    GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
+                    if (gunk != null)
+                    {
+                        gunk.transform.position = turret.transform.position;
+                        gunk.transform.rotation = turret.transform.rotation;
 
-                    gunkcontroller.ResetGunk();
-                    turret.SetTrigger("Play");
-                    StartCoroutine("Cooldown");
+                    
+                        gunk.SetActive(true);
+                        turret.SetTrigger("Play");
+                        StartCoroutine("Cooldown");
+                }
 
-                //Quaternion.identity
-
-            }
+                }
             
         }
     }
@@ -68,13 +75,15 @@ public class Turret : MonoBehaviour
     
     IEnumerator Cooldown()
     {
-        
-        cooldownShoot = false;
+        canShoot = false;
         yield return new WaitForSeconds(cooldown + Random.Range(.50f, 2.0f));
-        cooldownShoot = true;
+        canShoot = true;
+        Debug.Log("can shoot now0");
     }
 
-    
+   
+
+
 
 
 }
