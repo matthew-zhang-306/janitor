@@ -1,0 +1,1364 @@
+fileFormatVersion: 2
+guid: c7e724ea1f06c4ba58126272ffb987a6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2387952366586716151
+    second: Modern_0
+  - first:
+      213: 8393937909858393579
+    second: Modern_1
+  - first:
+      213: 6182824043578285645
+    second: Modern_2
+  - first:
+      213: -8527556571957990153
+    second: Modern_3
+  - first:
+      213: -395709936635362916
+    second: Modern_4
+  - first:
+      213: 1651859593176314510
+    second: Modern_5
+  - first:
+      213: -2413616136967084812
+    second: Modern_6
+  - first:
+      213: -1584155820769672034
+    second: Modern_7
+  - first:
+      213: 7638172767769531955
+    second: Modern_8
+  - first:
+      213: 4225672725800646490
+    second: Modern_9
+  - first:
+      213: -6631609152811782107
+    second: Modern_10
+  - first:
+      213: 5508663230399629248
+    second: Modern_11
+  - first:
+      213: 5611960220318760618
+    second: Modern_12
+  - first:
+      213: -1909243387430240363
+    second: Modern_13
+  - first:
+      213: -2616930846878848199
+    second: Modern_14
+  - first:
+      213: 8567717744549297496
+    second: Modern_15
+  - first:
+      213: -3420902284370243851
+    second: Modern_16
+  - first:
+      213: 2108917548102348801
+    second: Modern_17
+  - first:
+      213: -899063333606069561
+    second: Modern_18
+  - first:
+      213: 6819501276704260260
+    second: Modern_19
+  - first:
+      213: -8912096459761255832
+    second: Modern_20
+  - first:
+      213: 3571754422991911280
+    second: Modern_21
+  - first:
+      213: -5904942506521291957
+    second: Modern_22
+  - first:
+      213: -3874682365071896844
+    second: Modern_23
+  - first:
+      213: 2054630727950422507
+    second: Modern_24
+  - first:
+      213: -2173673835032420853
+    second: Modern_25
+  - first:
+      213: 885046581942308323
+    second: Modern_26
+  - first:
+      213: 7128804987893463568
+    second: Modern_27
+  - first:
+      213: 8483604592329142650
+    second: Modern_28
+  - first:
+      213: 8546960160350463276
+    second: Modern_29
+  - first:
+      213: 4190094759800310433
+    second: Modern_30
+  - first:
+      213: 1965631517896180031
+    second: Modern_31
+  - first:
+      213: 705476790852413579
+    second: Modern_32
+  - first:
+      213: -418631341851571062
+    second: Modern_33
+  - first:
+      213: 1928787275322782227
+    second: Modern_34
+  - first:
+      213: -6493048335624797443
+    second: Modern_35
+  - first:
+      213: 7799503197337398478
+    second: Modern_36
+  - first:
+      213: 4149426301839991415
+    second: Modern_37
+  - first:
+      213: -4578338626919169135
+    second: Modern_38
+  - first:
+      213: -9136016450527007319
+    second: Modern_39
+  - first:
+      213: -8327188184130204547
+    second: Modern_40
+  - first:
+      213: -4617304803962797833
+    second: Modern_41
+  - first:
+      213: 4567412838769226373
+    second: Modern_42
+  - first:
+      213: -782658428156746965
+    second: Modern_43
+  - first:
+      213: 8568249733087516066
+    second: Modern_44
+  - first:
+      213: 74915498048847670
+    second: Modern_45
+  - first:
+      213: 3319360867427197449
+    second: Modern_46
+  - first:
+      213: -8107181279145688646
+    second: Modern_47
+  - first:
+      213: -8285163280025415322
+    second: Modern_48
+  - first:
+      213: -7288273287727490972
+    second: Modern_49
+  - first:
+      213: 5853434583713304150
+    second: Modern_50
+  - first:
+      213: 1652674288999792900
+    second: Modern_51
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Modern_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1655
+        width: 251
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 900ab0979f94cded0800000000000000
+      internalID: -2387952366586716151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_1
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1659
+        width: 245
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bed5bc75e024d7470800000000000000
+      internalID: 8393937909858393579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_2
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 1657
+        width: 253
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4e5a3aa5bdcdc550800000000000000
+      internalID: 6182824043578285645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_3
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 1903
+        width: 5
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fc656e8a7808a980800000000000000
+      internalID: -8527556571957990153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_4
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 1655
+        width: 249
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c91c1c0c8e7228af0800000000000000
+      internalID: -395709936635362916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_5
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 1655
+        width: 359
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e82781e4c859ce610800000000000000
+      internalID: 1651859593176314510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_6
+      rect:
+        serializedVersion: 2
+        x: 1642
+        y: 1655
+        width: 353
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f42deb49ec118ed0800000000000000
+      internalID: -2413616136967084812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_7
+      rect:
+        serializedVersion: 2
+        x: 2139
+        y: 1823
+        width: 89
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e94082a9ca2f30ae0800000000000000
+      internalID: -1584155820769672034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_8
+      rect:
+        serializedVersion: 2
+        x: 2290
+        y: 1823
+        width: 87
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33617fbd9ad300a60800000000000000
+      internalID: 7638172767769531955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_9
+      rect:
+        serializedVersion: 2
+        x: 2486
+        y: 1762
+        width: 163
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a57776e94fa94aa30800000000000000
+      internalID: 4225672725800646490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_10
+      rect:
+        serializedVersion: 2
+        x: 2726
+        y: 1693
+        width: 162
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520bc6d7c9ac7f3a0800000000000000
+      internalID: -6631609152811782107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_11
+      rect:
+        serializedVersion: 2
+        x: 3002
+        y: 1693
+        width: 164
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c7c93b9504b27c40800000000000000
+      internalID: 5508663230399629248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_12
+      rect:
+        serializedVersion: 2
+        x: 3216
+        y: 1839
+        width: 136
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaef8b14610b1ed40800000000000000
+      internalID: 5611960220318760618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_13
+      rect:
+        serializedVersion: 2
+        x: 3359
+        y: 1839
+        width: 109
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ff47631410185e0800000000000000
+      internalID: -1909243387430240363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_14
+      rect:
+        serializedVersion: 2
+        x: 3476
+        y: 1849
+        width: 185
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b2606824bceabd0800000000000000
+      internalID: -2616930846878848199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_15
+      rect:
+        serializedVersion: 2
+        x: 3671
+        y: 1849
+        width: 183
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85dfbab15e5a6e670800000000000000
+      internalID: 8567717744549297496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_16
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 1822
+        width: 4
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fe0ac04f738680d0800000000000000
+      internalID: -3420902284370243851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_17
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 1716
+        width: 6
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1007a332651644d10800000000000000
+      internalID: 2108917548102348801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_18
+      rect:
+        serializedVersion: 2
+        x: 2139
+        y: 1655
+        width: 140
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cae4d959a2e583f0800000000000000
+      internalID: -899063333606069561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_19
+      rect:
+        serializedVersion: 2
+        x: 2290
+        y: 1655
+        width: 139
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a0c747a74cb3ae50800000000000000
+      internalID: 6819501276704260260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_20
+      rect:
+        serializedVersion: 2
+        x: 3420
+        y: 1504
+        width: 501
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86af9e7fc7fd15480800000000000000
+      internalID: -8912096459761255832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_21
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1340
+        width: 371
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 079fc5749bb619130800000000000000
+      internalID: 3571754422991911280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_22
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 1340
+        width: 371
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4391b7731e6d0ea0800000000000000
+      internalID: -5904942506521291957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_23
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 1342
+        width: 290
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fe4b6cfaec5a3ac0800000000000000
+      internalID: -3874682365071896844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_24
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 1342
+        width: 297
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be1561cd2c3838c10800000000000000
+      internalID: 2054630727950422507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_25
+      rect:
+        serializedVersion: 2
+        x: 1606
+        y: 1342
+        width: 296
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0ed455e92f85d1e0800000000000000
+      internalID: -2173673835032420853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_26
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 1342
+        width: 287
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed48565d21584c00800000000000000
+      internalID: 885046581942308323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_27
+      rect:
+        serializedVersion: 2
+        x: 2342
+        y: 1352
+        width: 244
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01a3c60dd5a9ee260800000000000000
+      internalID: 7128804987893463568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_28
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1368
+        width: 261
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a71b6acbd61dbb570800000000000000
+      internalID: 8483604592329142650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_29
+      rect:
+        serializedVersion: 2
+        x: 3097
+        y: 1368
+        width: 263
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25ea1b6bf6ec9670800000000000000
+      internalID: 8546960160350463276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_30
+      rect:
+        serializedVersion: 2
+        x: 3475
+        y: 1163
+        width: 183
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aa8f15ebf4362a30800000000000000
+      internalID: 4190094759800310433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_31
+      rect:
+        serializedVersion: 2
+        x: 3725
+        y: 1163
+        width: 182
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f31838f7373574b10800000000000000
+      internalID: 1965631517896180031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_32
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1003
+        width: 513
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b886a0c476b5ac900800000000000000
+      internalID: 705476790852413579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_33
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 1003
+        width: 514
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8c87193309b03af0800000000000000
+      internalID: -418631341851571062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_34
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 1003
+        width: 140
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31278e8cecd64ca10800000000000000
+      internalID: 1928787275322782227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_35
+      rect:
+        serializedVersion: 2
+        x: 1497
+        y: 924
+        width: 139
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df284adb0fe04e5a0800000000000000
+      internalID: -6493048335624797443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_36
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 924
+        width: 137
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecca1dd95d66d3c60800000000000000
+      internalID: 7799503197337398478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_37
+      rect:
+        serializedVersion: 2
+        x: 1926
+        y: 906
+        width: 163
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 772e5d6ac39b59930800000000000000
+      internalID: 4149426301839991415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_38
+      rect:
+        serializedVersion: 2
+        x: 2213
+        y: 979
+        width: 381
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1938801a6497670c0800000000000000
+      internalID: -4578338626919169135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_39
+      rect:
+        serializedVersion: 2
+        x: 2697
+        y: 626
+        width: 211
+        height: 513
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ad66346179563180800000000000000
+      internalID: -9136016450527007319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_40
+      rect:
+        serializedVersion: 2
+        x: 2947
+        y: 819
+        width: 227
+        height: 387
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7cc6134772ef6c80800000000000000
+      internalID: -8327188184130204547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_41
+      rect:
+        serializedVersion: 2
+        x: 3227
+        y: 857
+        width: 227
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f0c71c8eb90cefb0800000000000000
+      internalID: -4617304803962797833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_42
+      rect:
+        serializedVersion: 2
+        x: 3517
+        y: 890
+        width: 146
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 582f56517c5b26f30800000000000000
+      internalID: 4567412838769226373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_43
+      rect:
+        serializedVersion: 2
+        x: 3680
+        y: 892
+        width: 145
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2360496e407325f0800000000000000
+      internalID: -782658428156746965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_44
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 892
+        width: 144
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a554875cb988e670800000000000000
+      internalID: 8568249733087516066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_45
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 87
+        width: 1223
+        height: 779
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63f7f51af372a0100800000000000000
+      internalID: 74915498048847670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_46
+      rect:
+        serializedVersion: 2
+        x: 1321
+        y: 90
+        width: 1223
+        height: 779
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 902a4584f1db01e20800000000000000
+      internalID: 3319360867427197449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_47
+      rect:
+        serializedVersion: 2
+        x: 2681
+        y: 62
+        width: 212
+        height: 513
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab103de84918d7f80800000000000000
+      internalID: -8107181279145688646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_48
+      rect:
+        serializedVersion: 2
+        x: 3022
+        y: 478
+        width: 460
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66199fbb4ef250d80800000000000000
+      internalID: -8285163280025415322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_49
+      rect:
+        serializedVersion: 2
+        x: 3568
+        y: 462
+        width: 452
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 468d80b4f0adada90800000000000000
+      internalID: -7288273287727490972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_50
+      rect:
+        serializedVersion: 2
+        x: 3006
+        y: 82
+        width: 460
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65ec736bdb39b3150800000000000000
+      internalID: 5853434583713304150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Modern_51
+      rect:
+        serializedVersion: 2
+        x: 3551
+        y: 64
+        width: 454
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4010145728a7fe610800000000000000
+      internalID: 1652674288999792900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
