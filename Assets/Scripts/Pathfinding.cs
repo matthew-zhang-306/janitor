@@ -19,6 +19,20 @@ public class Pathfinding : MonoBehaviour
             return x.Item2 <= y.Item2 ? -1 : 1;
         }
     }
+
+    public class PathRequest {
+        public Vector3 startPos;
+        public Vector3 endPos;
+        public Action<List<Vector3>> callback;
+
+        public PathRequest(Vector3 s, Vector3 e, Action<List<Vector3>> c) {
+            startPos = s;
+            endPos = e;
+            callback = c;
+        }
+    }
+
+
     public Tile pathTile;
     public Tile pathTile2;
     public Transform player;
@@ -29,15 +43,16 @@ public class Pathfinding : MonoBehaviour
 
     private Tilemap pathMap;
 
+    // the pathfinding object will process one path request per frame
+    private Queue<PathRequest> pathRequests;
+
     // a mapping of how close each cell position is to its nearest wall.
     // this will help produce pathfinding costs for units of different sizes.
     private Dictionary<Vector3Int, int> wallProximityMap;
 
-    private List<Vector3> currentPath;
-
     private void Start() {
         pathMap = GetComponent<Tilemap>();
-        InvokeRepeating("FindPath", 0.2f, 0.2f);
+        pathRequests = new Queue<PathRequest>();
     }
 
 
@@ -79,6 +94,21 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
+    
+    public void RequestPath(Vector3 start, Vector3 dest, System.Action<List<Vector3>> callback) {
+        pathRequests.Enqueue(new PathRequest(start, dest, callback));
+    }
+
+
+    public void DebugPath(List<Vector3> path) {
+        Vector3 prevWaypoint = path.First();
+        foreach (Vector3 waypoint in path) {
+            Debug.DrawLine(prevWaypoint, waypoint, Color.white, Time.deltaTime);
+            prevWaypoint = waypoint;
+        }
+    }
+
+
     private int GetWallProximity(Vector3Int cell) {
         if (wallProximityMap.ContainsKey(cell))
             return wallProximityMap[cell];
@@ -86,33 +116,30 @@ public class Pathfinding : MonoBehaviour
     }
 
 
-    private void FixedUpdate() {
-        if (currentPath != null) {
-            Vector3 prevWaypoint = currentPath.First();
-            foreach (Vector3 waypoint in currentPath) {
-                Debug.DrawLine(prevWaypoint, waypoint, Color.white, Time.deltaTime);
-                prevWaypoint = waypoint;
-            }
+    private void Update() {
+        if (pathRequests.Count > 0) {
+            var request = pathRequests.Dequeue();
+            List<Vector3> path = FindPath(request.startPos, request.endPos);
+            request.callback?.Invoke(path);
         }
     }
 
 
-    private void FindPath() {
+    private List<Vector3> FindPath(Vector3 startPos, Vector3 destPos) {
         pathMap.ClearAllTiles();
-
-        Vector2 startPos = cam.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 destPos = player.position;
 
         Vector3Int startCell = pathMap.WorldToCell(startPos);
         Vector3Int destCell = pathMap.WorldToCell(destPos);
 
         int minimumProximity = Mathf.Max(Mathf.CeilToInt((defaultUnitSize - pathMap.cellSize.x) / 2f / pathMap.cellSize.x) + 1, 1);
 
-        if (GetWallProximity(startCell) < minimumProximity || GetWallProximity(destCell) < minimumProximity) {
-            return;
+        if (GetWallProximity(startCell) == 0 || GetWallProximity(destCell) == 0) {
+            return new List<Vector3>();
         }
 
-        Debug.Log(wallProximityMap[startCell]);
+        Vector3Int closestNode = startCell;
+        float closestDistance = float.MaxValue;
+        float desiredDistance = defaultUnitSize / 2f / pathMap.cellSize.x;
 
         var visitedNodes = new Dictionary<Vector3Int, float>();
         var search = new SortedDictionary<(int,float), (Vector3Int,float)>(new NodeComp());
@@ -130,12 +157,17 @@ public class Pathfinding : MonoBehaviour
             }
 
             visitedNodes.Add(node, pathCost);
+            float distance = Vector3Int.Distance(destCell, node);
+            if (distance < closestDistance) {
+                // this node is close to where we need to go
+                closestDistance = distance;
+                closestNode = node;
 
-            if (node == destCell) {
-                // path has been found
-                var rawPath = TracePath(visitedNodes, startCell, destCell);
-                currentPath = SimplifyPath(rawPath);
-                return;
+                if (closestDistance <= desiredDistance) {
+                    // destination reached
+                    var rawPath = TracePath(visitedNodes, startCell, closestNode);
+                    return SimplifyPath(rawPath);
+                }
             }
 
             for (int dx = -1; dx <= 1; dx++) {
@@ -155,6 +187,10 @@ public class Pathfinding : MonoBehaviour
                 }
             }
         }
+
+        // didn't find a path. go along the path that was closest
+        var closestPath = TracePath(visitedNodes, startCell, closestNode);
+        return SimplifyPath(closestPath);
     }
 
     private LinkedList<(Vector3Int, int)> TracePath(Dictionary<Vector3Int, float> nodeCosts, Vector3Int start, Vector3Int dest) {
@@ -204,6 +240,8 @@ public class Pathfinding : MonoBehaviour
                 newPath.Add(pathMap.CellToWorld(node) + halfCellSize);
             }
         }
+
+        // TODO: do second passs
 
         return newPath;
     }
