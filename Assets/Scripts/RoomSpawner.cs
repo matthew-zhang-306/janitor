@@ -15,10 +15,24 @@ public class RoomSpawner : MonoBehaviour
     private RoomManager rm;
 
     public GameObject[] glist;
+
+    public Tile tileToFlicker;
+    private Tilemap overlay;
+
     void Start ()
     {
         m_spawnTimer = spawnTimer;
         rm = this.GetComponent<RoomManager>();
+        var blank = new GameObject ("dirty spawn marker overlay");
+        var generatedFloor = Instantiate (blank, rm.dirtyTiles.transform.parent);
+
+        Destroy(blank);
+
+        var tm = generatedFloor.AddComponent<Tilemap>();
+        tm.tileAnchor = new Vector3(0.5f,0.5f,0);
+        var tmr = generatedFloor.AddComponent<TilemapRenderer>();
+        tmr.sortingOrder = 3;
+        overlay = tm;
     }
 
     void FixedUpdate ()
@@ -45,19 +59,69 @@ public class RoomSpawner : MonoBehaviour
         var ry = Random.Range(min.y, max.y);
         if (rm.dirtyTiles.IsTileDirty(new Vector2Int(rx,ry), .8f)) {
             int m = glist.Length;
-            var tm = rm.dirtyTiles.GetComponent<Tilemap>();
-            GameObject created = Instantiate(glist[Random.Range(0, m)], tm.CellToWorld(new Vector3Int(rx,ry,0)), Quaternion.identity, rm.enemiesContainer);
+            var g = glist[Random.Range(0, m)];
 
-            //var ec = created.GetComponent<BaseEnemy>();
+            var mark = new Marker (rx,ry, 5f, g, tileToFlicker);
 
-            rm.InitEnemy(created.transform);
-            //Do init stuff here for created enemy
-            
+            StartCoroutine(mark.Begin(overlay,rm));
+                        
             return true;
             
         }
         else {
             return false;
+        }
+    }
+
+    private class Marker 
+    {
+        public readonly int x;
+        public readonly int y;
+        public float m_timer;
+        public readonly GameObject obj;
+        public readonly Tile t;
+        public Marker (int x, int y, float timer, GameObject obj, Tile tileToFlicker) 
+        {
+            this.x = x;
+            this.y = y;
+            this.m_timer = timer;
+            this.obj = obj;
+            this.t = tileToFlicker;
+        }
+
+        public IEnumerator Begin (Tilemap tm, RoomManager rm)
+        {
+
+            var count = 0;
+            while (m_timer >= 0 && tm != null && rm.dirtyTiles.IsTileDirty(new Vector2Int(x,y), 0.2f)) {
+
+                count ++;
+
+                m_timer -= 0.5f;
+                for (int xd = -2; xd <= 2; xd++) {
+                    for (int yd = -2; yd <= 2; yd++) {
+                        var loc = new Vector3Int (x + xd, y + yd, 0);
+                        
+                        tm.SetTile(loc, count % 2 == 0 ? t : null);
+                    }
+                }
+                yield return new WaitForSeconds(0.5f);
+
+            }
+            for (int xd = -2; xd <= 2; xd++) {
+                    for (int yd = -2; yd <= 2; yd++) {
+                        var loc = new Vector3Int (x + xd, y + yd, 0);
+                        
+                        tm.SetTile(loc, null);
+                    }
+                }
+            if (rm.dirtyTiles.IsTileDirty(new Vector2Int(x,y), 0.2f)) 
+            {
+                GameObject created = Instantiate(obj, tm.CellToWorld(new Vector3Int(x,y,0)), Quaternion.identity, rm.enemiesContainer);
+                rm.InitEnemy(created.transform);
+            }
+
+            yield return 0;
         }
     }
 }
