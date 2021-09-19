@@ -144,4 +144,9 @@ public class PlayerController : MonoBehaviour
     {   
         Physics2D.IgnoreLayerCollision(8, 10, false);
     }
+
+    public float DashCooldownUI()
+    {
+        return dashTimer;
+    }
 }
