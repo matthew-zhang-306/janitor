@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthCollectable : MonoBehaviour
 {
-    [SerializeField] private GameObject Player;
+    private GameObject Player;
     private bool TouchedPlayer;
     private Health health;
     private int currentHealth;
@@ -12,6 +12,7 @@ public class HealthCollectable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject Player = GameObject.Find("Player");
         health = Player.GetComponent<Health>();
     }
 
