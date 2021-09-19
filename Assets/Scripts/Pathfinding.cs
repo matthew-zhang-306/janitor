@@ -23,11 +23,13 @@ public class Pathfinding : MonoBehaviour
     public class PathRequest {
         public Vector3 startPos;
         public Vector3 endPos;
+        public float unitSize;
         public Action<List<Vector3>> callback;
 
-        public PathRequest(Vector3 s, Vector3 e, Action<List<Vector3>> c) {
+        public PathRequest(Vector3 s, Vector3 e, float u, Action<List<Vector3>> c) {
             startPos = s;
             endPos = e;
+            unitSize = u;
             callback = c;
         }
     }
@@ -35,11 +37,7 @@ public class Pathfinding : MonoBehaviour
 
     public Tile pathTile;
     public Tile pathTile2;
-    public Transform player;
     public Tilemap dirtyMap;
-    public Camera cam;
-
-    public float defaultUnitSize;
 
     private Tilemap pathMap;
 
@@ -95,8 +93,10 @@ public class Pathfinding : MonoBehaviour
     }
 
     
-    public void RequestPath(Vector3 start, Vector3 dest, System.Action<List<Vector3>> callback) {
-        pathRequests.Enqueue(new PathRequest(start, dest, callback));
+    public PathRequest RequestPath(Vector3 start, Vector3 dest, float unitSize = 1.0f, System.Action<List<Vector3>> callback = null) {
+        var request = new PathRequest(start, dest, unitSize, callback);
+        pathRequests.Enqueue(request);
+        return request;
     }
 
 
@@ -116,22 +116,22 @@ public class Pathfinding : MonoBehaviour
     }
 
 
-    private void Update() {
+    private void FixedUpdate() {
         if (pathRequests.Count > 0) {
             var request = pathRequests.Dequeue();
-            List<Vector3> path = FindPath(request.startPos, request.endPos);
+            List<Vector3> path = FindPath(request.startPos, request.endPos, request.unitSize);
             request.callback?.Invoke(path);
         }
     }
 
 
-    private List<Vector3> FindPath(Vector3 startPos, Vector3 destPos) {
+    private List<Vector3> FindPath(Vector3 startPos, Vector3 destPos, float unitSize) {
         pathMap.ClearAllTiles();
 
         Vector3Int startCell = pathMap.WorldToCell(startPos);
         Vector3Int destCell = pathMap.WorldToCell(destPos);
 
-        int minimumProximity = Mathf.Max(Mathf.CeilToInt((defaultUnitSize - pathMap.cellSize.x) / 2f / pathMap.cellSize.x) + 1, 1);
+        int minimumProximity = Mathf.Max(Mathf.CeilToInt((unitSize - pathMap.cellSize.x) / 2f / pathMap.cellSize.x) + 1, 1);
 
         if (GetWallProximity(startCell) == 0 || GetWallProximity(destCell) == 0) {
             return new List<Vector3>();
@@ -139,7 +139,7 @@ public class Pathfinding : MonoBehaviour
 
         Vector3Int closestNode = startCell;
         float closestDistance = float.MaxValue;
-        float desiredDistance = defaultUnitSize / 2f / pathMap.cellSize.x;
+        float desiredDistance = unitSize / 2f / pathMap.cellSize.x;
 
         var visitedNodes = new Dictionary<Vector3Int, float>();
         var search = new SortedDictionary<(int,float), (Vector3Int,float)>(new NodeComp());

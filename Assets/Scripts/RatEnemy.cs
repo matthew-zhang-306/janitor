@@ -8,6 +8,7 @@ public class RatEnemy : BaseEnemy
     private bool shouldPickAction;
 
     public float seekSpeed;
+    public float stoppingDistance;
     public float startupTime;
     private float startupTimer;
     public float swipeDelay;
@@ -19,7 +20,7 @@ public class RatEnemy : BaseEnemy
     protected override void Start() {
         base.Start();
 
-        navMeshAgent.speed = seekSpeed;
+        navigator.speed = seekSpeed;
         startupTimer = UnityEngine.Random.Range(startupTime / 2f, startupTime);
         swipe.SetActive(false);
         shouldPickAction = true;
@@ -35,7 +36,7 @@ public class RatEnemy : BaseEnemy
                 selectedAction = "Wait";
             }
             else if ((player.transform.position - transform.position).sqrMagnitude <=
-                        navMeshAgent.stoppingDistance *  navMeshAgent.stoppingDistance * 1.1f)
+                        stoppingDistance * stoppingDistance * 1.1f)
             {
                 selectedAction = "Swipe";
             }
@@ -57,7 +58,7 @@ public class RatEnemy : BaseEnemy
                 startupTimer = UnityEngine.Random.Range(startupTime / 2f, startupTime);
         }
 
-        navMeshAgent.speed = invincibilityTimer == 0 ? seekSpeed : seekSpeed / 3f;
+        navigator.speed = invincibilityTimer == 0 ? seekSpeed : seekSpeed / 3f;
         spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
     }
 
@@ -68,7 +69,8 @@ public class RatEnemy : BaseEnemy
 
 
     private IEnumerator Action_Wait() {
-        navMeshAgent.isStopped = true;
+        navigator.Stop();
+        
         while (startupTimer != 0) {
             yield return 0;
             startupTimer = Mathf.MoveTowards(startupTimer, 0, Time.deltaTime);
@@ -77,14 +79,14 @@ public class RatEnemy : BaseEnemy
     }
 
     private IEnumerator Action_Seek() {
-        navMeshAgent.isStopped = false;
-        navMeshAgent.SetDestination(player.transform.position);
+        navigator.canNavigate = true;
+        navigator.SetDestination(player.transform.position);
         yield return 0;
         shouldPickAction = true;
     }
 
     private IEnumerator Action_Swipe() {
-        navMeshAgent.isStopped = true;
+        navigator.Stop();
 
         yield return new WaitForSeconds(swipeDelay);
 

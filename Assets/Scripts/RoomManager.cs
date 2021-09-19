@@ -83,9 +83,13 @@ public class RoomManager : MonoBehaviour
     public void InitEnemy (Transform enemy) {
         var ec = enemy.GetComponent<BaseEnemy>();
         if (ec != null && ec.isActiveAndEnabled) {
-            ec.player = player;
             enemyCount += 1;
+
             ec.CanAct = true;
+            ec.player = player;
+            if (ec.navigator != null)
+                ec.navigator.pathfinding = pathfinding;
+            
             ec.DeathEvent.AddListener(DecreaseEnemyCount);
         }
     }
