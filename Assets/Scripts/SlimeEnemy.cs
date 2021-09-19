@@ -12,6 +12,8 @@ public class SlimeEnemy : BaseEnemy
 {
     public float agroRadius;
     public float seekSpeed;
+    public AudioSource slimeMove; //0915BR
+    public AudioClip[] sounds; //0915
 
     [SerializeField] private float actionTimer = 1.5f;
     private float m_time;
@@ -90,6 +92,7 @@ public class SlimeEnemy : BaseEnemy
 
     protected virtual void Action_Move ()
     {
+        PlayRandom();
         navMeshAgent.isStopped = false;
         navMeshAgent.SetDestination(player.transform.position);
 
@@ -108,6 +111,8 @@ public class SlimeEnemy : BaseEnemy
         this.transform.localScale = Vector3.one * per;
     }
 
-    
-    
+    private void PlayRandom() { //0915BR
+        slimeMove.clip = sounds[Random.Range(0, sounds.Length)];
+        slimeMove.Play();       
+    }  
 }

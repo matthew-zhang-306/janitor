@@ -102,7 +102,6 @@ public class RoomManager : MonoBehaviour
             roomActive = false;
         }
 
-        
     }
     
     private void OnEnterRoom(PlayerController player) {

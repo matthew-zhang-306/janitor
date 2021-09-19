@@ -38,4 +38,10 @@ public class Health : MonoBehaviour
     {
         return maxHealth;
     }
+
+    public void AddHealth()
+    {
+        Debug.Log("Add player Health");
+        currentHealth = currentHealth + 10;
+    }
 }

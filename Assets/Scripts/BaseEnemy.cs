@@ -58,8 +58,9 @@ public class BaseEnemy : MonoBehaviour
         var classType = this.GetType();
         //Make action table
         foreach (string s in actions) {
-            if (Char.IsLower (s[0])) {
+            if (s == "" || Char.IsLower (s[0])) {
                 Debug.LogWarning("Enemy " + gameObject.name + " has an invalid action name");
+                continue;
             }
             //Get action method
             var m = classType.GetMethod("Action_" + s, BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.Instance | BindingFlags.Public);

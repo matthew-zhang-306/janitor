@@ -448,6 +448,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6114331370593949519, guid: 919d58a3edc7e6d48b3f95ed0268c1d8,
+        type: 3}
+      propertyPath: actions.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 919d58a3edc7e6d48b3f95ed0268c1d8, type: 3}
 --- !u!1 &106054869
@@ -983,6 +988,7 @@ MonoBehaviour:
   glist:
   - {fileID: 4271501809376710233, guid: 1b81a2d893f152743a3e41ec798f28e9, type: 3}
   - {fileID: 6114331370593949514, guid: 919d58a3edc7e6d48b3f95ed0268c1d8, type: 3}
+  tileToFlicker: {fileID: 11400000, guid: 13229480d41f60b43964bbc0838e728e, type: 2}
 --- !u!1 &300218602
 GameObject:
   m_ObjectHideFlags: 0
@@ -109979,6 +109985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 0}
+  RestartUI: {fileID: 0}
 --- !u!114 &1905146727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122049,6 +122056,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177657900103972655, guid: e99cabc76f17e7047b7003b087521779,
+        type: 3}
+      propertyPath: dashTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177657900103972655, guid: e99cabc76f17e7047b7003b087521779,
+        type: 3}
+      propertyPath: dashCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177657900103972655, guid: e99cabc76f17e7047b7003b087521779,
+        type: 3}
+      propertyPath: dashSpeedBonus
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1177657900103972658, guid: e99cabc76f17e7047b7003b087521779,
         type: 3}

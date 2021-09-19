@@ -13,51 +13,77 @@ public class Turret : MonoBehaviour
 
     public float cooldown = 1f;
 
-    
+    private bool PlayerRadius;
+
     //private Animation turret_shoots;
     private Animator turret;
+
+    private GunkController gunkcontroller;
+
+    public bool PlayerInRange;
+
+    GunkBulletPooler gunkPooler;
     // Start is called before the first frame update
     void Start()
     {
-        //turret_shoots = gameObject.GetComponent<Animation>();
+        gunkPooler = GunkBulletPooler.Instance;
         turret = gameObject.GetComponent<Animator>();
-        //turret_shoots.Play();
+         
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            PlayerInRange = true;
+        }
+        
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            PlayerInRange = false;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
+
         if (!PauseMenu.GamePaused)
         {
             
-                if (canShoot == true)
+                if (PlayerInRange == true && canShoot == true)
                 {
                     
-                    GameObject go = (GameObject)Instantiate(gunk, (Vector2)transform.position + Offset * transform.localScale.x, gunk.transform.rotation);
-                    go.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
-                    turret.SetTrigger("Play");
-                    StartCoroutine("Cooldown");
+                    GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
+                    if (gunk != null)
+                    {
+                        gunk.transform.position = turret.transform.position;
+                        gunk.transform.rotation = turret.transform.rotation;
 
-                //Quaternion.identity
+                    
+                        gunk.SetActive(true);
+                        turret.SetTrigger("Play");
+                        StartCoroutine("Cooldown");
+                }
 
-            }
+                }
             
-
         }
     }
 
+    
     IEnumerator Cooldown()
     {
-        
         canShoot = false;
-        yield return new WaitForSeconds(cooldown + Random.Range(1.0f, 3.0f));
-        
-        
-
+        yield return new WaitForSeconds(cooldown + Random.Range(.50f, 2.0f));
         canShoot = true;
+        Debug.Log("can shoot now0");
     }
 
-    
+   
+
+
 
 
 }

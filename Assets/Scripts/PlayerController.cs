@@ -20,6 +20,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 knockback;
     private float knockbackTimer;
     private float invincibilityTimer;
+
+    private float dashTimer;
+    [Header("Dash")]
+    [Tooltip("How long a dash is (ignores input while dashing)")]
+    [SerializeField] private float dashTime = 0.1f;
+    [Tooltip("Time between dashes")]
+    [SerializeField] private float dashCooldown = 3f;
+    [Tooltip("How many seconds should the player be invurnurable")]
+    [SerializeField] private float dashIframe = 0.3f;
+    [Tooltip("How strong is the dash")]
+    [SerializeField] private float dashSpeedBonus = 50f;
+
     [Header("Getting Hit")]
     [SerializeField] private float knockbackPower = 1f;
     [SerializeField] private float knockbackTime = 1f;
@@ -32,6 +44,7 @@ public class PlayerController : MonoBehaviour
         hitbox = GetComponentInChildren<Hitbox>();
         health = GetComponent<Health>();
         PlayerDead = false;
+        dashCooldown += dashTime;
     }
 
     private void Update() {
@@ -83,6 +96,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private void HandleMotion() {
+        dashTimer -= Time.deltaTime;
+
+        if (dashTimer > dashCooldown - dashTime) {
+            return;
+        }
+
         if (knockbackTimer > 0f) {
             // handle knockback
             knockbackTimer -= Time.deltaTime;
@@ -97,11 +116,37 @@ public class PlayerController : MonoBehaviour
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput = moveInput.normalized;
 
+        //Dash stuff
+        
+        
         // apply this velocity to the player
         Vector2 velocity = rb2d.velocity;
-        velocity = Vector2.MoveTowards(velocity, moveInput * maxSpeed, acceleration);
+        velocity = Vector2.MoveTowards(velocity, moveInput * (maxSpeed), acceleration);
         rb2d.velocity = velocity;
+        
+        bool isDash = Input.GetButton("Jump");
+        if (isDash && dashTimer <= 0f) {            
+            DisableEnemyCollision();
+
+            rb2d.AddForce(moveInput * dashSpeedBonus, ForceMode2D.Impulse);
+            dashTimer = dashCooldown;
+            Invoke("EnableEnemyCollision", dashTime);
+            //might fuck things up
+            invincibilityTimer += dashIframe;
+        }
     }
 
-    
+    private void DisableEnemyCollision ()
+    {
+        Physics2D.IgnoreLayerCollision(8, 10, true);
+    }
+    private void EnableEnemyCollision ()
+    {   
+        Physics2D.IgnoreLayerCollision(8, 10, false);
+    }
+
+    public float DashCooldownUI()
+    {
+        return dashTimer;
+    }
 }
