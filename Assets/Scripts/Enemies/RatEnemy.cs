@@ -62,11 +62,6 @@ public class RatEnemy : BaseEnemy
         spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
     }
 
-    protected override void TakeDamage(Collider2D other) {
-        base.TakeDamage(other);
-        float per = (1 - health.GetHealthPercent())/2 + health.GetHealthPercent();
-    }
-
 
     private IEnumerator Action_Wait() {
         navigator.Stop();

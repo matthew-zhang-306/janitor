@@ -52,19 +52,23 @@ public class PathNavigator : MonoBehaviour
 
     public void SetDestination(Vector3 dest, System.Action callback = null) {
         canNavigate = true;
+        System.Action<List<Vector3>> fullCallback = path => {
+            currentPath = new Queue<Vector3>(path);
+            currentRequest = null;
+
+            if (callback != null)
+                callback();
+        };
+
+
         if (currentRequest != null) {
             // update the end position of our previous unfulfilled request
             currentRequest.endPos = dest;
+            currentRequest.callback = fullCallback;
         }
         else {
             // ask for a new path
-            currentRequest = pathfinding.RequestPath(transform.position, dest, unitSize, path => {
-                currentPath = new Queue<Vector3>(path);
-                currentRequest = null;
-
-                if (callback != null)
-                    callback();
-            });
+            currentRequest = pathfinding.RequestPath(transform.position, dest, unitSize, fullCallback);
         }
     }
 
@@ -81,5 +85,9 @@ public class PathNavigator : MonoBehaviour
     public void Stop() {
         canNavigate = false;
         rigidbody.velocity = Vector2.zero;
+    }
+
+    public void ClearPath() {
+        currentPath.Clear();
     }
 }
