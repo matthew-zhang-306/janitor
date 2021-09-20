@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 6114331370593949505}
   - component: {fileID: 6114331370593949518}
   - component: {fileID: 6114331370593949519}
-  - component: {fileID: 6114331370593949516}
+  - component: {fileID: 1634902088}
   m_Layer: 10
   m_Name: Rat
   m_TagString: Untagged
@@ -178,6 +178,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6114331372614820661}
   hitbox: {fileID: 6114331371471433543}
   floorMarker: {fileID: 6114331370540110220}
+  navigator: {fileID: 0}
   player: {fileID: 0}
   invincibilityTime: 0.2
   actions:
@@ -185,32 +186,27 @@ MonoBehaviour:
   - Swipe
   - Seek
   seekSpeed: 7
+  stoppingDistance: 1.5
   startupTime: 0.5
   swipeDelay: 0.1
   swipeTime: 0.2
   swipe: {fileID: 6114331371751864184}
---- !u!195 &6114331370593949516
-NavMeshAgent:
+--- !u!114 &1634902088
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6114331370593949514}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.28
-  m_Speed: 10
-  m_Acceleration: 75
-  avoidancePriority: 50
-  m_AngularSpeed: 300
-  m_StoppingDistance: 2
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958cafa2f7070e24bbb2769e36ecc10b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathfinding: {fileID: 0}
+  canNavigate: 0
+  unitSize: 0.7
+  speed: 0
 --- !u!1 &6114331371366629506
 GameObject:
   m_ObjectHideFlags: 0

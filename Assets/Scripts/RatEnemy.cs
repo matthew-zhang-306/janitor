@@ -81,7 +81,13 @@ public class RatEnemy : BaseEnemy
     private IEnumerator Action_Seek() {
         navigator.canNavigate = true;
         navigator.SetDestination(player.transform.position);
-        yield return 0;
+
+        int seekTimer = 4;
+        while (seekTimer > 0) {
+            yield return new WaitForFixedUpdate();
+            seekTimer--;
+        }
+        
         shouldPickAction = true;
     }
 

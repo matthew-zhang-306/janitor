@@ -48,6 +48,8 @@ public class Pathfinding : MonoBehaviour
     // this will help produce pathfinding costs for units of different sizes.
     private Dictionary<Vector3Int, int> wallProximityMap;
 
+    public bool debugMode;
+
     private void Start() {
         pathMap = GetComponent<Tilemap>();
         pathRequests = new Queue<PathRequest>();
@@ -116,7 +118,7 @@ public class Pathfinding : MonoBehaviour
     }
 
 
-    private void FixedUpdate() {
+    private void Update() {
         if (pathRequests.Count > 0) {
             var request = pathRequests.Dequeue();
             List<Vector3> path = FindPath(request.startPos, request.endPos, request.unitSize);
@@ -126,7 +128,8 @@ public class Pathfinding : MonoBehaviour
 
 
     private List<Vector3> FindPath(Vector3 startPos, Vector3 destPos, float unitSize) {
-        pathMap.ClearAllTiles();
+        if (debugMode)
+            pathMap.ClearAllTiles();
 
         Vector3Int startCell = pathMap.WorldToCell(startPos);
         Vector3Int destCell = pathMap.WorldToCell(destPos);
@@ -139,7 +142,7 @@ public class Pathfinding : MonoBehaviour
 
         Vector3Int closestNode = startCell;
         float closestDistance = float.MaxValue;
-        float desiredDistance = unitSize / 2f / pathMap.cellSize.x;
+        float desiredDistance = minimumProximity - 0.95f;
 
         var visitedNodes = new Dictionary<Vector3Int, float>();
         var search = new SortedDictionary<(int,float), (Vector3Int,float)>(new NodeComp());
@@ -149,8 +152,10 @@ public class Pathfinding : MonoBehaviour
         while (search.Count > 0) {
             (int id, float totalCost) = search.Keys.First();
             (var node, float pathCost) = search[(id,totalCost)];
-            search.Remove(search.Keys.First()); 
-            pathMap.SetTile(node, pathTile2);
+            search.Remove(search.Keys.First());
+
+            if (debugMode)
+                pathMap.SetTile(node, pathTile2);
 
             if (visitedNodes.ContainsKey(node)) {
                 continue;
@@ -200,7 +205,9 @@ public class Pathfinding : MonoBehaviour
         int dir = -1;
         while (current != start) {
             path.AddFirst((current, dir));
-            pathMap.SetTile(current, pathTile);
+
+            if (debugMode)
+                pathMap.SetTile(current, pathTile);
 
             Vector3Int bestNext = current;
             for (int dx = -1; dx <= 1; dx++) {
@@ -225,7 +232,6 @@ public class Pathfinding : MonoBehaviour
         }
 
         path.AddFirst((start, dir));
-        pathMap.SetTile(start, pathTile);
         return path;
     }
 
@@ -249,7 +255,10 @@ public class Pathfinding : MonoBehaviour
 
     private float GetHeuristic(Vector3Int node, Vector3Int dest) {
         // return Vector3Int.Distance(node, dest);
-        return Mathf.Abs(dest.x - node.x) + Mathf.Abs(dest.y - node.y);
+        int dx = Mathf.Abs(dest.x - node.x);
+        int dy = Mathf.Abs(dest.y - node.y);
+        // return 1.4f * Mathf.Min(dx, dy) + 1.0f * Mathf.Abs(dy - dx);
+        return dy + dx;
     }
 
 }
