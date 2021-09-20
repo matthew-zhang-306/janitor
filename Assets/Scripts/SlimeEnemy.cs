@@ -43,14 +43,14 @@ public class SlimeEnemy : BaseEnemy
     {
         // we set the animation here because we have to wait one frame after telling the navmeshagent to move
         // to know which direction it wants to go in order to get there
-        if (shouldSetNewMoveAnimation && navMeshAgent.hasPath) {
+        if (shouldSetNewMoveAnimation && navigator.isFollowingPath) {
             shouldSetNewMoveAnimation = false;
 
             // select animation
-            float moveAngle = Vector2.SignedAngle(Vector2.right, navMeshAgent.desiredVelocity);
+            float moveAngle = Vector2.SignedAngle(Vector2.right, navigator.GetMoveDirection());
             int moveDir = Mathf.RoundToInt(moveAngle / 90f).Mod(4);
             string moveString = new string[] { "Right", "Up", "Left", "Down" }[moveDir];
-            Debug.Log("selecting animation " + navMeshAgent.desiredVelocity);
+            Debug.Log("selecting animation " + navigator.GetMoveDirection());
 
             // i have no idea what the "0f" parameter in this does. all i know is that it doesn't work without it
             animator.Play("SlimeMove" + moveString, -1, 0f);
@@ -59,7 +59,7 @@ public class SlimeEnemy : BaseEnemy
         if (CanAct && m_time > actionTimer) {
             m_time -= actionTimer;
 
-            navMeshAgent.isStopped = true;
+            navigator.canNavigate = false;
 
             // chose action
             if (player != null &&
@@ -84,6 +84,7 @@ public class SlimeEnemy : BaseEnemy
     //Action Methods should only be called from itself
     protected virtual void Action_Wander ()
     {
+        navigator.canNavigate = false;
         Vector3 randomDir = Quaternion.Euler(0, 0, Random.Range(0f, 360f)) * Vector3.right;
         rb2d.AddForce(randomDir * 30 * rb2d.mass);
 
@@ -92,14 +93,15 @@ public class SlimeEnemy : BaseEnemy
 
     protected virtual void Action_Move ()
     {
-        PlayRandom();
-        navMeshAgent.isStopped = false;
-        navMeshAgent.SetDestination(player.transform.position);
-
-        navMeshAgent.DOKill();
-        navMeshAgent.speed = seekSpeed;
-        DOTween.To(() => navMeshAgent.speed, s => navMeshAgent.speed = s, seekSpeed / 4f, actionTimer)
-            .SetLink(gameObject).SetTarget(navMeshAgent);
+        navigator.SetDestination(player.transform.position, () => {
+            PlayRandom();
+        
+            navigator.DOKill();
+            navigator.speed = seekSpeed;
+            DOTween.To(() => navigator.speed, s => navigator.speed = s, seekSpeed / 4f, actionTimer)
+                .SetLink(gameObject).SetTarget(navigator);
+        });
+        
     }
     
 

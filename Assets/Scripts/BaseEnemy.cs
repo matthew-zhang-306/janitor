@@ -21,7 +21,7 @@ public class BaseEnemy : MonoBehaviour
 
     [Header("Optional Components")]
     public GameObject floorMarker; // enemy will not necessarily have one
-    protected NavMeshAgent navMeshAgent; // enemy will not necessarily have one
+    [HideInInspector] public PathNavigator navigator; // enemy will not necessarily have one
 
     [HideInInspector] public PlayerController player;
 
@@ -31,7 +31,7 @@ public class BaseEnemy : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] protected float invincibilityTime = 0.2f;
     protected float invincibilityTimer;
-    [SerializeField]protected List<string> actions; // daniel, refactor to use this when you need to
+    [SerializeField] protected List<string> actions; // daniel, refactor to use this when you need to
     //Note that this delegate doesn't take any parameters, though that can defo change.
     public delegate IEnumerator EnemyActionDelegate();
     protected Dictionary<string, EnemyActionDelegate> actionTable;
@@ -43,19 +43,14 @@ public class BaseEnemy : MonoBehaviour
     }
 
     protected virtual void Start() {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        if (navMeshAgent != null) {
-            navMeshAgent.updateRotation = false;
-            navMeshAgent.updateUpAxis = false;
-        }
-        navMeshAgent.isStopped = true;
+        navigator = GetComponent<PathNavigator>();
 
         health = GetComponent<Health>();
         rb2d = GetComponent<Rigidbody2D>();
 
         actionTable = new Dictionary<string, EnemyActionDelegate>();
-        // actions.Add("Test");
         var classType = this.GetType();
+
         //Make action table
         foreach (string s in actions) {
             if (s == "" || Char.IsLower (s[0])) {
@@ -70,8 +65,6 @@ public class BaseEnemy : MonoBehaviour
                 actionTable.Add(s, (EnemyActionDelegate) m.CreateDelegate(typeof (EnemyActionDelegate), this));
             }
         }
-
-        
     }
 
 
