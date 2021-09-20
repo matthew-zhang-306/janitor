@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 
 [RequireComponent(typeof(RoomManager))]
-public class RoomSpawner : MonoBehaviour
+public class RoomSpawnerAddon : MonoBehaviour
 {
     
     public int spawnAreaCount = 3;
@@ -77,15 +77,18 @@ public class RoomSpawner : MonoBehaviour
     {
         public readonly int x;
         public readonly int y;
+
+        //Time from marker creation to spawning enemy
         public float m_timer;
-        public readonly GameObject obj;
+
+        public readonly GameObject enemy;
         public readonly Tile t;
         public Marker (int x, int y, float timer, GameObject obj, Tile tileToFlicker) 
         {
             this.x = x;
             this.y = y;
             this.m_timer = timer;
-            this.obj = obj;
+            this.enemy = obj;
             this.t = tileToFlicker;
         }
 
@@ -117,7 +120,7 @@ public class RoomSpawner : MonoBehaviour
                 }
             if (rm.dirtyTiles.IsTileDirty(new Vector2Int(x,y), 0.2f)) 
             {
-                GameObject created = Instantiate(obj, tm.CellToWorld(new Vector3Int(x,y,0)), Quaternion.identity, rm.enemiesContainer);
+                GameObject created = Instantiate(enemy, tm.CellToWorld(new Vector3Int(x,y,0)), Quaternion.identity, rm.enemiesContainer);
                 rm.InitEnemy(created.transform);
             }
 

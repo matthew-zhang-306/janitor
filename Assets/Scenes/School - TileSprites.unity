@@ -989,6 +989,19 @@ MonoBehaviour:
   - {fileID: 4271501809376710233, guid: 1b81a2d893f152743a3e41ec798f28e9, type: 3}
   - {fileID: 6114331370593949514, guid: 919d58a3edc7e6d48b3f95ed0268c1d8, type: 3}
   tileToFlicker: {fileID: 11400000, guid: 13229480d41f60b43964bbc0838e728e, type: 2}
+--- !u!114 &240361780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240361776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f8c9cbe56c9764c8aac34447c5b74c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFile: {fileID: 4900000, guid: 3596188a45dda084b8585f9492768705, type: 3}
 --- !u!1 &300218602
 GameObject:
   m_ObjectHideFlags: 0
@@ -107770,6 +107783,16 @@ PrefabInstance:
     - target: {fileID: 7957443720243828657, guid: 491d07b6cf4208947b051099d59b372f,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8300725537611352321, guid: 491d07b6cf4208947b051099d59b372f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8300725537611352321, guid: 491d07b6cf4208947b051099d59b372f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8519407036903141950, guid: 491d07b6cf4208947b051099d59b372f,
