@@ -1,0 +1,17 @@
+{
+    "waves":
+    [
+      {
+        "xcoord": 0,
+        "ycoord": 0,
+        "index" : 0,
+        "thresh" : 0.3
+      },
+      {
+        "xcoord": 5,
+        "ycoord": 5,
+        "index" : 1,
+        "thresh" : 0.5
+      }
+    ]
+}
