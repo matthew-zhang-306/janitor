@@ -81,6 +81,7 @@ public class RoomManager : MonoBehaviour
     }
 
     public void InitEnemy (Transform enemy) {
+
         var ec = enemy.GetComponent<BaseEnemy>();
         if (ec != null && ec.isActiveAndEnabled) {
             enemyCount += 1;
@@ -88,7 +89,12 @@ public class RoomManager : MonoBehaviour
             ec.CanAct = true;
             ec.player = player;
             if (ec.navigator != null)
+            {
+                Debug.Log ("init enemy");
+
                 ec.navigator.pathfinding = pathfinding;
+
+            }
             
             ec.DeathEvent.AddListener(DecreaseEnemyCount);
         }

@@ -17,6 +17,8 @@ public class WeaponSystem : MonoBehaviour
     public AudioSource gunSound;
     public AudioSource meleeSound;
     public AudioClip[] meleeEffects;
+
+    public BaseWeapon weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,14 @@ public class WeaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1") && m_ftime > firerate) {
+        Vector3 hit = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dir = (hit - transform.position).ToVector2().normalized;
+        this.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, dir));
+        //well we should probs consider top and bottom rotations too
+
+        this.transform.localScale = new Vector3 (1, Mathf.Sign (dir.x), 1);
+
+        if (Input.GetButton("Fire1") && m_ftime > weapon.firerate) {
             Vector3 mousePos = Input.mousePosition;
 
             Fire (mousePos);
@@ -48,12 +57,13 @@ public class WeaponSystem : MonoBehaviour
         
         Vector3 hit = cam.ScreenToWorldPoint(p);
         Vector2 dir = (hit - transform.position).ToVector2().normalized;
-        Quaternion bulletRotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, dir));
+        Quaternion bulletRotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, dir));
+
+        this.weapon.HandleFire(dir, bulletRotation);
+
 
         //Maybe change to Entity System Later
-        GameObject created = GameObject.Instantiate(bulletPrefab, this.transform.position, bulletRotation);
-        var rb = created.GetComponent<Rigidbody2D>();
-        rb.AddForce(dir * 1000 * rb.mass);
+        
         
         // Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), created.GetComponent<Collider2D>());
     }
