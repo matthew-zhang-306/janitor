@@ -9,24 +9,22 @@ public class BaseProjectile : MonoBehaviour
 {
     public float lifetime = 1f;
     private float m_time = 0f;
-    private Tilemap tm;
-    public Tile tile;
     // Start is called before the first frame update
-    void Start()
+    protected virtual void OnEnable()
     {
         m_time = 0f;
         
     }
+    protected virtual void Start ()
+    {
 
+    }
     // Update is called once per frame
     void Update()
     {
         m_time += Time.deltaTime;
         if (m_time > lifetime) {
             this.OnDespawn();            
-            
-        }
-        else {
             
         }
     }
@@ -44,10 +42,6 @@ public class BaseProjectile : MonoBehaviour
     
     public virtual void OnDespawn() {
         gameObject.SetActive(false);
-    }
-
-    void OnTriggerStay2D (Collider2D col) {
-        
     }
     
 }

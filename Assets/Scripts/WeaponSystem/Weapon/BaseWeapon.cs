@@ -10,22 +10,23 @@ public class BaseWeapon : MonoBehaviour
     public float force = 1000;
     private Queue <GameObject> pool;
     public int poolCount = 100;
-    void Start () 
+
+    protected virtual void Start () 
     {
         CreatePool();
     }
+
     public virtual void HandleFire (Vector3 dir, Quaternion rotation) {
         // GameObject created = GameObject.Instantiate(prefabBullet, this.transform.position, rotation);
         GameObject bullet = pool.Dequeue();
         bullet.SetActive(true);
-
+        
         bullet.transform.position = this.transform.position;
         bullet.transform.rotation = rotation;
 
         var rb = bullet.GetComponent<Rigidbody2D>();
         // rb.velocity = Vector2.one * 10000 * rb.mass;
         rb.AddForce(dir * force * rb.mass);
-        Debug.Log(rb.velocity);
         pool.Enqueue (bullet);
     }
 
