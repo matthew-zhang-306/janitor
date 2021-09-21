@@ -30,8 +30,9 @@ public class SpongeProjectile : BaseProjectile
         rb2d = this.GetComponent<Rigidbody2D>();
         selfCol = this.GetComponent<BoxCollider2D>();
     }
-    protected virtual void OnTriggerEnter2D(Collider2D col) {
-        
+    protected override void OnTriggerEnter2D(Collider2D col) 
+    {
+        base.OnTriggerEnter2D(col);    
         if (col.gameObject.CompareTag("Enemy"))
         {
             StartCoroutine(PlayAnim());
