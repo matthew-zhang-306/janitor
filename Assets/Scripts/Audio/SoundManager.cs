@@ -5,6 +5,9 @@ using UnityEngine;
 public static class SoundManager {
     //From Code Monkey Tutorial simple sound manager
 
+    
+    
+
     public enum Sound
     {
         spongeGun,
@@ -16,11 +19,11 @@ public static class SoundManager {
         Song2,
 
     }
-    public static void PlaySound(Sound sound)
+    public static void PlaySound(Sound sound, float SEvolume)
     {
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        audioSource.PlayOneShot(GetAudioClip(sound));
+        audioSource.PlayOneShot(GetAudioClip(sound), SEvolume);
     }
 
     private static AudioClip GetAudioClip(Sound sound)

@@ -40,7 +40,7 @@ public class WeaponSystem : MonoBehaviour
 
             Fire (mousePos);
             //gunSound.Play();
-            SoundManager.PlaySound(SoundManager.Sound.spongeGun);
+            SoundManager.PlaySound(SoundManager.Sound.spongeGun, SettingsMenu.SEvolume);
             m_ftime = 0;
         }
         if (Input.GetButton("Fire2") && m_ftime > meleerate) {
@@ -49,7 +49,7 @@ public class WeaponSystem : MonoBehaviour
             Swing (mousePos);
             //meleeSound.clip = meleeEffects[Random.Range(0, meleeEffects.Length)];
             //meleeSound.Play();
-            SoundManager.PlaySound(SoundManager.Sound.Broom);
+            SoundManager.PlaySound(SoundManager.Sound.Broom, SettingsMenu.SEvolume);
             m_ftime = 0;
         }
         m_ftime += Time.deltaTime;
