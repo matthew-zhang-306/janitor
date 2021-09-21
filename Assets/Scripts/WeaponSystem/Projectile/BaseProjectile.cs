@@ -24,7 +24,7 @@ public class BaseProjectile : MonoBehaviour
         m_time += Time.deltaTime;
         if (m_time > lifetime) {
             this.OnDespawn();            
-            Destroy(gameObject);
+            
         }
         else {
             
@@ -32,7 +32,9 @@ public class BaseProjectile : MonoBehaviour
     }
     void OnDestroy()
     {
+        Debug.LogWarning("bullet should not be destroyed usually");
         this.OnDespawn();
+
     }
     //Virtual Func for where this projectile should go
     public virtual void GetNextPosition()
@@ -41,24 +43,11 @@ public class BaseProjectile : MonoBehaviour
     }
     
     public virtual void OnDespawn() {
-
+        gameObject.SetActive(false);
     }
 
     void OnTriggerStay2D (Collider2D col) {
-        // Debug.Log (col.gameObject.name);
-        // if (col.gameObject.tag == "PlayerProjectile") {
-        //     if (health != null) {
-        //         health.ChangeHealth(-1);
-        //         float per = (1 - health.GetHealthPercent())/2 + health.GetHealthPercent();
-        //         this.transform.localScale = new Vector3(per,per,per);
-        //     }
-        //     Destroy(col.gameObject);
-        // }
-        // Debug.Log("hi there");
-
-        // if (health.GetHealth() <= 0) {
-        //     Destroy(gameObject);
-        // }
+        
     }
     
 }

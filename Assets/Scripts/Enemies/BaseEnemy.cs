@@ -40,10 +40,11 @@ public class BaseEnemy : MonoBehaviour
     protected virtual void Awake() {
         if (deathEvent == null)
             deathEvent = new UnityEvent();
+        navigator = GetComponent<PathNavigator>();
+
     }
 
     protected virtual void Start() {
-        navigator = GetComponent<PathNavigator>();
 
         health = GetComponent<Health>();
         rb2d = GetComponent<Rigidbody2D>();
