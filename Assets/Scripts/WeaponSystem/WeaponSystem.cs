@@ -14,9 +14,9 @@ public class WeaponSystem : MonoBehaviour
 
     public GameObject bulletPrefab;
     public GameObject meleePrefab;
-    public AudioSource gunSound;
-    public AudioSource meleeSound;
-    public AudioClip[] meleeEffects;
+    //public AudioSource gunSound;
+    //public AudioSource meleeSound;
+   // public AudioClip[] meleeEffects;
 
     public BaseWeapon weapon;
     // Start is called before the first frame update
@@ -39,15 +39,17 @@ public class WeaponSystem : MonoBehaviour
             Vector3 mousePos = Input.mousePosition;
 
             Fire (mousePos);
-            gunSound.Play();
+            //gunSound.Play();
+            SoundManager.PlaySound(SoundManager.Sound.spongeGun);
             m_ftime = 0;
         }
         if (Input.GetButton("Fire2") && m_ftime > meleerate) {
             Vector3 mousePos = Input.mousePosition;
 
             Swing (mousePos);
-            meleeSound.clip = meleeEffects[Random.Range(0, meleeEffects.Length)];
-            meleeSound.Play();
+            //meleeSound.clip = meleeEffects[Random.Range(0, meleeEffects.Length)];
+            //meleeSound.Play();
+            SoundManager.PlaySound(SoundManager.Sound.Broom);
             m_ftime = 0;
         }
         m_ftime += Time.deltaTime;
