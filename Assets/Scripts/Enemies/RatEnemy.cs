@@ -14,6 +14,7 @@ public class RatEnemy : BaseEnemy
     public float swipeDelay;
     public float swipeTime;
 
+    public Animator animator;
     public GameObject swipe;
 
 
@@ -26,6 +27,27 @@ public class RatEnemy : BaseEnemy
         shouldPickAction = true;
     }
 
+    private void Update() {
+        if (navigator.canNavigate) {
+            // set a move animation
+            string moveString = "";
+
+            Vector2 moveDir = navigator.GetMoveDirection();
+            if (Mathf.Abs(moveDir.x) >= 0.2f) {
+                moveString = moveDir.x > 0 ? "MoveRight" : "MoveLeft";
+            }
+            else if (Mathf.Abs(moveDir.y) >= 0.2f) {
+                moveString = moveDir.y > 0 ? "MoveUp" : "MoveDown";
+            } else {
+                moveString = "Idle";
+            }
+
+            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Rat" + moveString) {
+                animator.Play("Rat" + moveString, 0, 0f);
+            }
+        }
+    }
+
     protected override void FixedUpdate() {
         base.FixedUpdate();
 
@@ -35,8 +57,7 @@ public class RatEnemy : BaseEnemy
             if (startupTimer > 0) {
                 selectedAction = "Wait";
             }
-            else if ((player.transform.position - transform.position).sqrMagnitude <=
-                        stoppingDistance * stoppingDistance * 1.1f)
+            else if ((player.transform.position - transform.position).magnitude <= stoppingDistance)
             {
                 selectedAction = "Swipe";
             }
@@ -65,6 +86,8 @@ public class RatEnemy : BaseEnemy
 
     private IEnumerator Action_Wait() {
         navigator.Stop();
+
+        animator.Play("RatIdle");
         
         while (startupTimer != 0) {
             yield return 0;
@@ -77,10 +100,14 @@ public class RatEnemy : BaseEnemy
         navigator.canNavigate = true;
         navigator.SetDestination(player.transform.position);
 
-        int seekTimer = 4;
-        while (seekTimer > 0) {
+        float timer = 0.5f;
+        while (timer > 0) {
             yield return new WaitForFixedUpdate();
-            seekTimer--;
+
+            if ((player.transform.position - transform.position).magnitude <= stoppingDistance)
+                // terminate immediately
+                timer = 0;
+            timer -= Time.deltaTime;
         }
         
         shouldPickAction = true;
@@ -89,18 +116,22 @@ public class RatEnemy : BaseEnemy
     private IEnumerator Action_Swipe() {
         navigator.Stop();
 
+        animator.Play("RatCharge");
+
         yield return new WaitForSeconds(swipeDelay);
 
         float swipeAngle = Vector2.SignedAngle(Vector2.right, player.transform.position - transform.position);
         swipe.transform.rotation = Quaternion.Euler(0, 0, swipeAngle);
         swipe.SetActive(true);
 
-        // play some animation here
+        animator.Play("RatAttack");
 
         yield return new WaitForSeconds(swipeTime);
 
         swipe.SetActive(false);
         startupTimer = startupTime;
         shouldPickAction = true;
+
+        animator.Play("RatIdle");
     }
 }

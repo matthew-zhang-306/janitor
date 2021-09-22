@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: 4d7197d27b7da1942b3c2d3df051ed00
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3670476415630843817
+    second: monsters_rat_sprites1_0
+  - first:
+      213: -4122378159154104378
+    second: monsters_rat_sprites1_1
+  - first:
+      213: 3821753331326584208
+    second: monsters_rat_sprites1_2
+  - first:
+      213: -312173674275036183
+    second: monsters_rat_sprites1_3
+  - first:
+      213: 3658465556575516215
+    second: monsters_rat_sprites1_4
+  - first:
+      213: 5987365403120364530
+    second: monsters_rat_sprites1_5
+  - first:
+      213: 3370856736160309464
+    second: monsters_rat_sprites1_6
+  - first:
+      213: -2268297499020491287
+    second: monsters_rat_sprites1_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +95,189 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: monsters_rat_sprites1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 799.5
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af102e5ad620f230800000000000000
+      internalID: 3670476415630843817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_rat_sprites1_1
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 800
+        width: 799.5
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c77ac1d7ee5ac6c0800000000000000
+      internalID: -4122378159154104378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_rat_sprites1_2
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 800
+        width: 799.5
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09503e40868990530800000000000000
+      internalID: 3821753331326584208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_rat_sprites1_3
+      rect:
+        serializedVersion: 2
+        x: 2397
+        y: 800
+        width: 799.5
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e3ab9c72bfeaabf0800000000000000
+      internalID: -312173674275036183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_rat_sprites1_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 799.5
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7367fa25a0b75c230800000000000000
+      internalID: 3658465556575516215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_rat_sprites1_5
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 0
+        width: 799.5
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fbe3799c15671350800000000000000
+      internalID: 5987365403120364530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_rat_sprites1_6
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 0
+        width: 799.5
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d0619b8750b7ce20800000000000000
+      internalID: 3370856736160309464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_rat_sprites1_7
+      rect:
+        serializedVersion: 2
+        x: 2397
+        y: 0
+        width: 799.5
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e50afd41736580e0800000000000000
+      internalID: -2268297499020491287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

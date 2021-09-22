@@ -186,10 +186,11 @@ MonoBehaviour:
   - Swipe
   - Seek
   seekSpeed: 7
-  stoppingDistance: 1.5
+  stoppingDistance: 1.75
   startupTime: 0.5
   swipeDelay: 0.1
   swipeTime: 0.2
+  animator: {fileID: 1599400519287723765}
   swipe: {fileID: 6114331371751864184}
 --- !u!114 &1634902088
 MonoBehaviour:
@@ -514,6 +515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6114331372614820658}
   - component: {fileID: 6114331372614820661}
+  - component: {fileID: 1599400519287723765}
   m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
@@ -585,3 +587,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1599400519287723765
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6114331372614820659}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88fa124e151f9c6438da03c9d27d4372, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
