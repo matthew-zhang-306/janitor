@@ -37,9 +37,11 @@ public class GunkBulletPooler : MonoBehaviour
     {
 
         pooledObjects = new List<GameObject>();
+        var poolParent = new GameObject(objectToPool.name + "_pool");
         for (int i = 0; i < amountToPool; i++)
         {
-            GameObject obj = (GameObject)Instantiate(objectToPool);
+            
+            GameObject obj = (GameObject)Instantiate(objectToPool, poolParent.transform);
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
