@@ -38,6 +38,8 @@ public class RoomManager : MonoBehaviour
     public Pathfinding pathfinding;
     private FloorTilePopulator tiles;
 
+    public float roomClearThreshold;
+
     [Header("Put the Player into this")]
     public PlayerController player; // later we need to load this in some other way
 
@@ -107,7 +109,7 @@ public class RoomManager : MonoBehaviour
             roomTriggerHitbox.enabled = false;
         }
         
-        if (roomActive && enemyCount == 0 && dirtyTiles.GetCleanPercent() >= 0.6f) {
+        if (roomActive && enemyCount == 0 && dirtyTiles.GetCleanPercent() >= roomClearThreshold) {
             OnClearRoom();
             roomActive = false;
         }

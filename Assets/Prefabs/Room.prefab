@@ -243,6 +243,7 @@ MonoBehaviour:
   levelGrid: {fileID: 4960979558482759710}
   dirtyTiles: {fileID: 4803664296904731265}
   pathfinding: {fileID: 3892606808324273816}
+  roomClearThreshold: 0.7
   player: {fileID: 0}
 --- !u!1 &2843721370339062034
 GameObject:
@@ -384,6 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Floor: {fileID: 4803664296904731265}
   cleanBar: {fileID: 4877121428634420875}
+  cleanThreshold: 0
 --- !u!1 &2940157033199333926
 GameObject:
   m_ObjectHideFlags: 0
@@ -7955,6 +7957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Floor: {fileID: 4803664296904731265}
   cleanBar: {fileID: 8300725537439405084}
+  cleanThreshold: 0.7
 --- !u!1 &8300725537439405086
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,37 +7,35 @@ using UnityEngine.Tilemaps;
 public class SpongeProjectile : BaseProjectile
 {
     public Animator anim;
-    private SpriteRenderer sr;
+    public Hitbox hurtbox;
+    public SpriteRenderer sr;
     private Rigidbody2D rb2d;
-    private Collider2D selfCol;
+
     protected override void OnEnable()
     {
         base.OnEnable();
         anim.gameObject.SetActive(false);
 
-        if (sr != null) {
-            sr.enabled = true;
-        }
-        if (selfCol != null) {
-            selfCol.enabled = true;
-        }
-
+        sr.enabled = true;
+        wallHitbox.enabled = true;
+        hurtbox.enabled = true;
     }
+
     protected override void Start()
     {
         base.Start();
-        sr = this.GetComponentInChildren<SpriteRenderer>();
         rb2d = this.GetComponent<Rigidbody2D>();
-        selfCol = this.GetComponent<BoxCollider2D>();
+
+        hurtbox.OnTriggerEnter.AddListener(OnHitEnemy);
     }
-    
-    protected override void OnTriggerEnter2D(Collider2D col) 
+
+    private void OnHitEnemy(Collider2D _) {
+        StartCoroutine(PlayAnim());
+    }
+
+    protected override void OnHitWall(Collider2D _)
     {
-        base.OnTriggerEnter2D(col);    
-        if (col.gameObject.CompareTag("Enemy"))
-        {
-            StartCoroutine(PlayAnim());
-        }
+        StartCoroutine(PlayAnim());
     }
 
     private IEnumerator PlayAnim()
@@ -46,7 +44,8 @@ public class SpongeProjectile : BaseProjectile
         rb2d.velocity = Vector2.zero;
         
         sr.enabled = false;
-        selfCol.enabled = false;
+        hurtbox.enabled = false;
+        wallHitbox.enabled = false;
 
         yield return new WaitForSeconds(1);
         

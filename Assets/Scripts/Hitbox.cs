@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
 public class Hitbox : MonoBehaviour
 {
     public string[] targetTags = default;
+
+    public class HitboxEvent : UnityEvent<Collider2D> {}
+
+    // enter and exit events, initialized lazily to guarantee that they will always exist when needed
+    private HitboxEvent onTriggerEnter;
+    public HitboxEvent OnTriggerEnter => onTriggerEnter ?? (onTriggerEnter = new HitboxEvent());
+    private HitboxEvent onTriggerExit;
+    public HitboxEvent OnTriggerExit => onTriggerExit ?? (onTriggerExit = new HitboxEvent());
 
     protected Collider2D coll;
 
@@ -26,6 +35,7 @@ public class Hitbox : MonoBehaviour
         return otherColliders;
     }}
 
+
     protected virtual void OnEnable() {
         coll = GetComponent<Collider2D>();
         otherColliders = new List<Collider2D>();
@@ -36,12 +46,16 @@ public class Hitbox : MonoBehaviour
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other) {
-        if (targetTags.Any(tag => other.CompareTag(tag)))
+        if (targetTags.Any(tag => other.CompareTag(tag))) {
             otherColliders.Add(other);
+            OnTriggerEnter?.Invoke(other);
+        }
     }
     protected void OnTriggerExit2D(Collider2D other) {
-        if (targetTags.Any(tag => other.CompareTag(tag)))
+        if (targetTags.Any(tag => other.CompareTag(tag))) {
             otherColliders.Remove(other);
+            OnTriggerExit?.Invoke(other);
+        }
     }
 
     void CheckOtherColliders() {

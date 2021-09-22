@@ -4,22 +4,29 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
 public class BaseProjectile : MonoBehaviour
 {
+    public Hitbox wallHitbox;
+
     public float lifetime = 1f;
     private float m_time = 0f;
-    // Start is called before the first frame update
+    
+
     protected virtual void OnEnable()
     {
         m_time = 0f;
-        
+        wallHitbox.OnTriggerEnter.AddListener(OnHitWall);
     }
+    protected virtual void OnDisable()
+    {
+        wallHitbox.OnTriggerEnter.RemoveListener(OnHitWall);
+    }
+
     protected virtual void Start ()
     {
-
+        
     }
-    // Update is called once per frame
+    
     void Update()
     {
         m_time += Time.deltaTime;
@@ -44,11 +51,8 @@ public class BaseProjectile : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnHitWall(Collider2D _)
     {
-        if (collision.tag == "Wall")
-        {
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
     }
 }
