@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177657899262820915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.493, z: 0}
+  m_LocalPosition: {x: 0.054, y: 0.764, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3121632629062976084}
@@ -233,11 +233,6 @@ MonoBehaviour:
     type: 3}
   meleePrefab: {fileID: 5219044330624146800, guid: e187dfc48e2b33544a61633816c22589,
     type: 3}
-  gunSound: {fileID: 3826183752918580022}
-  meleeSound: {fileID: 2463160858678801681}
-  meleeEffects:
-  - {fileID: 8300000, guid: d57593ba5ba08324fa9f9bf6d4e6db5b, type: 3}
-  - {fileID: 8300000, guid: 0abeae130fbe23b40b761acbd38285b7, type: 3}
   weapon: {fileID: 4942271700562673720}
 --- !u!1 &1177657899866666903
 GameObject:
@@ -857,12 +852,12 @@ PrefabInstance:
     - target: {fileID: 3014301997047189942, guid: ff9739cd3839a794aa5dbcd2b97c7422,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.651
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 3014301997047189942, guid: ff9739cd3839a794aa5dbcd2b97c7422,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.42999983
+      value: 0.183
       objectReference: {fileID: 0}
     - target: {fileID: 3014301997047189942, guid: ff9739cd3839a794aa5dbcd2b97c7422,
         type: 3}

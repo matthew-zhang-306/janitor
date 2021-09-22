@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[RequireComponent(typeof (FloorMarker))]
+
 public class SpongeProjectile : BaseProjectile
 {
     public Animator anim;
@@ -26,10 +26,11 @@ public class SpongeProjectile : BaseProjectile
     protected override void Start()
     {
         base.Start();
-        sr = this.GetComponent<SpriteRenderer>();
+        sr = this.GetComponentInChildren<SpriteRenderer>();
         rb2d = this.GetComponent<Rigidbody2D>();
         selfCol = this.GetComponent<BoxCollider2D>();
     }
+    
     protected override void OnTriggerEnter2D(Collider2D col) 
     {
         base.OnTriggerEnter2D(col);    
