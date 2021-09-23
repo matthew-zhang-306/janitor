@@ -10,6 +10,7 @@ TagManager:
   - SongPlayer
   - Gunk
   - Wall
+  - HealthCollect
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - EnemyProjectile
   - Wall
   - IgnoreEntities
-  - 
+  - Hole
   - 
   - 
   - 

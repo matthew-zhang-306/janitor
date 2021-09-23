@@ -129,7 +129,7 @@ public class FloorController : MonoBehaviour
                 var cell = new Vector3Int(x, y, 0);
 
                 // check if this is an open space
-                if (Physics2D.OverlapPoint(tm.GetCellCenterWorld(cell), LayerMask.GetMask("Wall")) == null) {
+                if (Physics2D.OverlapPoint(tm.GetCellCenterWorld(cell), LayerMask.GetMask("Wall", "Hole")) == null) {
                     tm.SetTile(cell, tiles[maxTileHealth][GetCoords(x,y)]);
                     totalFloorHealth += maxTileHealth;
                 }
