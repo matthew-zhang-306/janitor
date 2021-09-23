@@ -15,8 +15,7 @@ public static class SoundManager {
         Slime2,
         Broom1,
         Broom,
-        Song1,
-        Song2,
+        
 
     }
     public static void PlaySound(Sound sound, float SEvolume)
