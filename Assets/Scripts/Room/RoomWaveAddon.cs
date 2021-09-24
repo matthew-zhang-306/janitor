@@ -8,59 +8,80 @@ using UnityEngine.Events;
 [RequireComponent(typeof(RoomSpawnerAddon))]
 public class RoomWaveAddon : MonoBehaviour
 {
-    private RoomManager rm;
+    // room manager, lazily initialized so that it is available at editor time
+    private RoomManager _roomManager;
+    public RoomManager roomManager => _roomManager ?? (_roomManager = GetComponent<RoomManager>());
+
     private RoomSpawnerAddon rs;
     public TextAsset jsonFile;
+    public EnemyTypesSO enemyTypesSO;
+    private Dictionary<string, EnemyTypesSO.EnemyType> enemyTypes;
 
     private Waves waves;
     void Start()
     {
-        rm = this.GetComponent<RoomManager>();
         rs = this.GetComponent<RoomSpawnerAddon>();
         waves = JsonUtility.FromJson<Waves>(jsonFile.text);
+        enemyTypes = enemyTypesSO.GetEnemyTypes();
+
         StartCoroutine (WaitForRoom ());
     }
 
     public IEnumerator WaitForRoom ()
     {
-        yield return new WaitUntil (() => rm.IsRoomActive);
-        Debug.Log("Placing Wave Spawns");
-        var tm = rm.dirtyTiles.gameObject.GetComponent<Tilemap>();
-        foreach (var w in waves.waves) {
-            StartCoroutine (SetWave(w, tm));
+        yield return new WaitUntil (() => roomManager.IsRoomActive);
+
+        var tm = roomManager.dirtyTiles.gameObject.GetComponent<Tilemap>();
+        foreach (var wave in waves.waves) {
+            foreach (var waveSpawn in wave.spawns) {
+                StartCoroutine(SetWaveSpawn(waveSpawn, wave.thresh, tm));
+            }
         }
     }
 
-    public IEnumerator SetWave (WaveNode w, Tilemap tm)
+    public IEnumerator SetWaveSpawn (WaveSpawn waveSpawn, float thresh, Tilemap tm)
     {
-        if (w.index >= rs.glist.Length) {
-            Debug.LogError("Index out of bounds for wave enemy");
-            yield return 0;
+        if (!enemyTypes.ContainsKey(waveSpawn.enemy)) {
+            Debug.LogError("Room " + gameObject + " wants to spawn a \"" + waveSpawn.enemy + "\" enemy, but there is no such enemy!");
+            yield break;
         }
-        yield return new WaitUntil (() => rm.dirtyTiles.GetCleanPercent() >= w.thresh);
-        Debug.Log("Triggering Wave Spawn");
 
-        var worldPos = tm.CellToWorld (new Vector3Int (w.xcoord, w.ycoord, 0 ));
+        yield return new WaitUntil(() => roomManager.dirtyTiles.GetCleanPercent() >= thresh);
         
-        GameObject created = Instantiate(rs.glist[w.index], worldPos, Quaternion.identity, rm.enemiesContainer);
-        rm.InitEnemy(created.transform);
+        GameObject created = Instantiate(
+            enemyTypes[waveSpawn.enemy].prefab,
+            waveSpawn.GetPosition(tm),
+            Quaternion.identity,
+            roomManager.enemiesContainer
+        );
+        roomManager.InitEnemy(created.transform);
+        
         yield return 0;
     }
     
     [System.Serializable]
     public class Waves
     {
-        public WaveNode[] waves;
-
+        public Wave[] waves;
     }
 
     [System.Serializable]
-    public class WaveNode
+    public class Wave
+    {
+        public float thresh;
+        public WaveSpawn[] spawns;
+    }
+
+    [System.Serializable]
+    public class WaveSpawn
     {
         public int xcoord;
         public int ycoord;
-        public int index;
+        public string enemy;
+        public float delay;
 
-        public float thresh;
+        public Vector3 GetPosition(Tilemap tm) {
+            return tm.CellToWorld (new Vector3Int (xcoord, ycoord, 0 ));
+        }
     }
 }

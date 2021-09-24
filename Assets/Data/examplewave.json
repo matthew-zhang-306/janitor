@@ -2,16 +2,53 @@
     "waves":
     [
       {
-        "xcoord": 0,
-        "ycoord": 0,
-        "index" : 0,
-        "thresh" : 0.3
+        "thresh": 0,
+        "spawns":
+        [
+            {
+                "xcoord": 0,
+                "ycoord": 0,
+                "enemy": "Slime",
+                "delay": 0
+            },
+            {
+                "xcoord": 1,
+                "ycoord": 1,
+                "enemy": "Slime",
+                "delay": 0
+            }
+        ]
       },
       {
-        "xcoord": 5,
-        "ycoord": 5,
-        "index" : 1,
-        "thresh" : 0.5
+        "thresh": 0.3,
+        "spawns":
+        [
+            {
+                "xcoord": -3,
+                "ycoord": -3,
+                "enemy": "Slime",
+                "delay": 0
+            }
+        ]
+      },
+      {
+          "thresh": 0.5,
+          "spawns":
+          [
+            {
+                "xcoord": 4,
+                "ycoord": 2,
+                "enemy": "Rat",
+                "delay": 0
+            },
+            {
+                "xcoord": 3,
+                "ycoord": 5,
+                "enemy": "Rat",
+                "delay": 0.1
+            }
+          ]
       }
+      
     ]
 }
