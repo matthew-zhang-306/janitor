@@ -393,6 +393,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat
       objectReference: {fileID: 0}
+    - target: {fileID: 6114331370593949514, guid: 919d58a3edc7e6d48b3f95ed0268c1d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6114331370593949517, guid: 919d58a3edc7e6d48b3f95ed0268c1d8,
         type: 3}
       propertyPath: m_RootOrder
@@ -3563,11 +3568,6 @@ PrefabInstance:
     - target: {fileID: 4716983670666038546, guid: 491d07b6cf4208947b051099d59b372f,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4716983670666038546, guid: 491d07b6cf4208947b051099d59b372f,
-        type: 3}
-      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4906799679386505895, guid: 491d07b6cf4208947b051099d59b372f,
@@ -130271,6 +130271,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 853969595573832148, guid: e99cabc76f17e7047b7003b087521779,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1177657899262820913, guid: e99cabc76f17e7047b7003b087521779,
         type: 3}
       propertyPath: cam
@@ -130350,6 +130355,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177657900103972658, guid: e99cabc76f17e7047b7003b087521779,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472630097931738335, guid: e99cabc76f17e7047b7003b087521779,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e99cabc76f17e7047b7003b087521779, type: 3}
