@@ -23,11 +23,14 @@ public class Turret : MonoBehaviour
     public bool PlayerInRange;
 
     GunkBulletPooler gunkPooler;
+
+    public bool shootNow;
     // Start is called before the first frame update
     void Start()
     {
         gunkPooler = GunkBulletPooler.Instance;
         turret = gameObject.GetComponent<Animator>();
+        
          
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,6 +51,7 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(shootNow);
 
         if (!PauseMenu.GamePaused)
         {
@@ -58,12 +62,15 @@ public class Turret : MonoBehaviour
                     GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
                     if (gunk != null)
                     {
-                        gunk.transform.position = turret.transform.position;
-                        gunk.transform.rotation = turret.transform.rotation;
-
-                    
-                        gunk.SetActive(true);
                         turret.SetTrigger("Play");
+                        gunk.transform.position = turret.transform.position;
+                      //gunk.transform.rotation = turret.transform.rotation;
+
+                         
+
+                        gunk.SetActive(true);
+
+                        StartCoroutine("Delay");
                         StartCoroutine("Cooldown");
                 }
 
@@ -72,13 +79,21 @@ public class Turret : MonoBehaviour
         }
     }
 
-    
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(.12f);
+        GunkController.canMove = true;
+    }
+
     IEnumerator Cooldown()
     {
+
         canShoot = false;
+        
         yield return new WaitForSeconds(cooldown + Random.Range(.50f, 2.0f));
         canShoot = true;
         Debug.Log("can shoot now0");
+        
     }
 
    
