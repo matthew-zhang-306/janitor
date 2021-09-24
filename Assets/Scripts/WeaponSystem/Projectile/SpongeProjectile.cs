@@ -35,6 +35,7 @@ public class SpongeProjectile : BaseProjectile
 
     protected override void OnHitWall(Collider2D _)
     {
+        // if (_.("Hole")) return;
         StartCoroutine(PlayAnim());
     }
 

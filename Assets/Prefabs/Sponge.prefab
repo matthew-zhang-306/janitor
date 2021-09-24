@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9175822337588854522}
   - component: {fileID: 3097103433370163163}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1384728742222905419}
   - component: {fileID: 394762730224228448}
   - component: {fileID: -5897099879881634729}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Sponge
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 3180734299533772242}
   - component: {fileID: 5872815539456856292}
   - component: {fileID: 1258294583182293416}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: WallHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

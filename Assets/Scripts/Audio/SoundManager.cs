@@ -22,8 +22,11 @@ public static class SoundManager {
     {
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        audioSource.PlayOneShot(GetAudioClip(sound), SEvolume);
+        var ac = GetAudioClip(sound);
+        audioSource.PlayOneShot(ac, SEvolume);
+        Object.Destroy(soundGameObject, ac.length);
     }
+
 
     private static AudioClip GetAudioClip(Sound sound)
     {
@@ -37,4 +40,6 @@ public static class SoundManager {
         Debug.LogError("Sound " + sound + " not found!");
         return null;
     }
+
+    
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 591968937238984293}
   - component: {fileID: 2196324454498152014}
   - component: {fileID: 1466322027979652524}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: DustBall
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 6073321911603476415}
   - component: {fileID: 5113162444491218867}
   - component: {fileID: 1658981964577648386}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: WallCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

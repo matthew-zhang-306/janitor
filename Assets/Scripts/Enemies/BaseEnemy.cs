@@ -91,7 +91,11 @@ public class BaseEnemy : MonoBehaviour
         int hitAmount = 1;
         var damage = other.GetComponent<Damage>();
         if (damage != null) {
+            
             hitAmount = damage.damage;
+        }
+        else {
+            Debug.LogError (other.gameObject.name + " is doing damage for some reason!");
         }
         health.ChangeHealth(-hitAmount);
 

@@ -31,8 +31,20 @@ public class RoomSpawnerAddon : MonoBehaviour
         var tm = generatedFloor.AddComponent<Tilemap>();
         tm.tileAnchor = new Vector3(0.5f,0.5f,0);
         var tmr = generatedFloor.AddComponent<TilemapRenderer>();
+        tmr.sortingLayerName = "Floor";
         tmr.sortingOrder = 3;
         overlay = tm;
+
+        if (tileToFlicker == null) 
+        {
+            Debug.LogWarning ("Flicker tile for " + rm.gameObject.name + " is null! replacing with solid red");
+            Texture2D red = new Texture2D (1, 1, TextureFormat.RGBA32, 1, true);
+            red.SetPixel(0,0, Color.red);
+            red.Apply(true);
+
+            tileToFlicker = ScriptableObject.CreateInstance<Tile>();                
+            tileToFlicker.sprite = Sprite.Create(red, new Rect(0,0,1,1), Vector2.one / 2f, 1);
+        }
     }
 
     void FixedUpdate ()

@@ -33,6 +33,8 @@ public class FloorController : MonoBehaviour
 
     private static int sideLength;
 
+    public HoleDecorator holeDeco;
+
     private Vector3Int _min;
     public Vector3Int Min
     {
@@ -129,10 +131,23 @@ public class FloorController : MonoBehaviour
                 var cell = new Vector3Int(x, y, 0);
 
                 // check if this is an open space
-                if (Physics2D.OverlapPoint(tm.GetCellCenterWorld(cell), LayerMask.GetMask("Wall")) == null) {
+                var overlap = Physics2D.OverlapPoint(tm.GetCellCenterWorld(cell), LayerMask.GetMask("Wall", "Hole"));
+                if (overlap == null) {
                     tm.SetTile(cell, tiles[maxTileHealth][GetCoords(x,y)]);
                     totalFloorHealth += maxTileHealth;
                 }
+                else if (overlap.gameObject?.layer == LayerMask.NameToLayer("Hole")) {
+                    //communicate with hole deco
+                    holeDeco?.AddHole(cell);
+                }
+                
+            }
+        }
+        var set = holeDeco?.Apply();
+        if (set != null) 
+        {
+            foreach (var cell in set) {
+                tm.SetTile(cell, tiles[maxTileHealth - 1][GetCoords(cell.x,cell.y)]);
             }
         }
 
@@ -246,14 +261,19 @@ public class FloorController : MonoBehaviour
             for (int y = -2; y <= 2; y++) {
                 var loc = new Vector3Int (cell.x + x, cell.y + y, 0);
                 var tile = tm.GetTile<DirtyTile>(loc);
-                if (tile != null) {
-                    total += tile.GetDirty();
+
+
+                //Penalty if not a tile. (moves away from walls and big geometry)
+                total += tile?.GetDirty() ?? -1;
+
+                // if (tile != null) {
+                //     total += tile.GetDirty();
                     
-                }
-                else {
-                    //penalty for being a non tile
-                    total -= 1;
-                }
+                // }
+                // else {
+                //     //penalty for being a non tile
+                //     total -= 1;
+                // }
             }
         }
 

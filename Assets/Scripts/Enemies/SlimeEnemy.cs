@@ -88,7 +88,7 @@ public class SlimeEnemy : BaseEnemy
             float moveAngle = Vector2.SignedAngle(Vector2.right, navigator.GetMoveDirection());
             int moveDir = Mathf.RoundToInt(moveAngle / 90f).Mod(4);
             string moveString = new string[] { "Right", "Up", "Left", "Down" }[moveDir];
-            Debug.Log("selecting animation " + navigator.GetMoveDirection());
+            // Debug.Log("selecting animation " + navigator.GetMoveDirection());
 
             // i have no idea what the "0f" parameter in this does. all i know is that it doesn't work without it
             animator.Play("SlimeMove" + moveString, -1, 0f);
