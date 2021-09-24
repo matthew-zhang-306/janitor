@@ -74,12 +74,12 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
 
         if (hitbox.IsColliding && invincibilityTimer == 0) {
-            int hitAmount = 1;
             var damage = hitbox.OtherCollider.GetComponent<Damage>();
-            if (damage != null) {
-                hitAmount = damage.damage;
+            if (damage == null) {
+                Debug.LogError("Why in hitbox if damage be 0 or null (in player controller)");
             }
-            
+            int hitAmount = damage?.damage ?? 0;            
+
             health.ChangeHealth(-hitAmount);
             if (health.GetHealth() <= 0) {
                 PlayerDead = true;
@@ -125,7 +125,11 @@ public class PlayerController : MonoBehaviour
         rb2d.velocity = velocity;
         
         bool isDash = Input.GetButton("Jump");
-        if (isDash && dashTimer <= 0f) {            
+        if (isDash && dashTimer <= 0f) {       
+            var col = Physics2D.OverlapPoint(transform.position + (moveInput * dashSpeedBonus * dashTime).ToVector3(), LayerMask.GetMask("Hole"));     
+            if (col != null) {
+                return;
+            }
             DisableEnemyCollision();
 
             rb2d.AddForce(moveInput * dashSpeedBonus, ForceMode2D.Impulse);
@@ -138,10 +142,12 @@ public class PlayerController : MonoBehaviour
 
     private void DisableEnemyCollision ()
     {
+        Physics2D.IgnoreLayerCollision(8, 14, true);
         Physics2D.IgnoreLayerCollision(8, 10, true);
     }
     private void EnableEnemyCollision ()
     {   
+        Physics2D.IgnoreLayerCollision(8, 14, false);
         Physics2D.IgnoreLayerCollision(8, 10, false);
     }
 

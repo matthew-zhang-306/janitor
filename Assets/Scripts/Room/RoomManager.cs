@@ -69,6 +69,7 @@ public class RoomManager : MonoBehaviour
 
         foreach (Transform enemyTransform in enemiesContainer) {
             var ec = enemyTransform.GetComponent<BaseEnemy>();
+            
             if (ec != null) {
                 ec.player = player;
             }
