@@ -7,13 +7,13 @@
         [
             {
                 "xcoord": 10,
-                "ycoord": -5,
+                "ycoord": 15,
                 "enemy": "Rat",
                 "delay": 0
             },
             {
-                "xcoord": -10,
-                "ycoord": 5,
+                "xcoord": -5,
+                "ycoord": 10,
                 "enemy": "Rat",
                 "delay": 0
             }
@@ -37,7 +37,7 @@
             },
             {
                 "xcoord": -15,
-                "ycoord": 5,
+                "ycoord": 15,
                 "enemy": "Rat",
                 "delay": 0
             }

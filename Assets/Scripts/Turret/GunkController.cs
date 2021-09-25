@@ -41,6 +41,11 @@ public class GunkController : MonoBehaviour
             canMove = false;
             this.gameObject.SetActive(false);
         }
+        if (other.tag == "Enemy")
+        {
+            canMove = false;
+            this.gameObject.SetActive(false);
+        }
     }
 
     
