@@ -1,0 +1,79 @@
+{
+    "waves":
+    [
+      {
+        "thresh": 0.2,
+        "spawns":
+        [
+            {
+                "xcoord": 10,
+                "ycoord": -5,
+                "enemy": "Rat",
+                "delay": 0
+            },
+            {
+                "xcoord": -10,
+                "ycoord": 5,
+                "enemy": "Rat",
+                "delay": 0
+            }
+        ]
+      },
+      {
+        "thresh": 0.5,
+        "spawns":
+        [
+	    {
+                "xcoord": -3,
+                "ycoord": -3,
+                "enemy": "Slime",
+                "delay": 0
+            },
+            {
+                "xcoord": -15,
+                "ycoord": -10,
+                "enemy": "Rat",
+                "delay": 3
+            },
+            {
+                "xcoord": -15,
+                "ycoord": 5,
+                "enemy": "Rat",
+                "delay": 0
+            }
+            
+        ]
+      },
+      {
+          "thresh": 0.75,
+          "spawns":
+          [
+            {
+                "xcoord": 4,
+                "ycoord": 2,
+                "enemy": "Rat",
+                "delay": 0
+            },
+            {
+                "xcoord": 3,
+                "ycoord": 5,
+                "enemy": "Rat",
+                "delay": 0.1
+            },
+            {
+                "xcoord": 3,
+                "ycoord": 5,
+                "enemy": "Rat",
+                "delay": 0.1
+            },
+	    {
+                "xcoord": 10,
+                "ycoord": -5,
+                "enemy": "Rat",
+                "delay": 0.1
+            }
+          ]
+      }
+      
+    ]
+}
