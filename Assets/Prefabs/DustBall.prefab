@@ -357,3 +357,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTags:
   - Wall
+  - PlayerProjectile

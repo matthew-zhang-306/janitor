@@ -2,21 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class QuadTurretFiring : MonoBehaviour
 {
-
     public GameObject gunk;
-    public Vector2 velocity;
+    [SerializeField] private GameObject turretFiring;
 
     public bool canShoot = true;
-    public Vector2 Offset = new Vector2(0.4f, 0.1f);
+    public Vector2 Offset = new Vector2(0, 0);
 
     public float cooldown = 1f;
 
     private bool PlayerRadius;
-
-    //private Animation turret_shoots;
-    private Animator turret;
 
     private GunkController gunkcontroller;
 
@@ -29,9 +25,9 @@ public class Turret : MonoBehaviour
     void Start()
     {
         gunkPooler = GunkBulletPooler.Instance;
-        turret = gameObject.GetComponent<Animator>();
-        
-         
+       // turret = gameObject.GetComponent<Animator>();
+
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,7 +35,7 @@ public class Turret : MonoBehaviour
         {
             PlayerInRange = true;
         }
-        
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -51,30 +47,30 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(shootNow);
+        
 
         if (!PauseMenu.GamePaused)
         {
-            
-                if (PlayerInRange == true && canShoot == true)
-                {
-                    
-                    GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
+
+            if (PlayerInRange == true)
+            {
+
+                GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
                 if (gunk != null)
                 {
-                   
-                    turret.SetTrigger("Play");
-                    gunk.transform.position = turret.transform.position;
-                    gunk.transform.rotation = turret.transform.rotation;
+                    //turret.SetTrigger("Play");
+                    gunk.transform.position = turretFiring.transform.position;
+                    gunk.transform.rotation = turretFiring.transform.rotation;
 
                     gunk.SetActive(true);
 
                     StartCoroutine("Delay");
                     StartCoroutine("Cooldown");
                 }
-                } 
+            }
         }
     }
+    
 
     IEnumerator Delay()
     {
@@ -86,11 +82,10 @@ public class Turret : MonoBehaviour
     {
 
         canShoot = false;
-        
+
         yield return new WaitForSeconds(cooldown + Random.Range(.50f, 2.0f));
         canShoot = true;
         //Debug.Log("can shoot now0");
-        
-    }
 
+    }
 }

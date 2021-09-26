@@ -65,6 +65,7 @@ public class RoomManager : MonoBehaviour
         // make new room
         foreach (Transform doorTransform in doorsContainer) {
             doorTransform.gameObject.SetActive(false);
+            
         }
 
         foreach (Transform enemyTransform in enemiesContainer) {
