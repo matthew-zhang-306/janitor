@@ -16,7 +16,7 @@ public class GunkController : MonoBehaviour
     {
 
         //gunk.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
-        canMove = true;
+     //   canMove = true;
         
     }
 
@@ -42,17 +42,17 @@ public class GunkController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            canMove = false;
-            this.gameObject.SetActive(false);
+        //    canMove = false;
+            //this.gameObject.SetActive(false);
         }
         if (other.tag == "Wall")
         {
-            canMove = false;
+          //  canMove = false;
             this.gameObject.SetActive(false);
         }
         if (other.tag == "Enemy")
         {
-            canMove = false;
+          //  canMove = false;
             this.gameObject.SetActive(false);
         }
     }
