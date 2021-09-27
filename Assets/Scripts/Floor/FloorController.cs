@@ -25,7 +25,7 @@ public class FloorController : MonoBehaviour
     private static DirtyTile[][] tiles = null;
     private static Sprite[][] sprites = null;
     // public int maxTileHealth => tiles.Length - 1;
-    public int maxTileHealth = 1;
+    public int maxTileHealth = 3;
     private Dictionary<Collider2D, FloorMarkerData> floorMarkers;
 
     private int currentFloorHealth;
@@ -120,12 +120,12 @@ public class FloorController : MonoBehaviour
 
     }
 
-    public void InitializeFloor(Bounds levelBounds) {
+    public void InitializeFloor(BoxCollider2D levelBounds) {
         tm = this.GetComponent<Tilemap>();
         tm.ClearAllTiles();
 
-        _min = tm.WorldToCell(levelBounds.min);
-        _max = tm.WorldToCell(levelBounds.max);
+        _min = tm.WorldToCell(levelBounds.bounds.min);
+        _max = tm.WorldToCell(levelBounds.bounds.max);
         for (int x = _min.x; x <= _max.x; x++) {
             for (int y = _min.y; y <= _max.y; y++) {
                 var cell = new Vector3Int(x, y, 0);
@@ -154,7 +154,7 @@ public class FloorController : MonoBehaviour
         currentFloorHealth = totalFloorHealth;
         var col = GetComponent<BoxCollider2D>();
         col.size = levelBounds.size;
-        // col.offset = levelBounds.center;
+        col.offset = levelBounds.offset;
 
     }
 
@@ -282,6 +282,71 @@ public class FloorController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void SetFloor (FloorData fd) 
+    {
+        var min = fd.min;
+        var max = fd.max;
+
+        int itr = 0;
+        int flip = 0;
+        totalFloorHealth = 0;
+        currentFloorHealth = 0;
+        
+        for (int x = min.x; x <= max.x; x++) {
+            for (int y = min.y; y <= max.y; y++) {
+                var cell = new Vector3Int(x, y, 0);
+                int b = (byte) ((fd.data[itr] << (1 - flip) * 4) >> 4);
+                if (b == 15) {
+                    //is null
+                    continue;
+                }
+                if (b > maxTileHealth) {
+                    Debug.LogError ("INVALID FLOOR DATA");
+                }
+                tm.SetTile(cell, tiles[b][GetCoords(x,y)]);
+                totalFloorHealth += maxTileHealth;
+                currentFloorHealth += b;
+            }
+        }
+    }
+
+    [System.Serializable]
+    public class FloorData
+    {
+        public Vector3Int min {get; private set;}
+        public Vector3Int max {get; private set;}
+
+        public byte[] data {get; private set;}
+
+        public FloorData (Tilemap tm) 
+        {
+            var bounds = tm.cellBounds;
+            min = bounds.min;
+            max = bounds.max;
+            int size = bounds.size.x * bounds.size.y;
+            //Each byte will encode 2 tile values
+            data = new byte[size % 2 == 0 ? size / 2 : size / 2 + 1];
+
+            int itr = 0;
+            int flip = 0;
+            for (int x = min.x; x <= max.x; x++) {
+                for (int y = min.y; y <= max.y; y++) {
+                    var cell = new Vector3Int(x, y, 0);
+                    var dt = tm.GetTile<DirtyTile> (cell);
+
+                    //convert to half a byte. null becomes 1111
+                    byte b = (byte) (dt?.GetDirty() ?? -1 << (flip * 4));
+                    data[itr] += b;
+
+                    if (flip == 1) {
+                        itr++;
+                    }
+                    flip = 1 - flip;
+                }
+            }
+        }
     }
 }
 

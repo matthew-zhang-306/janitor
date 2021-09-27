@@ -25,6 +25,10 @@ public class RoomWaveAddon : MonoBehaviour
         enemyTypes = enemyTypesSO.GetEnemyTypes();
 
         StartCoroutine (WaitForRoom ());
+        roomManager.onRoomClear += () => {
+            StopAllCoroutines();
+            StartCoroutine (WaitForRoom ());
+        };
     }
 
     public IEnumerator WaitForRoom ()
@@ -37,6 +41,7 @@ public class RoomWaveAddon : MonoBehaviour
                 StartCoroutine(SetWaveSpawn(waveSpawn, wave.thresh, tm));
             }
         }
+        
     }
 
     public IEnumerator SetWaveSpawn (WaveSpawn waveSpawn, float thresh, Tilemap tm)

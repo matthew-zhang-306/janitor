@@ -68,7 +68,7 @@ public class PathNavigator : MonoBehaviour
         }
         else {
             if (pathfinding == null) {
-                Debug.LogError("wtf");
+                Debug.LogError("wtf" + dest.x + " " + dest.y + ", " + transform.position);
             }
             // ask for a new path
             currentRequest = pathfinding.RequestPath(transform.position, dest, unitSize, fullCallback);
