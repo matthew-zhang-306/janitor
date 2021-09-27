@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 
+public delegate void RoomClear ();
 public class RoomManager : MonoBehaviour
 {
     [Header("Specify the boundary where the room camera will live. (White)")]
@@ -22,6 +23,11 @@ public class RoomManager : MonoBehaviour
     {
         get => roomActive;
     }
+
+    private List<RoomComponentCopy> childrenCopy;
+    private GameObject enemiesCopy;
+    private FloorController.FloorData floorCopy;
+
     public GameObject room;
     public Transform doorsContainer;
     public Transform enemiesContainer;
@@ -33,6 +39,7 @@ public class RoomManager : MonoBehaviour
         get => enemyCount;
     }
     private UnityEvent allEnemiesDefeatedEvent;
+    public RoomClear onRoomClear;
 
     public FloorController dirtyTiles;
     public Pathfinding pathfinding;
@@ -53,6 +60,16 @@ public class RoomManager : MonoBehaviour
 
         roomTriggerHitbox = roomTriggerBounds.GetComponent<Hitbox>();
 
+
+        childrenCopy = new List<RoomComponentCopy>();
+        foreach (Transform child in this.transform) {
+            var rcc = child.GetComponent<RoomComponentCopy>();
+            if (rcc != null) {
+                childrenCopy.Add (rcc);
+            }
+            
+        }
+
         // Eventually the plan will be to reuse Grid instances when entering rooms
         // Each level will not store either own dirtyTiles
         // tiles = levelGrid.gameObject.transform.GetChild(0).GetComponent<FloorTilePopulator>();
@@ -70,13 +87,13 @@ public class RoomManager : MonoBehaviour
 
         foreach (Transform enemyTransform in enemiesContainer) {
             var ec = enemyTransform.GetComponent<BaseEnemy>();
-            
+
             if (ec != null) {
                 ec.player = player;
             }
         }
 
-        dirtyTiles.InitializeFloor(roomFloorBounds.bounds);
+        dirtyTiles.InitializeFloor(roomFloorBounds);
         pathfinding.InitializePathfinding();
 
         roomUI.enabled = false;
@@ -97,7 +114,10 @@ public class RoomManager : MonoBehaviour
                 Debug.Log ("init enemy");
 
                 ec.navigator.pathfinding = pathfinding;
-
+            }
+            else 
+            {
+                Debug.LogWarning ("No nav" + enemy.name);
             }
             
             ec.DeathEvent.AddListener(DecreaseEnemyCount);
@@ -106,21 +126,36 @@ public class RoomManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!roomActive && roomTriggerHitbox.IsColliding) {
+        if (!roomActive && roomTriggerHitbox.IsColliding && roomTriggerHitbox.enabled) {
+            Debug.Log ("hi there I will now start the room");
             OnEnterRoom(roomTriggerHitbox.OtherCollider.GetComponent<PlayerController>());
             roomTriggerHitbox.enabled = false;
+            
         }
         
         if (roomActive && enemyCount == 0 && dirtyTiles.GetCleanPercent() >= roomClearThreshold) {
-            OnClearRoom();
+            Debug.Log ("room finished");
+            OnClearRoom(true);
             roomActive = false;
         }
 
     }
     
     private void OnEnterRoom(PlayerController player) {
+        player.onDeath += ResetRoom;
+        //Copy room for restart
+        //should NOT include initial enemies due to binds and such
+        foreach (RoomComponentCopy child in childrenCopy)
+        {
+            child?.CreateCopy();
+        }
+        floorCopy = dirtyTiles.SaveFloor();
+
         roomActive = true;
         room.SetActive(true);
+
+        enemiesCopy = Instantiate (enemiesContainer.gameObject, enemiesContainer.parent);
+        enemiesCopy.SetActive(false);
 
         foreach (Transform enemyTransform in enemiesContainer) {
             InitEnemy (enemyTransform);
@@ -134,7 +169,23 @@ public class RoomManager : MonoBehaviour
         vcam.Priority = 20;
     }
 
-    private void OnClearRoom() {
+    private void ResetRoom () {
+        Debug.Log ("reseting room!");
+        for (int i = 0; i < childrenCopy.Count; i++) {
+            childrenCopy[i] = childrenCopy[i]?.Replace();
+        }
+        OnClearRoom(false);
+
+        dirtyTiles.SetFloor (floorCopy);
+
+        Destroy (enemiesContainer.gameObject);
+        enemiesContainer = enemiesCopy.transform;
+        enemiesContainer.gameObject.SetActive(true);
+        roomTriggerHitbox.enabled = true;
+    }
+
+    private void OnClearRoom(bool save) {
+        player.onDeath -= ResetRoom;
         roomActive = false;
 
         foreach (Transform doorTransform in doorsContainer) {
@@ -143,7 +194,11 @@ public class RoomManager : MonoBehaviour
 
         roomUI.enabled = false;
         vcam.Priority = 0;
+        enemyCount = 0;
+        
+        onRoomClear();
 
+        if (save) player.SnapShot();
         //Cancel enemy spawn here
     }
 

@@ -409,6 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 3
   maxSpeed: 10
+  weapon: {fileID: 1177657899262820913}
   cameraPos: {fileID: 1177657900237155362}
   spriteRenderer: {fileID: 1177657899049150887}
   dashTime: 0.1
