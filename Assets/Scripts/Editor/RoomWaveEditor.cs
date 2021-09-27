@@ -65,8 +65,10 @@ public class RoomWaveEditor : Editor
             }
 
             Handles.color = enemy.color;
+            GUI.color = enemy.color;
             Handles.DrawWireDisc(position, Vector3.forward, 1f);
             Handles.Label(position, label);
+            waveSpawn.SetPosition(Handles.PositionHandle(position, Quaternion.identity), tm);
         }
         
     }
