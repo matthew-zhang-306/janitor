@@ -18,11 +18,10 @@ public class RoomWaveEditor : Editor
     RoomWaveAddon waveAddon;
     SerializedObject so;
     SerializedProperty propWaves;
-    Dictionary<string, EnemyType> enemyTypes;
-    Tilemap tm;
 
     // fields
     int waveNum;
+    int enemyNum;
     TextAsset jsonFile;
     string jsonFileName;
 
@@ -32,36 +31,53 @@ public class RoomWaveEditor : Editor
         so = new SerializedObject(waveAddon);
         propWaves = so.FindProperty("waves");
 
-        tm = waveAddon.roomManager?.dirtyTiles?.GetComponent<Tilemap>();
-        enemyTypes = waveAddon.enemyTypesSO?.GetEnemyTypes();
+        waveNum = 0;
+        enemyNum = 0;
     }
 
     private void OnSceneGUI() {
+        var tm = waveAddon.roomManager?.dirtyTiles?.GetComponent<Tilemap>();
+        var enemyTypes = waveAddon.enemyTypesSO?.GetEnemyTypes();
+
         if (propWaves.arraySize == 0 ||
             enemyTypes == null || tm == null)
             return;
 
+        Event e = Event.current;
         so.Update();
 
-        // check for left/right inputs
-        Event e = Event.current;
-        if (e.type == EventType.KeyDown && e.keyCode == KeyCode.V) {
+        // wave selection
+        if (e.type == EventType.KeyDown && e.keyCode == KeyCode.RightArrow) {
             waveNum += 1;
+            enemyNum = 0;
         }
-        else if (e.type == EventType.KeyDown && e.keyCode == KeyCode.C) {
+        else if (e.type == EventType.KeyDown && e.keyCode == KeyCode.LeftArrow) {
             waveNum -= 1;
+            enemyNum = 0;
         }
-        waveNum = Mathf.Clamp(waveNum, 0, propWaves.arraySize - 1);
+        waveNum = Mathf.Clamp(waveNum, 0, Mathf.Max(propWaves.arraySize - 1, 0));
+
+        // fetch serializedproperties
+        var propWave = propWaves.GetArrayElementAtIndex(waveNum);
+        var propSpawns = propWave.FindPropertyRelative("spawns");
+
+        // enemy selection
+        if (e.type == EventType.KeyDown && e.keyCode == KeyCode.DownArrow) {
+            enemyNum += 1;
+        }
+        else if (e.type == EventType.KeyDown && e.keyCode == KeyCode.UpArrow) {
+            enemyNum -= 1;
+        }
+        enemyNum = Mathf.Clamp(enemyNum, 0, Mathf.Max(propSpawns.arraySize - 1, 0));
 
         // draw currently selected wave
-        var propWave = propWaves.GetArrayElementAtIndex(waveNum);
         GUI.color = Color.white;
         Handles.Label(waveAddon.transform.position, "Wave " + (waveNum + 1));
         Debug.Log(propWave.FindPropertyRelative("thresh").floatValue);
 
-        var propSpawns = propWave.FindPropertyRelative("spawns");
-        for (var i = 0; i < propSpawns.arraySize; i++) {
-            var propSpawn = propSpawns.GetArrayElementAtIndex(i);
+        // draw wave spawns        
+        for (var s = 0; s < propSpawns.arraySize; s++) {
+            var propSpawn = propSpawns.GetArrayElementAtIndex(s);
             var propXCoord = propSpawn.FindPropertyRelative("xcoord");
             var propYCoord = propSpawn.FindPropertyRelative("ycoord");
             var propDelay = propSpawn.FindPropertyRelative("delay");
@@ -81,14 +97,17 @@ public class RoomWaveEditor : Editor
 
             Handles.color = enemy.color;
             GUI.color = enemy.color;
-            Handles.DrawWireDisc(position, Vector3.forward, 1f);
             Handles.Label(position, label);
             
-            // TODO: i do not know why the position handles snap to the grid even though these methods are interpolating values between adjacent tiles
-            // but it feels good to use so i'll only fix this if we need to
-            var newPosition = Handles.PositionHandle(position, Quaternion.identity);
-            propXCoord.floatValue = WaveSpawn.PositionToX(newPosition, tm);
-            propYCoord.floatValue = WaveSpawn.PositionToY(newPosition, tm);
+            int controlId = GUIUtility.GetControlID(FocusType.Passive);
+            Handles.CircleHandleCap(controlId, position, Quaternion.identity, 0.5f, EventType.Repaint);
+            if (enemyNum == s) {
+                // TODO: i do not know why the position handles snap to the grid even though these methods are interpolating values between adjacent tiles
+                // but it feels good to use so i'll only fix this if we need to
+                var newPosition = Handles.PositionHandle(position, Quaternion.identity);
+                propXCoord.floatValue = WaveSpawn.PositionToX(newPosition, tm);
+                propYCoord.floatValue = WaveSpawn.PositionToY(newPosition, tm);
+            }
         }
         
         so.ApplyModifiedProperties();
@@ -98,12 +117,91 @@ public class RoomWaveEditor : Editor
     {
         so.Update();
 
-        if (propWaves.arraySize > 1) {
-            EditorGUILayout.LabelField("(You can also change the wave number with C and V)");
-            waveNum = EditorGUILayout.IntSlider("Wave #: ", waveNum + 1, 1, propWaves.arraySize) - 1;
+        // enemy types scriptable object
+        EditorGUILayout.LabelField("Modify this object to define new enemy types: ");
+        EditorGUILayout.PropertyField(so.FindProperty("enemyTypesSO"));
+        EditorGUILayout.Space(20);
+
+        // a high-level printout, to see at a glance how much is in the room
+        EditorGUILayout.LabelField("OVERVIEW", EditorStyles.boldLabel);
+        if (propWaves.arraySize > 0) {
+            for (int w = 0; w < propWaves.arraySize; w++) {
+                var propSpawns = propWaves.GetArrayElementAtIndex(w).FindPropertyRelative("spawns");
+                EditorGUILayout.LabelField("Wave " + (w + 1) + ": " + propSpawns.arraySize + " enemies.");
+            }
+        }
+        else {
+            EditorGUILayout.LabelField("No waves.");
         }
         EditorGUILayout.Space(20);
 
+        // editors
+        EditorGUILayout.LabelField("EDIT WAVE", EditorStyles.boldLabel);
+        if (GUILayout.Button("Add New Wave")) {
+            // ADD WAVE
+            if (propWaves.arraySize > 0)
+                waveNum += 1;
+            propWaves.InsertArrayElementAtIndex(waveNum);
+        }
+        if (propWaves.arraySize > 0) {
+            // WAVE SELECTION
+            EditorGUILayout.LabelField("(You can also change the wave number with LEFT and RIGHT)");
+            waveNum = EditorGUILayout.IntSlider("Wave #: ", waveNum + 1, 1, propWaves.arraySize) - 1;
+            EditorGUILayout.Space(20);
+            
+            // WAVE EDITOR
+            var propWave = propWaves.GetArrayElementAtIndex(waveNum);
+            EditorGUILayout.LabelField("Wave " + (waveNum + 1) + "/" + propWaves.arraySize + ":");
+            EditorGUILayout.PropertyField(propWave.FindPropertyRelative("thresh"));
+            if (GUILayout.Button("Delete Wave")) {
+                // DELETE WAVE
+                propWaves.DeleteArrayElementAtIndex(waveNum);
+                if (waveNum > 0 && waveNum == propWaves.arraySize)
+                    waveNum -= 1;
+            }
+            EditorGUILayout.Space(20);
+
+            var propSpawns = propWaves.GetArrayElementAtIndex(waveNum).FindPropertyRelative("spawns");
+            EditorGUILayout.LabelField("EDIT ENEMY", EditorStyles.boldLabel);
+            if (GUILayout.Button("Add New Enemy")) {
+                // ADD ENEMY
+                if (propSpawns.arraySize > 0)
+                    enemyNum += 1;
+                propSpawns.InsertArrayElementAtIndex(enemyNum);
+            }
+            if (propSpawns.arraySize > 0) {
+                // ENEMY SELECTION
+                EditorGUILayout.LabelField("(You can also change the enemy number with UP and DOWN)");
+                enemyNum = EditorGUILayout.IntSlider("Enemy #: ", enemyNum + 1, 1, propSpawns.arraySize) - 1;
+                EditorGUILayout.Space(20);
+
+                // ENEMY EDITOR
+                var propSpawn = propSpawns.GetArrayElementAtIndex(enemyNum);
+                EditorGUILayout.LabelField("Enemy " + (enemyNum + 1) + "/" + propSpawns.arraySize + ":");
+                EditorGUILayout.PropertyField(propSpawn.FindPropertyRelative("enemy"));
+                EditorGUILayout.PropertyField(propSpawn.FindPropertyRelative("delay"));
+                EditorGUILayout.PropertyField(propSpawn.FindPropertyRelative("xcoord"));
+                EditorGUILayout.PropertyField(propSpawn.FindPropertyRelative("ycoord"));
+                if (GUILayout.Button("Remove Enemy")) {
+                    // REMOVE ENEMY
+                    propSpawns.DeleteArrayElementAtIndex(enemyNum);
+                    if (enemyNum > 0 && enemyNum == propSpawns.arraySize)
+                        enemyNum -= 1;
+                }
+                EditorGUILayout.Space(20);
+            }
+            else {
+                EditorGUILayout.LabelField("No enemies to select.");
+                EditorGUILayout.Space(20);
+            }
+        }
+        else {
+            EditorGUILayout.LabelField("No waves to select.");
+            EditorGUILayout.Space(20);
+        }
+
+        // load/save json file
+        EditorGUILayout.LabelField("JSON", EditorStyles.boldLabel);
         jsonFile = EditorGUILayout.ObjectField("Json: ", jsonFile, typeof(TextAsset), false) as TextAsset;
         if (GUILayout.Button("Load waves from JSON file")) {
             LoadJSON();
@@ -114,7 +212,6 @@ public class RoomWaveEditor : Editor
         }
         EditorGUILayout.Space(20);
     
-        base.OnInspectorGUI();
         so.ApplyModifiedProperties();
     }
 
