@@ -134,6 +134,7 @@ public class RoomManager : MonoBehaviour
         }
         
         if (roomActive && enemyCount == 0 && dirtyTiles.GetCleanPercent() >= roomClearThreshold) {
+            Debug.Log ("room finished");
             OnClearRoom(true);
             roomActive = false;
         }
@@ -193,7 +194,8 @@ public class RoomManager : MonoBehaviour
 
         roomUI.enabled = false;
         vcam.Priority = 0;
-
+        enemyCount = 0;
+        
         onRoomClear();
 
         if (save) player.SnapShot();
