@@ -80,13 +80,27 @@ public class RoomWaveAddon : MonoBehaviour
     [System.Serializable]
     public class WaveSpawn
     {
-        public int xcoord;
-        public int ycoord;
+        public float xcoord;
+        public float ycoord;
         public string enemy;
         public float delay;
 
         public Vector3 GetPosition(Tilemap tm) {
-            return tm.CellToWorld (new Vector3Int (xcoord, ycoord, 0 ));
+            // lerp between floored and ceiled tile positions
+            var lo = tm.GetCellCenterWorld(new Vector3Int(Mathf.FloorToInt(xcoord), Mathf.FloorToInt(ycoord), 0));
+            var hi = tm.GetCellCenterWorld(new Vector3Int(Mathf.CeilToInt(xcoord), Mathf.CeilToInt(ycoord), 0));
+            return new Vector3(Mathf.Lerp(lo.x, hi.x, xcoord.Mod(1)), Mathf.Lerp(lo.y, hi.y, ycoord.Mod(1)));
+        }
+
+        public void SetPosition(Vector3 worldPos, Tilemap tm) {
+            var cell = tm.WorldToCell(worldPos);
+            var cellWorld = tm.GetCellCenterWorld(cell);
+
+            // get the cell size in the hackiest way possible
+            var cellSize = tm.GetCellCenterWorld(new Vector3Int(cell.x + 1, cell.y + 1, 0)) - cellWorld;
+
+            xcoord = (float)cell.x + (worldPos.x - cellWorld.x) % cellSize.x;
+            ycoord = (float)cell.y + (worldPos.y - cellWorld.y) % cellSize.y;
         }
     }
 }
