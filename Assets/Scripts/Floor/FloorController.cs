@@ -284,6 +284,11 @@ public class FloorController : MonoBehaviour
         return false;
     }
 
+    public FloorData SaveFloor ()
+    {
+        return new FloorData (tm);
+    }
+
     public void SetFloor (FloorData fd) 
     {
         var min = fd.min;
@@ -293,21 +298,23 @@ public class FloorController : MonoBehaviour
         int flip = 0;
         totalFloorHealth = 0;
         currentFloorHealth = 0;
-        
-        for (int x = min.x; x <= max.x; x++) {
-            for (int y = min.y; y <= max.y; y++) {
+
+        for (int x = min.x; x < max.x; x++) {
+            for (int y = min.y; y < max.y; y++) {
                 var cell = new Vector3Int(x, y, 0);
-                int b = (byte) ((fd.data[itr] << (1 - flip) * 4) >> 4);
-                if (b == 15) {
-                    //is null
-                    continue;
+                int b = (byte) ((byte) (fd.data[itr] << (1 - flip) * 4) >> 4);
+                if (b != 15) {
+                    if (b > maxTileHealth) {
+                        Debug.Log (fd.data[itr] + " " + b);
+                        Debug.LogError ("INVALID FLOOR DATA");
+                    }
+                    tm.SetTile(cell, tiles[b][GetCoords(x,y)]);
+                    totalFloorHealth += maxTileHealth;
+                    currentFloorHealth += b;
                 }
-                if (b > maxTileHealth) {
-                    Debug.LogError ("INVALID FLOOR DATA");
-                }
-                tm.SetTile(cell, tiles[b][GetCoords(x,y)]);
-                totalFloorHealth += maxTileHealth;
-                currentFloorHealth += b;
+                if (flip == 1) itr++;
+                flip = 1 - flip;
+                
             }
         }
     }
@@ -326,18 +333,20 @@ public class FloorController : MonoBehaviour
             min = bounds.min;
             max = bounds.max;
             int size = bounds.size.x * bounds.size.y;
+            
             //Each byte will encode 2 tile values
             data = new byte[size % 2 == 0 ? size / 2 : size / 2 + 1];
-
+            // data = new byte[size];
             int itr = 0;
             int flip = 0;
-            for (int x = min.x; x <= max.x; x++) {
-                for (int y = min.y; y <= max.y; y++) {
+            for (int x = min.x; x < max.x; x++) {
+                for (int y = min.y; y < max.y; y++) {
                     var cell = new Vector3Int(x, y, 0);
                     var dt = tm.GetTile<DirtyTile> (cell);
 
                     //convert to half a byte. null becomes 1111
-                    byte b = (byte) (dt?.GetDirty() ?? -1 << (flip * 4));
+                    byte b = (byte) ((dt?.GetDirty() ?? 15) << (flip * 4));
+
                     data[itr] += b;
 
                     if (flip == 1) {
@@ -346,6 +355,7 @@ public class FloorController : MonoBehaviour
                     flip = 1 - flip;
                 }
             }
+
         }
     }
 }

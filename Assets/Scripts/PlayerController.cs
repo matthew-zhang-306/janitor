@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
     public void ResetFromPrevious ()
     {
-        Debug.Log("hi there");
+        Debug.Log("Applyling snapshot");
         previousPss?.Apply(this);
     }
 

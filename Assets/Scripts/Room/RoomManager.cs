@@ -26,6 +26,7 @@ public class RoomManager : MonoBehaviour
 
     private List<RoomComponentCopy> childrenCopy;
     private GameObject enemiesCopy;
+    private FloorController.FloorData floorCopy;
 
     public GameObject room;
     public Transform doorsContainer;
@@ -125,9 +126,11 @@ public class RoomManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!roomActive && roomTriggerHitbox.IsColliding) {
+        if (!roomActive && roomTriggerHitbox.IsColliding && roomTriggerHitbox.enabled) {
+            Debug.Log ("hi there I will now start the room");
             OnEnterRoom(roomTriggerHitbox.OtherCollider.GetComponent<PlayerController>());
             roomTriggerHitbox.enabled = false;
+            
         }
         
         if (roomActive && enemyCount == 0 && dirtyTiles.GetCleanPercent() >= roomClearThreshold) {
@@ -145,7 +148,7 @@ public class RoomManager : MonoBehaviour
         {
             child?.CreateCopy();
         }
-        
+        floorCopy = dirtyTiles.SaveFloor();
 
         roomActive = true;
         room.SetActive(true);
@@ -171,9 +174,13 @@ public class RoomManager : MonoBehaviour
             childrenCopy[i] = childrenCopy[i]?.Replace();
         }
         OnClearRoom(false);
+
+        dirtyTiles.SetFloor (floorCopy);
+
         Destroy (enemiesContainer.gameObject);
         enemiesContainer = enemiesCopy.transform;
         enemiesContainer.gameObject.SetActive(true);
+        roomTriggerHitbox.enabled = true;
     }
 
     private void OnClearRoom(bool save) {

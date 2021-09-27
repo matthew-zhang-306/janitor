@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour
         pc.onDeath += () => {
             GamePaused = true;
             RestartUI.SetActive(true);
-            Time.timeScale = .1f;
+            Time.timeScale = 0f;
             return;
         };
         eventRestart += pc.ResetFromPrevious;
