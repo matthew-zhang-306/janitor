@@ -87,7 +87,7 @@ public class Turret : MonoBehaviour
 
         canShoot = false;
         
-        yield return new WaitForSeconds(cooldown + Random.Range(.50f, 2.0f));
+        yield return new WaitForSeconds(cooldown + Random.Range(.15f, .4f));
         canShoot = true;
         //Debug.Log("can shoot now0");
         

@@ -6,9 +6,9 @@ public class GunkController : MonoBehaviour
 {
     
     [SerializeField] private GameObject gunk;
-    [SerializeField] Vector2 velocity;
+    //[SerializeField] Vector2 velocity;
     public static bool canMove;
-    private float force = 10f;
+    [SerializeField] private float force = 10f;
     //GunkBulletPooler gunkPooler;
     
     // Start is called before the first frame update
@@ -43,7 +43,7 @@ public class GunkController : MonoBehaviour
         if (other.tag == "Player")
         {
         //    canMove = false;
-            //this.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
         if (other.tag == "Wall")
         {
@@ -53,7 +53,7 @@ public class GunkController : MonoBehaviour
         if (other.tag == "Enemy")
         {
           //  canMove = false;
-            this.gameObject.SetActive(false);
+           // this.gameObject.SetActive(false);
         }
     }
 
