@@ -2,36 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthCollectable : MonoBehaviour
+public class HealthCollectable : Interactable
 {
-    private GameObject Player;
-    private bool TouchedPlayer;
-    private Health health;
-    private int currentHealth;
-    private int maxHealth;
+    public int healthAmount = 10;
     // Start is called before the first frame update
-    void Start()
-    {
-        GameObject Player = GameObject.Find("Player");
-        health = Player.GetComponent<Health>();
-    }
 
-    // Update is called once per frame
-    void Update()
+    public override void DoAction (PlayerController pc)
     {
-        currentHealth = health.GetHealth();
-        maxHealth = health.GetMaxHealth();
-    }
+        var health = pc.GetComponent<Health>();
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player" && (currentHealth<maxHealth))
-        {
-            
-            health.AddHealth();
-            Destroy(this.gameObject);
-        }
+        health?.ChangeHealth (healthAmount);
+        Destroy (gameObject);
     }
-
     
 }
