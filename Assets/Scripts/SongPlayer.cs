@@ -30,15 +30,22 @@ public class SongPlayer : MonoBehaviour
     }
 
     private void Update() {
+        List<Song> delete = new List<Song>();
         foreach (var song in songAudioSources.Keys) {
             AudioSource audioSource = songAudioSources[song];
             if (song.loopEndTime > song.loopStartTime && audioSource.time > song.loopEndTime) {
                 audioSource.time -= song.loopEndTime - song.loopStartTime;
             }
             else if (!audioSource.isPlaying) {
-                songAudioSources.Remove(song);
-                Destroy(audioSource);
+                delete.Add(song);
+                
             }
+        }
+
+        foreach (var song in delete) {
+            AudioSource audio = songAudioSources[song];
+            songAudioSources.Remove(song);
+            Destroy(audio);
         }
     }
 

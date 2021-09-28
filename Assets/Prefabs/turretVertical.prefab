@@ -100,10 +100,9 @@ MonoBehaviour:
   gunk: {fileID: 2386797578861325592, guid: f79772d9b856eac4b8f4260a64a361a9, type: 3}
   velocity: {x: 0, y: -15}
   canShoot: 1
-  Offset: {x: 0, y: 0.1}
-  cooldown: 1
+  Offset: {x: 0, y: 0.3}
+  cooldown: 0
   PlayerInRange: 0
-  shootNow: 0
 --- !u!61 &4760135992735676751
 BoxCollider2D:
   m_ObjectHideFlags: 0

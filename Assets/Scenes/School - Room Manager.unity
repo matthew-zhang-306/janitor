@@ -7323,6 +7323,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31845bbbdbf2eb0469a39ed5eaffe20e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1273050901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273050893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c0791098eb36045a01c8b593353f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spritePrefab: {fileID: 6524936638851035970, guid: 91ab6dbdf7db45b40b94d2822c1563b7,
+    type: 3}
+  time: 0.2
 --- !u!1 &1300507500
 GameObject:
   m_ObjectHideFlags: 0
@@ -24001,6 +24016,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1273050894, guid: e99cabc76f17e7047b7003b087521779, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273050894, guid: e99cabc76f17e7047b7003b087521779, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273050894, guid: e99cabc76f17e7047b7003b087521779, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273050894, guid: e99cabc76f17e7047b7003b087521779, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177657899049150887, guid: e99cabc76f17e7047b7003b087521779,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1177657899262820913, guid: e99cabc76f17e7047b7003b087521779,
         type: 3}
       propertyPath: cam
@@ -24065,6 +24101,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177657900136032883, guid: e99cabc76f17e7047b7003b087521779,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177657900136032883, guid: e99cabc76f17e7047b7003b087521779,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e99cabc76f17e7047b7003b087521779, type: 3}

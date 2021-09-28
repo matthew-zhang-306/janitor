@@ -23,10 +23,20 @@ public class DirtyTile : Tile
         }
     }
 
+    // public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
+    // {
+    //     Texture2D red = new Texture2D (1, 1, TextureFormat.RGBA32, 1, true);
+    //     red.SetPixel(0,0, Color.red);
+    //     red.Apply(true);
+
+    //     tileData.sprite = Sprite.Create(red, new Rect(0,0,1,1), Vector2.one / 2f, 2);
+    //     // base.GetTileData(position, tilemap, ref tileData);
+    // }
+
     private bool IsLower(Vector3Int pos, ITilemap tm) 
     {
 
-        return false;
+        return true;
     }
     
     public void SetDirty (int val)

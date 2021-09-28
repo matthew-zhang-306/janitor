@@ -2,12 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+public delegate void Restart ();
 public class PauseMenu : MonoBehaviour
 {
+    public Restart eventRestart;
     public static bool GamePaused = false;
     public GameObject PauseMenuUI;
     public GameObject RestartUI;
+    public PlayerController player; // no
+
+    void Start ()
+    {
+        player.onDeath += () => {
+            GamePaused = true;
+            RestartUI.SetActive(true);
+            Time.timeScale = 0f;
+            return;
+        };
+        eventRestart += player.ResetFromPrevious;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -21,11 +34,6 @@ public class PauseMenu : MonoBehaviour
             {
                 PauseGame();
             }
-        }
-        if (PlayerController.PlayerDead == true)
-        {
-            RestartUI.SetActive(true);
-            Time.timeScale = .1f;
         }
     }
 
@@ -51,8 +59,13 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        eventRestart();
+        RestartUI.SetActive (false);
+        ResumeGame();
+
+        //Load room
+
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         
     }
 }

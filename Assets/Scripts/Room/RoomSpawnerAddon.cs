@@ -45,6 +45,11 @@ public class RoomSpawnerAddon : MonoBehaviour
             tileToFlicker = ScriptableObject.CreateInstance<Tile>();                
             tileToFlicker.sprite = Sprite.Create(red, new Rect(0,0,1,1), Vector2.one / 2f, 1);
         }
+
+        rm.onRoomClear += () => {
+            StopAllCoroutines();
+        };
+
     }
 
     void FixedUpdate ()

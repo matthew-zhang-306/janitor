@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
         if (currentHealth > maxHealth) {
             currentHealth = maxHealth;
         }
+        
     }
 
     public int GetHealth ()
@@ -39,6 +40,14 @@ public class Health : MonoBehaviour
         return maxHealth;
     }
 
+    public void SetMaxHealth(int newHealth)
+    {
+        //honestly should use autos but oh well
+        maxHealth = newHealth;
+        if (maxHealth < 1) {
+            maxHealth = 1;
+        }
+    }
     public void AddHealth()
     {
         Debug.Log("Add player Health");

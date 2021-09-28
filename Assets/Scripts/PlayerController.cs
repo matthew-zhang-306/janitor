@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+public delegate void PlayerDeath ();
+
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float acceleration = 1f;
     [SerializeField] private float maxSpeed = 1f;
-
+    [SerializeField] private WeaponSystem weapon;
     public Transform cameraPos;
     public SpriteRenderer spriteRenderer;
     private Animator animator;
     private Rigidbody2D rb2d;
     private Hitbox hitbox;
     private Health health;
-    public static bool PlayerDead;
+
+    //Event for death
+    public PlayerDeath onDeath;
+    private PlayerSnapShot previousPss;
+
 
     private Vector2 knockback;
     private float knockbackTimer;
@@ -38,13 +45,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float knockbackFriction = 1f;
     [SerializeField] private float invincibilityTime = 1f;
 
+    
+
     private void Start() {
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         hitbox = GetComponentInChildren<Hitbox>();
         health = GetComponent<Health>();
-        PlayerDead = false;
         dashCooldown += dashTime;
+
+        previousPss = SnapShot();
     }
 
     private void Update() {
@@ -76,14 +86,17 @@ public class PlayerController : MonoBehaviour
         if (hitbox.IsColliding && invincibilityTimer == 0) {
             var damage = hitbox.OtherCollider.GetComponent<Damage>();
             if (damage == null) {
-                Debug.LogError("Why in hitbox if damage be 0 or null (in player controller)");
+                Debug.LogWarning("Why in hitbox if damage be 0 or null (in player controller)");
             }
-            int hitAmount = damage?.damage ?? 0;            
+
+            //Should be set to 0, but for debug purposes
+            int hitAmount = damage?.damage ?? 1;            
 
             health.ChangeHealth(-hitAmount);
             if (health.GetHealth() <= 0) {
-                PlayerDead = true;
-                Destroy(gameObject);
+                //call event
+                onDeath?.Invoke();
+                //Destroy(gameObject);
             }
 
             Vector2 knockbackDir = transform.position - hitbox.OtherCollider.transform.position;
@@ -150,9 +163,47 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 14, false);
         Physics2D.IgnoreLayerCollision(8, 10, false);
     }
-
     public float DashCooldownUI()
     {
         return dashTimer;
+    }
+
+    public PlayerSnapShot SnapShot()
+    {
+        var pss = new PlayerSnapShot (transform, health, weapon);
+        previousPss = pss;
+        return pss;
+    }
+
+    public void ResetFromPrevious ()
+    {
+        previousPss?.Apply(this);
+    }
+
+    public class PlayerSnapShot
+    {
+        public readonly Vector3 position;
+        public readonly int health;
+        public readonly int maxHealth;
+
+        public PlayerSnapShot (Transform playerTransform, Health playerHealth, WeaponSystem playerWeapon)
+        {
+            position = playerTransform.position;
+            health = playerHealth.GetHealth();
+            maxHealth = playerHealth.GetMaxHealth();
+
+            //Add weapon ammo and stuff here!
+
+
+        }
+
+        public void Apply (PlayerController pc) 
+        {
+            pc.transform.position = this.position;
+            //don't ask
+            pc.health.ChangeHealth (-pc.health.GetHealth() + health);
+
+            pc.health.SetMaxHealth (maxHealth);
+        }
     }
 }

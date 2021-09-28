@@ -5,26 +5,26 @@ using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(RoomManager))]
-[RequireComponent(typeof(RoomSpawnerAddon))]
 public class RoomWaveAddon : MonoBehaviour
 {
     // room manager, lazily initialized so that it is available at editor time
     private RoomManager _roomManager;
     public RoomManager roomManager => _roomManager ?? (_roomManager = GetComponent<RoomManager>());
 
-    private RoomSpawnerAddon rs;
-    public TextAsset jsonFile;
     public EnemyTypesSO enemyTypesSO;
     private Dictionary<string, EnemyTypesSO.EnemyType> enemyTypes;
 
-    private Waves waves;
+    [SerializeField] private Wave[] waves;
+
     void Start()
     {
-        rs = this.GetComponent<RoomSpawnerAddon>();
-        waves = JsonUtility.FromJson<Waves>(jsonFile.text);
         enemyTypes = enemyTypesSO.GetEnemyTypes();
 
         StartCoroutine (WaitForRoom ());
+        roomManager.onRoomClear += () => {
+            StopAllCoroutines();
+            StartCoroutine (WaitForRoom ());
+        };
     }
 
     public IEnumerator WaitForRoom ()
@@ -32,11 +32,12 @@ public class RoomWaveAddon : MonoBehaviour
         yield return new WaitUntil (() => roomManager.IsRoomActive);
 
         var tm = roomManager.dirtyTiles.gameObject.GetComponent<Tilemap>();
-        foreach (var wave in waves.waves) {
+        foreach (var wave in waves) {
             foreach (var waveSpawn in wave.spawns) {
                 StartCoroutine(SetWaveSpawn(waveSpawn, wave.thresh, tm));
             }
         }
+        
     }
 
     public IEnumerator SetWaveSpawn (WaveSpawn waveSpawn, float thresh, Tilemap tm)
@@ -50,7 +51,7 @@ public class RoomWaveAddon : MonoBehaviour
         
         GameObject created = Instantiate(
             enemyTypes[waveSpawn.enemy].prefab,
-            waveSpawn.GetPosition(tm),
+            WaveSpawn.XYToPosition(waveSpawn.xcoord, waveSpawn.ycoord, tm),
             Quaternion.identity,
             roomManager.enemiesContainer
         );
@@ -60,28 +61,54 @@ public class RoomWaveAddon : MonoBehaviour
     }
     
     [System.Serializable]
-    public class Waves
+    public struct WaveArray
     {
         public Wave[] waves;
+        public WaveArray(Wave[] w) {
+            waves = w;
+        }
     }
 
     [System.Serializable]
-    public class Wave
+    public struct Wave
     {
         public float thresh;
         public WaveSpawn[] spawns;
     }
 
     [System.Serializable]
-    public class WaveSpawn
+    public struct WaveSpawn
     {
-        public int xcoord;
-        public int ycoord;
+        public float xcoord;
+        public float ycoord;
         public string enemy;
         public float delay;
 
-        public Vector3 GetPosition(Tilemap tm) {
-            return tm.CellToWorld (new Vector3Int (xcoord, ycoord, 0 ));
+        public static Vector3 XYToPosition(float xcoord, float ycoord, Tilemap tm) {
+            // lerp between floored and ceiled tile positions
+            var lo = tm.GetCellCenterWorld(new Vector3Int(Mathf.FloorToInt(xcoord), Mathf.FloorToInt(ycoord), 0));
+            var hi = tm.GetCellCenterWorld(new Vector3Int(Mathf.CeilToInt(xcoord), Mathf.CeilToInt(ycoord), 0));
+            return new Vector3(Mathf.Lerp(lo.x, hi.x, xcoord.Mod(1)), Mathf.Lerp(lo.y, hi.y, ycoord.Mod(1)));
+        }
+
+        public static float PositionToX(Vector3 worldPos, Tilemap tm) {
+            var cell = tm.WorldToCell(worldPos);
+            var cellWorld = tm.GetCellCenterWorld(cell);
+
+            // get the cell size in the hackiest way possible
+            var cellSize = tm.GetCellCenterWorld(new Vector3Int(cell.x + 1, cell.y + 1, 0)) - cellWorld;
+            
+            return (float)cell.x + (worldPos.x - cellWorld.x) % cellSize.x;
+        }
+
+        public static float PositionToY(Vector3 worldPos, Tilemap tm) {
+            var cell = tm.WorldToCell(worldPos);
+            var cellWorld = tm.GetCellCenterWorld(cell);
+
+            // get the cell size in the hackiest way possible
+            var cellSize = tm.GetCellCenterWorld(new Vector3Int(cell.x + 1, cell.y + 1, 0)) - cellWorld;
+
+            return (float)cell.y + (worldPos.y - cellWorld.y) % cellSize.y;
         }
     }
 }
