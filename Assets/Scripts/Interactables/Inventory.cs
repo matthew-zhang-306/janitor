@@ -8,6 +8,10 @@ public class Inventory : MonoBehaviour
 {
     private PlayerController pc;
 
+    private int _money;
+    public int money {get => _money; set => Mathf.Clamp(_money + value, 0, 1000);}
+
+
     private List<Interactable> recent;
     void Start () 
     {
@@ -19,7 +23,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetButton("Interact"))
         {
-            recent.FirstOrDefault()?.DoAction(pc);
+            recent.FirstOrDefault()?.DoAction(pc, this);
         }
     }
 
@@ -28,7 +32,7 @@ public class Inventory : MonoBehaviour
         var item = other.GetComponent<Interactable>();
         if (item != null) {
             if (item.autoInteract)
-                item.DoAction (pc);
+                item.DoAction (pc, this);
             else {
                 recent.Add (item);
             }

@@ -6,8 +6,8 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public bool autoInteract = false;
-    public virtual void DoAction (PlayerController pc)
+    public virtual void DoAction (PlayerController pc, Inventory i)
     {
-
+        Destroy (gameObject);
     }
 }
