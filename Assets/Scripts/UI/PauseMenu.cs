@@ -9,17 +9,17 @@ public class PauseMenu : MonoBehaviour
     public static bool GamePaused = false;
     public GameObject PauseMenuUI;
     public GameObject RestartUI;
-    public PlayerController pc;
+    public PlayerController player; // no
 
     void Start ()
     {
-        pc.onDeath += () => {
+        player.onDeath += () => {
             GamePaused = true;
             RestartUI.SetActive(true);
             Time.timeScale = 0f;
             return;
         };
-        eventRestart += pc.ResetFromPrevious;
+        eventRestart += player.ResetFromPrevious;
     }
     // Update is called once per frame
     void Update()

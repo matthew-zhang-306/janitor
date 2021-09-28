@@ -220,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 994740816723209943}
   - component: {fileID: 9082034036192474641}
+  - component: {fileID: 7122484523099650369}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -277,6 +278,20 @@ MonoBehaviour:
   pathfinding: {fileID: 3892606808324273816}
   roomClearThreshold: 0.7
   player: {fileID: 0}
+--- !u!114 &7122484523099650369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231549163643262146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f8c9cbe56c9764c8aac34447c5b74c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTypesSO: {fileID: 11400000, guid: 540f860f4efcbec42a17c53dc5f07b9c, type: 2}
+  waves: []
 --- !u!1 &2843721370339062034
 GameObject:
   m_ObjectHideFlags: 0

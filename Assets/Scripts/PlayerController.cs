@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
             health.ChangeHealth(-hitAmount);
             if (health.GetHealth() <= 0) {
                 //call event
-                onDeath();
+                onDeath?.Invoke();
                 //Destroy(gameObject);
             }
 

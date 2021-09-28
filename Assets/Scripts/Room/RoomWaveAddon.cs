@@ -5,14 +5,12 @@ using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(RoomManager))]
-[RequireComponent(typeof(RoomSpawnerAddon))]
 public class RoomWaveAddon : MonoBehaviour
 {
     // room manager, lazily initialized so that it is available at editor time
     private RoomManager _roomManager;
     public RoomManager roomManager => _roomManager ?? (_roomManager = GetComponent<RoomManager>());
 
-    private RoomSpawnerAddon rs;
     public EnemyTypesSO enemyTypesSO;
     private Dictionary<string, EnemyTypesSO.EnemyType> enemyTypes;
 
@@ -20,7 +18,6 @@ public class RoomWaveAddon : MonoBehaviour
 
     void Start()
     {
-        rs = this.GetComponent<RoomSpawnerAddon>();
         enemyTypes = enemyTypesSO.GetEnemyTypes();
 
         StartCoroutine (WaitForRoom ());
