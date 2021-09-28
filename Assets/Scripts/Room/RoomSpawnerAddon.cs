@@ -8,7 +8,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(RoomManager))]
 public class RoomSpawnerAddon : MonoBehaviour
 {
-    
+   public AudioSource spawnSound;
     public int spawnAreaCount = 3;
     public float spawnTimer = 15f;
     private float m_spawnTimer;
@@ -25,7 +25,7 @@ public class RoomSpawnerAddon : MonoBehaviour
         rm = this.GetComponent<RoomManager>();
         var blank = new GameObject ("dirty spawn marker overlay");
         var generatedFloor = Instantiate (blank, rm.dirtyTiles.transform.parent);
-
+        
         Destroy(blank);
 
         var tm = generatedFloor.AddComponent<Tilemap>();
@@ -49,6 +49,7 @@ public class RoomSpawnerAddon : MonoBehaviour
 
     void FixedUpdate ()
     {
+     
         m_spawnTimer -= Time.fixedDeltaTime;
         if (m_spawnTimer <= 0 && rm.IsRoomActive) {
             m_spawnTimer = spawnTimer;
@@ -75,8 +76,12 @@ public class RoomSpawnerAddon : MonoBehaviour
 
             var mark = new Marker (rx,ry, 5f, g, tileToFlicker);
 
+           
+           
             StartCoroutine(mark.Begin(overlay,rm));
-                        
+            // spawnSound.Play(); 
+            //Debug.Log("Halo2");         
+            
             return true;
             
         }
@@ -89,6 +94,8 @@ public class RoomSpawnerAddon : MonoBehaviour
     {
         public readonly int x;
         public readonly int y;
+        public AudioSource sp;
+        private RoomSpawnerAddon ad = new RoomSpawnerAddon();
 
         //Time from marker creation to spawning enemy
         public float m_timer;
@@ -120,6 +127,7 @@ public class RoomSpawnerAddon : MonoBehaviour
                         tm.SetTile(loc, count % 2 == 0 ? t : null);
                     }
                 }
+              
                 yield return new WaitForSeconds(0.5f);
 
             }
@@ -132,6 +140,12 @@ public class RoomSpawnerAddon : MonoBehaviour
                 }
             if (rm.dirtyTiles.IsTileDirty(new Vector2Int(x,y), 0.2f)) 
             {
+                var rmnumber = GameObject.Find("Room (7)");
+                sp = rmnumber.GetComponent<RoomSpawnerAddon>().spawnSound;
+                 sp.Play();
+
+                yield return new WaitForSeconds(0.5f);
+
                 GameObject created = Instantiate(enemy, tm.CellToWorld(new Vector3Int(x,y,0)), Quaternion.identity, rm.enemiesContainer);
                 rm.InitEnemy(created.transform);
             }

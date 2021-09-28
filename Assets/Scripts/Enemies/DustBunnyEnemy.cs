@@ -6,6 +6,7 @@ public class DustBunnyEnemy : BaseEnemy
 {
     private bool shouldPickAction;
 
+    public AudioSource bunnyAttack;
     public float moveSpeed;
     public float fireRate;
     public float rechargeTime;
@@ -82,6 +83,7 @@ public class DustBunnyEnemy : BaseEnemy
         for (int i = 0; i < numShots; i++) {
             var bulletRot = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, player.transform.position - transform.position));
             GameObject.Instantiate(bullet, transform.position, bulletRot).GetComponent<Rigidbody2D>().velocity = bulletRot * Vector2.right * bulletSpeed;
+            bunnyAttack.Play();
 
             yield return new WaitForSeconds(1 / fireRate);
         }
