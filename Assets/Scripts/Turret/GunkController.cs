@@ -6,17 +6,16 @@ public class GunkController : MonoBehaviour
 {
     
     [SerializeField] private GameObject gunk;
-    [SerializeField] Vector2 velocity;
+    //[SerializeField] Vector2 velocity;
     public static bool canMove;
-    private float force = 10f;
+    [SerializeField] private float force = 10f;
     //GunkBulletPooler gunkPooler;
     
     // Start is called before the first frame update
     void Start()
     {
 
-        //gunk.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
-     //   canMove = true;
+        
         
     }
 
@@ -27,11 +26,11 @@ public class GunkController : MonoBehaviour
         Debug.Log("can move " + canMove);
         if (canMove == true)
         {
-            //gunk.SetActive(true);
+            
             gunk.GetComponent<Rigidbody2D>();
             gunk.transform.position += transform.up * force * Time.deltaTime;
 
-            //gunk.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
+            
 
         }
         
@@ -43,7 +42,7 @@ public class GunkController : MonoBehaviour
         if (other.tag == "Player")
         {
         //    canMove = false;
-            //this.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
         if (other.tag == "Wall")
         {
@@ -53,7 +52,7 @@ public class GunkController : MonoBehaviour
         if (other.tag == "Enemy")
         {
           //  canMove = false;
-            this.gameObject.SetActive(false);
+           // this.gameObject.SetActive(false);
         }
     }
 

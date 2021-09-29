@@ -7,10 +7,10 @@ public class QuadTurretFiring : MonoBehaviour
     public GameObject gunk;
     [SerializeField] private GameObject turretFiring;
 
-    public bool canShoot = true;
+    public static bool canShoot;
     public Vector2 Offset = new Vector2(0, 0);
 
-    public float cooldown = 1f;
+    [SerializeField] private float cooldown = 2.45f;
 
     private bool PlayerRadius;
 
@@ -20,15 +20,17 @@ public class QuadTurretFiring : MonoBehaviour
 
     GunkBulletPooler gunkPooler;
 
+
+
     //public bool shootNow;
     // Start is called before the first frame update
     void Start()
     {
         gunkPooler = GunkBulletPooler.Instance;
-       // turret = gameObject.GetComponent<Animator>();
-
 
     }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -47,12 +49,12 @@ public class QuadTurretFiring : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
         if (!PauseMenu.GamePaused)
         {
 
-            if (PlayerInRange == true)
+
+            if (PlayerInRange == true && canShoot == true)
             {
 
                 GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
@@ -65,7 +67,7 @@ public class QuadTurretFiring : MonoBehaviour
                     gunk.SetActive(true);
 
                     StartCoroutine("Delay");
-                    StartCoroutine("Cooldown");
+                    //StartCoroutine("Cooldown");
                 }
             }
         }
@@ -78,14 +80,6 @@ public class QuadTurretFiring : MonoBehaviour
         GunkController.canMove = true;
     }
 
-    IEnumerator Cooldown()
-    {
-
-        canShoot = false;
-
-        yield return new WaitForSeconds(cooldown + Random.Range(.50f, 2.0f));
-        canShoot = true;
-        //Debug.Log("can shoot now0");
-
-    }
+   
+    
 }
