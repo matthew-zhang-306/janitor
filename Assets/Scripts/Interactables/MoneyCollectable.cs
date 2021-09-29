@@ -9,7 +9,7 @@ public class MoneyCollectable : Interactable
     {
         autoInteract = true;
     }
-    public virtual void DoAction (PlayerController pc, Inventory i)
+    public override void DoAction (PlayerController pc, Inventory i)
     {
         i.money += amount;
         Destroy (gameObject);

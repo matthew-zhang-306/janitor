@@ -180,12 +180,12 @@ public class FloorController : MonoBehaviour
             // loop over the collider's bounds to see what tiles it might be in
             Vector3Int min = tm.WorldToCell(col.bounds.min);
             Vector3Int max = tm.WorldToCell(col.bounds.max);
-
+            Vector3 center = col.bounds.center;
             int changed = 0;
             for (int x = min.x; x <= max.x; x++) {
                 for (int y = min.y; y <= max.y; y++) {
                     Vector3Int cell = new Vector3Int(x, y, 0);
-
+                    Vector3 worldPos = tm.CellToWorld(cell) + tm.cellSize / 2;
                     // check if this position actually has a valid tile on it
                     var c_tile = tm.GetTile(cell);
                     if (c_tile == null || c_tile.GetType() != typeof (DirtyTile)) {
@@ -193,11 +193,15 @@ public class FloorController : MonoBehaviour
                     }
                     DirtyTile d_tile = (DirtyTile) c_tile;
                     // check if the collider is actually touching this cell
-                    var otherClosestPoint = col.ClosestPoint(tm.CellToWorld(cell));
+                    var otherClosestPoint = col.ClosestPoint(worldPos);
                     Vector3Int otherClosestCell = tm.WorldToCell(otherClosestPoint);
                     if (cell != otherClosestCell) {
                         continue;
                     }
+
+                    //Check if we can actually reach this point without going past walls and such
+                    bool res = Physics2D.Linecast(center, worldPos, LayerMask.GetMask ("Wall"));
+                    if (res) continue;
 
                     // this is a valid position that we should consider
                     cells.Add(cell);

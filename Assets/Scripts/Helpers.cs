@@ -25,5 +25,14 @@ public static class Helpers {
     return a - mod * Mathf.FloorToInt((float)a / (float)mod);
   }
 
+  public static void Invoke(this MonoBehaviour mb, System.Action f, float delay)
+  {
+      mb.StartCoroutine(InvokeRoutine(f, delay));
+  }
 
+  private static System.Collections.IEnumerator InvokeRoutine(System.Action f, float delay)
+  {
+      yield return new WaitForSeconds(delay);
+      f();
+  }
 }
