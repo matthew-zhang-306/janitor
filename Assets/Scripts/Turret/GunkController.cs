@@ -15,8 +15,7 @@ public class GunkController : MonoBehaviour
     void Start()
     {
 
-        //gunk.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
-     //   canMove = true;
+        
         
     }
 
@@ -27,11 +26,11 @@ public class GunkController : MonoBehaviour
         Debug.Log("can move " + canMove);
         if (canMove == true)
         {
-            //gunk.SetActive(true);
+            
             gunk.GetComponent<Rigidbody2D>();
             gunk.transform.position += transform.up * force * Time.deltaTime;
 
-            //gunk.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x * transform.localScale.x, velocity.y);
+            
 
         }
         

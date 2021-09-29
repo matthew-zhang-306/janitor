@@ -13,6 +13,7 @@ public class QuadTurret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //QuadTurretFiring.CanShootTrue(true);
         canRotate = false;
         rb = QuadTurretSprite.GetComponent<Rigidbody2D>();
         QuadAnim = QuadTurretSprite.GetComponent<Animator>();
@@ -31,6 +32,7 @@ public class QuadTurret : MonoBehaviour
 
     IEnumerator Firing()
     {
+        QuadTurretFiring.canShoot = true;
         QuadAnim.SetTrigger("Firing");
         canRotate = true;
         yield return new WaitForSeconds(5);
@@ -39,9 +41,11 @@ public class QuadTurret : MonoBehaviour
     IEnumerator Cooldown()
     {
         QuadAnim.SetTrigger("Reload");
+        QuadTurretFiring.canShoot = false;
         canRotate = false;
         yield return new WaitForSeconds(3);
         StartCoroutine("Firing");
+
 
     }
 }
