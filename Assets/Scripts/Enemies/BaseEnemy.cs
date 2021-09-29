@@ -45,12 +45,13 @@ public class BaseEnemy : MonoBehaviour
     }
 
     protected virtual void Start() {
-
         health = GetComponent<Health>();
         rb2d = GetComponent<Rigidbody2D>();
 
         actionTable = new Dictionary<string, EnemyActionDelegate>();
         var classType = this.GetType();
+
+        hitbox.OnTriggerEnter.AddListener(OnEnterHazard);
 
         //Make action table
         foreach (string s in actions) {
@@ -71,27 +72,21 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void FixedUpdate() {
         invincibilityTimer = Mathf.MoveTowards(invincibilityTimer, 0f, Time.deltaTime);
-        if (health != null && hitbox.IsColliding && invincibilityTimer == 0f) {
+    }
+
+    protected virtual void OnEnterHazard(Collider2D otherCollider) {
+        otherCollider.GetComponentInParent<BaseProjectile>()?.OnHitEntity();
+
+        if (invincibilityTimer == 0f) {
             // take a hit
-            TakeDamage(hitbox.OtherCollider);
+            TakeDamage(otherCollider);
         }
     }
-
-    protected virtual void OnCollisionEnter2D(Collision2D col) {
-        if (health != null &&
-            col.gameObject.CompareTag(hitbox.targetTags[0]) &&
-            invincibilityTimer == 0f)
-        {
-            TakeDamage(col.collider);
-        }
-    }
-
 
     protected virtual void TakeDamage(Collider2D other) {
         int hitAmount = 1;
         var damage = other.GetComponent<Damage>();
         if (damage != null) {
-            
             hitAmount = damage.damage;
         }
         else {

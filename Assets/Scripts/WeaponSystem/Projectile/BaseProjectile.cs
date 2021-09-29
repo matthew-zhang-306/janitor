@@ -47,6 +47,10 @@ public class BaseProjectile : MonoBehaviour
         
     }
     
+    public virtual void OnHitEntity() {
+        // by default, do nothing
+    }
+
     public virtual void OnDespawn() {
         gameObject.SetActive(false);
     }

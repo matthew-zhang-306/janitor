@@ -19,23 +19,21 @@ public class SpongeProjectile : BaseProjectile
         sr.enabled = true;
         wallHitbox.enabled = true;
         hurtbox.enabled = true;
+        hurtbox.gameObject.SetActive(true);
     }
 
     protected override void Start()
     {
         base.Start();
         rb2d = this.GetComponent<Rigidbody2D>();
-
-        hurtbox.OnTriggerEnter.AddListener(OnHitEnemy);
     }
 
-    private void OnHitEnemy(Collider2D _) {
+    public override void OnHitEntity() {
         StartCoroutine(PlayAnim());
     }
 
     protected override void OnHitWall(Collider2D _)
     {
-        // if (_.("Hole")) return;
         StartCoroutine(PlayAnim());
     }
 
@@ -43,9 +41,9 @@ public class SpongeProjectile : BaseProjectile
     {
         anim.gameObject.SetActive(true);
         rb2d.velocity = Vector2.zero;
-        
         sr.enabled = false;
-        hurtbox.enabled = false;
+
+        hurtbox.gameObject.SetActive(false);
         wallHitbox.enabled = false;
 
         yield return new WaitForSeconds(1);

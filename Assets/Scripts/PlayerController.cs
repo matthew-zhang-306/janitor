@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
         health = GetComponent<Health>();
         dashCooldown += dashTime;
 
+        hitbox.OnTriggerEnter.AddListener(OnEnterHazard);
+
         previousPss = SnapShot();
     }
 
@@ -72,42 +74,48 @@ public class PlayerController : MonoBehaviour
         if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != animation) {
             animator.Play("Player" + animation, 0);
         }
+
+        // iframae indicator (needs to be replaced with something better looking)
+        spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
     }
 
     private void FixedUpdate() {
-        HandleHitbox();
         HandleMotion();
+        invincibilityTimer = Mathf.MoveTowards(invincibilityTimer, 0, Time.deltaTime);
     }
 
-
-    private void HandleHitbox() {
-        invincibilityTimer = Mathf.MoveTowards(invincibilityTimer, 0, Time.deltaTime);
-        spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
-
-        if (hitbox.IsColliding && invincibilityTimer == 0) {
-            var damage = hitbox.OtherCollider.GetComponent<Damage>();
-            if (damage == null) {
-                Debug.LogWarning("Why in hitbox if damage be 0 or null (in player controller)");
-            }
-
-            //Should be set to 0, but for debug purposes
-            int hitAmount = damage?.damage ?? 1;            
-
-            health.ChangeHealth(-hitAmount);
-            damageSound.Play();
-            if (health.GetHealth() <= 0) {
-                //call event
-                onDeath?.Invoke();
-                //Destroy(gameObject);
-            }
-
-            Vector2 knockbackDir = transform.position - hitbox.OtherCollider.transform.position;
-            knockbackDir = knockbackDir.normalized;
-            knockback = knockbackPower * knockbackDir;
-            knockbackTimer = knockbackTime;
-
-            invincibilityTimer = invincibilityTime;
+    private void OnEnterHazard(Collider2D other) {
+        other.GetComponentInParent<BaseProjectile>()?.OnHitEntity();
+            
+        if (invincibilityTimer == 0f) {
+            // take a hit
+            TakeDamage(hitbox.OtherCollider);
         }
+    }
+
+    private void TakeDamage(Collider2D other) {
+        var damage = other.GetComponent<Damage>();
+        if (damage == null) {
+            Debug.LogWarning("Why in hitbox if damage be 0 or null (in player controller)");
+        }
+
+        //Should be set to 0, but for debug purposes
+        int hitAmount = damage?.damage ?? 1;            
+
+        health.ChangeHealth(-hitAmount);
+        damageSound.Play();
+        if (health.GetHealth() <= 0) {
+            //call event
+            onDeath?.Invoke();
+        }
+
+        // handle knockback
+        Vector2 knockbackDir = transform.position - other.transform.position;
+        knockbackDir = knockbackDir.normalized;
+        knockback = knockbackPower * knockbackDir;
+        knockbackTimer = knockbackTime;
+
+        invincibilityTimer = invincibilityTime;
     }
 
     private void HandleMotion() {

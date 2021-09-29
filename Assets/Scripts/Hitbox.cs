@@ -62,14 +62,14 @@ public class Hitbox : MonoBehaviour
         if (otherColliders == null) return;
         
         // If the object's own collider was disabled, clear the entire list
-        if (!coll.enabled) {
+        if (!coll.enabled || !coll.gameObject.activeInHierarchy) {
             otherColliders.Clear();
             return;
         }
 
         // Remove any null or disabled colliders from the colliding list
         for (int c = otherColliders.Count - 1; c >= 0; c--) {
-            if (otherColliders[c] == null || otherColliders[c].enabled == false)
+            if (otherColliders[c] == null || !otherColliders[c].enabled || !otherColliders[c].gameObject.activeInHierarchy)
                 otherColliders.RemoveAt(c);
         }
     }

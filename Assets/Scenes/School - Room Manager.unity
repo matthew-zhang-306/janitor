@@ -8325,12 +8325,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554475918}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1655480741}
-  m_Father: {fileID: 1856361802}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1592465762
@@ -8464,79 +8464,79 @@ CompositeCollider2D:
   - m_Collider: {fileID: 1655480744}
     m_ColliderPaths:
     - - X: 130000000
-        Y: 100000016
+        Y: 100000000
       - X: -130000000
-        Y: 100000016
+        Y: 100000000
       - X: -130000000
-        Y: -100000016
+        Y: -100000000
       - X: 130000000
-        Y: -100000016
+        Y: -100000000
     - - X: -100000000
-        Y: -70000016
+        Y: -70000000
       - X: -100000000
-        Y: 70000016
+        Y: 70000000
       - X: 100000000
-        Y: 70000016
+        Y: 70000000
       - X: 100000000
-        Y: -70000016
+        Y: -70000000
     - - X: 80000000
-        Y: 50000008
+        Y: 50000000
       - X: 10000000
-        Y: 50000008
+        Y: 50000000
       - X: 10000000
-        Y: 40000008
+        Y: 40000000
       - X: 70000000
-        Y: 40000008
+        Y: 40000000
       - X: 70000000
-        Y: -10000002
+        Y: -10000000
       - X: 40000000
-        Y: -10000002
+        Y: -10000000
       - X: 40000000
-        Y: -20000004
+        Y: -20000000
       - X: 80000000
-        Y: -20000004
+        Y: -20000000
     - - X: -20000000
-        Y: -40000008
+        Y: -40000000
       - X: -60000000
-        Y: -40000008
+        Y: -40000000
       - X: -60000000
-        Y: 10000002
+        Y: 10000000
       - X: -10000000
-        Y: 10000002
+        Y: 10000000
       - X: -10000000
-        Y: 20000004
+        Y: 20000000
       - X: -70000000
-        Y: 20000004
+        Y: 20000000
       - X: -70000000
-        Y: -50000008
+        Y: -50000000
       - X: -20000000
-        Y: -50000008
+        Y: -50000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 12.99997, y: -10.000002}
-      - {x: 12.99997, y: 10.000002}
-      - {x: -13, y: 9.999972}
-      - {x: -12.99997, y: -10.000002}
-    - - {x: 10, y: -6.999972}
-      - {x: -10, y: -6.999972}
-      - {x: -9.99997, y: 7.000002}
-      - {x: 10, y: 6.999972}
-    - - {x: 7.9999704, y: -2.0000005}
-      - {x: 7.9999704, y: 5.000001}
-      - {x: 1, y: 4.999972}
-      - {x: 1.0000293, y: 4.000001}
-      - {x: 7, y: 3.9999712}
-      - {x: 6.9999704, y: -1.0000002}
-      - {x: 4, y: -1.0000296}
-      - {x: 4.000029, y: -2.0000005}
-    - - {x: -2.0000293, y: -5.000001}
-      - {x: -2.0000293, y: -4.000001}
-      - {x: -6, y: -3.9999712}
-      - {x: -5.9999704, y: 1.0000002}
-      - {x: -1, y: 1.0000296}
-      - {x: -1.0000293, y: 2.0000005}
-      - {x: -7, y: 1.9999713}
-      - {x: -6.9999704, y: -5.000001}
+    - - {x: 12.99997, y: -10}
+      - {x: 12.99997, y: 10}
+      - {x: -13, y: 9.99997}
+      - {x: -12.99997, y: -10}
+    - - {x: 10, y: -6.9999704}
+      - {x: -10, y: -6.9999704}
+      - {x: -9.99997, y: 7}
+      - {x: 10, y: 6.9999704}
+    - - {x: 7.9999704, y: -2}
+      - {x: 7.9999704, y: 5}
+      - {x: 1, y: 4.999971}
+      - {x: 1.0000293, y: 4}
+      - {x: 7, y: 3.9999704}
+      - {x: 6.9999704, y: -1}
+      - {x: 4, y: -1.0000293}
+      - {x: 4.000029, y: -2}
+    - - {x: -2.0000293, y: -5}
+      - {x: -2.0000293, y: -4}
+      - {x: -6, y: -3.9999704}
+      - {x: -5.9999704, y: 1}
+      - {x: -1, y: 1.0000293}
+      - {x: -1.0000293, y: 2}
+      - {x: -7, y: 1.9999708}
+      - {x: -6.9999704, y: -5}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1655480743
@@ -11919,72 +11919,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836172813}
   m_CullTransparentMesh: 0
---- !u!1 &1856361800
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1856361802}
-  - component: {fileID: 1856361801}
-  m_Layer: 0
-  m_Name: Nav
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1856361801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1856361800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 148387606d0ccd84fa326ca211f274ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_OverrideByGrid: 0
-  m_UseMeshPrefab: {fileID: 0}
-  m_CompressBounds: 1
-  m_OverrideVector: {x: 1, y: 1, z: 1}
-  m_DefaultArea: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_BuildHeightMesh: 0
-  m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 0d62734e6f6ebe544819cbb7f5f1c672, type: 2}
---- !u!4 &1856361802
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1856361800}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1554475920}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1884405158
 GameObject:
   m_ObjectHideFlags: 3
@@ -12156,6 +12090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 0}
   RestartUI: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1905146727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24110,6 +24045,11 @@ PrefabInstance:
     - target: {fileID: 1177657900136032883, guid: e99cabc76f17e7047b7003b087521779,
         type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954033827353741344, guid: e99cabc76f17e7047b7003b087521779,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
