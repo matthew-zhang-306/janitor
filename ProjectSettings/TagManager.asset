@@ -11,6 +11,7 @@ TagManager:
   - Gunk
   - Wall
   - HealthCollect
+  - Sides
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Wall
   - IgnoreEntities
   - Hole
-  - 
+  - Sides
   - 
   - 
   - 
