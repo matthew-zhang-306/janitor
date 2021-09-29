@@ -6,6 +6,15 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public bool autoInteract = false;
+
+    [SerializeField] protected string _tooltip;
+
+    public virtual string ToolTip
+    {
+        get => _tooltip;
+        private set => _tooltip = value;
+    }
+
     public virtual void DoAction (PlayerController pc, Inventory i)
     {
         Destroy (gameObject);
