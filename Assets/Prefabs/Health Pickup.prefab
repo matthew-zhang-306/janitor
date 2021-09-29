@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1526c7cb14147a54a8a66f473140c155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1177657900103972658, guid: e99cabc76f17e7047b7003b087521779, type: 3}
+  autoInteract: 0
+  _tooltip: Heals Player
+  healthAmount: 10
 --- !u!61 &302821301523337627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -167,7 +169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4141881051329465572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.03, y: -15.61, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 302821301523337622}
