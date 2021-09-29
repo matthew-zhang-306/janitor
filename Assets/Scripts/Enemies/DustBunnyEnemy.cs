@@ -7,6 +7,7 @@ public class DustBunnyEnemy : BaseEnemy
     private bool shouldPickAction;
 
     public AudioSource bunnyAttack;
+    public AudioSource bunnyMove;
     public float moveSpeed;
     public float fireRate;
     public float rechargeTime;
@@ -70,6 +71,9 @@ public class DustBunnyEnemy : BaseEnemy
 
             navigator.canNavigate = true;
             navigator.SetDestination(player.transform.position, null);
+            bunnyMove.Play();
+
+            yield return new WaitForSeconds(0.5f);
         }
 
         yield return 0;

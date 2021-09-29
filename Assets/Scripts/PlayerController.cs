@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WeaponSystem weapon;
     public Transform cameraPos;
     public SpriteRenderer spriteRenderer;
+    public AudioSource damageSound;
     private Animator animator;
     private Rigidbody2D rb2d;
     private Hitbox hitbox;
@@ -93,6 +94,7 @@ public class PlayerController : MonoBehaviour
             int hitAmount = damage?.damage ?? 1;            
 
             health.ChangeHealth(-hitAmount);
+            damageSound.Play();
             if (health.GetHealth() <= 0) {
                 //call event
                 onDeath?.Invoke();

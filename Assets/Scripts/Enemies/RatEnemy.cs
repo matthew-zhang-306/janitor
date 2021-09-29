@@ -7,6 +7,10 @@ public class RatEnemy : BaseEnemy
 {
     private bool shouldPickAction;
 
+    public AudioSource ratAttack;
+    public AudioSource ratMove;
+    public AudioClip[] ratMovements;
+
     public float seekSpeed;
     public float stoppingDistance;
     public float startupTime;
@@ -17,6 +21,7 @@ public class RatEnemy : BaseEnemy
     public Animator animator;
     public GameObject swipe;
 
+    private bool m_rat = true;
 
     protected override void Start() {
         base.Start();
@@ -88,10 +93,11 @@ public class RatEnemy : BaseEnemy
         navigator.Stop();
 
         animator.Play("RatIdle");
+       
         
         while (startupTimer != 0) {
             yield return 0;
-            startupTimer = Mathf.MoveTowards(startupTimer, 0, Time.deltaTime);
+            startupTimer = Mathf.MoveTowards(startupTimer, 0, Time.deltaTime); ratMove.Stop();
         }
         shouldPickAction = true;
     }
@@ -99,14 +105,19 @@ public class RatEnemy : BaseEnemy
     private IEnumerator Action_Seek() {
         navigator.canNavigate = true;
         navigator.SetDestination(player.transform.position);
+        
+        if (m_rat == true) { ratMove.clip = ratMovements[0]; ratMove.Play(); m_rat = false; }
+        else PlayRandom();
+
 
         float timer = 0.5f;
-        while (timer > 0) {
+        while (timer > 0) {     
             yield return new WaitForFixedUpdate();
 
             if ((player.transform.position - transform.position).magnitude <= stoppingDistance)
                 // terminate immediately
                 timer = 0;
+          
             timer -= Time.deltaTime;
         }
         
@@ -125,6 +136,8 @@ public class RatEnemy : BaseEnemy
         swipe.SetActive(true);
 
         animator.Play("RatAttack");
+        ratAttack.Play();
+        Debug.Log("RatAttack!");
 
         yield return new WaitForSeconds(swipeTime);
 
@@ -133,5 +146,10 @@ public class RatEnemy : BaseEnemy
         shouldPickAction = true;
 
         animator.Play("RatIdle");
+    }
+
+    private void PlayRandom() {
+        ratMove.clip = ratMovements[UnityEngine.Random.Range(0, ratMovements.Length)];
+        ratMove.Play();
     }
 }
