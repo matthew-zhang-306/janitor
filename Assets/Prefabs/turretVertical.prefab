@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1baeb47017e95ea469a07e493059e38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunk: {fileID: 2386797578861325592, guid: f79772d9b856eac4b8f4260a64a361a9, type: 3}
+  gunk: {fileID: 3290274713183309794, guid: bd17e98440b2fa146abec19e2a350d6b, type: 3}
   velocity: {x: 0, y: -15}
   canShoot: 1
   Offset: {x: 0, y: 0.3}

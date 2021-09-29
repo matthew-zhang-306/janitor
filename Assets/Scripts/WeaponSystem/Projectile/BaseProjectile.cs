@@ -7,9 +7,12 @@ using UnityEngine.Tilemaps;
 public class BaseProjectile : MonoBehaviour
 {
     public Hitbox wallHitbox;
+    public Collider2D hurtbox;
 
     public float lifetime = 1f;
     private float m_time = 0f;
+
+    protected new Rigidbody2D rigidbody;
     
 
     protected virtual void OnEnable()
@@ -24,39 +27,35 @@ public class BaseProjectile : MonoBehaviour
 
     protected virtual void Start ()
     {
-        
+        rigidbody = GetComponent<Rigidbody2D>();
     }
     
-    void Update()
+    protected virtual void Update()
     {
         m_time += Time.deltaTime;
         if (m_time > lifetime) {
-            this.OnDespawn();            
-            
+            this.Despawn();
         }
     }
+
     void OnDestroy()
     {
-        Debug.LogWarning("bullet should not be destroyed usually");
-        this.OnDespawn();
+        // turning off this warning because all bullets are destroyed when the scene unloads
+        // Debug.LogWarning("bullet should not be destroyed usually");
+        this.Despawn();
+    }
 
-    }
-    //Virtual Func for where this projectile should go
-    public virtual void GetNextPosition()
-    {
-        
-    }
     
     public virtual void OnHitEntity() {
         // by default, do nothing
     }
 
-    public virtual void OnDespawn() {
+    protected virtual void Despawn() {
+        // a projectile pooler will collect this object
         gameObject.SetActive(false);
     }
 
-    protected virtual void OnHitWall(Collider2D _)
-    {
-        gameObject.SetActive(false);
+    protected virtual void OnHitWall(Collider2D _) {
+        this.Despawn();
     }
 }

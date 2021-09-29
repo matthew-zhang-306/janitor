@@ -7,7 +7,6 @@ using UnityEngine.Tilemaps;
 public class SpongeProjectile : BaseProjectile
 {
     public Animator anim;
-    public Hitbox hurtbox;
     public SpriteRenderer sr;
     private Rigidbody2D rb2d;
 
@@ -48,6 +47,6 @@ public class SpongeProjectile : BaseProjectile
 
         yield return new WaitForSeconds(1);
         
-        this.OnDespawn();
+        this.Despawn();
     }
 }

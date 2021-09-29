@@ -48,21 +48,16 @@ public class Turret : MonoBehaviour
             PlayerInRange = false;
         }
     }
-    // Update is called once per frame
+
     void Update()
     {
-        //Debug.Log(shootNow);
-
         if (!PauseMenu.GamePaused)
         {
-            
-                if (PlayerInRange == true && canShoot == true)
-                {
-                    
-                    GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
+            if (PlayerInRange == true && canShoot == true)
+            {
+                GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
                 if (gunk != null)
                 {
-                   
                     turret.SetTrigger("Play");
                     gunk.transform.position = turret.transform.position;
                     gunk.transform.rotation = turret.transform.rotation;
@@ -72,7 +67,7 @@ public class Turret : MonoBehaviour
                     StartCoroutine("Delay");
                     StartCoroutine("Cooldown");
                 }
-                } 
+            } 
         }
     }
 
@@ -84,13 +79,9 @@ public class Turret : MonoBehaviour
 
     IEnumerator Cooldown()
     {
-
         canShoot = false;
-        
         yield return new WaitForSeconds(cooldown + Random.Range(.15f, .4f));
         canShoot = true;
-        //Debug.Log("can shoot now0");
-        
     }
 
 }

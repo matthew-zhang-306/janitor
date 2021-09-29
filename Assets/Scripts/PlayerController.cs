@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
             
         if (invincibilityTimer == 0f) {
             // take a hit
-            TakeDamage(hitbox.OtherCollider);
+            TakeDamage(other);
         }
     }
 
