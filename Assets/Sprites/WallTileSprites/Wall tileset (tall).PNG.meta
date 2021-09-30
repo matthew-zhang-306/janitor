@@ -1,0 +1,2276 @@
+fileFormatVersion: 2
+guid: 5a444a06bade54b40a70ebda21f538cf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4992670034102767855
+    second: Wall tileset (tall)_0
+  - first:
+      213: 8957523744078745859
+    second: Wall tileset (tall)_1
+  - first:
+      213: -4387631348499667219
+    second: Wall tileset (tall)_2
+  - first:
+      213: -930139558511186046
+    second: Wall tileset (tall)_3
+  - first:
+      213: 1894073704964695024
+    second: Wall tileset (tall)_4
+  - first:
+      213: 3661805133515884945
+    second: Wall tileset (tall)_5
+  - first:
+      213: -5105052168480031297
+    second: Wall tileset (tall)_6
+  - first:
+      213: -5330406420447982256
+    second: Wall tileset (tall)_7
+  - first:
+      213: 1955987644542773640
+    second: Wall tileset (tall)_8
+  - first:
+      213: 4270386574117437592
+    second: Wall tileset (tall)_9
+  - first:
+      213: -1394355151941268491
+    second: Wall tileset (tall)_10
+  - first:
+      213: -1207334524057873726
+    second: Wall tileset (tall)_11
+  - first:
+      213: -3075742941589196965
+    second: Wall tileset (tall)_12
+  - first:
+      213: 8654199300053042514
+    second: Wall tileset (tall)_13
+  - first:
+      213: 977258058901884363
+    second: Wall tileset (tall)_14
+  - first:
+      213: 3822483503361671933
+    second: Wall tileset (tall)_15
+  - first:
+      213: 4894910351274586020
+    second: Wall tileset (tall)_16
+  - first:
+      213: 466622790787122765
+    second: Wall tileset (tall)_17
+  - first:
+      213: -636534371811129894
+    second: Wall tileset (tall)_18
+  - first:
+      213: -3948082777723936815
+    second: Wall tileset (tall)_19
+  - first:
+      213: -9016560565604432442
+    second: Wall tileset (tall)_20
+  - first:
+      213: -8956666925417072476
+    second: Wall tileset (tall)_21
+  - first:
+      213: -8455684289408356700
+    second: Wall tileset (tall)_22
+  - first:
+      213: 4506354937830160283
+    second: Wall tileset (tall)_23
+  - first:
+      213: -7499855614149177539
+    second: Wall tileset (tall)_24
+  - first:
+      213: -8613451867765371156
+    second: Wall tileset (tall)_25
+  - first:
+      213: 1624593272158207733
+    second: Wall tileset (tall)_26
+  - first:
+      213: -1750103987367759958
+    second: Wall tileset (tall)_27
+  - first:
+      213: -8768633261329490347
+    second: Wall tileset (tall)_28
+  - first:
+      213: 8415748947815736151
+    second: Wall tileset (tall)_29
+  - first:
+      213: -6990516566077526361
+    second: Wall tileset (tall)_30
+  - first:
+      213: -8879320397691006535
+    second: Wall tileset (tall)_31
+  - first:
+      213: -4025371984784726620
+    second: Wall tileset (tall)_32
+  - first:
+      213: -1075048508944240227
+    second: Wall tileset (tall)_33
+  - first:
+      213: -5334166414132546661
+    second: Wall tileset (tall)_34
+  - first:
+      213: 1392667404809400175
+    second: Wall tileset (tall)_35
+  - first:
+      213: -4531416650237017979
+    second: Wall tileset (tall)_36
+  - first:
+      213: -2465757904762831887
+    second: Wall tileset (tall)_37
+  - first:
+      213: 6238067062346761970
+    second: Wall tileset (tall)_38
+  - first:
+      213: -5246047124587807704
+    second: Wall tileset (tall)_39
+  - first:
+      213: -6526746131845446645
+    second: Wall tileset (tall)_40
+  - first:
+      213: 7025471609974178935
+    second: Wall tileset (tall)_41
+  - first:
+      213: -6731635614831386056
+    second: Wall tileset (tall)_42
+  - first:
+      213: 4884763564058744144
+    second: Wall tileset (tall)_43
+  - first:
+      213: 8083696036108192591
+    second: Wall tileset (tall)_44
+  - first:
+      213: 4673744645011089438
+    second: Wall tileset (tall)_45
+  - first:
+      213: -1066373605945500821
+    second: Wall tileset (tall)_46
+  - first:
+      213: -3954287616791106237
+    second: Wall tileset (tall)_47
+  - first:
+      213: -5627764359516678088
+    second: Wall tileset (tall)_48
+  - first:
+      213: -4977939008931697945
+    second: Wall tileset (tall)_49
+  - first:
+      213: 473560338532558478
+    second: Wall tileset (tall)_50
+  - first:
+      213: -1232839262352376857
+    second: Wall tileset (tall)_51
+  - first:
+      213: -2226095310905303223
+    second: Wall tileset (tall)_52
+  - first:
+      213: -1104051890504622216
+    second: Wall tileset (tall)_53
+  - first:
+      213: -6479762215380796949
+    second: Wall tileset (tall)_54
+  - first:
+      213: -6829251600280527427
+    second: Wall tileset (tall)_55
+  - first:
+      213: 6926768953815489395
+    second: Wall tileset (tall)_56
+  - first:
+      213: 6969662832128383181
+    second: Wall tileset (tall)_57
+  - first:
+      213: -3714582305879836343
+    second: Wall tileset (tall)_58
+  - first:
+      213: -9063471598180762245
+    second: Wall tileset (tall)_59
+  - first:
+      213: -8183678748866835166
+    second: Wall tileset (tall)_60
+  - first:
+      213: -3760519854462324100
+    second: Wall tileset (tall)_61
+  - first:
+      213: -5836370739452596915
+    second: Wall tileset (tall)_62
+  - first:
+      213: 1357699016653557338
+    second: Wall tileset (tall)_63
+  - first:
+      213: 5020515084842787204
+    second: Wall tileset (tall)_64
+  - first:
+      213: -6484880770412649143
+    second: Wall tileset (tall)_65
+  - first:
+      213: 3324414565610016277
+    second: Wall tileset (tall)_66
+  - first:
+      213: -4922211804070956183
+    second: Wall tileset (tall)_67
+  - first:
+      213: -2845363095430109853
+    second: Wall tileset (tall)_68
+  - first:
+      213: 7303692421246516767
+    second: Wall tileset (tall)_69
+  - first:
+      213: -6593518649916091593
+    second: Wall tileset (tall)_70
+  - first:
+      213: -5384592301277633914
+    second: Wall tileset (tall)_71
+  - first:
+      213: 2288277569880856987
+    second: Wall tileset (tall)_72
+  - first:
+      213: 8063076468510386202
+    second: Wall tileset (tall)_73
+  - first:
+      213: -5983278209806229910
+    second: Wall tileset (tall)_74
+  - first:
+      213: -6553038653534100136
+    second: Wall tileset (tall)_75
+  - first:
+      213: 3031901657277478869
+    second: Wall tileset (tall)_76
+  - first:
+      213: 1956565973133843948
+    second: Wall tileset (tall)_77
+  - first:
+      213: 1709676516458152890
+    second: Wall tileset (tall)_78
+  - first:
+      213: 7089180685653597780
+    second: Wall tileset (tall)_79
+  - first:
+      213: -7412038897539513577
+    second: Wall tileset (tall)_80
+  - first:
+      213: -1580013134202221825
+    second: Wall tileset (tall)_81
+  - first:
+      213: 296630575890864556
+    second: Wall tileset (tall)_82
+  - first:
+      213: 9214007726460261967
+    second: Wall tileset (tall)_83
+  - first:
+      213: -8098409729884932428
+    second: Wall tileset (tall)_84
+  - first:
+      213: -4432995304344395023
+    second: Wall tileset (tall)_85
+  - first:
+      213: 8905575037494345185
+    second: Wall tileset (tall)_86
+  - first:
+      213: -3153320488884593509
+    second: Wall tileset (tall)_87
+  - first:
+      213: -4215291591990541811
+    second: Wall tileset (tall)_88
+  - first:
+      213: 9057240411078189554
+    second: Wall tileset (tall)_89
+  - first:
+      213: -2921553961333048137
+    second: Wall tileset (tall)_90
+  - first:
+      213: 3503733505129648741
+    second: Wall tileset (tall)_91
+  - first:
+      213: 6101050608513880458
+    second: Wall tileset (tall)_92
+  - first:
+      213: 2606088085786108323
+    second: Wall tileset (tall)_93
+  - first:
+      213: 415044422751773359
+    second: Wall tileset (tall)_94
+  - first:
+      213: -8099949887966185334
+    second: Wall tileset (tall)_95
+  - first:
+      213: 5687584697985899729
+    second: Wall tileset (tall)_96
+  - first:
+      213: -6591438882788699856
+    second: Wall tileset (tall)_97
+  - first:
+      213: -4814914578439619626
+    second: Wall tileset (tall)_98
+  - first:
+      213: 57605879472085172
+    second: Wall tileset (tall)_99
+  - first:
+      213: 2115112184382106726
+    second: Wall tileset (tall)_100
+  - first:
+      213: 1325583211765992925
+    second: Wall tileset (tall)_101
+  - first:
+      213: 699272407541000962
+    second: Wall tileset (tall)_102
+  - first:
+      213: -7547778613753432083
+    second: Wall tileset (tall)_103
+  - first:
+      213: -8902730533822535748
+    second: Wall tileset (tall)_104
+  - first:
+      213: -8085988403522338402
+    second: Wall tileset (tall)_105
+  - first:
+      213: 7476096381998414907
+    second: Wall tileset (tall)_106
+  - first:
+      213: 4254706532060059258
+    second: Wall tileset (tall)_107
+  - first:
+      213: -8339473561353451253
+    second: Wall tileset (tall)_108
+  - first:
+      213: 7568423993737112692
+    second: Wall tileset (tall)_109
+  - first:
+      213: 7575759495999781302
+    second: Wall tileset (tall)_110
+  - first:
+      213: -9059747368732312027
+    second: Wall tileset (tall)_111
+  - first:
+      213: 7255706400556985300
+    second: Wall tileset (tall)_112
+  - first:
+      213: 2409878937379749356
+    second: Wall tileset (tall)_113
+  - first:
+      213: -1324561583892452445
+    second: Wall tileset (tall)_114
+  - first:
+      213: 266445328069730272
+    second: Wall tileset (tall)_115
+  - first:
+      213: 3097849941945838052
+    second: Wall tileset (tall)_116
+  - first:
+      213: 3279918258095110520
+    second: Wall tileset (tall)_117
+  - first:
+      213: -520799796514011491
+    second: Wall tileset (tall)_118
+  - first:
+      213: 832060702392195305
+    second: Wall tileset (tall)_119
+  - first:
+      213: -7608230850280208423
+    second: Wall tileset (tall)_120
+  - first:
+      213: 5321927685220227590
+    second: Wall tileset (tall)_121
+  - first:
+      213: 2541413633263904892
+    second: Wall tileset (tall)_122
+  - first:
+      213: -1546090886333981740
+    second: Wall tileset (tall)_123
+  - first:
+      213: -1661561004171755738
+    second: Wall tileset (tall)_124
+  - first:
+      213: 6615130347154657192
+    second: Wall tileset (tall)_125
+  - first:
+      213: 606288268279808570
+    second: Wall tileset (tall)_126
+  - first:
+      213: 7515558887271393900
+    second: Wall tileset (tall)_127
+  - first:
+      213: -492658176372741405
+    second: Wall tileset (tall)_128
+  - first:
+      213: 6816757604817725296
+    second: Wall tileset (tall)_129
+  - first:
+      213: -628032424509060894
+    second: Wall tileset (tall)_130
+  - first:
+      213: -495654915289672727
+    second: Wall tileset (tall)_131
+  - first:
+      213: -8633191981125791628
+    second: Wall tileset (tall)_132
+  - first:
+      213: -3228842002642841915
+    second: Wall tileset (tall)_133
+  - first:
+      213: -2340090765344176556
+    second: Wall tileset (tall)_134
+  - first:
+      213: 1987484984919101517
+    second: Wall tileset (tall)_135
+  - first:
+      213: 1845876499422248393
+    second: Wall tileset (tall)_136
+  - first:
+      213: -8561306103011368324
+    second: Wall tileset (tall)_137
+  - first:
+      213: 5719888555538930500
+    second: Wall tileset (tall)_138
+  - first:
+      213: -6175803054237437552
+    second: Wall tileset (tall)_139
+  - first:
+      213: -4719792982977283200
+    second: Wall tileset (tall)_140
+  - first:
+      213: 2402219319081196820
+    second: Wall tileset (tall)_141
+  - first:
+      213: 5011435793953944439
+    second: Wall tileset (tall)_142
+  - first:
+      213: 6657928298831222724
+    second: Wall tileset (tall)_143
+  - first:
+      213: 5042828470628731043
+    second: Wall tileset (tall)_144
+  - first:
+      213: -2911114833942690076
+    second: Wall tileset (tall)_145
+  - first:
+      213: 3711709467804320266
+    second: Wall tileset (tall)_146
+  - first:
+      213: -459539667527107878
+    second: Wall tileset (tall)_147
+  - first:
+      213: 5408586339155366497
+    second: Wall tileset (tall)_148
+  - first:
+      213: 6171341330973899504
+    second: Wall tileset (tall)_149
+  - first:
+      213: -5511441263952192708
+    second: Wall tileset (tall)_150
+  - first:
+      213: 7626320705214782771
+    second: Wall tileset (tall)_151
+  - first:
+      213: 1510550832014178077
+    second: Wall tileset (tall)_152
+  - first:
+      213: -9131624309013183966
+    second: Wall tileset (tall)_153
+  - first:
+      213: -2932382319015338477
+    second: Wall tileset (tall)_154
+  - first:
+      213: 6434673517333754024
+    second: Wall tileset (tall)_155
+  - first:
+      213: 7021346146665720122
+    second: Wall tileset (tall)_156
+  - first:
+      213: 2811776122436346865
+    second: Wall tileset (tall)_157
+  - first:
+      213: 8363805087981382374
+    second: Wall tileset (tall)_158
+  - first:
+      213: 2851688635370344465
+    second: Wall tileset (tall)_159
+  - first:
+      213: -5954963406078334279
+    second: Wall tileset (tall)_160
+  - first:
+      213: 1297499150932990220
+    second: Wall tileset (tall)_161
+  - first:
+      213: -1567826044357509988
+    second: Wall tileset (tall)_162
+  - first:
+      213: -5832680365560897687
+    second: Wall tileset (tall)_163
+  - first:
+      213: 2848240168874101411
+    second: Wall tileset (tall)_164
+  - first:
+      213: -8572656377363980341
+    second: Wall tileset (tall)_165
+  - first:
+      213: -8796837482058290473
+    second: Wall tileset (tall)_166
+  - first:
+      213: 4179704012630616267
+    second: Wall tileset (tall)_167
+  - first:
+      213: 7828497870692368791
+    second: Wall tileset (tall)_168
+  - first:
+      213: 6943118881438302234
+    second: Wall tileset (tall)_169
+  - first:
+      213: -8204923494286977321
+    second: Wall tileset (tall)_170
+  - first:
+      213: 7943511915022429178
+    second: Wall tileset (tall)_171
+  - first:
+      213: 7468836153513895369
+    second: Wall tileset (tall)_172
+  - first:
+      213: -167742559754138971
+    second: Wall tileset (tall)_173
+  - first:
+      213: -5560465698405548313
+    second: Wall tileset (tall)_174
+  - first:
+      213: -216468269951942488
+    second: Wall tileset (tall)_175
+  - first:
+      213: -8566869617066807677
+    second: Wall tileset (tall)_176
+  - first:
+      213: 5498015930691626353
+    second: Wall tileset (tall)_177
+  - first:
+      213: 196127566590847972
+    second: Wall tileset (tall)_178
+  - first:
+      213: 1778141970163865031
+    second: Wall tileset (tall)_179
+  - first:
+      213: 1129055329093407314
+    second: Wall tileset (tall)_180
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 500
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Wall tileset (tall)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11f21986e0976bab0800000000000000
+      internalID: -4992670034102767855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 301d0f0e2648f4c70800000000000000
+      internalID: 8957523744078745859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de62f4309800c13c0800000000000000
+      internalID: -4387631348499667219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28fe667effa7713f0800000000000000
+      internalID: -930139558511186046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f324dadff9194a10800000000000000
+      internalID: 1894073704964695024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1998aeb2e5851d230800000000000000
+      internalID: 3661805133515884945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbdf8e9b9163729b0800000000000000
+      internalID: -5105052168480031297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_7
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d8cb03a979606b0800000000000000
+      internalID: -5330406420447982256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_8
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88966024660152b10800000000000000
+      internalID: 1955987644542773640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_9
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8900ed3b6f5734b30800000000000000
+      internalID: 4270386574117437592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_10
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fb0ecd706146ace0800000000000000
+      internalID: -1394355151941268491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c21778a5afae3fe0800000000000000
+      internalID: -1207334524057873726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_12
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5f29223714c055d0800000000000000
+      internalID: -3075742941589196965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_13
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25588175964e91870800000000000000
+      internalID: 8654199300053042514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_14
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd0cbed60bef8d00800000000000000
+      internalID: 977258058901884363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_15
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2c9a17e703c0530800000000000000
+      internalID: 3822483503361671933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_16
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4afaa17b7073ee340800000000000000
+      internalID: 4894910351274586020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_17
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d46c7f8b4f6c97600800000000000000
+      internalID: 466622790787122765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_18
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad50fd08c539a27f0800000000000000
+      internalID: -636534371811129894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_19
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1df5de9a1a79539c0800000000000000
+      internalID: -3948082777723936815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_20
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c54a57ffedbed280800000000000000
+      internalID: -9016560565604432442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_21
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a87603c2e683b380800000000000000
+      internalID: -8956666925417072476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aea6fc50ff57aa80800000000000000
+      internalID: -8455684289408356700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_23
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97b135b0f9c98e30800000000000000
+      internalID: 4506354937830160283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_24
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3f4beb0e092be790800000000000000
+      internalID: -7499855614149177539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_25
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cee8beb892fd67880800000000000000
+      internalID: -8613451867765371156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_26
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5feba7b39f6bb8610800000000000000
+      internalID: 1624593272158207733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_27
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaf23f822b166b7e0800000000000000
+      internalID: -1750103987367759958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_28
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55ed7ccc18e8f4680800000000000000
+      internalID: -8768633261329490347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_29
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 753ac69541fbac470800000000000000
+      internalID: 8415748947815736151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_30
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ae27727832bcfe90800000000000000
+      internalID: -6990516566077526361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_31
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b15fb8942156c480800000000000000
+      internalID: -8879320397691006535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_32
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5e816d1810328c0800000000000000
+      internalID: -4025371984784726620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91b014b319a411f0800000000000000
+      internalID: -1075048508944240227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_34
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b937fc078eb39f5b0800000000000000
+      internalID: -5334166414132546661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_35
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6fede140afb35310800000000000000
+      internalID: 1392667404809400175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_36
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5800559a09c2d11c0800000000000000
+      internalID: -4531416650237017979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_37
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fbff70ff3ed7cdd0800000000000000
+      internalID: -2465757904762831887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_38
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f64e3841f0129650800000000000000
+      internalID: 6238067062346761970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_39
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82cfbf75feb4237b0800000000000000
+      internalID: -5246047124587807704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_40
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b04823829f65c65a0800000000000000
+      internalID: -6526746131845446645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_41
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7744a1ce43d7f7160800000000000000
+      internalID: 7025471609974178935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_42
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8326b94f21d6492a0800000000000000
+      internalID: -6731635614831386056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_43
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0551e77b49a2ac340800000000000000
+      internalID: 4884763564058744144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4b467037be0f2070800000000000000
+      internalID: 8083696036108192591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_45
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1825c8fdf97cd040800000000000000
+      internalID: 4673744645011089438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_46
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b14c3fada7331f0800000000000000
+      internalID: -1066373605945500821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_47
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34da07dfc5c8f19c0800000000000000
+      internalID: -3954287616791106237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_48
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8389767d12a26e1b0800000000000000
+      internalID: -5627764359516678088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_49
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eae01b78decaeab0800000000000000
+      internalID: -4977939008931697945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_50
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8662fd6e9c629600800000000000000
+      internalID: 473560338532558478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_51
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ebf456093314eee0800000000000000
+      internalID: -1232839262352376857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_52
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94f935deb125b11e0800000000000000
+      internalID: -2226095310905303223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_53
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87f9fd4b7ae9da0f0800000000000000
+      internalID: -1104051890504622216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_54
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9ba3ba8924316a0800000000000000
+      internalID: -6479762215380796949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbdd28b3adf9931a0800000000000000
+      internalID: -6829251600280527427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_56
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37b5065f9a3d02060800000000000000
+      internalID: 6926768953815489395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_57
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc851414b6739b060800000000000000
+      internalID: 6969662832128383181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_58
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 949b411d217237cc0800000000000000
+      internalID: -3714582305879836343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_59
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7df79e0a94183280800000000000000
+      internalID: -9063471598180762245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_60
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22d01e1798bbd6e80800000000000000
+      internalID: -8183678748866835166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_61
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7238ffcd13ffcbc0800000000000000
+      internalID: -3760519854462324100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_62
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4da1712cbb010fa0800000000000000
+      internalID: -5836370739452596915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_63
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5e488fef0487d210800000000000000
+      internalID: 1357699016653557338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_64
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4816b8daed37ca540800000000000000
+      internalID: 5020515084842787204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_65
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945eac43c431106a0800000000000000
+      internalID: -6484880770412649143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_66
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51ec1551f61b22e20800000000000000
+      internalID: 3324414565610016277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_67
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 963bd15717ac0bbb0800000000000000
+      internalID: -4922211804070956183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_68
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 365e1ef075d3388d0800000000000000
+      internalID: -2845363095430109853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_69
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e7c1d7f8deb5560800000000000000
+      internalID: 7303692421246516767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_70
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73396dbc8bd1f74a0800000000000000
+      internalID: -6593518649916091593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_71
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6822b0ea4d51645b0800000000000000
+      internalID: -5384592301277633914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_72
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b991e34735891cf10800000000000000
+      internalID: 2288277569880856987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_73
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a186f5ef35dc5ef60800000000000000
+      internalID: 8063076468510386202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_74
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e1a204b2027fca0800000000000000
+      internalID: -5983278209806229910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_75
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85522b8601eee05a0800000000000000
+      internalID: -6553038653534100136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall tileset (tall)_76
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d731fb5e7a731a20800000000000000
+      internalID: 3031901657277478869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
