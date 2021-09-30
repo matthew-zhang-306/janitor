@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using DG.Tweening;
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource damageSound;
     private Animator animator;
     private Rigidbody2D rb2d;
+    private new Collider2D collider;
     private Hitbox hitbox;
     private Health health;
 
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("How many seconds should the player be invurnurable")]
     [SerializeField] private float dashIframe = 0.3f;
     [Tooltip("How strong is the dash")]
-    [SerializeField] private float dashSpeedBonus = 50f;
+    [SerializeField] private float dashSpeed = 50f;
 
     [Header("Getting Hit")]
     [SerializeField] private float knockbackPower = 1f;
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private void Start() {
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
         hitbox = GetComponentInChildren<Hitbox>();
         health = GetComponent<Health>();
         dashCooldown += dashTime;
@@ -80,7 +83,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        HandleMotion();
+        dashTimer = Mathf.MoveTowards(dashTimer, 0f, Time.deltaTime);
+
+        if (dashTimer <= dashCooldown - dashTime) {
+            HandleMotion();
+        }
+
         invincibilityTimer = Mathf.MoveTowards(invincibilityTimer, 0, Time.deltaTime);
     }
 
@@ -119,12 +127,6 @@ public class PlayerController : MonoBehaviour
     }
 
     private void HandleMotion() {
-        dashTimer -= Time.deltaTime;
-
-        if (dashTimer > dashCooldown - dashTime) {
-            return;
-        }
-
         if (knockbackTimer > 0f) {
             // handle knockback
             knockbackTimer -= Time.deltaTime;
@@ -138,29 +140,125 @@ public class PlayerController : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput = moveInput.normalized;
-
-        //Dash stuff
-        
         
         // apply this velocity to the player
         Vector2 velocity = rb2d.velocity;
         velocity = Vector2.MoveTowards(velocity, moveInput * (maxSpeed), acceleration);
         rb2d.velocity = velocity;
         
+        // handle dashing
         bool isDash = Input.GetButton("Jump");
-        if (isDash && dashTimer <= 0f) {       
-            var col = Physics2D.OverlapPoint(transform.position + (moveInput * dashSpeedBonus * dashTime).ToVector3(), LayerMask.GetMask("Hole"));     
-            if (col != null) {
-                return;
-            }
-            DisableEnemyCollision();
-
-            rb2d.AddForce(moveInput * dashSpeedBonus, ForceMode2D.Impulse);
-            dashTimer = dashCooldown;
-            Invoke("EnableEnemyCollision", dashTime);
-            //might fuck things up
-            invincibilityTimer += dashIframe;
+        if (isDash && dashTimer <= 0f) {
+            StartCoroutine(DoDash(moveInput));
         }
+    }
+
+    private IEnumerator DoDash(Vector2 dashDirection) {
+        if (dashDirection == Vector2.zero) {
+            // TODO: use the player's "facing direction" here
+            yield break;
+        }
+
+        Vector3 dashPoint = CalculateDashPoint(dashDirection, out Vector3 lastHolePosition);
+
+        bool collisionDisabled = false;
+        bool inLastHole = collider.bounds.Contains(lastHolePosition);
+        bool oldInLastHole = inLastHole;
+        if (!inLastHole) {
+            // this dash will cross over holes
+            collisionDisabled = true;
+            collider.isTrigger = true;
+        }
+
+        // ignore enemy hits for a while
+        // TODO: add a different dash iframe timer
+        invincibilityTimer += dashIframe;
+
+        dashTimer = dashCooldown;
+        while (dashTimer > dashCooldown - dashTime) {
+            oldInLastHole = inLastHole;
+            inLastHole = collider.bounds.Contains(lastHolePosition);
+
+            if (collisionDisabled && (!inLastHole && oldInLastHole)) {
+                // done with the holes, let the rest of the dash play out with collision on
+                collider.isTrigger = false;
+            }
+            
+            rb2d.velocity = dashDirection * dashSpeed;
+            yield return new WaitForFixedUpdate();
+        }
+
+        collider.isTrigger = false;
+        rb2d.velocity = dashDirection * maxSpeed;
+    }
+
+    private Vector3 CalculateDashPoint(Vector2 dashDirection, out Vector3 lastHolePosition) {
+        Vector2 maxDashPoint = collider.bounds.center + dashDirection.ToVector3() * dashSpeed * dashTime;
+        Vector2 desiredDashPoint = maxDashPoint;
+
+        lastHolePosition = collider.bounds.center;
+
+        List<RaycastHit2D> forwardHits = Physics2D.RaycastAll(
+            collider.bounds.center,
+            dashDirection,
+            dashSpeed * dashTime,
+            LayerMask.GetMask("Wall", "Sides", "Hole")
+        ).ToList();
+        if (forwardHits.Count > 0) {
+            // do not consider anything past the first wall
+            int firstWallHit = forwardHits.FindIndex(
+                hit => hit.transform.gameObject.layer != LayerMask.NameToLayer("Hole")
+            );
+            if (firstWallHit != -1) {
+                desiredDashPoint = forwardHits[firstWallHit].point;
+                forwardHits = forwardHits.GetRange(0, firstWallHit);
+            }
+
+            if (forwardHits.Count > 0) {
+                // find the furthest reachable ground by raycasting backward
+                List<RaycastHit2D> backwardHits = Physics2D.RaycastAll(
+                    desiredDashPoint,
+                    -dashDirection,
+                    Vector2.Distance(collider.bounds.center, desiredDashPoint),
+                    LayerMask.GetMask("Hole")
+                ).ToList();
+
+                if (forwardHits.Count != backwardHits.Count) {
+                    Debug.LogError("When determining dash distance, the player had " + forwardHits.Count + " forward raycast hits but " + backwardHits.Count + " backward raycast hits, which are different numbers. This is not expected behavior so you should ask Matt about it if it happens because it could be something weird");
+                }
+
+                int f = forwardHits.Count;
+                int b = 0;
+                while (b < backwardHits.Count) {
+                    var backwardHitPos = backwardHits[b].point;
+                    var forwardHitPos = f < forwardHits.Count ? forwardHits[f].point : desiredDashPoint;
+
+                    if (Vector2.Distance(backwardHitPos, forwardHitPos) > 0.1f) {
+                        // it looks like we can dash here. keep this f value by exiting the loop
+                        break;
+                    }
+
+                    b++;
+                    f--;
+                }
+                desiredDashPoint = f < forwardHits.Count ? forwardHits[f].point : desiredDashPoint;
+                if (b < backwardHits.Count)
+                    lastHolePosition = backwardHits[b].point;
+
+                // debugging lines
+                Debug.DrawRay(collider.bounds.center, dashDirection.ToVector3() * dashSpeed * dashTime, Color.white, 5f);
+                for (var a = 0; a < forwardHits.Count; a++) {
+                    Debug.DrawLine(collider.bounds.center + transform.up * (a+1), forwardHits[a].point, Color.magenta, 5f);
+                }
+                for (var a = 0; a < backwardHits.Count; a++) {
+                    Debug.DrawLine(collider.bounds.center - transform.up * (a+1), backwardHits[a].point, Color.red, 5f);
+                }
+                Debug.DrawLine(collider.bounds.center, desiredDashPoint, Color.blue, 5f);
+                Debug.DrawLine(collider.bounds.center, lastHolePosition, Color.cyan, 5f);
+            }
+        }
+
+        return desiredDashPoint.ToVector3();
     }
 
     private void DisableEnemyCollision ()
