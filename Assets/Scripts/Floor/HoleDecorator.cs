@@ -13,7 +13,7 @@ public class HoleDecorator : MonoBehaviour
     private Tilemap tm;
 
     private HashSet<Vector3Int> holeSet;
-    void Start() 
+    void Awake ()
     {
         holeSet = new HashSet<Vector3Int> ();
         tm = this.GetComponent<Tilemap>();
@@ -29,9 +29,14 @@ public class HoleDecorator : MonoBehaviour
             shadow.Add (t);
         }
     }
+    void Start() 
+    {
+        
+    }
 
     public void AddHole (Vector3Int cell)
     {
+        Debug.Log("Adding hole");
         holeSet.Add (cell);
     }
 
@@ -44,7 +49,6 @@ public class HoleDecorator : MonoBehaviour
                 for (int yd = -1; yd <= 1; yd++) {
                     var nHole = new Vector3Int (hole.x + xd, hole.y + yd, 0);
                     if (!changed.Contains(nHole) && !holeSet.Contains(nHole)) {
-                        Debug.Log ("Setting tile");
                         tm.SetTile (nHole, edge[Random.Range(0, edge.Count)]);
                         changed.Add (nHole);
                     }

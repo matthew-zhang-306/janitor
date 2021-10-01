@@ -135,6 +135,7 @@ public class FloorController : MonoBehaviour
                 if (overlap == null) {
                     tm.SetTile(cell, tiles[maxTileHealth][GetCoords(x,y)]);
                     totalFloorHealth += maxTileHealth;
+
                 }
                 else if (overlap.gameObject?.layer == LayerMask.NameToLayer("Hole")) {
                     //communicate with hole deco
