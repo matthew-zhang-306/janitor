@@ -74,8 +74,11 @@ public class WeaponSystem : MonoBehaviour
     public void Swing (Vector3 p) {
         Vector3 hit = cam.ScreenToWorldPoint(p);
         Vector2 dir = (hit - transform.position).ToVector2().normalized;
-        Quaternion bulletRotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, dir));
 
-        GameObject created = GameObject.Instantiate(meleePrefab, this.transform.position, bulletRotation);
+        //YA know I have no clue why exactly these value work sooo
+        //BUT particle render must be set to LOCAL instead of view for rotation lol
+        Quaternion bulletRotation = Quaternion.Euler(Vector2.SignedAngle(Vector2.right, dir) - 18.5f, -90, -90);
+
+        GameObject created = GameObject.Instantiate(meleePrefab, this.transform.position + dir.ToVector3(), bulletRotation);
     }
 }
