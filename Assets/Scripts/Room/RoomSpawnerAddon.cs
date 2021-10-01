@@ -8,7 +8,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(RoomManager))]
 public class RoomSpawnerAddon : MonoBehaviour
 {
-   public AudioSource spawnSound;
+    // public AudioSource spawnSound;
     public int spawnAreaCount = 3;
     public float spawnTimer = 15f;
     private float m_spawnTimer;
@@ -100,7 +100,7 @@ public class RoomSpawnerAddon : MonoBehaviour
         public readonly int x;
         public readonly int y;
         public AudioSource sp;
-        private RoomSpawnerAddon ad = new RoomSpawnerAddon();
+        // private RoomSpawnerAddon ad = new RoomSpawnerAddon();
 
         //Time from marker creation to spawning enemy
         public float m_timer;
@@ -145,9 +145,9 @@ public class RoomSpawnerAddon : MonoBehaviour
                 }
             if (rm.dirtyTiles.IsTileDirty(new Vector2Int(x,y), 0.2f)) 
             {
-                var rmnumber = GameObject.Find("Room (7)");
-                sp = rmnumber.GetComponent<RoomSpawnerAddon>().spawnSound;
-                 sp.Play();
+                // var rmnumber = GameObject.Find("Room (7)");
+                // sp = rmnumber.GetComponent<RoomSpawnerAddon>().spawnSound;
+                //  sp.Play();
 
                 yield return new WaitForSeconds(0.5f);
 

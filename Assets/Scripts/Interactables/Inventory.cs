@@ -9,6 +9,11 @@ public class Inventory : MonoBehaviour
     private PlayerController pc;
     public Vector3 tooltipOffset;
     public GameObject tooltip;
+    private RectTransform rt;
+    private Text text;
+
+
+    public Canvas canvas;
 
     private int _money;
     public int money {get => _money; set => Mathf.Clamp(_money + value, 0, 1000);}
@@ -22,6 +27,29 @@ public class Inventory : MonoBehaviour
     {
         pc = this.GetComponent<PlayerController>();
         recent = new List<Interactable>();
+        if (canvas != null) {
+            //create canvas here
+            Debug.LogWarning ("Inserting Inventory tooltip to first canvas");
+            var c = GameObject.Find("Canvas");
+            if (c != null) {
+                canvas = c.GetComponent<Canvas>();
+
+            }
+            else {
+                Debug.LogError ("Canvas not found");
+            }
+        }
+
+        if (!tooltip.scene.IsValid()) {
+            //create tooltip from prefab here
+            
+            tooltip = Instantiate (tooltip, canvas?.transform);
+            tooltip.SetActive (false);
+        }
+
+
+        var rt = tooltip.GetComponent<RectTransform>();
+        var text = tooltip.GetComponent<Text>();
     }
 
     void Update ()
@@ -30,8 +58,7 @@ public class Inventory : MonoBehaviour
         var item = recent.LastOrDefault();
         if (item != null) {
             tooltip.SetActive (true);
-            var rt = tooltip.GetComponent<RectTransform>();
-            var text = tooltip.GetComponent<Text>();
+            
             rt.position = item.transform.position + tooltipOffset; //RectTransformUtility.WorldToScreenPoint(camera, );
             text.text = item.ToolTip;
         }
@@ -45,7 +72,7 @@ public class Inventory : MonoBehaviour
             canInteract = false;
 
             //Look at helper.cs
-            this.Invoke (()=> canInteract = true, interactBuffer);
+            this.Invoke (() => canInteract = true, interactBuffer);
         }
     }
 
