@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public PlayerDeath onDeath;
     private PlayerSnapShot previousPss;
 
-
+    private Vector2 previousMoveInput;
     private Vector2 knockback;
     private float knockbackTimer;
     private float invincibilityTimer;
@@ -140,6 +140,9 @@ public class PlayerController : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput = moveInput.normalized;
+        if (moveInput.sqrMagnitude > 0.1f) {
+            previousMoveInput = moveInput;
+        }
         
         // apply this velocity to the player
         Vector2 velocity = rb2d.velocity;
@@ -155,17 +158,14 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DoDash(Vector2 dashDirection) {
         if (dashDirection == Vector2.zero) {
-            // TODO: use the player's "facing direction" here
-            yield break;
+            dashDirection = previousMoveInput.normalized;
         }
 
         Vector3 dashPoint = CalculateDashPoint(dashDirection, out Vector3 lastHolePosition);
 
         bool collisionDisabled = false;
-        bool inLastHole = collider.bounds.Contains(lastHolePosition);
-        bool oldInLastHole = inLastHole;
-        if (!inLastHole) {
-            // this dash will cross over holes
+        if (!collider.bounds.Contains(lastHolePosition)) {
+            // this dash may cross over holes
             collisionDisabled = true;
             collider.isTrigger = true;
         }
@@ -176,10 +176,7 @@ public class PlayerController : MonoBehaviour
 
         dashTimer = dashCooldown;
         while (dashTimer > dashCooldown - dashTime) {
-            oldInLastHole = inLastHole;
-            inLastHole = collider.bounds.Contains(lastHolePosition);
-
-            if (collisionDisabled && (!inLastHole && oldInLastHole)) {
+            if (collisionDisabled && collider.bounds.Contains(lastHolePosition)) {
                 // done with the holes, let the rest of the dash play out with collision on
                 collider.isTrigger = false;
             }
@@ -196,69 +193,79 @@ public class PlayerController : MonoBehaviour
         Vector2 maxDashPoint = collider.bounds.center + dashDirection.ToVector3() * dashSpeed * dashTime;
         Vector2 desiredDashPoint = maxDashPoint;
 
-        lastHolePosition = collider.bounds.center;
-
-        List<RaycastHit2D> forwardHits = Physics2D.RaycastAll(
+        // do not consider anything past the first wall
+        RaycastHit2D hit = Physics2D.Raycast(
             collider.bounds.center,
             dashDirection,
             dashSpeed * dashTime,
-            LayerMask.GetMask("Wall", "Sides", "Hole")
-        ).ToList();
-        if (forwardHits.Count > 0) {
-            // do not consider anything past the first wall
-            int firstWallHit = forwardHits.FindIndex(
-                hit => hit.transform.gameObject.layer != LayerMask.NameToLayer("Hole")
-            );
-            if (firstWallHit != -1) {
-                desiredDashPoint = forwardHits[firstWallHit].point;
-                forwardHits = forwardHits.GetRange(0, firstWallHit);
-            }
-
-            if (forwardHits.Count > 0) {
-                // find the furthest reachable ground by raycasting backward
-                List<RaycastHit2D> backwardHits = Physics2D.RaycastAll(
-                    desiredDashPoint,
-                    -dashDirection,
-                    Vector2.Distance(collider.bounds.center, desiredDashPoint),
-                    LayerMask.GetMask("Hole")
-                ).ToList();
-
-                if (forwardHits.Count != backwardHits.Count) {
-                    Debug.LogError("When determining dash distance, the player had " + forwardHits.Count + " forward raycast hits but " + backwardHits.Count + " backward raycast hits, which are different numbers. This is not expected behavior so you should ask Matt about it if it happens because it could be something weird");
-                }
-
-                int f = forwardHits.Count;
-                int b = 0;
-                while (b < backwardHits.Count) {
-                    var backwardHitPos = backwardHits[b].point;
-                    var forwardHitPos = f < forwardHits.Count ? forwardHits[f].point : desiredDashPoint;
-
-                    if (Vector2.Distance(backwardHitPos, forwardHitPos) > 0.1f) {
-                        // it looks like we can dash here. keep this f value by exiting the loop
-                        break;
-                    }
-
-                    b++;
-                    f--;
-                }
-                desiredDashPoint = f < forwardHits.Count ? forwardHits[f].point : desiredDashPoint;
-                if (b < backwardHits.Count)
-                    lastHolePosition = backwardHits[b].point;
-
-                // debugging lines
-                Debug.DrawRay(collider.bounds.center, dashDirection.ToVector3() * dashSpeed * dashTime, Color.white, 5f);
-                for (var a = 0; a < forwardHits.Count; a++) {
-                    Debug.DrawLine(collider.bounds.center + transform.up * (a+1), forwardHits[a].point, Color.magenta, 5f);
-                }
-                for (var a = 0; a < backwardHits.Count; a++) {
-                    Debug.DrawLine(collider.bounds.center - transform.up * (a+1), backwardHits[a].point, Color.red, 5f);
-                }
-                Debug.DrawLine(collider.bounds.center, desiredDashPoint, Color.blue, 5f);
-                Debug.DrawLine(collider.bounds.center, lastHolePosition, Color.cyan, 5f);
-            }
+            LayerMask.GetMask("Wall", "Sides")
+        );
+        if (hit.collider != null) {
+            desiredDashPoint = hit.point - dashDirection * 0.1f;
         }
 
+        // todo: get this grid size from somewhere
+        float gridSize = 0.5f;
+        int i = 0;
+
+        // step backward one tile at a time
+        Vector2 backDirection = -dashDirection;
+        Vector2 gridPoint = Vector3.zero;
+        while (Vector3.Distance(desiredDashPoint, collider.bounds.center) > 0.1f &&
+               Physics2D.OverlapPoint(desiredDashPoint, LayerMask.GetMask("Hole")) != null) {
+            Debug.DrawLine(transform.position + Vector3.up * (i++), desiredDashPoint, Color.magenta, 5f);
+
+            Debug.Log(i);
+            gridPoint = GetNextGridIntersection(
+                desiredDashPoint, backDirection,
+                Vector3.Distance(desiredDashPoint, collider.bounds.center),
+                gridSize
+            );
+
+            
+            Debug.DrawLine(transform.position + Vector3.up * (i - 0.5f), desiredDashPoint, Color.red, 5f);
+            desiredDashPoint = gridPoint + backDirection * 0.09f;
+            Debug.DrawLine(transform.position + Vector3.up * i, desiredDashPoint, Color.magenta, 5f);
+        }
+
+        // set lastHolePosition to the midpoint between the desired dash point and the next horizontal/vertical down the line
+        gridPoint = GetNextGridIntersection(
+            desiredDashPoint, backDirection,
+            Vector3.Distance(desiredDashPoint, collider.bounds.center),
+            gridSize
+        );
+        lastHolePosition = new Vector3((desiredDashPoint.x + gridPoint.x) / 2f, (desiredDashPoint.y + gridPoint.y) / 2f, 0);
+
         return desiredDashPoint.ToVector3();
+    }
+
+    private Vector2 GetNextGridIntersection(Vector2 fromPos, Vector2 rayDir, float maxDist, float gridSize) {
+        float dNextHorizontal = maxDist;
+        float dNextVertical = maxDist;
+        float tNextHorizontal = maxDist;
+        float tNextVertical = maxDist;
+
+        // find the next vertical line
+        if (rayDir.x > 0)
+            dNextVertical = Mathf.Min(dNextVertical, Mathf.Floor(fromPos.x / gridSize + 1f) * gridSize - fromPos.x);
+        else if (rayDir.x < 0)
+            dNextVertical = Mathf.Min(dNextVertical, fromPos.x - Mathf.Ceil(fromPos.x / gridSize - 1f) * gridSize);
+
+        // find the next horizontal line
+        if (rayDir.y > 0) 
+            dNextHorizontal = Mathf.Min(dNextHorizontal, Mathf.Floor(fromPos.y / gridSize + 1f) * gridSize - fromPos.y);
+        else if (rayDir.y < 0)
+            dNextHorizontal = Mathf.Min(dNextHorizontal, fromPos.y - Mathf.Ceil(fromPos.y / gridSize - 1f) * gridSize);
+        
+        Debug.Log(dNextVertical + " " + dNextHorizontal);
+
+        // find times to each each line
+        if (rayDir.x != 0)
+            tNextVertical = dNextVertical / Mathf.Abs(rayDir.x);
+        if (rayDir.y != 0)
+            tNextHorizontal = dNextHorizontal / Mathf.Abs(rayDir.y);
+        
+        return fromPos + rayDir * Mathf.Min(tNextHorizontal, tNextVertical);
     }
 
     private void DisableEnemyCollision ()
