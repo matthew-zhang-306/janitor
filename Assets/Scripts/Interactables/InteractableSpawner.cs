@@ -12,14 +12,28 @@ public class InteractableSpawner : MonoBehaviour
     //It would spawn health / ammo so
 
     public GameObject InteractablePrefabs;
+    private Dictionary<string, GameObject> prefabDict;
 
+    private GameObject iPool;
     void Start ()
     {
-
+        iPool = new GameObject ("Interactables");
+        iPool.transform.SetParent(transform);
     }
 
-    public void SpawnItem (int index, Vector3 position)
+    public void SpawnItem (string index, Vector3 position)
     {
+        Instantiate (prefabDict[index], position, Quaternion.identity, iPool.transform);
+    }
 
+    public void SpawnRandomItem (Vector3 position)
+    {
+        SpawnItem (prefabDict.Keys.ToList()[Random.Range(0, prefabDict.Count)], position);
+    }
+
+    public void SpawnRandomItemOnPlayer ()
+    {
+        GameObject player = GameObject.Find("Player");
+        SpawnRandomItem (player.transform.position);
     }
 }
