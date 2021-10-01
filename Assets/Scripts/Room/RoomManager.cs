@@ -69,6 +69,11 @@ public class RoomManager : MonoBehaviour
             }
             
         }
+        
+        //Move to align with floor tiles
+        var shifted = this.transform.position * 2;
+        this.transform.position = new Vector3 (Mathf.Round(shifted.x), Mathf.Round(shifted.y), Mathf.Round(shifted.z)) / 2;
+        
 
         // Eventually the plan will be to reuse Grid instances when entering rooms
         // Each level will not store either own dirtyTiles
@@ -195,7 +200,7 @@ public class RoomManager : MonoBehaviour
         roomUI.enabled = false;
         vcam.Priority = 0;
         enemyCount = 0;
-        
+
         onRoomClear();
 
         if (save) player.SnapShot();
