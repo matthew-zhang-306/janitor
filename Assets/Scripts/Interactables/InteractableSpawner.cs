@@ -6,24 +6,39 @@ using UnityEngine.UI;
 
 public class InteractableSpawner : MonoBehaviour
 {
-    //NOTE this script should be attached to the game object that is *parent* to all rooms and other things that decide 
-    //that they want to spawn something in
-    //Reason it is not placed inside a room is that a hallway might have a cabinet where if you interact
-    //It would spawn health / ammo so
+    //Is a SINGLETON instance.
 
-    public GameObject InteractablePrefabs;
+    private static InteractableSpawner _i;
+
+    public static InteractableSpawner i
+    {
+        get
+        {
+            if (_i == null) _i = (Instantiate(Resources.Load("InteractSpawn")) as GameObject).GetComponent<InteractableSpawner>();
+            return _i;
+        }
+    }
+
+
+    public GameObject[] interactablePrefabs;
     private Dictionary<string, GameObject> prefabDict;
 
     private GameObject iPool;
-    void Start ()
+    void Awake ()
     {
         iPool = new GameObject ("Interactables");
         iPool.transform.SetParent(transform);
+        prefabDict = new Dictionary<string, GameObject>();
+        foreach (var go in interactablePrefabs) {
+            prefabDict.Add(go.name, go);
+        }
     }
 
     public void SpawnItem (string index, Vector3 position)
     {
-        Instantiate (prefabDict[index], position, Quaternion.identity, iPool.transform);
+        Debug.Log (position);
+        var go = Instantiate (prefabDict[index], position, Quaternion.identity);
+        // go.transform.SetParent (iPool.transform);
     }
 
     public void SpawnRandomItem (Vector3 position)

@@ -157,6 +157,10 @@ public class FloorController : MonoBehaviour
         col.size = levelBounds.size;
         col.offset = levelBounds.offset;
 
+        //Move to align with floor tiles
+
+        var shifted = this.transform.position * 2;
+        this.transform.position = new Vector3 (Mathf.Round(shifted.x), Mathf.Round(shifted.y), Mathf.Round(shifted.z)) / 2;
     }
 
     private void OnTriggerEnter2D(Collider2D col) {

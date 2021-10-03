@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 
-public delegate void RoomClear ();
+public delegate void RoomClear (PlayerController pc, RoomManager rm);
 public class RoomManager : MonoBehaviour
 {
     [Header("Specify the boundary where the room camera will live. (White)")]
@@ -68,12 +68,7 @@ public class RoomManager : MonoBehaviour
                 childrenCopy.Add (rcc);
             }
             
-        }
-        
-        //Move to align with floor tiles
-        var shifted = this.transform.position * 2;
-        this.transform.position = new Vector3 (Mathf.Round(shifted.x), Mathf.Round(shifted.y), Mathf.Round(shifted.z)) / 2;
-        
+        }       
 
         // Eventually the plan will be to reuse Grid instances when entering rooms
         // Each level will not store either own dirtyTiles
@@ -201,7 +196,10 @@ public class RoomManager : MonoBehaviour
         vcam.Priority = 0;
         enemyCount = 0;
 
-        onRoomClear();
+        onRoomClear(player, this);
+
+        InteractableSpawner.i.SpawnItem("Health Pickup", player.transform.position);
+
 
         if (save) player.SnapShot();
         //Cancel enemy spawn here
