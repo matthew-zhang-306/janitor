@@ -11,9 +11,10 @@ public class SpongeGun : BaseWeapon
         base.Start();
         gunAnimation = transform.GetChild(0).GetComponent<Animator>();
     }
-    public override void HandleFire(Vector3 dir, Quaternion rotation)
+    public override float HandleFire(Vector3 dir, Quaternion rotation)
     {
         base.HandleFire(dir, rotation);
         gunAnimation.SetTrigger("active");
+        return ammoDrain;
     }
 }

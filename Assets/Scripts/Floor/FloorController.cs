@@ -231,8 +231,12 @@ public class FloorController : MonoBehaviour
                     currentFloorHealth += tileHealth - oldTileHealth;
                 }
             }
+            floorMarkers[col].previousPositions = cells;   
 
-            floorMarkers[col].previousPositions = cells;        
+            //Callbacks should be placed in either WeaponSystem or weapon
+            //Basically just a feedback depending on how many cells were changed
+            //can even extend to enemies probably
+            floorMarkers[col].floorMarker.callback?.Invoke(changed);
         }
     }
 

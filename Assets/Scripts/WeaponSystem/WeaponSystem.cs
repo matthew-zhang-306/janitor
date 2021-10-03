@@ -8,9 +8,27 @@ public class WeaponSystem : MonoBehaviour
     public Camera cam;
 
     //Change later (move to weapon)
-    public float firerate = 0.5f;
     public float meleerate = 0.2f;
     private float m_ftime = 0f;
+
+    private float _maxAmmo = 100f;
+    public float MaxAmmo 
+    {
+        get => _maxAmmo;
+        private set {}
+    }
+
+    public float _ammo;
+
+    public float Ammo
+    {
+        get => _ammo;
+        set {
+            _ammo = Mathf.Clamp(value, 0, MaxAmmo);
+        }
+    }
+
+    [SerializeField] private float ammoRestorationScale = 0.5f;
 
     public GameObject bulletPrefab;
     public GameObject meleePrefab;
@@ -22,6 +40,7 @@ public class WeaponSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Ammo = _maxAmmo;
        // meleeSound = meleeSE.GetComponent<AudioClip>();
     }
 
@@ -61,8 +80,11 @@ public class WeaponSystem : MonoBehaviour
         Vector2 dir = (hit - transform.position).ToVector2().normalized;
         Quaternion bulletRotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, dir));
 
-        this.weapon.HandleFire(dir, bulletRotation);
-
+        if (_ammo - this.weapon.ammoDrain >= 0)
+        {
+            var drain = this.weapon.HandleFire(dir, bulletRotation);
+            _ammo -= drain;
+        }
 
         //Maybe change to Entity System Later
         
@@ -80,5 +102,17 @@ public class WeaponSystem : MonoBehaviour
         Quaternion bulletRotation = Quaternion.Euler(Vector2.SignedAngle(Vector2.right, dir) - 18.5f, -90, -90);
 
         GameObject created = GameObject.Instantiate(meleePrefab, this.transform.position + dir.ToVector3(), bulletRotation);
+        var fm = created.GetComponent<FloorMarker>();
+        if (fm == null)
+        {
+            Debug.LogError("Melee prefab does not have a floor marker");
+            fm = created.AddComponent<TemporaryFloorMarker>();
+        }
+            
+
+        fm.callback += (value) => {
+            Debug.Log("callback to ammo");
+            Ammo += value * ammoRestorationScale;
+        };
     }
 }
