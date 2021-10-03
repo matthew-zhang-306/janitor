@@ -21,7 +21,7 @@ public class RoomWaveAddon : MonoBehaviour
         enemyTypes = enemyTypesSO.GetEnemyTypes();
 
         StartCoroutine (WaitForRoom ());
-        roomManager.onRoomClear += () => {
+        roomManager.onRoomClear += (a, b) => {
             StopAllCoroutines();
             StartCoroutine (WaitForRoom ());
         };

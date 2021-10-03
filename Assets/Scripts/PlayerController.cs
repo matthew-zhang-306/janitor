@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float acceleration = 1f;
     [SerializeField] private float maxSpeed = 1f;
-    [SerializeField] private WeaponSystem weapon;
+    public WeaponSystem weapon;
     public Transform cameraPos;
     public SpriteRenderer spriteRenderer;
     public AudioSource damageSound;
@@ -300,6 +300,7 @@ public class PlayerController : MonoBehaviour
         public readonly Vector3 position;
         public readonly int health;
         public readonly int maxHealth;
+        public readonly float ammo;
 
         public PlayerSnapShot (Transform playerTransform, Health playerHealth, WeaponSystem playerWeapon)
         {
@@ -308,7 +309,7 @@ public class PlayerController : MonoBehaviour
             maxHealth = playerHealth.GetMaxHealth();
 
             //Add weapon ammo and stuff here!
-
+            ammo = playerWeapon.Ammo;
 
         }
 
@@ -319,6 +320,8 @@ public class PlayerController : MonoBehaviour
             pc.health.ChangeHealth (-pc.health.GetHealth() + health);
 
             pc.health.SetMaxHealth (maxHealth);
+
+            pc.weapon.Ammo = ammo;
         }
     }
 }

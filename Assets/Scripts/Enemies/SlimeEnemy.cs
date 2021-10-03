@@ -106,6 +106,7 @@ public class SlimeEnemy : BaseEnemy
     }
 
     private void PlayRandom() { //0915BR
+        
         slimeMove.clip = sounds[Random.Range(0, sounds.Length)];
         slimeMove.Play();       
     }  

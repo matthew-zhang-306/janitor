@@ -157,6 +157,10 @@ public class FloorController : MonoBehaviour
         col.size = levelBounds.size;
         col.offset = levelBounds.offset;
 
+        //Move to align with floor tiles
+
+        var shifted = this.transform.position * 2;
+        this.transform.position = new Vector3 (Mathf.Round(shifted.x), Mathf.Round(shifted.y), Mathf.Round(shifted.z)) / 2;
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
@@ -227,8 +231,12 @@ public class FloorController : MonoBehaviour
                     currentFloorHealth += tileHealth - oldTileHealth;
                 }
             }
+            floorMarkers[col].previousPositions = cells;   
 
-            floorMarkers[col].previousPositions = cells;        
+            //Callbacks should be placed in either WeaponSystem or weapon
+            //Basically just a feedback depending on how many cells were changed
+            //can even extend to enemies probably
+            floorMarkers[col].floorMarker.callback?.Invoke(changed);
         }
     }
 

@@ -23,10 +23,14 @@ public class Inventory : MonoBehaviour
 
     private List<Interactable> recent;
 
+    void Awake () {
+        
+        recent = new List<Interactable>();
+    }
+
     void Start () 
     {
         pc = this.GetComponent<PlayerController>();
-        recent = new List<Interactable>();
         if (canvas != null) {
             //create canvas here
             Debug.LogWarning ("Inserting Inventory tooltip to first canvas");
@@ -47,9 +51,8 @@ public class Inventory : MonoBehaviour
             tooltip.SetActive (false);
         }
 
-
-        var rt = tooltip.GetComponent<RectTransform>();
-        var text = tooltip.GetComponent<Text>();
+        rt = tooltip.GetComponent<RectTransform>();
+        text = tooltip.GetComponent<Text>();
     }
 
     void Update ()
@@ -58,7 +61,8 @@ public class Inventory : MonoBehaviour
         var item = recent.LastOrDefault();
         if (item != null) {
             tooltip.SetActive (true);
-            
+            Debug.Log (rt == null);
+
             rt.position = item.transform.position + tooltipOffset; //RectTransformUtility.WorldToScreenPoint(camera, );
             text.text = item.ToolTip;
         }
