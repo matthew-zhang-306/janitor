@@ -80,10 +80,7 @@ public class RoomManager : MonoBehaviour
 
     public void InitializeRoom () {
         // make new room
-        foreach (Transform doorTransform in doorsContainer) {
-            doorTransform.gameObject.SetActive(false);
-            
-        }
+        OpenDoors();
 
         foreach (Transform enemyTransform in enemiesContainer) {
             var ec = enemyTransform.GetComponent<BaseEnemy>();
@@ -157,13 +154,12 @@ public class RoomManager : MonoBehaviour
         enemiesCopy = Instantiate (enemiesContainer.gameObject, enemiesContainer.parent);
         enemiesCopy.SetActive(false);
 
+        // handle enemies
         foreach (Transform enemyTransform in enemiesContainer) {
             InitEnemy (enemyTransform);
         }
 
-        foreach (Transform doorTransform in doorsContainer) {
-            doorTransform.gameObject.SetActive(true);
-        }
+        CloseDoors();
 
         roomUI.enabled = true;
         vcam.Priority = 20;
@@ -188,15 +184,13 @@ public class RoomManager : MonoBehaviour
         player.onDeath -= ResetRoom;
         roomActive = false;
 
-        foreach (Transform doorTransform in doorsContainer) {
-            doorTransform.gameObject.SetActive(false);
-        }
+        OpenDoors();
 
         roomUI.enabled = false;
         vcam.Priority = 0;
         enemyCount = 0;
 
-        onRoomClear(player, this);
+        onRoomClear?.Invoke(player, this);
 
         InteractableSpawner.i.SpawnItem("Health Pickup", player.transform.position);
 
@@ -212,6 +206,33 @@ public class RoomManager : MonoBehaviour
         }
         else if (enemyCount < 0) {
             Debug.LogError("Oh no, why are there negative enemies?");
+        }
+    }
+
+
+    public void OpenDoors() {
+        foreach (Transform doorTransform in doorsContainer) {
+            Door door = doorTransform.GetComponent<Door>();
+            if (door != null) {
+                door.OpenDoor();
+            }
+            else {
+                // legacy system: deactivate the door
+                doorTransform.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void CloseDoors() {
+        foreach (Transform doorTransform in doorsContainer) {
+            Door door = doorTransform.GetComponent<Door>();
+            if (door != null) {
+                door.CloseDoor();
+            }
+            else {
+                // legacy system: activate the door
+                doorTransform.gameObject.SetActive(true);
+            }
         }
     }
 

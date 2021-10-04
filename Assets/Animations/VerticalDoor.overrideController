@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: VerticalDoor
+  m_Controller: {fileID: 9100000, guid: b2b6aed592825804abcc3c030f0a7c2b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 7a60806a6f9ab724f9d6f856fe584e59, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d20da7455e5c7a34990670e27cd5c7f7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fb59967d112ef9c44a64e56727b750b7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 98026954ff2803448bd6d26428b4b3fc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: beecab81009f99c43be4d0182fb69846, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 16710b4d55d360246953f18cf3dd1e53, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: db190982551bfdf4ca5aa43180a65400, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1d9f92ffa4d7dd24ba0039e2e06aee82, type: 2}
