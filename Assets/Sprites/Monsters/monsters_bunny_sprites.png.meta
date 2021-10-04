@@ -1,7 +1,43 @@
 fileFormatVersion: 2
 guid: 40a9e44ac25eae24e9905048c97de818
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4026396324708822155
+    second: monsters_bunny_sprites_0
+  - first:
+      213: -5977073773050037756
+    second: monsters_bunny_sprites_1
+  - first:
+      213: -6506395376470152376
+    second: monsters_bunny_sprites_2
+  - first:
+      213: 8054756549675457056
+    second: monsters_bunny_sprites_3
+  - first:
+      213: -7381032643743031416
+    second: monsters_bunny_sprites_4
+  - first:
+      213: 597415709506201385
+    second: monsters_bunny_sprites_5
+  - first:
+      213: 4867176573158370501
+    second: monsters_bunny_sprites_6
+  - first:
+      213: -195798729818122146
+    second: monsters_bunny_sprites_7
+  - first:
+      213: 5334592425455591123
+    second: monsters_bunny_sprites_8
+  - first:
+      213: -143664427009029796
+    second: monsters_bunny_sprites_9
+  - first:
+      213: 376938170581311828
+    second: monsters_bunny_sprites_10
+  - first:
+      213: -5571564958600139225
+    second: monsters_bunny_sprites_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +76,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +107,273 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1600
+        width: 799.75
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c2533ef12a0e730800000000000000
+      internalID: 4026396324708822155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_1
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 1597
+        width: 800
+        height: 800
+      alignment: 9
+      pivot: {x: 0.43665162, y: 0.5026396}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a7c01421b2d0da0800000000000000
+      internalID: -5977073773050037756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_2
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 1600
+        width: 799.75
+        height: 800
+      alignment: 9
+      pivot: {x: 0.41124958, y: 0.49396378}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ba041a0e3a4b5a0800000000000000
+      internalID: -6506395376470152376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_3
+      rect:
+        serializedVersion: 2
+        x: 2397
+        y: 1600
+        width: 799.75
+        height: 800
+      alignment: 9
+      pivot: {x: 0.44719326, y: 0.49736053}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02a18afe76e38cf60800000000000000
+      internalID: 8054756549675457056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 799.75
+        height: 800
+      alignment: 9
+      pivot: {x: 0.424441, y: 0.49111357}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88f522abaed419990800000000000000
+      internalID: -7381032643743031416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_5
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 800
+        width: 799.75
+        height: 800
+      alignment: 9
+      pivot: {x: 0.3590853, y: 0.49929658}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 927ea5c2c627a4800800000000000000
+      internalID: 597415709506201385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_6
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 800
+        width: 799.75
+        height: 800
+      alignment: 9
+      pivot: {x: 0.33663946, y: 0.49520507}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc253e4e4fab8340800000000000000
+      internalID: 4867176573158370501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_7
+      rect:
+        serializedVersion: 2
+        x: 2397
+        y: 800
+        width: 799.75
+        height: 800
+      alignment: 9
+      pivot: {x: 0.35615927, y: 0.49041}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e58d7b5b712684df0800000000000000
+      internalID: -195798729818122146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 799.75
+        height: 800
+      alignment: 9
+      pivot: {x: 0.47665277, y: 0.49611}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3de15cc0c87480a40800000000000000
+      internalID: 5334592425455591123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_9
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 0
+        width: 799.75
+        height: 800
+      alignment: 9
+      pivot: {x: 0.422176, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c59444df6f9910ef0800000000000000
+      internalID: -143664427009029796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_10
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 0
+        width: 799.75
+        height: 800
+      alignment: 9
+      pivot: {x: 0.38715515, y: 0.494165}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 451e8cfd4472b3500800000000000000
+      internalID: 376938170581311828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monsters_bunny_sprites_11
+      rect:
+        serializedVersion: 2
+        x: 2397
+        y: 0
+        width: 799.75
+        height: 800
+      alignment: 9
+      pivot: {x: 0.42995828, y: 0.49611}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72eef978033dda2b0800000000000000
+      internalID: -5571564958600139225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

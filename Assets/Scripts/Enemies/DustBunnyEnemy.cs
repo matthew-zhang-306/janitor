@@ -19,12 +19,36 @@ public class DustBunnyEnemy : BaseEnemy
     public GameObject bullet;
     public float bulletSpeed;
 
+    public Animator animator;
+
 
     protected override void Start() {
         base.Start();
 
         navigator.speed = moveSpeed;
         shouldPickAction = true;
+    }
+
+
+    private void Update() {
+        if (navigator.canNavigate) {
+            // set a move animation
+            string moveString = "";
+
+            Vector2 moveDir = navigator.GetMoveDirection();
+            if (Mathf.Abs(moveDir.x) >= 0.2f) {
+                moveString = moveDir.x > 0 ? "MoveRight" : "MoveLeft";
+            }
+            else if (Mathf.Abs(moveDir.y) >= 0.2f) {
+                moveString = moveDir.y > 0 ? "MoveUp" : "MoveDown";
+            } else {
+                moveString = "Idle";
+            }
+
+            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Bunny" + moveString) {
+                animator.Play("Bunny" + moveString, 0, 0f);
+            }
+        }
     }
 
 
@@ -83,6 +107,8 @@ public class DustBunnyEnemy : BaseEnemy
     protected IEnumerator Action_Shoot() {
         navigator.Stop();
         navigator.ClearPath();
+
+        animator.Play("Idle"); // note: replace this with an attack animation, when the bunny has one
 
         for (int i = 0; i < numShots; i++) {
             var bulletRot = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, player.transform.position - transform.position));
