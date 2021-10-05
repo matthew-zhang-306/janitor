@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5196f512f96b84ea42e79ecbd9276b, type: 3}
+  m_Name: ItemTypesSchool
+  m_EditorClassIdentifier: 
+  itemTypes:
+  - name: HealthKit
+    prefab: {fileID: 4141881051329465572, guid: 130f3e57a3bc3fc46a4cb82f09201fbb,
+      type: 3}

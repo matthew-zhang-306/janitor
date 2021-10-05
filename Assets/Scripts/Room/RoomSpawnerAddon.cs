@@ -23,10 +23,8 @@ public class RoomSpawnerAddon : MonoBehaviour
     {
         m_spawnTimer = spawnTimer;
         rm = this.GetComponent<RoomManager>();
-        var blank = new GameObject ("dirty spawn marker overlay");
-        var generatedFloor = Instantiate (blank, rm.dirtyTiles.transform.parent);
-        
-        Destroy(blank);
+        var generatedFloor = new GameObject ("dirty spawn marker overlay");
+        generatedFloor.transform.SetParent (rm.dirtyTiles.transform.parent);
 
         var tm = generatedFloor.AddComponent<Tilemap>();
         tm.tileAnchor = new Vector3(0.5f,0.5f,0);
@@ -48,6 +46,7 @@ public class RoomSpawnerAddon : MonoBehaviour
 
         rm.onRoomClear += (a, b) => {
             StopAllCoroutines();
+            Destroy (generatedFloor);
         };
 
     }
@@ -137,12 +136,12 @@ public class RoomSpawnerAddon : MonoBehaviour
 
             }
             for (int xd = -2; xd <= 2; xd++) {
-                    for (int yd = -2; yd <= 2; yd++) {
-                        var loc = new Vector3Int (x + xd, y + yd, 0);
-                        
-                        tm.SetTile(loc, null);
-                    }
+                for (int yd = -2; yd <= 2; yd++) {
+                    var loc = new Vector3Int (x + xd, y + yd, 0);
+                    
+                    tm.SetTile(loc, null);
                 }
+            }
             if (rm.dirtyTiles.IsTileDirty(new Vector2Int(x,y), 0.2f)) 
             {
                 // var rmnumber = GameObject.Find("Room (7)");

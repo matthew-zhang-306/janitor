@@ -19,7 +19,7 @@ public class InteractableSpawner : MonoBehaviour
         }
     }
 
-
+    public ItemTypesSO itemTypes;
     public GameObject[] interactablePrefabs;
     private Dictionary<string, GameObject> prefabDict;
 
@@ -28,10 +28,8 @@ public class InteractableSpawner : MonoBehaviour
     {
         iPool = new GameObject ("Interactables");
         iPool.transform.SetParent(transform);
-        prefabDict = new Dictionary<string, GameObject>();
-        foreach (var go in interactablePrefabs) {
-            prefabDict.Add(go.name, go);
-        }
+        prefabDict = itemTypes?.GetItemDict() ?? new Dictionary<string, GameObject>();
+
     }
 
     public void SpawnItem (string index, Vector3 position)

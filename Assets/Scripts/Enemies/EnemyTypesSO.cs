@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-[CreateAssetMenu()]
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/EnemyTypesScriptableObject", order = 2)]
 public class EnemyTypesSO : ScriptableObject
 {
     [System.Serializable]
