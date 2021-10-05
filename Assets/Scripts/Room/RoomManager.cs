@@ -197,7 +197,7 @@ public class RoomManager : MonoBehaviour
 
         onRoomClear?.Invoke(player, this);
 
-        InteractableSpawner.i.SpawnItem("Health Pickup", player.transform.position);
+        // InteractableSpawner.i.SpawnItem("Health Pickup", player.transform.position);
         
         //Cancel enemy spawn here
     }

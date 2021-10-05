@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3af96ed84535914a987fadc45fb9911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemTypes: {fileID: 11400000, guid: 7e2d3a2f0ff726948a9cb8d7bdbadcf7, type: 2}
   interactablePrefabs:
   - {fileID: 4141881051329465572, guid: 130f3e57a3bc3fc46a4cb82f09201fbb, type: 3}

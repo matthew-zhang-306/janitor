@@ -111,7 +111,6 @@ public class WeaponSystem : MonoBehaviour
             
 
         fm.callback += (value) => {
-            Debug.Log("callback to ammo");
             Ammo += value * ammoRestorationScale;
         };
     }
