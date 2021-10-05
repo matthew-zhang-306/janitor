@@ -61,7 +61,7 @@ public class Inventory : MonoBehaviour
         var item = recent.LastOrDefault();
         if (item != null) {
             tooltip.SetActive (true);
-            Debug.Log (rt == null);
+            
 
             rt.position = item.transform.position + tooltipOffset; //RectTransformUtility.WorldToScreenPoint(camera, );
             text.text = item.ToolTip;
@@ -86,6 +86,7 @@ public class Inventory : MonoBehaviour
         if (item != null) {
             if (item.autoInteract) {
                 //Should be for cash or such
+                Debug.Log ("hi there");
                 item.DoAction (pc, this);
             }
             else {
