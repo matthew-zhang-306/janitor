@@ -16,3 +16,9 @@ MonoBehaviour:
   - name: HealthKit
     prefab: {fileID: 4141881051329465572, guid: 130f3e57a3bc3fc46a4cb82f09201fbb,
       type: 3}
+  - name: HealthKit1
+    prefab: {fileID: 4141881051329465572, guid: 130f3e57a3bc3fc46a4cb82f09201fbb,
+      type: 3}
+  - name: Coin10
+    prefab: {fileID: 4859447886560472258, guid: d3f62622b6823ff4b9387cb97f3ae648,
+      type: 3}

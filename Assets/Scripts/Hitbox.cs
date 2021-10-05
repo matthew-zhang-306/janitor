@@ -46,12 +46,16 @@ public class Hitbox : MonoBehaviour
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other) {
+        if (!this.enabled) return;
+        
         if (targetTags.Any(tag => other.CompareTag(tag))) {
             otherColliders.Add(other);
             OnTriggerEnter?.Invoke(other);
         }
     }
     protected void OnTriggerExit2D(Collider2D other) {
+        if (!this.enabled) return;
+
         if (targetTags.Any(tag => other.CompareTag(tag))) {
             otherColliders.Remove(other);
             OnTriggerExit?.Invoke(other);

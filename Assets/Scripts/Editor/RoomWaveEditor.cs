@@ -26,6 +26,9 @@ public class RoomWaveEditor : Editor
     string jsonFileName;
 
     private void OnEnable() {
+
+        if (target == null) return;
+
         waveAddon = target as RoomWaveAddon;
 
         so = new SerializedObject(waveAddon);
