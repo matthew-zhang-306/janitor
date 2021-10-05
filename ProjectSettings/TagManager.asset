@@ -12,6 +12,7 @@ TagManager:
   - Wall
   - HealthCollect
   - Sides
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

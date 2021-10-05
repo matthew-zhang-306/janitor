@@ -22,9 +22,10 @@ public class PlayerController : MonoBehaviour
     private Health health;
 
     private bool isDead;
+    public static PlayerEvent OnHitCheckpoint;
     public static PlayerEvent OnDeath;
     public static PlayerEvent OnRestart;
-    private PlayerSnapShot previousPss;
+    private PlayerSnapShot checkpointSnapshot;
 
     private Vector2 previousMoveInput;
     private Vector2 knockback;
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
         hitbox.OnTriggerEnter.AddListener(OnEnterHazard);
 
-        previousPss = SnapShot();
+        checkpointSnapshot = new PlayerSnapShot(transform, health, weapon);
     }
 
     private void Update() {
@@ -273,6 +274,14 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Checkpoint")) {
+            checkpointSnapshot = new PlayerSnapShot(transform, health, weapon);
+            OnHitCheckpoint?.Invoke(this);
+        }
+    }
+
+
     public IEnumerator Die() {
         // for now, we turn off all of the player's children
         // a death animation will later be inserted here
@@ -285,7 +294,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // reset the player
-        previousPss?.Apply(this);
+        checkpointSnapshot?.Apply(this);
         foreach (Transform child in transform) {
             child.gameObject.SetActive(true);
         }
@@ -294,39 +303,27 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public PlayerSnapShot SnapShot()
-    {
-        var pss = new PlayerSnapShot (transform, health, weapon);
-        previousPss = pss;
-        return pss;
-    }
 
     public class PlayerSnapShot
     {
         public readonly Vector3 position;
-        public readonly int health;
         public readonly int maxHealth;
         public readonly float ammo;
 
         public PlayerSnapShot (Transform playerTransform, Health playerHealth, WeaponSystem playerWeapon)
         {
             position = playerTransform.position;
-            health = playerHealth.GetHealth();
             maxHealth = playerHealth.GetMaxHealth();
 
             //Add weapon ammo and stuff here!
             ammo = playerWeapon.Ammo;
-
         }
 
         public void Apply (PlayerController pc) 
         {
             pc.transform.position = this.position;
-            //don't ask
-            pc.health.ChangeHealth (-pc.health.GetHealth() + health);
-
-            pc.health.SetMaxHealth (maxHealth);
-
+            pc.health.SetMaxHealth(maxHealth);
+            pc.health.ChangeHealth(maxHealth);
             pc.weapon.Ammo = ammo;
         }
     }

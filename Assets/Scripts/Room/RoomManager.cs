@@ -7,6 +7,17 @@ using UnityEngine.Events;
 public delegate void RoomClear (PlayerController pc, RoomManager rm);
 public class RoomManager : MonoBehaviour
 {
+    public enum RoomState {
+        UNCLEARED, // room has not been entered yet
+        ACTIVE, // room is currently in play
+        CLEARED, // room has been completed but the player has not hit a checkpoint
+        SAVED // room has been completed and player hit a checkpoint, progress is now permanent
+    }
+
+    private RoomState roomState = RoomState.UNCLEARED;
+    public bool IsRoomActive => roomState == RoomState.ACTIVE;
+
+
     [Header("Specify the boundary where the room camera will live. (White)")]
     public PolygonCollider2D roomCameraBounds;
     [Header("Specify the boundary where the room will be dirty. (Cyan)")]
@@ -17,12 +28,6 @@ public class RoomManager : MonoBehaviour
 
     public Canvas roomUI;
     public Cinemachine.CinemachineVirtualCamera vcam;
-
-    private bool roomActive;
-    public bool IsRoomActive 
-    {
-        get => roomActive;
-    }
 
     private List<RoomComponentCopy> childrenCopy;
     private GameObject enemiesCopy;
@@ -123,19 +128,16 @@ public class RoomManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!roomActive && roomTriggerHitbox.IsColliding && roomTriggerHitbox.enabled) {
+        if (roomState == RoomState.UNCLEARED && roomTriggerHitbox.IsColliding && roomTriggerHitbox.enabled) {
             Debug.Log ("hi there I will now start the room");
             OnEnterRoom(roomTriggerHitbox.OtherCollider.GetComponent<PlayerController>());
             roomTriggerHitbox.enabled = false;
-            
         }
         
-        if (roomActive && enemyCount == 0 && dirtyTiles.GetCleanPercent() >= roomClearThreshold) {
+        if (roomState == RoomState.ACTIVE && enemyCount == 0 && dirtyTiles.GetCleanPercent() >= roomClearThreshold) {
             Debug.Log ("room finished");
             OnClearRoom(true);
-            roomActive = false;
         }
-
     }
     
     private void OnEnterRoom(PlayerController player) {
@@ -149,7 +151,7 @@ public class RoomManager : MonoBehaviour
         }
         floorCopy = dirtyTiles.SaveFloor();
 
-        roomActive = true;
+        roomState = RoomState.ACTIVE;
         room.SetActive(true);
 
         enemiesCopy = Instantiate (enemiesContainer.gameObject, enemiesContainer.parent);
@@ -172,6 +174,7 @@ public class RoomManager : MonoBehaviour
         }
         OnClearRoom(false);
 
+        roomState = RoomState.UNCLEARED;
         dirtyTiles.SetFloor (floorCopy);
 
         Destroy (enemiesContainer.gameObject);
@@ -181,8 +184,10 @@ public class RoomManager : MonoBehaviour
     }
 
     private void OnClearRoom(bool save) {
-        PlayerController.OnRestart -= ResetRoom;
-        roomActive = false;
+        if (save) {
+            roomState = RoomState.CLEARED;
+            PlayerController.OnHitCheckpoint += SaveRoom;
+        }
 
         OpenDoors();
 
@@ -193,9 +198,14 @@ public class RoomManager : MonoBehaviour
         onRoomClear?.Invoke(player, this);
 
         InteractableSpawner.i.SpawnItem("Health Pickup", player.transform.position);
-
-        if (save) player.SnapShot();
+        
         //Cancel enemy spawn here
+    }
+
+    private void SaveRoom(PlayerController _) {
+        roomState = RoomState.SAVED;
+        PlayerController.OnRestart -= ResetRoom;
+        PlayerController.OnHitCheckpoint -= SaveRoom;
     }
 
     private void DecreaseEnemyCount () {

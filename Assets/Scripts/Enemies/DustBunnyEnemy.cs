@@ -108,7 +108,7 @@ public class DustBunnyEnemy : BaseEnemy
         navigator.Stop();
         navigator.ClearPath();
 
-        animator.Play("Idle"); // note: replace this with an attack animation, when the bunny has one
+        animator.Play("BunnyIdle"); // note: replace this with an attack animation, when the bunny has one
 
         for (int i = 0; i < numShots; i++) {
             var bulletRot = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, player.transform.position - transform.position));
