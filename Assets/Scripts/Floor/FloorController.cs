@@ -24,7 +24,6 @@ public class FloorController : MonoBehaviour
     private Tilemap tm;
     private static DirtyTile[][] tiles = null;
     private static Sprite[][] sprites = null;
-    // public int maxTileHealth => tiles.Length - 1;
     public int maxTileHealth = 3;
     private Dictionary<Collider2D, FloorMarkerData> floorMarkers;
 
@@ -45,10 +44,10 @@ public class FloorController : MonoBehaviour
     {
         get => _max;
     }
-    // Start is called before the first frame update
+    
+
     void Awake()
     {
-
         if (tiles == null || sprites == null) {
             //Requires a sliced sprite map for this to work.
             Sprite[] original = Resources.LoadAll<Sprite>("DirtyFloor/slime_floor_continuous");
@@ -56,7 +55,6 @@ public class FloorController : MonoBehaviour
                 Debug.LogError("Sprite Loading has failed for dirty floor");
                 return;
             }
-
             
             //Load sprite
             //Lower number is lower health
@@ -114,15 +112,17 @@ public class FloorController : MonoBehaviour
                 }
             }
         }
-        
 
         floorMarkers = new Dictionary<Collider2D, FloorMarkerData>();
-
     }
 
     public void InitializeFloor(BoxCollider2D levelBounds) {
         tm = this.GetComponent<Tilemap>();
         tm.ClearAllTiles();
+
+        // align the tilemap to the grid
+        var shifted = this.transform.position / tm.cellSize.x;
+        this.transform.position = new Vector3 (Mathf.Round(shifted.x), Mathf.Round(shifted.y), Mathf.Round(shifted.z)) * tm.cellSize.x;
 
         _min = tm.WorldToCell(levelBounds.bounds.min);
         _max = tm.WorldToCell(levelBounds.bounds.max);
@@ -148,19 +148,15 @@ public class FloorController : MonoBehaviour
         if (set != null) 
         {
             foreach (var cell in set) {
-                tm.SetTile(cell, tiles[maxTileHealth - 1][GetCoords(cell.x,cell.y)]);
+                tm.SetTile(cell, tiles[maxTileHealth - 1][GetCoords(cell.x, cell.y)]);
             }
         }
 
         currentFloorHealth = totalFloorHealth;
+
         var col = GetComponent<BoxCollider2D>();
         col.size = levelBounds.size;
         col.offset = levelBounds.offset;
-
-        //Move to align with floor tiles
-
-        var shifted = this.transform.position * 2;
-        this.transform.position = new Vector3 (Mathf.Round(shifted.x), Mathf.Round(shifted.y), Mathf.Round(shifted.z)) / 2;
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
@@ -275,18 +271,8 @@ public class FloorController : MonoBehaviour
                 var loc = new Vector3Int (cell.x + x, cell.y + y, 0);
                 var tile = tm.GetTile<DirtyTile>(loc);
 
-
                 //Penalty if not a tile. (moves away from walls and big geometry)
                 total += tile?.GetDirty() ?? -1;
-
-                // if (tile != null) {
-                //     total += tile.GetDirty();
-                    
-                // }
-                // else {
-                //     //penalty for being a non tile
-                //     total -= 1;
-                // }
             }
         }
 

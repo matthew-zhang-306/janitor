@@ -41,7 +41,13 @@ public class BaseEnemy : MonoBehaviour
         if (deathEvent == null)
             deathEvent = new UnityEvent();
         navigator = GetComponent<PathNavigator>();
+    }
 
+    protected virtual void OnEnable() {
+        PlayerController.OnDeath += OnPlayerDied;
+    }
+    protected virtual void OnDisable() {
+        PlayerController.OnDeath -= OnPlayerDied;
     }
 
     protected virtual void Start() {
@@ -69,10 +75,16 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-
     protected virtual void FixedUpdate() {
         invincibilityTimer = Mathf.MoveTowards(invincibilityTimer, 0f, Time.deltaTime);
     }
+
+    protected virtual void OnPlayerDied(PlayerController player) {
+        navigator?.Stop();
+        CanAct = false;
+    }
+
+
 
     protected virtual void OnEnterHazard(Collider2D otherCollider) {
         otherCollider.GetComponentInParent<BaseProjectile>()?.OnHitEntity();
@@ -110,6 +122,8 @@ public class BaseEnemy : MonoBehaviour
     protected virtual void Die() {
         Destroy(gameObject);
     }
+
+
 
     protected IEnumerator Action_Test () {
         Debug.Log("Action test pass");

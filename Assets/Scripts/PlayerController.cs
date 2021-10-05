@@ -4,12 +4,11 @@ using System.Linq;
 using UnityEngine;
 using DG.Tweening;
 
-public delegate void PlayerDeath ();
-
-
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    public delegate void PlayerEvent(PlayerController player);
+
     [SerializeField] private float acceleration = 1f;
     [SerializeField] private float maxSpeed = 1f;
     public WeaponSystem weapon;
@@ -22,8 +21,9 @@ public class PlayerController : MonoBehaviour
     private Hitbox hitbox;
     private Health health;
 
-    //Event for death
-    public PlayerDeath onDeath;
+    private bool isDead;
+    public static PlayerEvent OnDeath;
+    public static PlayerEvent OnRestart;
     private PlayerSnapShot previousPss;
 
     private Vector2 previousMoveInput;
@@ -84,12 +84,16 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         dashTimer = Mathf.MoveTowards(dashTimer, 0f, Time.deltaTime);
+        invincibilityTimer = Mathf.MoveTowards(invincibilityTimer, 0, Time.deltaTime);
+
+        if (isDead) {
+            rb2d.velocity = Vector2.zero;
+            return;
+        }
 
         if (dashTimer <= dashCooldown - dashTime) {
             HandleMotion();
         }
-
-        invincibilityTimer = Mathf.MoveTowards(invincibilityTimer, 0, Time.deltaTime);
     }
 
     private void OnEnterHazard(Collider2D other) {
@@ -113,8 +117,7 @@ public class PlayerController : MonoBehaviour
         health.ChangeHealth(-hitAmount);
         damageSound.Play();
         if (health.GetHealth() <= 0) {
-            //call event
-            onDeath?.Invoke();
+            StartCoroutine(Die());
         }
 
         // handle knockback
@@ -215,13 +218,11 @@ public class PlayerController : MonoBehaviour
                Physics2D.OverlapPoint(desiredDashPoint, LayerMask.GetMask("Hole")) != null) {
             Debug.DrawLine(transform.position + Vector3.up * (i++), desiredDashPoint, Color.magenta, 5f);
 
-            Debug.Log(i);
             gridPoint = GetNextGridIntersection(
                 desiredDashPoint, backDirection,
                 Vector3.Distance(desiredDashPoint, collider.bounds.center),
                 gridSize
             );
-
             
             Debug.DrawLine(transform.position + Vector3.up * (i - 0.5f), desiredDashPoint, Color.red, 5f);
             desiredDashPoint = gridPoint + backDirection * 0.09f;
@@ -256,8 +257,6 @@ public class PlayerController : MonoBehaviour
             dNextHorizontal = Mathf.Min(dNextHorizontal, Mathf.Floor(fromPos.y / gridSize + 1f) * gridSize - fromPos.y);
         else if (rayDir.y < 0)
             dNextHorizontal = Mathf.Min(dNextHorizontal, fromPos.y - Mathf.Ceil(fromPos.y / gridSize - 1f) * gridSize);
-        
-        Debug.Log(dNextVertical + " " + dNextHorizontal);
 
         // find times to each each line
         if (rayDir.x != 0)
@@ -268,31 +267,38 @@ public class PlayerController : MonoBehaviour
         return fromPos + rayDir * Mathf.Min(tNextHorizontal, tNextVertical);
     }
 
-    private void DisableEnemyCollision ()
-    {
-        Physics2D.IgnoreLayerCollision(8, 14, true);
-        Physics2D.IgnoreLayerCollision(8, 10, true);
-    }
-    private void EnableEnemyCollision ()
-    {   
-        Physics2D.IgnoreLayerCollision(8, 14, false);
-        Physics2D.IgnoreLayerCollision(8, 10, false);
-    }
     public float DashCooldownUI()
     {
         return dashTimer;
     }
+
+
+    public IEnumerator Die() {
+        // for now, we turn off all of the player's children
+        // a death animation will later be inserted here
+        foreach (Transform child in transform) {
+            child.gameObject.SetActive(false);
+        }
+        isDead = true;
+        OnDeath?.Invoke(this);
+
+        yield return new WaitForSeconds(2f);
+
+        // reset the player
+        previousPss?.Apply(this);
+        foreach (Transform child in transform) {
+            child.gameObject.SetActive(true);
+        }
+        isDead = false;
+        OnRestart?.Invoke(this);
+    }
+
 
     public PlayerSnapShot SnapShot()
     {
         var pss = new PlayerSnapShot (transform, health, weapon);
         previousPss = pss;
         return pss;
-    }
-
-    public void ResetFromPrevious ()
-    {
-        previousPss?.Apply(this);
     }
 
     public class PlayerSnapShot

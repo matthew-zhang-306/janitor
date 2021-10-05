@@ -139,7 +139,8 @@ public class RoomManager : MonoBehaviour
     }
     
     private void OnEnterRoom(PlayerController player) {
-        player.onDeath += ResetRoom;
+        PlayerController.OnRestart += ResetRoom;
+
         //Copy room for restart
         //should NOT include initial enemies due to binds and such
         foreach (RoomComponentCopy child in childrenCopy)
@@ -165,8 +166,7 @@ public class RoomManager : MonoBehaviour
         vcam.Priority = 20;
     }
 
-    private void ResetRoom () {
-        Debug.Log ("reseting room!");
+    private void ResetRoom (PlayerController player) {
         for (int i = 0; i < childrenCopy.Count; i++) {
             childrenCopy[i] = childrenCopy[i]?.Replace();
         }
@@ -181,7 +181,7 @@ public class RoomManager : MonoBehaviour
     }
 
     private void OnClearRoom(bool save) {
-        player.onDeath -= ResetRoom;
+        PlayerController.OnRestart -= ResetRoom;
         roomActive = false;
 
         OpenDoors();
@@ -193,7 +193,6 @@ public class RoomManager : MonoBehaviour
         onRoomClear?.Invoke(player, this);
 
         InteractableSpawner.i.SpawnItem("Health Pickup", player.transform.position);
-
 
         if (save) player.SnapShot();
         //Cancel enemy spawn here

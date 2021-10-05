@@ -35,4 +35,9 @@ public static class Helpers {
       yield return new WaitForSeconds(delay);
       f();
   }
+
+
 }
+
+
+public delegate void EmptyDelegate();
