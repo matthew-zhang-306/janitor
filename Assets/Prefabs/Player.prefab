@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad3f5243c9072c47af27d952825ef08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipOffset: {x: 0, y: 0.3, z: 0}
+  tooltipOffset: {x: 4, y: 1, z: 0}
   tooltip: {fileID: 0}
   canvas: {fileID: 0}
 --- !u!114 &271945634574504756
