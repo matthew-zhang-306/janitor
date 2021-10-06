@@ -213,10 +213,6 @@ public class FloorController : MonoBehaviour
 
                     
                     // deal "damage" to the floor
-                    // if (!int.TryParse(c_tile.name.Substring("Dirty".Length), out int tileHealth)) {
-                    //     Debug.LogError("The floor tile " + d_tile.name + " does not look like 'DirtyX' where X is a number");
-                    //     continue;
-                    // }
                     int tileHealth = d_tile.GetDirty();
                     var oldTileHealth = tileHealth;
                     tileHealth -= floorMarkers[col].floorMarker.markAmount;

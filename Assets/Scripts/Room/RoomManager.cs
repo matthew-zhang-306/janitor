@@ -138,6 +138,10 @@ public class RoomManager : MonoBehaviour
             Debug.Log ("room finished");
             OnClearRoom(true);
         }
+
+        if (roomState == RoomState.ACTIVE && Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.L)) {
+            ForceClearRoom();
+        }
     }
     
     private void OnEnterRoom(PlayerController player) {
@@ -169,6 +173,8 @@ public class RoomManager : MonoBehaviour
     }
 
     private void ResetRoom (PlayerController player) {
+        PlayerController.OnHitCheckpoint -= SaveRoom;
+
         for (int i = 0; i < childrenCopy.Count; i++) {
             childrenCopy[i] = childrenCopy[i]?.Replace();
         }
@@ -200,6 +206,14 @@ public class RoomManager : MonoBehaviour
         // InteractableSpawner.i.SpawnItem("Health Pickup", player.transform.position);
         
         //Cancel enemy spawn here
+    }
+
+    private void ForceClearRoom() {
+        foreach (Transform enemyT in enemiesContainer) {
+            Destroy(enemyT.gameObject);
+        }
+        enemyCount = 0;
+        OnClearRoom(true);
     }
 
     private void SaveRoom(PlayerController _) {
