@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoInteract: 0
-  _tooltip: '[e] Heals Player'
+  _tooltip: '[e] Heals Player '
   healthAmount: 10
 --- !u!1 &6328108399889698949
 GameObject:
