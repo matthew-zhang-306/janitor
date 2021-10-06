@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Health health;
 
     private bool isDead;
+    public static PlayerEvent OnDash;
     public static PlayerEvent OnHitCheckpoint;
     public static PlayerEvent OnDeath;
     public static PlayerEvent OnRestart;
@@ -33,6 +34,9 @@ public class PlayerController : MonoBehaviour
     private float invincibilityTimer;
 
     private float dashTimer;
+    private bool isDashing => dashTimer > dashCooldown - dashTime;
+    public float DashTime => dashTime;
+
     [Header("Dash")]
     [Tooltip("How long a dash is (ignores input while dashing)")]
     [SerializeField] private float dashTime = 0.1f;
@@ -100,7 +104,7 @@ public class PlayerController : MonoBehaviour
     private void OnEnterHazard(Collider2D other) {
         other.GetComponentInParent<BaseProjectile>()?.OnHitEntity();
             
-        if (invincibilityTimer == 0f) {
+        if (invincibilityTimer == 0f && !isDashing) {
             // take a hit
             TakeDamage(other);
         }
@@ -174,9 +178,7 @@ public class PlayerController : MonoBehaviour
             collider.isTrigger = true;
         }
 
-        // ignore enemy hits for a while
-        // TODO: add a different dash iframe timer
-        invincibilityTimer += dashIframe;
+        OnDash?.Invoke(this);
 
         dashTimer = dashCooldown;
         while (dashTimer > dashCooldown - dashTime) {
@@ -268,7 +270,7 @@ public class PlayerController : MonoBehaviour
         return fromPos + rayDir * Mathf.Min(tNextHorizontal, tNextVertical);
     }
 
-    public float DashCooldownUI()
+    public float GetDashTimer()
     {
         return dashTimer;
     }

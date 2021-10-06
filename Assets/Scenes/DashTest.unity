@@ -6249,21 +6249,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1177657899141300287}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1273050901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273050893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7c0791098eb36045a01c8b593353f8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spritePrefab: {fileID: 6524936638851035970, guid: 91ab6dbdf7db45b40b94d2822c1563b7,
-    type: 3}
-  time: 0.2
 --- !u!1001 &1275169782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10823,8 +10808,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 0}
-  RestartUI: {fileID: 0}
-  player: {fileID: 0}
 --- !u!114 &1905146727
 MonoBehaviour:
   m_ObjectHideFlags: 0

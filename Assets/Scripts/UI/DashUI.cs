@@ -19,6 +19,6 @@ public class DashUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dashBar.value = -playerController.DashCooldownUI();
+        dashBar.value = -playerController.GetDashTimer();
     }
 }
