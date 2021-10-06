@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 
-public delegate void RoomClear (PlayerController pc, RoomManager rm);
 public class RoomManager : MonoBehaviour
 {
+    public delegate void RoomDelegate (PlayerController pc, RoomManager rm);
+
     public enum RoomState {
         UNCLEARED, // room has not been entered yet
         ACTIVE, // room is currently in play
@@ -44,13 +45,15 @@ public class RoomManager : MonoBehaviour
         get => enemyCount;
     }
     private UnityEvent allEnemiesDefeatedEvent;
-    public RoomClear onRoomClear;
+    public RoomDelegate onRoomClear;
+    public static RoomDelegate OnEnter;
+    public static RoomDelegate OnClear;
 
     public FloorController dirtyTiles;
     public Pathfinding pathfinding;
     private FloorTilePopulator tiles;
 
-    public float roomClearThreshold;
+    [Range(0.5f, 0.95f)] public float roomClearThreshold;
 
     [Header("Put the Player into this")]
     public PlayerController player; // later we need to load this in some other way
@@ -155,6 +158,8 @@ public class RoomManager : MonoBehaviour
         }
         floorCopy = dirtyTiles.SaveFloor();
 
+        OnEnter?.Invoke(player, this);
+
         roomState = RoomState.ACTIVE;
         room.SetActive(true);
 
@@ -193,6 +198,8 @@ public class RoomManager : MonoBehaviour
         if (save) {
             roomState = RoomState.CLEARED;
             PlayerController.OnHitCheckpoint += SaveRoom;
+
+            OnClear?.Invoke(player, this);
         }
 
         OpenDoors();
