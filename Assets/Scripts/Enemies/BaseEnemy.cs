@@ -110,12 +110,13 @@ public class BaseEnemy : MonoBehaviour
 
         if (health.GetHealth() <= 0) {
             CanAct = false;
-            Die();
 
             // i call the deathevent here instead of in Die() because i expect subclasses to not call base.Die()
             // (since the default implementation destroys the object with no animation)
             deathEvent.Invoke();
             deathEvent.RemoveAllListeners();
+        
+            Die();
         }
     }
 
