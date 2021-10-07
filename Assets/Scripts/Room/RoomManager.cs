@@ -199,7 +199,7 @@ public class RoomManager : MonoBehaviour
             roomState = RoomState.CLEARED;
             PlayerController.OnHitCheckpoint += SaveRoom;
 
-            OnClear?.Invoke(player, this);
+            onRoomClear?.Invoke(player, this);
         }
 
         OpenDoors();
@@ -208,8 +208,8 @@ public class RoomManager : MonoBehaviour
         vcam.Priority = 0;
         enemyCount = 0;
 
-        onRoomClear?.Invoke(player, this);
-
+        
+        OnClear?.Invoke(player, this);
         // InteractableSpawner.i.SpawnItem("Health Pickup", player.transform.position);
         
         //Cancel enemy spawn here
