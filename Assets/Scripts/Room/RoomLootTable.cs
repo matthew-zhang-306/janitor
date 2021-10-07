@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 
 [RequireComponent (typeof(RoomManager))]
-public class RoomLootTable : LootTable
+public class RoomLootTable : BaseLootTable
 {
     private RoomManager rm;
     protected override void Start ()
@@ -19,15 +19,15 @@ public class RoomLootTable : LootTable
     void SpawnLootFromTable (PlayerController pc, RoomManager rm)
     {
         float value = Random.Range (0f, 1f);
-
         float runningTotal = 0f;
         foreach (var lv in lootTable) {
             
             if (lv.probability == 0) continue;
             runningTotal += lv.probability;
             if (value <= runningTotal) {
+                
                 InteractableSpawner.i.SpawnItem (lv.name, pc.transform.position);
-                break;
+                return;
             }
         }
     }

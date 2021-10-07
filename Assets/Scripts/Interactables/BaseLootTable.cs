@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 
-public class LootTable : MonoBehaviour
+public class BaseLootTable : MonoBehaviour
 {
     [System.Serializable]
     protected class LootValue

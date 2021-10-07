@@ -6,10 +6,10 @@ using UnityEngine.Tilemaps;
 using UnityEditor;
 
 
-[CustomEditor(typeof(LootTable), true)]
+[CustomEditor(typeof(BaseLootTable), true)]
 public class LootTableEditor : Editor
 {
-    LootTable lt;
+    BaseLootTable lt;
     SerializedObject so;
     SerializedProperty ltList;
     ItemTypesSO itypes;
@@ -22,7 +22,7 @@ public class LootTableEditor : Editor
 
         if (target == null) return;
 
-        lt = target as LootTable;
+        lt = target as BaseLootTable;
 
         so = new SerializedObject(lt);
         ltList = so.FindProperty("lootTable");
