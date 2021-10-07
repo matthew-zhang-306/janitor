@@ -44,7 +44,7 @@ public class RoomManager : MonoBehaviour
     {
         get => enemyCount;
     }
-    private UnityEvent allEnemiesDefeatedEvent;
+    public UnityEvent AllEnemiesDefeatedEvent;
     public RoomDelegate onRoomClear;
     public static RoomDelegate OnEnter;
     public static RoomDelegate OnClear;
@@ -63,8 +63,8 @@ public class RoomManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         enemyCount = 0;    
-        if (allEnemiesDefeatedEvent == null)
-            allEnemiesDefeatedEvent = new UnityEvent();
+        if (AllEnemiesDefeatedEvent == null)
+            AllEnemiesDefeatedEvent = new UnityEvent();
 
         roomTriggerHitbox = roomTriggerBounds.GetComponent<Hitbox>();
 
@@ -232,7 +232,7 @@ public class RoomManager : MonoBehaviour
     private void DecreaseEnemyCount () {
         enemyCount -= 1;
         if (enemyCount == 0) {
-            allEnemiesDefeatedEvent.Invoke();
+            AllEnemiesDefeatedEvent.Invoke();
         }
         else if (enemyCount < 0) {
             Debug.LogError("Oh no, why are there negative enemies?");

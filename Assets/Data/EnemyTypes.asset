@@ -25,3 +25,7 @@ MonoBehaviour:
     color: {r: 0.5660378, g: 0.40889126, b: 0.29636884, a: 1}
     prefab: {fileID: 6244604202452305632, guid: 75f4c98634003754a83f88a2dc2a1216,
       type: 3}
+  - name: TutorialSlime
+    color: {r: 1, g: 0, b: 0.13820696, a: 1}
+    prefab: {fileID: 6003392166522410723, guid: 4a1c97af78db62f45b897ac909e7c810,
+      type: 3}
