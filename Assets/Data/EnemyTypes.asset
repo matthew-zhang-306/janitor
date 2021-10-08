@@ -29,3 +29,7 @@ MonoBehaviour:
     color: {r: 1, g: 0, b: 0.13820696, a: 1}
     prefab: {fileID: 6003392166522410723, guid: 4a1c97af78db62f45b897ac909e7c810,
       type: 3}
+  - name: Diaper
+    color: {r: 0.27438745, g: 0.990566, b: 0, a: 1}
+    prefab: {fileID: 3514881736578162423, guid: 8ba286c9cd4043f4295944d2db70bdc2,
+      type: 3}
