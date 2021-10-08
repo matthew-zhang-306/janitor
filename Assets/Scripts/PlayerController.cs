@@ -145,8 +145,9 @@ public class PlayerController : MonoBehaviour
 
         // find the direction that the player is moving
         Vector2 moveInput = Vector2.zero;
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
+        moveInput.x = CustomInput.GetAxis("Horizontal");
+        moveInput.y = CustomInput.GetAxis("Vertical");
+        
         moveInput = moveInput.normalized;
         if (moveInput.sqrMagnitude > 0.1f) {
             previousMoveInput = moveInput;
@@ -158,7 +159,7 @@ public class PlayerController : MonoBehaviour
         rb2d.velocity = velocity;
         
         // handle dashing
-        bool isDash = Input.GetButton("Jump");
+        bool isDash = CustomInput.GetButton("Jump");
         if (isDash && dashTimer <= 0f) {
             StartCoroutine(DoDash(moveInput));
         }

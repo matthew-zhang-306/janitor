@@ -47,25 +47,50 @@ public class WeaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log (Input.mousePosition);
+        // Debug.Log (CustomInput.GetMousePosition());
+
+        #if (UNITY_ANDROID || UNITY_IPHONE)
+        Vector2 dir = new Vector2 (CustomInput.axis2x, CustomInput.axis2y).normalized;
+
+        #else 
         Vector3 hit = cam.ScreenToWorldPoint(Input.mousePosition);
+        Debug.DrawLine (hit, transform.position);
         Vector2 dir = (hit - transform.position).ToVector2().normalized;
+        #endif
+
+        
         this.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, dir));
         //well we should probs consider top and bottom rotations too
 
         this.transform.localScale = new Vector3 (1, Mathf.Sign (dir.x), 1);
 
-        if (Input.GetButton("Fire1") && m_ftime > weapon.firerate) {
-            Vector3 mousePos = Input.mousePosition;
+        if (m_ftime > weapon.firerate
+                #if (UNITY_ANDROID || UNITY_IPHONE)
+                && CustomInput.ranged
+                && dir.magnitude != 0
+                #else
+                && Input.GetButton("Fire1") 
+                #endif
+            ) {
+            Vector3 mousePos = CustomInput.GetMousePosition();
 
-            Fire (mousePos);
+            Fire (dir);
             //gunSound.Play();
             SoundManager.PlaySound(SoundManager.Sound.spongeGun, SettingsMenu.SEvolume);
             m_ftime = 0;
         }
-        if (Input.GetButton("Fire2") && m_ftime > meleerate) {
-            Vector3 mousePos = Input.mousePosition;
+        if (m_ftime > meleerate  
+                #if (UNITY_ANDROID || UNITY_IPHONE)
+                && CustomInput.melee
+                && dir.magnitude != 0
+                #else
+                && Input.GetButton("Fire2")                
+                #endif
+            ) {
+            Vector3 mousePos = CustomInput.GetMousePosition();
 
-            Swing (mousePos);
+            Swing (dir);
             //meleeSound.clip = meleeEffects[Random.Range(0, meleeEffects.Length)];
             //meleeSound.Play();
             SoundManager.PlaySound(SoundManager.Sound.Broom, SettingsMenu.SEvolume);
@@ -74,10 +99,9 @@ public class WeaponSystem : MonoBehaviour
         m_ftime += Time.deltaTime;
     }
 
-    public void Fire (Vector3 p) {
+    public void Fire (Vector3 dir) {
         
-        Vector3 hit = cam.ScreenToWorldPoint(p);
-        Vector2 dir = (hit - transform.position).ToVector2().normalized;
+        
         Quaternion bulletRotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, dir));
 
         if (_ammo - this.weapon.ammoDrain >= 0)
@@ -93,15 +117,14 @@ public class WeaponSystem : MonoBehaviour
     }
 
 
-    public void Swing (Vector3 p) {
-        Vector3 hit = cam.ScreenToWorldPoint(p);
-        Vector2 dir = (hit - transform.position).ToVector2().normalized;
+    public void Swing (Vector3 dir) {
+        
 
         //YA know I have no clue why exactly these value work sooo
         //BUT particle render must be set to LOCAL instead of view for rotation lol
         Quaternion bulletRotation = Quaternion.Euler(Vector2.SignedAngle(Vector2.right, dir) - 18.5f, -90, -90);
 
-        GameObject created = GameObject.Instantiate(meleePrefab, this.transform.position + dir.ToVector3(), bulletRotation);
+        GameObject created = GameObject.Instantiate(meleePrefab, this.transform.position + dir, bulletRotation);
         var fm = created.GetComponent<FloorMarker>();
         if (fm == null)
         {

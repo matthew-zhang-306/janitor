@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
             tooltip.SetActive (false);
         }
 
-        if (Input.GetButton("Interact") && canInteract)
+        if (CustomInput.GetButton("Interact") && canInteract)
         {
             recent.LastOrDefault()?.DoAction(pc, this);
             canInteract = false;
