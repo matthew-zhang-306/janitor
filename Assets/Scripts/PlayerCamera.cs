@@ -14,7 +14,9 @@ public class PlayerCamera : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        Vector2 mouseViewportPoint = cam.ScreenToViewportPoint(Input.mousePosition);
+
+        Vector2 mouseViewportPoint = cam.ScreenToViewportPoint(CustomInput.GetMousePosition());
+
         mouseViewportPoint = new Vector2(Mathf.Clamp01(mouseViewportPoint.x), Mathf.Clamp01(mouseViewportPoint.y));
         transform.position = transform.parent.position + (2 * mouseViewportPoint - Vector2.one).ToVector3() * range;
     }
