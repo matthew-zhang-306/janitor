@@ -116,13 +116,7 @@ public class RoomManager : MonoBehaviour
             ec.player = player;
             if (ec.navigator != null)
             {
-                Debug.Log ("init enemy");
-
                 ec.navigator.pathfinding = pathfinding;
-            }
-            else 
-            {
-                Debug.LogWarning ("No nav" + enemy.name);
             }
             
             ec.DeathEvent.AddListener(DecreaseEnemyCount);
