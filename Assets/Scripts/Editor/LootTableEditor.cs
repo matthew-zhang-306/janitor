@@ -74,7 +74,6 @@ public class LootTableEditor : Editor
             if (!toggleNorm) {
                 elem.FindPropertyRelative("probability").floatValue = 
                     EditorGUILayout.FloatField (elem.FindPropertyRelative("probability").floatValue);
-
             }
             else {
                 elem.FindPropertyRelative("probability").floatValue = 

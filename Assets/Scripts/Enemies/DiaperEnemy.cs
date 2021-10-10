@@ -114,8 +114,8 @@ public class DiaperEnemy : BaseEnemy
         if (explosionPrefab != null)
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        deathEvent.Invoke();
-        deathEvent.RemoveAllListeners();
+        onDeath?.Invoke(this);
+        onDeath = null;
 
         Die();
     }

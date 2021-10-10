@@ -119,7 +119,7 @@ public class RoomManager : MonoBehaviour
                 ec.navigator.pathfinding = pathfinding;
             }
             
-            ec.DeathEvent.AddListener(DecreaseEnemyCount);
+            ec.onDeath += DecreaseEnemyCount;
         }
     }
 
@@ -223,7 +223,7 @@ public class RoomManager : MonoBehaviour
         PlayerController.OnHitCheckpoint -= SaveRoom;
     }
 
-    private void DecreaseEnemyCount () {
+    private void DecreaseEnemyCount (BaseEnemy _) {
         enemyCount -= 1;
         if (enemyCount == 0) {
             AllEnemiesDefeatedEvent.Invoke();
