@@ -34,9 +34,10 @@ public class InteractableSpawner : MonoBehaviour
 
     public void SpawnItem (string index, Vector3 position)
     {
+        if (index.Equals("") || index == null) return;
         Debug.Log ("Spawning: " + index);
         var go = Instantiate (prefabDict[index], position, Quaternion.identity);
-        // go.transform.SetParent (iPool.transform);
+        go.transform.SetParent (iPool.transform);
     }
 
     public void SpawnRandomItem (Vector3 position)

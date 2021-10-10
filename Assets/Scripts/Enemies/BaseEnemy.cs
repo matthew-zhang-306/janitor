@@ -25,8 +25,9 @@ public class BaseEnemy : MonoBehaviour
 
     [HideInInspector] public PlayerController player;
 
-    protected UnityEvent deathEvent;
-    public UnityEvent DeathEvent => deathEvent; // note: change to c# delegate? unityevent is slow
+    public delegate void EnemyDelegate (BaseEnemy e);
+
+    public EnemyDelegate onDeath;
 
     [Header("Parameters")]
     [SerializeField] protected float invincibilityTime = 0.2f;
@@ -38,8 +39,7 @@ public class BaseEnemy : MonoBehaviour
    
 
     protected virtual void Awake() {
-        if (deathEvent == null)
-            deathEvent = new UnityEvent();
+        
         navigator = GetComponent<PathNavigator>();
     }
 
@@ -113,9 +113,9 @@ public class BaseEnemy : MonoBehaviour
 
             // i call the deathevent here instead of in Die() because i expect subclasses to not call base.Die()
             // (since the default implementation destroys the object with no animation)
-            deathEvent.Invoke();
-            deathEvent.RemoveAllListeners();
-        
+            onDeath?.Invoke(this);
+            onDeath = null;
+
             Die();
         }
     }
