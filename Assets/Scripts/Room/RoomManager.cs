@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class RoomManager : MonoBehaviour
 {
-    public delegate void RoomDelegate (PlayerController pc, RoomManager rm);
+    public delegate void RoomDelegate(PlayerController pc, RoomManager rm);
 
     public enum RoomState {
         UNCLEARED, // room has not been entered yet
@@ -33,6 +33,11 @@ public class RoomManager : MonoBehaviour
     private List<RoomComponentCopy> childrenCopy;
     private GameObject enemiesCopy;
     private FloorController.FloorData floorCopy;
+
+    public GameObject[] RoomTurrets;
+    public GameObject[] QuadTurret;
+    public bool QuadTurretInRoom;
+    
 
     public GameObject room;
     public Transform doorsContainer;
@@ -76,7 +81,34 @@ public class RoomManager : MonoBehaviour
                 childrenCopy.Add (rcc);
             }
             
-        }       
+        }
+
+        //Telling all turrets in array that they are room turrets
+        Turret[] Turret = GameObject.FindObjectsOfType<Turret>();
+        RoomTurrets = new GameObject[Turret.Length];
+
+        for (int i = 0; i < Turret.Length; i++)
+        {
+            RoomTurrets[i] = Turret[i].gameObject;
+        }
+
+        foreach (GameObject controller in RoomTurrets)
+        {
+            controller.GetComponent<Turret>().RoomTurret = true;
+        }
+
+        QuadTurretFiring[] QuadTurret = GameObject.FindObjectsOfType<QuadTurretFiring>();
+        RoomTurrets = new GameObject[QuadTurret.Length];
+
+        for (int i = 0; i < QuadTurret.Length; i++)
+        {
+            RoomTurrets[i] = QuadTurret[i].gameObject;
+        }
+
+        foreach (GameObject controller in RoomTurrets)
+        {
+            controller.GetComponent<QuadTurretFiring>().RoomTurret = true;
+        }
 
         // Eventually the plan will be to reuse Grid instances when entering rooms
         // Each level will not store either own dirtyTiles
@@ -157,6 +189,9 @@ public class RoomManager : MonoBehaviour
         roomState = RoomState.ACTIVE;
         room.SetActive(true);
 
+        //Activate the Turrets
+        StartTurrets();
+
         enemiesCopy = Instantiate (enemiesContainer.gameObject, enemiesContainer.parent);
         enemiesCopy.SetActive(false);
 
@@ -196,6 +231,7 @@ public class RoomManager : MonoBehaviour
             onRoomClear?.Invoke(player, this);
         }
 
+        StopTurrets();
         OpenDoors();
 
         roomUI.enabled = false;
@@ -260,6 +296,66 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+    public void StartTurrets()
+    {
+        //Activate the Turrets
+        Turret[] Turret = GameObject.FindObjectsOfType<Turret>();
+        RoomTurrets = new GameObject[Turret.Length];
+
+        for (int i = 0; i < Turret.Length; i++)
+        {
+            RoomTurrets[i] = Turret[i].gameObject;
+        }
+
+        foreach (GameObject controller in RoomTurrets)
+        {
+            controller.GetComponent<Turret>().RoomActivated = true;
+        }
+
+        QuadTurretFiring[] QuadTurret = GameObject.FindObjectsOfType<QuadTurretFiring>();
+        RoomTurrets = new GameObject[QuadTurret.Length];
+
+        for (int i = 0; i < QuadTurret.Length; i++)
+        {
+            RoomTurrets[i] = QuadTurret[i].gameObject;
+        }
+
+        foreach (GameObject controller in RoomTurrets)
+        {
+            controller.GetComponent<QuadTurretFiring>().RoomActivated = true;
+        }
+    }
+
+    public void StopTurrets()
+    {
+        //Activate the Turrets
+        Turret []
+        Turret = GameObject.FindObjectsOfType<Turret>();
+        RoomTurrets = new GameObject[Turret.Length];
+
+        for (int i = 0; i<Turret.Length; i++)
+        {
+            RoomTurrets[i] = Turret[i].gameObject;
+        }
+
+        foreach (GameObject controller in RoomTurrets)
+        {
+            controller.GetComponent<Turret>().RoomActivated = false;
+        }
+
+        QuadTurretFiring[] QuadTurret = GameObject.FindObjectsOfType<QuadTurretFiring>();
+        RoomTurrets = new GameObject[QuadTurret.Length];
+
+        for (int i = 0; i < QuadTurret.Length; i++)
+        {
+            RoomTurrets[i] = QuadTurret[i].gameObject;
+        }
+
+        foreach (GameObject controller in RoomTurrets)
+        {
+            controller.GetComponent<QuadTurretFiring>().RoomActivated = false;
+        }
+    }
 
     private void OnDrawGizmos() {
         if (roomCameraBounds != null) {
@@ -276,3 +372,8 @@ public class RoomManager : MonoBehaviour
         }
     }
 }
+
+
+
+
+    

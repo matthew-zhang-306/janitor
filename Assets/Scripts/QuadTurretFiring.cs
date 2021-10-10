@@ -20,7 +20,8 @@ public class QuadTurretFiring : MonoBehaviour
 
     GunkBulletPooler gunkPooler;
 
-
+    public bool RoomTurret;
+    public bool RoomActivated;
 
     //public bool shootNow;
     // Start is called before the first frame update
@@ -54,7 +55,26 @@ public class QuadTurretFiring : MonoBehaviour
         {
 
 
-            if (PlayerInRange == true && canShoot == true)
+            if (RoomTurret == true &&PlayerInRange == true && canShoot == true)
+            {
+                if (RoomActivated == true)
+                {
+                    GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
+                    if (gunk != null)
+                    {
+                        //turret.SetTrigger("Play");
+                        gunk.transform.position = turretFiring.transform.position;
+                        gunk.transform.rotation = turretFiring.transform.rotation;
+
+                        gunk.SetActive(true);
+
+                        StartCoroutine("Delay");
+                        //StartCoroutine("Cooldown");
+                    }
+                }
+                
+            }
+            if (RoomTurret == false && PlayerInRange == true && canShoot == true)
             {
 
                 GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();

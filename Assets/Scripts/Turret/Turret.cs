@@ -24,13 +24,16 @@ public class Turret : MonoBehaviour
 
     GunkBulletPooler gunkPooler;
 
+    public bool RoomTurret;
+    public  bool RoomActivated;
+
     //public bool shootNow;
     // Start is called before the first frame update
     void Start()
     {
         gunkPooler = GunkBulletPooler.Instance;
         turret = gameObject.GetComponent<Animator>();
-        
+        RoomActivated = false;
          
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -53,21 +56,43 @@ public class Turret : MonoBehaviour
     {
         if (!PauseMenu.GamePaused)
         {
-            if (PlayerInRange == true && canShoot == true)
+            if (RoomTurret == true)
             {
-                GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
-                if (gunk != null)
+                if (RoomActivated == true && canShoot == true)
                 {
-                    turret.SetTrigger("Play");
-                    gunk.transform.position = turret.transform.position;
-                    gunk.transform.rotation = turret.transform.rotation;
+                    GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
+                    if (gunk != null)
+                    {
+                        turret.SetTrigger("Play");
+                        gunk.transform.position = turret.transform.position;
+                        gunk.transform.rotation = turret.transform.rotation;
 
-                    gunk.SetActive(true);
+                        gunk.SetActive(true);
 
-                    StartCoroutine("Delay");
-                    StartCoroutine("Cooldown");
+                        StartCoroutine("Delay");
+                        StartCoroutine("Cooldown");
+                    }
                 }
-            } 
+            }
+            if (RoomTurret == false)
+            {
+                if (PlayerInRange == true && canShoot == true)
+                {
+                    GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
+                    if (gunk != null)
+                    {
+                        turret.SetTrigger("Play");
+                        gunk.transform.position = turret.transform.position;
+                        gunk.transform.rotation = turret.transform.rotation;
+
+                        gunk.SetActive(true);
+
+                        StartCoroutine("Delay");
+                        StartCoroutine("Cooldown");
+                    }
+                }
+            }
+            
         }
     }
 
