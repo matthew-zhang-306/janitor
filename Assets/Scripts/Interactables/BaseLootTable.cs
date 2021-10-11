@@ -17,6 +17,12 @@ public class BaseLootTable : MonoBehaviour
 
     protected virtual void Start()
     {
+        
+        Normalize();
+    }
+
+    protected void Normalize ()
+    {
         //Normalize loot table
         if (lootTable.Length != 0) {
             float totalProb = 0;

@@ -11,7 +11,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float acceleration = 1f;
     [SerializeField] private float maxSpeed = 1f;
+
     public WeaponSystem weapon;
+    private Health health;
+    public Inventory inventory;
+
+
     public Transform cameraPos;
     public SpriteRenderer spriteRenderer;
     public AudioSource damageSound;
@@ -19,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     private new Collider2D collider;
     private Hitbox hitbox;
-    private Health health;
+    
 
     private bool isDead;
     public static PlayerEvent OnDash;
@@ -65,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
         hitbox.OnTriggerEnter.AddListener(OnEnterHazard);
 
-        checkpointSnapshot = new PlayerSnapShot(transform, health, weapon);
+        checkpointSnapshot = new PlayerSnapShot(transform, health, weapon, inventory);
     }
 
     private void Update() {
@@ -279,7 +284,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Checkpoint")) {
-            checkpointSnapshot = new PlayerSnapShot(transform, health, weapon);
+            checkpointSnapshot = new PlayerSnapShot(transform, health, weapon, inventory);
             OnHitCheckpoint?.Invoke(this);
         }
     }
@@ -313,7 +318,7 @@ public class PlayerController : MonoBehaviour
         public readonly int maxHealth;
         public readonly float ammo;
 
-        public PlayerSnapShot (Transform playerTransform, Health playerHealth, WeaponSystem playerWeapon)
+        public PlayerSnapShot (Transform playerTransform, Health playerHealth, WeaponSystem playerWeapon, Inventory inv)
         {
             position = playerTransform.position;
             maxHealth = playerHealth.GetMaxHealth();

@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
     private int _money;
     public int money {get => _money; set => Mathf.Clamp(_money + value, 0, 1000);}
 
-    private float interactBuffer = 0.2f;
+    private float interactBuffer = 0.5f;
     private bool canInteract = true;
 
     private List<Interactable> recent;
