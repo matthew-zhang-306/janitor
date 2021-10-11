@@ -24,7 +24,7 @@ public class Turret : MonoBehaviour
 
     GunkBulletPooler gunkPooler;
 
-    public bool RoomTurret;
+    public bool RoomTurret = false ;
     public  bool RoomActivated;
 
     //public bool shootNow;

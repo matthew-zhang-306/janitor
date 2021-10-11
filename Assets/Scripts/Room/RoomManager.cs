@@ -35,7 +35,7 @@ public class RoomManager : MonoBehaviour
     private FloorController.FloorData floorCopy;
 
     public GameObject[] RoomTurrets;
-    public GameObject[] QuadTurret;
+    public GameObject[]  QuadTurret;
     public bool QuadTurretInRoom;
     
 
