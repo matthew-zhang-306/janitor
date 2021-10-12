@@ -16,7 +16,7 @@ public class ShopUI : MonoBehaviour
     void Start ()
     {
         table = this.GetComponents<ShopItemLootTable>();
-
+        
     }
             
     void Update ()
