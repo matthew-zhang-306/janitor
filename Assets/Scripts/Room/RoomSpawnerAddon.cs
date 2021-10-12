@@ -25,6 +25,7 @@ public class RoomSpawnerAddon : MonoBehaviour
         rm = this.GetComponent<RoomManager>();
         var generatedFloor = new GameObject ("dirty spawn marker overlay");
         generatedFloor.transform.SetParent (rm.dirtyTiles.transform.parent);
+        generatedFloor.transform.localPosition = Vector3.zero;
 
         var tm = generatedFloor.AddComponent<Tilemap>();
         tm.tileAnchor = new Vector3(0.5f,0.5f,0);
