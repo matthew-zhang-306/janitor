@@ -6,17 +6,18 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GamePaused = false;
+    public static bool IgnoreEsc = false;
     public GameObject PauseMenuUI;
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !IgnoreEsc)
         {
             if (GamePaused == true)
             {
                 ResumeGame();
             }
-            if (GamePaused == false)
+            else if (GamePaused == false)
             {
                 PauseGame();
             }

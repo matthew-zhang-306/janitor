@@ -32,6 +32,20 @@ public class InteractableSpawner : MonoBehaviour
 
     }
 
+    public GameObject GetItem (string index)
+    {
+        if (index == "") return null;
+
+        try {
+            return prefabDict[index];
+        }
+        catch {
+            Debug.LogError ("Invalid Item Index! (Are you using the editor / item SO?)");
+            return null;
+        }
+        
+    }
+
     public void SpawnItem (string index, Vector3 position)
     {
         if (index.Equals("") || index == null) return;

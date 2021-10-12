@@ -8,10 +8,24 @@ public class FloorTilePopulator : MonoBehaviour
     private Tile[] tiles;
     private Sprite[] sprites;
     private Tilemap tilemap;
+    [SerializeField] private bool generateOnRuntime = true;
+
+    [Header("Set min and max to both 0 if you want original behavior")]
+    [SerializeField] private Vector3Int min;
+    [SerializeField] private Vector3Int max;
     // Start is called before the first frame update
     void Start()
     {
+        if (min == max) {
+            min = tilemap.cellBounds.min;
+            max = tilemap.cellBounds.max;
+        }
+        if (generateOnRuntime) Load();
+        
+    }
 
+    public void Load ()
+    {
         sprites = Resources.LoadAll<Sprite>("FloorTileSprites/FloorTileVersion2");
         if (sprites.Length < 1) {
             Debug.LogError("Not enough sprites to generate floor");
@@ -26,8 +40,6 @@ public class FloorTilePopulator : MonoBehaviour
         }
         tilemap = this.GetComponent<Tilemap>();
 
-        Vector3Int min = tilemap.cellBounds.min;
-        Vector3Int max = tilemap.cellBounds.max;
         for (int x = min.x; x <= max.x; x++) {
             for (int y = min.y; y <= max.y; y++) {
                 var cell = new Vector3Int(x, y, 0);
@@ -70,10 +82,13 @@ public class FloorTilePopulator : MonoBehaviour
             }
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
+    // void OnDrawGizmos() {
+    //     Gizmos.color = Color.yellow;
+    //     Gizmos.DrawWireCube((max - min) / 2, max - min);
         
+    // }
+    public void Clear()
+    {
+        tilemap.ClearAllTiles();
     }
 }
