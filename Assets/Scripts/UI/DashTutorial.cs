@@ -54,7 +54,7 @@ public class DashTutorial : MonoBehaviour
 
     IEnumerator PlayerDelay()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         if (playerInTrigger == true)
         {
             canflicker = true;
