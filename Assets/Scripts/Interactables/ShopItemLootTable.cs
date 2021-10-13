@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 
-[RequireComponent (typeof(BaseEnemy))]
 public class ShopItemLootTable : BaseLootTable
 {
     protected override void Start ()
@@ -29,7 +28,7 @@ public class ShopItemLootTable : BaseLootTable
     //     }
     // }
 
-    public GameObject GetItem ()
+    public string GetItem ()
     {
         float value = Random.Range (0f, 1f);
         float runningTotal = 0f;
@@ -40,7 +39,7 @@ public class ShopItemLootTable : BaseLootTable
             if (value <= runningTotal) {
                 
                 // InteractableSpawner.i.SpawnItem (lv.name, be.transform.position);
-                return InteractableSpawner.i.GetItem(lv.name);
+                return lv.name;
             }
         }
         return null;
