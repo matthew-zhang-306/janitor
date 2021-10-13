@@ -8,6 +8,9 @@ public class PauseMenu : MonoBehaviour
     public static bool GamePaused = false;
     public static bool IgnoreEsc = false;
     public GameObject PauseMenuUI;
+
+    public static EmptyDelegate OnPause;
+    public static EmptyDelegate OnResume;
     
     void Update()
     {
@@ -29,12 +32,17 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GamePaused = false;
+
+        OnResume?.Invoke();
     }
     public void PauseGame()
     {
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GamePaused = true;
+
+        Debug.Log("on pause");
+        OnPause?.Invoke();
     }
     
     public void QuitGame()
