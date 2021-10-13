@@ -36,6 +36,7 @@ public class ShopInteract : Interactable
             shop.playerInventory = pc.inventory;
             shop.onClose += () => {opened = false; ShopUICanvas.SetActive(false);};
             PauseMenu.IgnoreEsc = true;
+            Time.timeScale = 0;
         }
         
     }
