@@ -7510,7 +7510,7 @@ PrefabInstance:
     - target: {fileID: 3514881736578162423, guid: 8ba286c9cd4043f4295944d2db70bdc2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ba286c9cd4043f4295944d2db70bdc2, type: 3}
@@ -23786,6 +23786,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3f755762fdd6f4cb81e2c50eccb8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateOnRuntime: 1
+  min: {x: 0, y: 0, z: 0}
+  max: {x: 0, y: 0, z: 0}
 --- !u!1 &1999739665
 GameObject:
   m_ObjectHideFlags: 0

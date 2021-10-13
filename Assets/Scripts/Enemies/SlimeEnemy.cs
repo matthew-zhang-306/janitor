@@ -19,8 +19,6 @@ public class SlimeEnemy : BaseEnemy
     private float m_time;
 
     [SerializeField] private float dirtyTime = 1f;
-
-    public Animator animator;
     
     protected override void Start()
     {

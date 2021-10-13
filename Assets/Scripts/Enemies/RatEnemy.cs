@@ -18,7 +18,6 @@ public class RatEnemy : BaseEnemy
     public float swipeDelay;
     public float swipeTime;
 
-    public Animator animator;
     public GameObject swipe;
 
     private bool m_rat = true;

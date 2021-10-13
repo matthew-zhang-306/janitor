@@ -21,8 +21,8 @@ public class BaseEnemy : MonoBehaviour
 
     [Header("Optional Components")]
     public GameObject floorMarker; // enemy will not necessarily have one
+    public Animator animator;
     [HideInInspector] public PathNavigator navigator; // enemy will not necessarily have one
-
     [HideInInspector] public PlayerController player;
 
     public delegate void EnemyDelegate (BaseEnemy e);

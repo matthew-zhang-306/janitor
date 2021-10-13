@@ -47,7 +47,7 @@ public class SnakeEnemy : BaseEnemy
         reloadTimer = 9999;
 
         // step 1: aim (up)
-        spriteRenderer.color = new Color(1, 0.5f, 1);
+        animator.Play("SnakeAttack");
         yield return new WaitForSeconds(aimTime);
 
         // step 2: shoot
@@ -59,7 +59,7 @@ public class SnakeEnemy : BaseEnemy
         yield return new WaitForSeconds(shootTime * burstLength);
 
         // step 3: reload
-        spriteRenderer.color = Color.white;
+        animator.Play("SnakeIdle");
         reloadTimer = reloadTime;
     }
 

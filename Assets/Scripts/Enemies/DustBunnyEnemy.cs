@@ -19,8 +19,6 @@ public class DustBunnyEnemy : BaseEnemy
     public GameObject bullet;
     public float bulletSpeed;
 
-    public Animator animator;
-
 
     protected override void Start() {
         base.Start();
