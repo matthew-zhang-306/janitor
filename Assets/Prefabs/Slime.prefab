@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 4271501809376710239}
   - component: {fileID: 4271501809376710238}
   - component: {fileID: 1785390836}
+  - component: {fileID: -3928594433287301252}
   m_Layer: 10
   m_Name: Slime
   m_TagString: Untagged
@@ -456,6 +457,27 @@ MonoBehaviour:
   canNavigate: 0
   unitSize: 1
   speed: 0
+--- !u!114 &-3928594433287301252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271501809376710233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c8689a17a999545ae4163ea410ea68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
+  - name: HealthKit
+    probability: 0.125
+  - name: 
+    probability: 0.125
+  - name: 
+    probability: 0.25
+  - name: 
+    probability: 0.5
 --- !u!1 &4271501809849760519
 GameObject:
   m_ObjectHideFlags: 0
