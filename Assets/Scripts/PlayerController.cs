@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     private new Collider2D collider;
     private Hitbox hitbox;
+
+
+    public Vector2 Velocity => rb2d?.velocity ?? Vector2.zero;
     
 
     private bool isDead;
