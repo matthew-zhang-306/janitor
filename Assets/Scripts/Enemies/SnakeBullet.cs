@@ -17,11 +17,13 @@ public class SnakeBullet : MonoBehaviour
     [SerializeField] private Transform shadowTransform = default; // positioned horizontally across the floor
     [SerializeField] private Transform projectileTransform = default; // positioned above the shadow based on height
     [SerializeField] private Hitbox projectileHitbox = default;
+    [SerializeField] private Collider2D projectileCollider = default;
     [SerializeField] private SpriteRenderer projectileSprite = default;
 
 
     public void SetTarget(Vector3 _targetPos) {
         targetPos = _targetPos;
+        projectileCollider.enabled = false;
         
         this?.DOKill();
         indicatorTransform.position = targetPos;
@@ -37,6 +39,10 @@ public class SnakeBullet : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        if (isLanding) {
+            projectileCollider.enabled = true;
+        }
+
         if (isLanding && projectileHitbox.IsColliding) {
             // hit the player: strike early
             Finish();
