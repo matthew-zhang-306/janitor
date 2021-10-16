@@ -39,6 +39,8 @@ public class CatEnemy : BaseEnemy
     }
 
     protected override void FixedUpdate() {
+        base.FixedUpdate();
+        
         if (!CanAct) {
             rechargeTimer = rechargeTime;
             return;

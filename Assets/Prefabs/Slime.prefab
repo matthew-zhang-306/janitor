@@ -414,6 +414,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4271501809168021281}
   hitbox: {fileID: 4271501809849760517}
   floorMarker: {fileID: 4271501808992719050}
+  animator: {fileID: 5209599150421188498}
   navigator: {fileID: 0}
   player: {fileID: 0}
   invincibilityTime: 0.2
@@ -426,7 +427,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 118daf0c88f0fbb4b86e321cc3797147, type: 3}
   actionTimer: 1.2
   dirtyTime: 1
-  animator: {fileID: 5209599150421188498}
 --- !u!114 &4271501809376710238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 4271501810380128876}
   m_Layer: 10
   m_Name: Hurtbox
-  m_TagString: Enemy
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

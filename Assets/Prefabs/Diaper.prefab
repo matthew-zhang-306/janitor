@@ -92,6 +92,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3514881736801281935}
   hitbox: {fileID: 3514881738266504107}
   floorMarker: {fileID: 3514881737028698212}
+  animator: {fileID: 0}
   navigator: {fileID: 0}
   player: {fileID: 0}
   invincibilityTime: 0.2
@@ -335,7 +336,7 @@ GameObject:
   - component: {fileID: 5902150401008211561}
   m_Layer: 10
   m_Name: Hurtbox
-  m_TagString: Enemy
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb2d;
     private new Collider2D collider;
-    private Hitbox hitbox;
+    private Hitbox[] hitboxes;
 
 
     public Vector2 Velocity => rb2d?.velocity ?? Vector2.zero;
@@ -67,11 +67,12 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
-        hitbox = GetComponentInChildren<Hitbox>();
+        hitboxes = GetComponentsInChildren<Hitbox>();
         health = GetComponent<Health>();
         dashCooldown += dashTime;
 
-        hitbox.OnTriggerEnter.AddListener(OnEnterHazard);
+        foreach (Hitbox hitbox in hitboxes)
+            hitbox.OnTriggerEnter.AddListener(OnEnterHazard);
 
         checkpointSnapshot = new PlayerSnapShot(transform, health, weapon, inventory);
     }

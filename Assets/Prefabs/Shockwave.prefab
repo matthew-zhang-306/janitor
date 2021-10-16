@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8562951414145492974}
   - component: {fileID: 2618235239162235557}
   - component: {fileID: 3099023440310818974}
+  - component: {fileID: 866776337}
   m_Layer: 11
   m_Name: Shockwave
-  m_TagString: Untagged
+  m_TagString: FloorHazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,7 +164,7 @@ LineRenderer:
   - {x: 0.12288551, y: 0.99242085, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.2
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -230,7 +231,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.1
+  m_EdgeRadius: 0.25
   m_Points:
   - {x: 0, y: 1}
   - {x: -0.12288828, y: 0.9924205}
@@ -284,3 +285,16 @@ EdgeCollider2D:
   - {x: 0.24391122, y: 0.96979755}
   - {x: 0.12288551, y: 0.99242085}
   - {x: 0, y: 1}
+--- !u!114 &866776337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618235239162235556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8255515ed9c3141b4352fa68d18b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5

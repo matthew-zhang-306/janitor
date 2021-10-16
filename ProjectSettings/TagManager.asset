@@ -13,6 +13,8 @@ TagManager:
   - HealthCollect
   - Sides
   - Checkpoint
+  - Hazard
+  - FloorHazard
   layers:
   - Default
   - TransparentFX
