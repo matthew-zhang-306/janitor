@@ -68,7 +68,7 @@ public class CatEnemy : BaseEnemy
 
     private IEnumerator Action_Attack() {
         shouldPickAction = false;
-        navigator.canNavigate = false;
+        navigator.Stop();
 
         spriteRenderer.color = Color.blue;
         yield return new WaitForSeconds(chargeTime);
