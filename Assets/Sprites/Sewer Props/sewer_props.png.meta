@@ -1,7 +1,61 @@
 fileFormatVersion: 2
 guid: 0e46f8e3a39e82d4ebef0a30c197ca0c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 723158413358930017
+    second: sewer_props_0
+  - first:
+      213: 47493992428910993
+    second: sewer_props_1
+  - first:
+      213: 1229514655496187334
+    second: sewer_props_2
+  - first:
+      213: -4988862505667795327
+    second: sewer_props_3
+  - first:
+      213: -420796753651417412
+    second: sewer_props_4
+  - first:
+      213: 6315592928314711264
+    second: sewer_props_5
+  - first:
+      213: -9001621730024663759
+    second: sewer_props_6
+  - first:
+      213: 7162654740756533084
+    second: sewer_props_7
+  - first:
+      213: -1836951223405230981
+    second: sewer_props_8
+  - first:
+      213: 1232569167720407692
+    second: sewer_props_9
+  - first:
+      213: -2465166456038418826
+    second: sewer_props_10
+  - first:
+      213: 7663964244781094383
+    second: sewer_props_11
+  - first:
+      213: -2406187069055143970
+    second: sewer_props_12
+  - first:
+      213: 319473643920933416
+    second: sewer_props_13
+  - first:
+      213: -4315663630835024398
+    second: sewer_props_14
+  - first:
+      213: 1518437736240393421
+    second: sewer_props_15
+  - first:
+      213: -6870728593717896146
+    second: sewer_props_16
+  - first:
+      213: -7357002399769998104
+    second: sewer_props_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +94,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +125,411 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sewer_props_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 1734
+        width: 742
+        height: 379
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1681898debc290a00800000000000000
+      internalID: 723158413358930017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_1
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 2102
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 199b0b3d88bb8a000800000000000000
+      internalID: 47493992428910993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_2
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 1941
+        width: 684
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cdacfe901d101110800000000000000
+      internalID: 1229514655496187334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_3
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 2078
+        width: 63
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186e764bbfff3cab0800000000000000
+      internalID: -4988862505667795327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_4
+      rect:
+        serializedVersion: 2
+        x: 1801
+        y: 1794
+        width: 404
+        height: 377
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe38fff497092af0800000000000000
+      internalID: -420796753651417412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_5
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 1960
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ecda2e8e4e75a750800000000000000
+      internalID: 6315592928314711264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_6
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 1633
+        width: 176
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 135517baab0d31380800000000000000
+      internalID: -9001621730024663759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_7
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 1614
+        width: 173
+        height: 247
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f8f8f898cd66360800000000000000
+      internalID: 7162654740756533084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_8
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 927
+        width: 358
+        height: 468
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b74463b4896d186e0800000000000000
+      internalID: -1836951223405230981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_9
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 963
+        width: 396
+        height: 461
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c82e21ba027fa1110800000000000000
+      internalID: 1232569167720407692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_10
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 983
+        width: 406
+        height: 377
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6761f935b28f9cdd0800000000000000
+      internalID: -2465166456038418826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_11
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 597
+        width: 423
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe5d87d00eedb5a60800000000000000
+      internalID: 7663964244781094383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_12
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 11
+        width: 516
+        height: 734
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf64d5fb918b9ed0800000000000000
+      internalID: -2406187069055143970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_13
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 459
+        width: 423
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822c105269ffe6400800000000000000
+      internalID: 319473643920933416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_14
+      rect:
+        serializedVersion: 2
+        x: 1796
+        y: 113
+        width: 404
+        height: 455
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd710a0bceab14c0800000000000000
+      internalID: -4315663630835024398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_15
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 326
+        width: 423
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc282a7313921510800000000000000
+      internalID: 1518437736240393421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_16
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 187
+        width: 423
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2c53572fb446a0a0800000000000000
+      internalID: -6870728593717896146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sewer_props_17
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 51
+        width: 423
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ec4306eb4da6e990800000000000000
+      internalID: -7357002399769998104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
