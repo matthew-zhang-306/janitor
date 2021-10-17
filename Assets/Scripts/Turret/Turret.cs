@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : BaseRoomObject
 {
 
     public GameObject gunk;
@@ -24,8 +24,8 @@ public class Turret : MonoBehaviour
 
     GunkBulletPooler gunkPooler;
 
-    public bool RoomTurret = false ;
-    public  bool RoomActivated;
+    public bool ignoreRoomStatus = false ;
+    
 
     //public bool shootNow;
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class Turret : MonoBehaviour
     {
         gunkPooler = GunkBulletPooler.Instance;
         turret = gameObject.GetComponent<Animator>();
-        RoomActivated = false;
+        
          
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,9 +56,8 @@ public class Turret : MonoBehaviour
     {
         if (!PauseMenu.GamePaused)
         {
-            if (RoomTurret == true)
-            {
-                if (RoomActivated == true && canShoot == true)
+           
+                if ((IsRoomActive || (ignoreRoomStatus && PlayerInRange)) && canShoot)
                 {
                     GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
                     if (gunk != null)
@@ -73,25 +72,9 @@ public class Turret : MonoBehaviour
                         StartCoroutine("Cooldown");
                     }
                 }
-            }
-            if (RoomTurret == false)
-            {
-                if (PlayerInRange == true && canShoot == true)
-                {
-                    GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
-                    if (gunk != null)
-                    {
-                        turret.SetTrigger("Play");
-                        gunk.transform.position = turret.transform.position;
-                        gunk.transform.rotation = turret.transform.rotation;
-
-                        gunk.SetActive(true);
-
-                        StartCoroutine("Delay");
-                        StartCoroutine("Cooldown");
-                    }
-                }
-            }
+            
+            
+            
             
         }
     }

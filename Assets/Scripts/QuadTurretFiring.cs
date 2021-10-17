@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuadTurretFiring : MonoBehaviour
+public class QuadTurretFiring : BaseRoomObject
 {
     public GameObject gunk;
     [SerializeField] private GameObject turretFiring;
@@ -22,6 +22,7 @@ public class QuadTurretFiring : MonoBehaviour
 
     public bool RoomTurret;
     public bool RoomActivated;
+    public bool ignoreRoomStatus = false;
 
     //public bool shootNow;
     // Start is called before the first frame update
@@ -55,7 +56,7 @@ public class QuadTurretFiring : MonoBehaviour
         {
 
 
-            if (RoomTurret == true &&PlayerInRange == true && canShoot == true)
+            if (IsRoomActive || ignoreRoomStatus && canShoot)
             {
                 if (RoomActivated == true)
                 {
@@ -74,22 +75,7 @@ public class QuadTurretFiring : MonoBehaviour
                 }
                 
             }
-            if (RoomTurret == false && PlayerInRange == true && canShoot == true)
-            {
-
-                GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
-                if (gunk != null)
-                {
-                    //turret.SetTrigger("Play");
-                    gunk.transform.position = turretFiring.transform.position;
-                    gunk.transform.rotation = turretFiring.transform.rotation;
-
-                    gunk.SetActive(true);
-
-                    StartCoroutine("Delay");
-                    //StartCoroutine("Cooldown");
-                }
-            }
+            
         }
     }
     
