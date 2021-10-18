@@ -10,7 +10,7 @@ public class SweepRoomUI : MonoBehaviour
     public GameObject SweepTextUI;
 
     public GameObject MobileButton;
-    bool PCBuild;
+    bool PCBuild = true;
 
     // Start is called before the first frame update
     void Start()
@@ -41,9 +41,10 @@ public class SweepRoomUI : MonoBehaviour
     {
         if (PCBuild)
         {
-            StartCoroutine(SweepRoomPC());
+          //  StartCoroutine(SweepRoomPC());
+            StartCoroutine(SweepRoomMobile());
         }
-        if (!PCBuild)
+        if (PCBuild == false)
         {
             StartCoroutine(SweepRoomMobile());
         }

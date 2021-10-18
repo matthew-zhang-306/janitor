@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6818427666647062126}
   - component: {fileID: 57062975787996275}
   - component: {fileID: 4632799715150294602}
+  - component: {fileID: 2934641345074477412}
   m_Layer: 12
   m_Name: Student Desk-1
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1270654867
   m_SortingLayer: 3
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 8922582395598171075, guid: 39856575f84a742b3bc6d9df4cf40437,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -118,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1330902}
+  m_Offset: {x: 0, y: -0.07309084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -129,5 +130,18 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.53000003, y: 0.2512837}
+  m_Size: {x: 0.53000003, y: 0.3712825}
   m_EdgeRadius: 0
+--- !u!114 &2934641345074477412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298780703285314344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f795907a807639e4790044eaeb5ea9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: {x: 0.5, y: 0.5}
