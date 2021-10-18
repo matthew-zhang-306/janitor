@@ -16,9 +16,17 @@ public class DialogueLines {
     [TextArea(3, 10)] public string lines;
 }
 
+[System.Serializable]
+public class SpeakerData {
+    public string speakerName;
+    public GameObject actor;
+    public Color color;
+}
+
 public class BaseDialogueUI : MonoBehaviour
 {
-    public DialogueScript script;
+    public DialogueLines[] script;
+    public SpeakerData[] speakers;
 
     public TextMeshProUGUI dialogueText;
     public GameObject continueObject;
@@ -34,7 +42,6 @@ public class BaseDialogueUI : MonoBehaviour
     private void Start() {
         GetComponent<Canvas>().worldCamera = Camera.main;
     }
-
 
     protected virtual void Update() {
         GetInput();
@@ -62,7 +69,7 @@ public class BaseDialogueUI : MonoBehaviour
         dialogueText.text = "";
         yield return StartCoroutine(OnStart());
 
-        foreach (DialogueLines lines in script.lines) {
+        foreach (DialogueLines lines in script) {
             yield return StartCoroutine(OnSpeakerSwitch(lines.speaker));
 
             foreach (string line in lines.lines.Split('\n')) {
@@ -135,5 +142,16 @@ public class BaseDialogueUI : MonoBehaviour
         yield break;
     }
 
+
+    public SpeakerData GetSpeaker(string speakerName) {
+        for (int i = 0; i < speakers.Length; i++) {
+            if (speakers[i].speakerName == speakerName) {
+                return speakers[i];
+            }
+        }
+
+        Debug.LogError("Dialogue UI does not have a speaker named " + speakerName);
+        return null;
+    }
 
 }

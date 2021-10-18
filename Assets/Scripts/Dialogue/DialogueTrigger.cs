@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    public DialogueLines[] script;
+    public SpeakerData[] speakers;
+
     public GameObject dialogueBubblePrefab;
     public bool isOneShot;
     
@@ -19,6 +22,8 @@ public class DialogueTrigger : MonoBehaviour
             dialogue =
                 GameObject.Instantiate(dialogueBubblePrefab, transform.position, Quaternion.identity)
                 .GetComponent<BaseDialogueUI>();
+            dialogue.script = script;
+            dialogue.speakers = speakers;
             dialogue.StartDialogue();
 
             if (isOneShot) {

@@ -7,8 +7,8 @@ using TMPro;
 
 public class DialogueBubbleUI : BaseDialogueUI
 {
-    public TextMeshPro speakerText;
-    public SpriteRenderer speakerBox;
+    public TextMeshProUGUI speakerText;
+    public Image borderImage;
 
     public Vector2 bubbleOffset;
     public float openTime;
@@ -16,12 +16,30 @@ public class DialogueBubbleUI : BaseDialogueUI
     Vector3 onPosition;
     Vector3 offPosition;
 
+    bool lineSkipped;
+
 
     protected override IEnumerator OnStart() {
+        speakerText.text = "";
+        transform.localScale = Vector3.zero;
         yield break;
     }
 
-    protected override IEnumerator OnSpeakerSwitch(string speaker) {
+    protected override IEnumerator OnSpeakerSwitch(string speakerName) {
+        if (!lineSkipped && transform.localScale != Vector3.zero) {
+            transform.DOKill();
+            yield return transform.DOScale(Vector3.zero, openTime).SetEase(Ease.InCubic).WaitForCompletion();
+        }
+
+        SpeakerData speaker = GetSpeaker(speakerName);
+        speakerText.text = speaker.speakerName;
+        borderImage.color = speaker.color.WithAlpha(1);
+        transform.position = speaker.actor.transform.position + bubbleOffset.ToVector3();
+
+        if (!lineSkipped) {
+            transform.DOScale(Vector3.one, openTime).SetEase(Ease.OutCubic);
+        }
+
         /*
         SpeakerData speaker = dialogue.GetSpeaker(dialogueLines.speaker);
         speakerText.text = speaker.name;
@@ -35,7 +53,6 @@ public class DialogueBubbleUI : BaseDialogueUI
         
         yield return new WaitForSeconds(openTime);
         */
-        yield break;
     }
 
     protected override IEnumerator OnStartLine() {
@@ -43,10 +60,12 @@ public class DialogueBubbleUI : BaseDialogueUI
     }
     
     protected override IEnumerator OnContinue() {
+        lineSkipped = false;
         yield break;
     }
 
     protected override IEnumerator OnSkip() {
+        lineSkipped = true;
         yield break;
     }
 
@@ -55,6 +74,7 @@ public class DialogueBubbleUI : BaseDialogueUI
     }
 
     protected override IEnumerator OnEnd() {
+        yield return transform.DOScale(Vector3.zero, openTime).SetEase(Ease.InCubic).WaitForCompletion();
         Destroy(gameObject);
         yield return 0;
     }
