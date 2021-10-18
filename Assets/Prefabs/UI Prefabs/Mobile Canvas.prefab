@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -207, y: 46}
+  m_AnchoredPosition: {x: -257, y: 46}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4592833155370919954
@@ -126,7 +126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -207, y: 126}
+  m_AnchoredPosition: {x: -326, y: 45}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4760975303597088321
@@ -557,6 +557,7 @@ GameObject:
   - component: {fileID: 7949356408041665388}
   - component: {fileID: 7949356408041665387}
   - component: {fileID: 7949356408041665385}
+  - component: {fileID: 441817202}
   m_Layer: 5
   m_Name: aimpad
   m_TagString: Untagged
@@ -639,6 +640,18 @@ MonoBehaviour:
   childstick: {fileID: 7949356408005546573}
   reference: {fileID: 7949356409041792369}
   center: {fileID: 7475787022981662417}
+--- !u!225 &441817202
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949356408041665384}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &7949356408556020656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1193,7 @@ GameObject:
   - component: {fileID: 7949356409190606510}
   - component: {fileID: 7949356409190606509}
   - component: {fileID: 7949356409190606511}
+  - component: {fileID: 401204583}
   m_Layer: 5
   m_Name: movepad
   m_TagString: Untagged
@@ -1204,9 +1218,9 @@ RectTransform:
   m_Father: {fileID: 7949356408847459698}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50, y: 136}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -428}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7949356409190606510
@@ -1262,3 +1276,15 @@ MonoBehaviour:
   childstick: {fileID: 7949356408556020656}
   reference: {fileID: 7949356408893212992}
   center: {fileID: 7475787022921506214}
+--- !u!225 &401204583
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949356409190606507}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
