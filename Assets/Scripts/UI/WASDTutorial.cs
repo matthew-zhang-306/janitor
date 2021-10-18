@@ -6,24 +6,29 @@ public class WASDTutorial : MonoBehaviour
 {
     public GameObject WASDUI;
     bool playerInTrigger;
-    
+    public GameObject Joystick;
+
+    public float TimeDisplayed;
 
     private void Start()
     {
-        
-        StartCoroutine(PlayerDelay());
-        WASDUI.SetActive(true);
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            StartCoroutine(AnimationDelay());
+            WASDUI.SetActive(true);
+        }
+        if (Application.isMobilePlatform)
+        {
+            Joystick.SetActive(true);
+        }
     }
 
-
-    
-
-    IEnumerator PlayerDelay()
+    IEnumerator AnimationDelay()
     {
         
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(TimeDisplayed);
         WASDUI.SetActive(false);
-        
+        Joystick.SetActive(false);
         
     }
 }
