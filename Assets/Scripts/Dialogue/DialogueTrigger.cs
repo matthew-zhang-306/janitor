@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class DialogueTrigger : MonoBehaviour
+{
+    public GameObject dialogueBubblePrefab;
+    public bool isOneShot;
+    
+    BaseDialogueUI dialogue = null;
+    PlayerController playerIn;
+    bool inDialogue => dialogue != null;
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Player") && !inDialogue) {
+            playerIn = other.GetComponent<PlayerController>();
+            
+            dialogue =
+                GameObject.Instantiate(dialogueBubblePrefab, transform.position, Quaternion.identity)
+                .GetComponent<BaseDialogueUI>();
+            dialogue.StartDialogue();
+
+            if (isOneShot) {
+                gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (!isOneShot && other.CompareTag("Player") && inDialogue) {
+            dialogue.StopDialogue();
+            dialogue = null;
+        }
+    }
+
+
+}
