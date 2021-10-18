@@ -8,23 +8,30 @@ public class OnboardingShoot : MonoBehaviour
     public GameObject MouseClick;
     public GameObject MobileShoot;
 
-
+    private bool PCBuild = true;
     // Start is called before the first frame update
     void Start()
     {
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer)
         {
-            MouseClick.SetActive(true);
+            PCBuild = true;
+            
         }
         if (Application.isMobilePlatform)
+        {
+            PCBuild = false;
+        }
+
+
+        if (PCBuild)
+        {
+            MouseClick.SetActive(true);
+        }
+        else
         {
             MobileShoot.SetActive(true);
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
