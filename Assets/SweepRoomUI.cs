@@ -8,17 +8,24 @@ public class SweepRoomUI : MonoBehaviour
     [SerializeField] RoomManager RoomManager = default;
     public GameObject ClickButton;
     public GameObject SweepTextUI;
+
+    public GameObject MobileButton;
+    bool PCBuild = true;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            PCBuild = true;
+
+        }
+        if (Application.isMobilePlatform)
+        {
+            PCBuild = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnEnable()
     {
@@ -32,12 +39,21 @@ public class SweepRoomUI : MonoBehaviour
 
     private void AllEnemiesDead()
     {
-        StartCoroutine(SweepRoomStart());
-        //throw new NotImplementedException();
+        if (PCBuild)
+        {
+          //  StartCoroutine(SweepRoomPC());
+            StartCoroutine(SweepRoomMobile());
+        }
+        if (PCBuild == false)
+        {
+            StartCoroutine(SweepRoomMobile());
+        }
+        
+       
     }
 
 
-    IEnumerator SweepRoomStart()
+    IEnumerator SweepRoomPC()
     {
         ClickButton.SetActive(true);
         SweepTextUI.SetActive(true);
@@ -47,5 +63,12 @@ public class SweepRoomUI : MonoBehaviour
         yield return new WaitForSeconds(3f);
         ClickButton.SetActive(false);
     }
-    
+
+    IEnumerator SweepRoomMobile()
+    {
+        MobileButton.SetActive(true);
+        yield return new WaitForSeconds(7f);
+        MobileButton.SetActive(false);
+    }
+
 }
