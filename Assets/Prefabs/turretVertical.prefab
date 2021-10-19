@@ -103,8 +103,7 @@ MonoBehaviour:
   Offset: {x: 0, y: 0}
   cooldown: 2
   PlayerInRange: 0
-  RoomTurret: 0
-  RoomActivated: 0
+  ignoreRoomStatus: 0
 --- !u!61 &4760135992735676751
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -129,7 +128,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9138908, y: 3.9683871}
+  m_Size: {x: 2.8382225, y: 3.9683871}
   m_EdgeRadius: 0
 --- !u!95 &7853783069470789505
 Animator:

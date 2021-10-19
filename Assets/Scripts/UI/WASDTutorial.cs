@@ -10,15 +10,29 @@ public class WASDTutorial : MonoBehaviour
 
     public float TimeDisplayed;
 
+    bool pcBuild = true;
+
     private void Start()
     {
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer)
         {
-            StartCoroutine(AnimationDelay());
-            WASDUI.SetActive(true);
+            pcBuild = true;
         }
         if (Application.isMobilePlatform)
         {
+            pcBuild = false;
+        }
+
+
+        if (pcBuild)
+        {
+            StartCoroutine(AnimationDelay());
+            WASDUI.SetActive(true);
+            
+        }
+        else
+        {
+            StartCoroutine(AnimationDelay());
             Joystick.SetActive(true);
         }
     }
