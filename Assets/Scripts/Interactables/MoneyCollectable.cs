@@ -12,6 +12,7 @@ public class MoneyCollectable : Interactable
     public override void DoAction (PlayerController pc, Inventory i)
     {
         i.money += amount;
+        Debug.Log (i.money);
         Destroy (gameObject);
     }
 }

@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
     public Canvas canvas;
 
     private int _money;
-    public int money {get => _money; set => Mathf.Clamp(_money + value, 0, 1000);}
+    public int money {get => _money; set => _money = Mathf.Clamp(value, 0, 1000);}
 
     private float interactBuffer = 0.5f;
     private bool canInteract = true;
