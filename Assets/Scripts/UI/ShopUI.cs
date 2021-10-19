@@ -1,7 +1,9 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+using TMPro;
 
 public class ShopUI : MonoBehaviour
 {
@@ -11,17 +13,35 @@ public class ShopUI : MonoBehaviour
     private ShopItemLootTable[] table;
     public Inventory playerInventory;
     [SerializeField] private Text currency;
+    [SerializeField] private TextMeshProUGUI focusText;
+
     [SerializeField] private GameObject itemParent;
+    [SerializeField] private GameObject itemLocations;
     [SerializeField] private GameObject confirmMenu;
     public GameObject buttonPrefab;
 
+
     private Dictionary<string, Sprite> sprites;
+    private CanvasGroup render;
     
     private bool isFocused = false;
     private string focusedItem = "";
 
+    Tween openTween;
+    Tween closeTween;
+    public float fadeDuration = 0.5f;
+
+    void Awake()
+    {
+        render = this.GetComponent<CanvasGroup>();
+        
+        table = this.GetComponents<ShopItemLootTable>();
+    }
+
     void Start ()
     {
+        render = this.GetComponent<CanvasGroup>();
+        
         table = this.GetComponents<ShopItemLootTable>();
         sprites = new Dictionary<string, Sprite>();
 
@@ -39,10 +59,12 @@ public class ShopUI : MonoBehaviour
             sprites[name] = sr.sprite;
         }
 
-        int index = -sprites.Count / 2;
+        int index = 0;
         //Get Sprite List
         foreach (var key in sprites)
         {
+            if (index >= itemLocations.transform.childCount) break;
+
             GameObject button = Instantiate (buttonPrefab, itemParent.transform);
             var sib = button.GetComponent<ShopItemButton>();
             sib.name = key.Key;
@@ -50,20 +72,35 @@ public class ShopUI : MonoBehaviour
             sib.onClickEvent += Focus;
 
             var rt = button.GetComponent<RectTransform>();
-            rt.anchoredPosition -= new Vector2Int (index * 100, 50);
-            index++;
+            rt.position = itemLocations.transform.GetChild(index).position;
+            // rt.anchoredPosition -= new Vector2Int (index * 100, 50);
+            index ++;
+            
         }
         confirmMenu.SetActive(false);
+              
     }
             
+    void OnEnable ()
+    {
+        render.alpha = 0;
+        openTween?.Kill();
+        openTween = DOTween.To(() => render.alpha, x => render.alpha = (float) x, 1f, fadeDuration).SetUpdate(true);
+    }
+
     void Update ()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            onClose?.Invoke();
-            onClose = null;
-            PauseMenu.IgnoreEsc = false;
-            Time.timeScale = 1;
+            closeTween?.Kill();
+            closeTween = DOTween.To(() => render.alpha, x => render.alpha = (float) x, 0f, fadeDuration).SetUpdate(true);
+            this.Invoke(() => {
+                onClose?.Invoke();
+                onClose = null;
+                PauseMenu.IgnoreEsc = false;
+                
+            }, fadeDuration + (float) 1e-3);
+
         }
     }
 
@@ -79,12 +116,13 @@ public class ShopUI : MonoBehaviour
         isFocused = true;
         confirmMenu.SetActive(true);
         focusedItem = name;
+        focusText.text = String.Format ("Purchase {0} for {1}?", focusedItem, InteractableSpawner.i.itemTypes.GetPrice(focusedItem));
     }
 
     public void Confirm ()
     {
         
-        if (focusedItem != "") {
+        if (focusedItem != "" && isFocused) {
             var price = InteractableSpawner.i.itemTypes.GetPrice(focusedItem);
             if (playerInventory.money - price >= 0) {
                 Debug.Log("confirming");

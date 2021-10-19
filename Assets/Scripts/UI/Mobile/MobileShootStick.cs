@@ -11,4 +11,20 @@ public class MobileShootStick : MobileAxisBase
         CustomInput.axis2y = Mathf.Clamp (dir.y, -1, 1);
     }
 
+    public override bool Within(Vector2 pos, Camera cam)
+    {
+        bool val = false;
+        if (isTouched) {
+            val = base.Within(pos, cam);
+        }
+        else {
+            //RIGHT SIDE HARD CODED
+            if (pos.x > Screen.width / 2) 
+            {
+                val = true;
+            }
+        }
+
+        return val;
+    }
 }
