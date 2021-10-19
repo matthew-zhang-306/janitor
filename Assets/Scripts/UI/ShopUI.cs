@@ -94,7 +94,6 @@ public class ShopUI : MonoBehaviour
         {
             closeTween?.Kill();
             closeTween = DOTween.To(() => render.alpha, x => render.alpha = (float) x, 0f, fadeDuration).SetUpdate(true);
-            Time.timeScale = 1;
             this.Invoke(() => {
                 onClose?.Invoke();
                 onClose = null;

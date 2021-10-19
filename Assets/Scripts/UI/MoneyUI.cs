@@ -15,12 +15,12 @@ public class MoneyUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI sub;
     private CanvasGroup subgroup;
     [SerializeField] private float fadeTime = 2f;
-    private int _main;
+    private int _main = 0;
     //buffer should hold 'true' value
-    private int _buffer;
+    private int _buffer = 0;
 
-    private int _batch;
-    private int _before;
+    private int _batch = 0;
+    private int _before = 0;
 
     private Tween batchFade;
     void Awake()
@@ -42,7 +42,10 @@ public class MoneyUI : MonoBehaviour
             }
             
             _batch = _buffer - _before;
-            _main += 1;
+            Debug.Log (_buffer + " " + _batch + " " + _before);
+            
+            
+            _main += (int) Mathf.Sign(_buffer - _main);
         }
         else {
             if ((!batchFade.IsActive() || !batchFade.IsPlaying()) && _batch != 0) {
