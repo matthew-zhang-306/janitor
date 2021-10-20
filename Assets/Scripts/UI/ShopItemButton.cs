@@ -7,6 +7,10 @@ using UnityEngine.UI;
 [RequireComponent(typeof (Image))]
 public class ShopItemButton : MonoBehaviour
 {
+
+    //This is the BUYABLE item button
+    //clicking this should bring up a context menu of sorts
+
     public delegate void ButtonDelegate (string name);
 
     public Sprite im;    
