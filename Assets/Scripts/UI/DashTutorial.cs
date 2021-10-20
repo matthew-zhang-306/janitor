@@ -5,9 +5,25 @@ using UnityEngine;
 public class DashTutorial : MonoBehaviour
 {
     public GameObject DashUI;
+    public GameObject MobileDash;
     bool playerInTrigger;
     bool canflicker;
 
+
+    bool pcBuild = true;
+
+    private void Start()
+    {
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            pcBuild = true;
+
+        }
+        if (Application.isMobilePlatform)
+        {
+            pcBuild = false;
+        }
+    }
     private void FixedUpdate()
     {
         
@@ -34,9 +50,10 @@ public class DashTutorial : MonoBehaviour
         playerInTrigger = false;
         canflicker = false;
         DashUI.SetActive(false);
+        MobileDash.SetActive(false);
     }
 
-    IEnumerator Flicker()
+    IEnumerator PCFlicker()
     {
         
         while (canflicker == true)
@@ -51,14 +68,19 @@ public class DashTutorial : MonoBehaviour
 
 
     }
+   
 
     IEnumerator PlayerDelay()
     {
         yield return new WaitForSeconds(2f);
-        if (playerInTrigger == true)
+        if (playerInTrigger == true && pcBuild == true)
         {
             canflicker = true;
-            StartCoroutine(Flicker());
+            StartCoroutine(PCFlicker());
+        }
+        if (playerInTrigger == true && pcBuild == false)
+        {
+            MobileDash.SetActive(true);
         }
     }
 }
