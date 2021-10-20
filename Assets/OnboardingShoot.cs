@@ -27,7 +27,7 @@ public class OnboardingShoot : MonoBehaviour
         {
             MouseClick.SetActive(true);
         }
-        else
+        if (PCBuild == false)
         {
             MobileShoot.SetActive(true);
         }

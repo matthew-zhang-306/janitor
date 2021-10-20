@@ -41,8 +41,8 @@ public class SweepRoomUI : MonoBehaviour
     {
         if (PCBuild)
         {
-          //  StartCoroutine(SweepRoomPC());
-            StartCoroutine(SweepRoomMobile());
+            StartCoroutine(SweepRoomPC());
+           
         }
         if (PCBuild == false)
         {
