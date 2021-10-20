@@ -229,7 +229,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   meleerate: 0.1
   _ammo: 0
-  ammoRestorationScale: 0.5
+  ammoRestorationScale: 0.05
   bulletPrefab: {fileID: 3762954094245314928, guid: c9850af6ebba24545af793c2893f1edf,
     type: 3}
   meleePrefab: {fileID: 5219044330624146800, guid: e187dfc48e2b33544a61633816c22589,
@@ -1085,6 +1085,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5048761721451172826, guid: ff9739cd3839a794aa5dbcd2b97c7422,
+        type: 3}
+      propertyPath: ammoDrain
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff9739cd3839a794aa5dbcd2b97c7422, type: 3}
