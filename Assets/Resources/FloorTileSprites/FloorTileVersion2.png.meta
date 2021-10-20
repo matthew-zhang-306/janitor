@@ -4,13 +4,13 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 2290078200416435552
-    second: FloorTileVersion2_a
+    second: FloorTileVersion2_1
   - first:
       213: 8222621085260914147
-    second: FloorTileVersion2_0
+    second: FloorTileVersion2_1
   - first:
       213: 4807399108722648240
-    second: FloorTileVersion2_b
+    second: FloorTileVersion2_2
   - first:
       213: -8004862749881170387
     second: FloorTileVersion2_3
@@ -19,22 +19,22 @@ TextureImporter:
     second: FloorTileVersion2_4
   - first:
       213: -5220032111021510643
-    second: FloorTileVersion2_c
+    second: FloorTileVersion2_5
   - first:
       213: 788270063355970599
     second: FloorTileVersion2_6
   - first:
       213: -207693206386827692
-    second: FloorTileVersion2_d
+    second: FloorTileVersion2_7
   - first:
       213: -4286108603939225516
-    second: FloorTileVersion2_e
+    second: FloorTileVersion2_8
   - first:
       213: 42331806114309683
     second: FloorTileVersion2_9
   - first:
       213: -8469361923014201529
-    second: FloorTileVersion2_f
+    second: FloorTileVersion2_10
   - first:
       213: -5388227395989582965
     second: FloorTileVersion2_11
@@ -43,13 +43,13 @@ TextureImporter:
     second: FloorTileVersion2_12
   - first:
       213: 4236653452075436846
-    second: FloorTileVersion2_g
+    second: FloorTileVersion2_13
   - first:
       213: 1196719187898822821
     second: FloorTileVersion2_14
   - first:
       213: 6020889551258682317
-    second: FloorTileVersion2_h
+    second: FloorTileVersion2_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -147,7 +147,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FloorTileVersion2_a
+      name: FloorTileVersion2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -155,7 +155,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,15 +168,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorTileVersion2_0
+      name: FloorTileVersion2_1
       rect:
         serializedVersion: 2
-        x: 517
+        x: 510
         y: 1527
-        width: 510
+        width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,7 +189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorTileVersion2_b
+      name: FloorTileVersion2_2
       rect:
         serializedVersion: 2
         x: 1020
@@ -197,7 +197,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,7 +218,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,7 +239,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,15 +252,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorTileVersion2_c
+      name: FloorTileVersion2_5
       rect:
         serializedVersion: 2
-        x: 517
-        y: 1051
-        width: 510
+        x: 510
+        y: 1018
+        width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,7 +281,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,7 +294,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorTileVersion2_d
+      name: FloorTileVersion2_7
       rect:
         serializedVersion: 2
         x: 1530
@@ -302,7 +302,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -315,7 +315,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorTileVersion2_e
+      name: FloorTileVersion2_8
       rect:
         serializedVersion: 2
         x: 0
@@ -323,7 +323,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,7 +344,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,7 +357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorTileVersion2_f
+      name: FloorTileVersion2_10
       rect:
         serializedVersion: 2
         x: 1020
@@ -365,7 +365,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -386,7 +386,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -407,7 +407,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -420,7 +420,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorTileVersion2_g
+      name: FloorTileVersion2_13
       rect:
         serializedVersion: 2
         x: 510
@@ -428,7 +428,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -449,7 +449,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -462,7 +462,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FloorTileVersion2_h
+      name: FloorTileVersion2_15
       rect:
         serializedVersion: 2
         x: 1530
@@ -470,7 +470,7 @@ TextureImporter:
         width: 510.25
         height: 509
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
