@@ -1,0 +1,857 @@
+fileFormatVersion: 2
+guid: 325d031c93b7e4707a66bfad745f6ec3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4027957223706306098
+    second: floor (variation 1)_0
+  - first:
+      213: -3321243031085330727
+    second: floor (variation 1)_1
+  - first:
+      213: -6590708732877811702
+    second: floor (variation 1)_2
+  - first:
+      213: -2937502486709563389
+    second: floor (variation 1)_3
+  - first:
+      213: 4783167268632718447
+    second: floorvar_1_0
+  - first:
+      213: 4219698212641268238
+    second: floorvar_1_1
+  - first:
+      213: -2573830109540740957
+    second: floorvar_1_2
+  - first:
+      213: 4815023155578341166
+    second: floorvar_1_3
+  - first:
+      213: 5656442036623821755
+    second: floorvar_1_4
+  - first:
+      213: 3197180575227755643
+    second: floorvar_1_5
+  - first:
+      213: -848029214523513522
+    second: floorvar_1_6
+  - first:
+      213: 3854819759397076506
+    second: floorvar_1_7
+  - first:
+      213: 3261294062718745576
+    second: floorvar_1_8
+  - first:
+      213: 4714547077758699089
+    second: floorvar_1_9
+  - first:
+      213: -8319065168959341905
+    second: floorvar_1_10
+  - first:
+      213: 2919236801618903328
+    second: floorvar_1_11
+  - first:
+      213: -6043087320239890197
+    second: floorvar_1_12
+  - first:
+      213: -6844563337749457276
+    second: floorvar_1_13
+  - first:
+      213: 6453521449145764942
+    second: floorvar_1_14
+  - first:
+      213: -480006929602921106
+    second: floorvar_1_15
+  - first:
+      213: 8217634714871236723
+    second: floorvar_1_16
+  - first:
+      213: 5908974496626900484
+    second: floorvar_1_17
+  - first:
+      213: -806988937265762029
+    second: floorvar_1_18
+  - first:
+      213: -1745894108805807206
+    second: floorvar_1_19
+  - first:
+      213: 7267558258950974904
+    second: floorvar_1_20
+  - first:
+      213: 2952855429092188799
+    second: floorvar_1_21
+  - first:
+      213: 3781602823573840527
+    second: floorvar_1_22
+  - first:
+      213: -9012143233472428840
+    second: floorvar_1_23
+  - first:
+      213: 299065129977212877
+    second: floorvar_1_24
+  - first:
+      213: 1053145961423758336
+    second: floorvar_1_25
+  - first:
+      213: 7971595168286243547
+    second: floorvar_1_26
+  - first:
+      213: -2376134681323618769
+    second: floorvar_1_27
+  - first:
+      213: 8882862749327929180
+    second: floorvar_1_28
+  - first:
+      213: 3860759314117695872
+    second: floorvar_1_29
+  - first:
+      213: 4577442739023098430
+    second: floorvar_1_30
+  - first:
+      213: -5610756021055222630
+    second: floorvar_1_31
+  - first:
+      213: 2349114343599500630
+    second: floorvar_1_32
+  - first:
+      213: 7354250065114336950
+    second: floorvar_1_33
+  - first:
+      213: -4269289014924833456
+    second: floorvar_1_34
+  - first:
+      213: -8484728559394813730
+    second: floorvar_1_35
+  - first:
+      213: 2373860094447228135
+    second: floorvar_1_36
+  - first:
+      213: 428528380854463803
+    second: floorvar_1_37
+  - first:
+      213: -6699977506284632998
+    second: floorvar_1_38
+  - first:
+      213: 1858335893118045930
+    second: floorvar_1_39
+  - first:
+      213: -8915894491604780776
+    second: floorvar_1_40
+  - first:
+      213: 6477247935182908146
+    second: floorvar_1_41
+  - first:
+      213: -1622262784497905796
+    second: floorvar_1_42
+  - first:
+      213: -4202834897221526013
+    second: floorvar_1_43
+  - first:
+      213: -3486787383010466424
+    second: floorvar_1_44
+  - first:
+      213: 1235483867755085555
+    second: floorvar_1_45
+  - first:
+      213: 5270574656130490930
+    second: floorvar_1_46
+  - first:
+      213: -3697278953465546117
+    second: floorvar_1_47
+  - first:
+      213: -6503865147164784105
+    second: floorvar_1_48
+  - first:
+      213: 1918341173363875298
+    second: floorvar_1_49
+  - first:
+      213: 1236415540173576055
+    second: floorvar_1_50
+  - first:
+      213: 208411375503566492
+    second: floorvar_1_51
+  - first:
+      213: -2618022510472801237
+    second: floorvar_1_52
+  - first:
+      213: 1124785788651092003
+    second: floorvar_1_53
+  - first:
+      213: 3505692285817255621
+    second: floorvar_1_54
+  - first:
+      213: -6597286268019596509
+    second: floorvar_1_55
+  - first:
+      213: 2021187842673042745
+    second: floorvar_1_56
+  - first:
+      213: -6218665686637229330
+    second: floorvar_1_57
+  - first:
+      213: -634508370966373249
+    second: floorvar_1_58
+  - first:
+      213: -6529024856975711336
+    second: floorvar_1_59
+  - first:
+      213: -2387574773607617968
+    second: floorvar_1_60
+  - first:
+      213: -6081440457048382457
+    second: floorvar_1_61
+  - first:
+      213: 5610507808059906478
+    second: floorvar_1_62
+  - first:
+      213: -5195003809302415630
+    second: floorvar_1_63
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 750
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: floorvar_1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1600
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6ce02cd949316240800000000000000
+      internalID: 4783167268632718447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1600
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0265dfda216f8a30800000000000000
+      internalID: 4219698212641268238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_2
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1600
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a09e90f62be74cd0800000000000000
+      internalID: -2573830109540740957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_3
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1600
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2707858c0662d240800000000000000
+      internalID: 4815023155578341166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_4
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1600
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbbcc8d2018bf7e40800000000000000
+      internalID: 5656442036623821755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7cba353bcaae5c20800000000000000
+      internalID: 3197180575227755643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_6
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1200
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e452c252ce13b34f0800000000000000
+      internalID: -848029214523513522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_7
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1200
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1ef400c5221f7530800000000000000
+      internalID: 3854819759397076506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_8
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1200
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ebf074cba1724d20800000000000000
+      internalID: 3261294062718745576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_9
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1200
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 156c9a6a69f6d6140800000000000000
+      internalID: 4714547077758699089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faa7adc1e4ebc8c80800000000000000
+      internalID: -8319065168959341905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_11
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 800
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0210ebf7766338820800000000000000
+      internalID: 2919236801618903328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_12
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 800
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be02f629914a22ca0800000000000000
+      internalID: -6043087320239890197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_13
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 800
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48618ca88e93301a0800000000000000
+      internalID: -6844563337749457276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_14
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 800
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c82b6d0938f8950800000000000000
+      internalID: 6453521449145764942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6dba4f9d3ca659f0800000000000000
+      internalID: -480006929602921106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_16
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37881d9fb37ea0270800000000000000
+      internalID: 8217634714871236723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_17
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40ef9426ff4e00250800000000000000
+      internalID: 5908974496626900484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_18
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 311ba9056dffcc4f0800000000000000
+      internalID: -806988937265762029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_19
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 400
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93ce25ee8655c7e0800000000000000
+      internalID: -1745894108805807206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdaa393bbd8bd460800000000000000
+      internalID: 7267558258950974904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_21
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72af1c2e56aaf820800000000000000
+      internalID: 2952855429092188799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_22
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f82abb47bb3fa7430800000000000000
+      internalID: 3781602823573840527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_23
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d48fef3a7f6ee280800000000000000
+      internalID: -9012143233472428840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorvar_1_24
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf6ff4b62e762400800000000000000
+      internalID: 299065129977212877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
