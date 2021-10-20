@@ -486,9 +486,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootTable:
   - name: HealthKit
-    probability: 0.5
+    probability: 0.23195602
   - name: Coin10
-    probability: 0.5
+    probability: 0.09278241
+  - name: 
+    probability: 0.21134946
+  - name: 
+    probability: 0.46391204
 --- !u!1 &6114331371366629506
 GameObject:
   m_ObjectHideFlags: 0
