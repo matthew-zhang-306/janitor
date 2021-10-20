@@ -142,5 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bbc0f04824945241bfadacd4f27022c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7500394858836632437}
   colliders:
   - {fileID: 7192305060817444793}

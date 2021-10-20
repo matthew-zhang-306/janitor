@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    Animator animator;
+    [SerializeField] private Animator animator;
     public Collider2D[] colliders;
     bool isOpened;
 
     private void Awake() {
-        animator = GetComponent<Animator>();
         isOpened = true;
         DisableCollision();
     }
