@@ -45,11 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f79366a6ba09b4c9d174ce4465ec44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunk: {fileID: 2386797578861325592, guid: f79772d9b856eac4b8f4260a64a361a9, type: 3}
+  gunk: {fileID: 3290274713183309794, guid: bd17e98440b2fa146abec19e2a350d6b, type: 3}
   turretFiring: {fileID: 769492122738552029}
   Offset: {x: 0, y: 0}
   cooldown: 1
   PlayerInRange: 0
+  RoomTurret: 0
+  RoomActivated: 0
+  ignoreRoomStatus: 0
 --- !u!58 &5341689593093902249
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -132,11 +135,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f79366a6ba09b4c9d174ce4465ec44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunk: {fileID: 2386797578861325592, guid: f79772d9b856eac4b8f4260a64a361a9, type: 3}
+  gunk: {fileID: 3290274713183309794, guid: bd17e98440b2fa146abec19e2a350d6b, type: 3}
   turretFiring: {fileID: 4355073513171142185}
   Offset: {x: 0, y: 0}
   cooldown: 1
   PlayerInRange: 0
+  RoomTurret: 0
+  RoomActivated: 0
+  ignoreRoomStatus: 0
 --- !u!58 &4355073513171142186
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -219,11 +225,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f79366a6ba09b4c9d174ce4465ec44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunk: {fileID: 2386797578861325592, guid: f79772d9b856eac4b8f4260a64a361a9, type: 3}
+  gunk: {fileID: 3290274713183309794, guid: bd17e98440b2fa146abec19e2a350d6b, type: 3}
   turretFiring: {fileID: 4355073513752643950}
   Offset: {x: 0, y: 0}
   cooldown: 1
   PlayerInRange: 0
+  RoomTurret: 0
+  RoomActivated: 0
+  ignoreRoomStatus: 0
 --- !u!58 &4355073513752643987
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -306,11 +315,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f79366a6ba09b4c9d174ce4465ec44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunk: {fileID: 2386797578861325592, guid: f79772d9b856eac4b8f4260a64a361a9, type: 3}
+  gunk: {fileID: 3290274713183309794, guid: bd17e98440b2fa146abec19e2a350d6b, type: 3}
   turretFiring: {fileID: 4355073514283387437}
   Offset: {x: 0, y: 0}
   cooldown: 1
   PlayerInRange: 0
+  RoomTurret: 0
+  RoomActivated: 0
+  ignoreRoomStatus: 0
 --- !u!58 &4355073514283387438
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -360,7 +372,7 @@ GameObject:
   - component: {fileID: 2594824860216446949}
   - component: {fileID: 2264579006421139339}
   m_Layer: 0
-  m_Name: Green Turret (Quad)-1 1
+  m_Name: 2.0 Green Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

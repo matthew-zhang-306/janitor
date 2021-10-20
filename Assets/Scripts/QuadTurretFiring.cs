@@ -5,7 +5,6 @@ using UnityEngine;
 public class QuadTurretFiring : BaseRoomObject
 {
     public GameObject gunk;
-    [SerializeField] private GameObject turretFiring;
 
     public static bool canShoot;
     public Vector2 Offset = new Vector2(0, 0);
@@ -20,8 +19,6 @@ public class QuadTurretFiring : BaseRoomObject
 
     GunkBulletPooler gunkPooler;
 
-    public bool RoomTurret;
-    public bool RoomActivated;
     public bool ignoreRoomStatus = false;
 
     //public bool shootNow;
@@ -30,6 +27,9 @@ public class QuadTurretFiring : BaseRoomObject
     {
         gunkPooler = GunkBulletPooler.Instance;
 
+        // if the turret is linked to a room, do not have it shoot initiallly
+        if (!ignoreRoomStatus)
+            canShoot = false;
     }
 
 
@@ -48,34 +48,38 @@ public class QuadTurretFiring : BaseRoomObject
             PlayerInRange = false;
         }
     }
+
+
+    public override void SetRoomActive(bool isActive) {
+        base.SetRoomActive(isActive);
+
+        if (isActive)
+            StartCoroutine(Cooldown());
+        else
+            canShoot = false;
+    }
+    
+
     // Update is called once per frame
     void Update()
     {
-
         if (!PauseMenu.GamePaused)
         {
-
-
-            if (IsRoomActive || ignoreRoomStatus && canShoot)
+            if ((IsRoomActive || (ignoreRoomStatus && PlayerInRange)) && canShoot)
             {
-                if (RoomActivated == true)
+                GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
+                if (gunk != null)
                 {
-                    GameObject gunk = GunkBulletPooler.SharedInstance.GetPooledObject();
-                    if (gunk != null)
-                    {
-                        //turret.SetTrigger("Play");
-                        gunk.transform.position = turretFiring.transform.position;
-                        gunk.transform.rotation = turretFiring.transform.rotation;
+                    //turret.SetTrigger("Play");
+                    gunk.transform.position = transform.position;
+                    gunk.transform.rotation = transform.rotation;
 
-                        gunk.SetActive(true);
+                    gunk.SetActive(true);
 
-                        StartCoroutine("Delay");
-                        //StartCoroutine("Cooldown");
-                    }
+                    StartCoroutine("Delay");
+                    //StartCoroutine("Cooldown");
                 }
-                
             }
-            
         }
     }
     
@@ -84,6 +88,12 @@ public class QuadTurretFiring : BaseRoomObject
     {
         yield return new WaitForSeconds(.12f);
         GunkController.canMove = true;
+    }
+
+    IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(cooldown);
+        canShoot = true;
     }
 
    

@@ -146,6 +146,12 @@ public class RoomManager : MonoBehaviour
     }
     
     private void OnEnterRoom(PlayerController player) {
+        if (roomState == RoomState.ACTIVE) {
+            return;
+        }
+        roomState = RoomState.ACTIVE;
+        room.SetActive(true);
+
         PlayerController.OnRestart += ResetRoom;
 
         //Copy room for restart
@@ -158,15 +164,12 @@ public class RoomManager : MonoBehaviour
 
         OnEnter?.Invoke(player, this);
 
-        roomState = RoomState.ACTIVE;
-        room.SetActive(true);
-
         //Activate the Room Objects
         foreach (BaseRoomObject roomObject in RoomObjects)
         {
+            Debug.Log("setting " + roomObject + " active");
             roomObject.SetRoomActive(true);
         }
-
 
         enemiesCopy = Instantiate (enemiesContainer.gameObject, enemiesContainer.parent);
         enemiesCopy.SetActive(false);
@@ -183,6 +186,11 @@ public class RoomManager : MonoBehaviour
     }
 
     private void ResetRoom (PlayerController player) {
+        if (roomState == RoomState.UNCLEARED) {
+            return;
+        }
+        roomState = RoomState.UNCLEARED;
+
         PlayerController.OnHitCheckpoint -= SaveRoom;
 
         for (int i = 0; i < childrenCopy.Count; i++) {
@@ -190,7 +198,6 @@ public class RoomManager : MonoBehaviour
         }
         OnClearRoom(false);
 
-        roomState = RoomState.UNCLEARED;
         dirtyTiles.SetFloor (floorCopy);
 
         Destroy (enemiesContainer.gameObject);
@@ -211,7 +218,6 @@ public class RoomManager : MonoBehaviour
         {
             roomObject.SetRoomActive(false);
         }
-
 
         OpenDoors();
 
