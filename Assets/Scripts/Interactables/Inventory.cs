@@ -74,7 +74,7 @@ public class Inventory : MonoBehaviour
         {
             recent.LastOrDefault()?.DoAction(pc, this);
             canInteract = false;
-
+            SoundManager.PlaySound(SoundManager.Sound.Med, 0.5f);
             //Look at helper.cs
             this.Invoke (() => canInteract = true, interactBuffer);
         }

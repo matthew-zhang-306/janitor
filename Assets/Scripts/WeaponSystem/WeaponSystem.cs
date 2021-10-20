@@ -77,7 +77,7 @@ public class WeaponSystem : MonoBehaviour
 
             Fire (dir);
             //gunSound.Play();
-            SoundManager.PlaySound(SoundManager.Sound.spongeGun, SettingsMenu.SEvolume);
+            SoundManager.PlaySound(SoundManager.Sound.spongeGun, 0.5f);
             m_ftime = 0;
         }
         if (m_ftime > meleerate  

@@ -15,6 +15,9 @@ public static class SoundManager {
         Slime2,
         Broom1,
         Broom,
+        Quad,
+        Med,
+        Turret
         
 
     }
