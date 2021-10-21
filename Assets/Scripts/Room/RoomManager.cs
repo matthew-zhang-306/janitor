@@ -110,11 +110,17 @@ public class RoomManager : MonoBehaviour
         vcam.Follow = player.cameraPos;
     }
 
-    public void InitEnemy (Transform enemy) {
+    public void PrepareForEnemy() {
+        enemyCount += 1;
+    }
+
+    public void InitEnemy (Transform enemy, bool wasEnemyPrepared = false) {
 
         var ec = enemy.GetComponent<BaseEnemy>();
         if (ec != null && ec.isActiveAndEnabled) {
-            enemyCount += 1;
+            if (!wasEnemyPrepared) {
+                enemyCount += 1;
+            }
 
             ec.CanAct = true;
             ec.player = player;
