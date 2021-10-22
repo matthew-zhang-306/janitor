@@ -24,10 +24,7 @@ public class DashTutorial : MonoBehaviour
             pcBuild = false;
         }
     }
-    private void FixedUpdate()
-    {
-        
-    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -47,36 +44,27 @@ public class DashTutorial : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        StartCoroutine("UIStaysOn");
+    }
+
+    
+   
+    IEnumerator UIStaysOn()
+    {
+        yield return new WaitForSeconds(2);
         playerInTrigger = false;
         canflicker = false;
         DashUI.SetActive(false);
         MobileDash.SetActive(false);
+        StopCoroutine("UIStaysOn");
     }
-
-    IEnumerator PCFlicker()
-    {
-        
-        while (canflicker == true)
-        {
-            DashUI.SetActive(true);
-            yield return new WaitForSeconds(2f);
-            DashUI.SetActive(false);
-            yield return new WaitForSeconds(.5f);
-            DashUI.SetActive(true);
-        }
-        DashUI.SetActive(false);
-
-
-    }
-   
 
     IEnumerator PlayerDelay()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.4f);
         if (playerInTrigger == true && pcBuild == true)
         {
-            canflicker = true;
-            StartCoroutine(PCFlicker());
+            DashUI.SetActive(true);
         }
         if (playerInTrigger == true && pcBuild == false)
         {

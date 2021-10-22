@@ -82,6 +82,10 @@ public class PlayerController : MonoBehaviour, IUpgradeable
     }
 
     private void Update() {
+        if (isDead) {
+            return;
+        }
+
         var animation = "Idle";
         if (rb2d.velocity.magnitude >= acceleration) {
             animation = "Run";
@@ -299,12 +303,17 @@ public class PlayerController : MonoBehaviour, IUpgradeable
 
 
     public IEnumerator Die() {
-        // for now, we turn off all of the player's children
-        // a death animation will later be inserted here
+        isDead = true;
+        
+        animator.Play("PlayerDeath");
         foreach (Transform child in transform) {
+            if (child.name == "Visuals") {
+                // keep the visuals of the player on
+                continue;
+            }
             child.gameObject.SetActive(false);
         }
-        isDead = true;
+        
         OnDeath?.Invoke(this);
 
         yield return new WaitForSeconds(2f);
