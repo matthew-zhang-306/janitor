@@ -270,10 +270,14 @@ MonoBehaviour:
   roomTriggerBounds: {fileID: 5370551841910211039}
   roomUI: {fileID: 6554292249213783221}
   vcam: {fileID: 497717261617105086}
+  RoomObjects: []
   room: {fileID: 3110340602922315387}
   doorsContainer: {fileID: 1107027019394920445}
   enemiesContainer: {fileID: 2499273327667139766}
   levelGrid: {fileID: 4960979558482759710}
+  AllEnemiesDefeatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   dirtyTiles: {fileID: 4803664296904731265}
   pathfinding: {fileID: 3892606808324273816}
   roomClearThreshold: 0.7
@@ -291,6 +295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypesSO: {fileID: 11400000, guid: 540f860f4efcbec42a17c53dc5f07b9c, type: 2}
+  spawnMarkerPrefab: {fileID: 314350932904179255, guid: af800ade7815d6d44908bb4307f68dca,
+    type: 3}
   waves: []
 --- !u!1 &2843721370339062034
 GameObject:

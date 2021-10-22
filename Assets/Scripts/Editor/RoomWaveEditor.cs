@@ -214,6 +214,8 @@ public class RoomWaveEditor : Editor
             SaveJSON();
         }
         EditorGUILayout.Space(20);
+
+        EditorGUILayout.PropertyField(so.FindProperty("spawnMarkerPrefab"));
     
         so.ApplyModifiedProperties();
     }

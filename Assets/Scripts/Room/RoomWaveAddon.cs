@@ -14,6 +14,8 @@ public class RoomWaveAddon : MonoBehaviour
     public EnemyTypesSO enemyTypesSO;
     private Dictionary<string, EnemyTypesSO.EnemyType> enemyTypes;
 
+    public GameObject spawnMarkerPrefab;
+
     [SerializeField] private Wave[] waves;
 
     void Start()
@@ -48,16 +50,17 @@ public class RoomWaveAddon : MonoBehaviour
         }
 
         yield return new WaitUntil(() => roomManager.dirtyTiles.GetCleanPercent() >= thresh);
+
+        roomManager.PrepareForEnemy();
+        yield return new WaitForSeconds(waveSpawn.delay);
         
         GameObject created = Instantiate(
-            enemyTypes[waveSpawn.enemy].prefab,
+            spawnMarkerPrefab,
             WaveSpawn.XYToPosition(waveSpawn.xcoord, waveSpawn.ycoord, tm),
             Quaternion.identity,
             roomManager.enemiesContainer
         );
-        roomManager.InitEnemy(created.transform);
-        
-        yield return 0;
+        created.GetComponent<EnemySpawnMarker>().SetEnemy(enemyTypes[waveSpawn.enemy].prefab, roomManager);
     }
     
     [System.Serializable]
