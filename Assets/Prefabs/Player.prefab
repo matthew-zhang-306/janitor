@@ -229,7 +229,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   meleerate: 0.1
   _ammo: 0
-  ammoRestorationScale: 0.05
+  ammoRestorationScale: 0.075
   bulletPrefab: {fileID: 3762954094245314928, guid: c9850af6ebba24545af793c2893f1edf,
     type: 3}
   meleePrefab: {fileID: 5219044330624146800, guid: e187dfc48e2b33544a61633816c22589,
