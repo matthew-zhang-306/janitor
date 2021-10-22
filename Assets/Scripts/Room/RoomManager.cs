@@ -48,6 +48,7 @@ public class RoomManager : MonoBehaviour
     }
     public UnityEvent AllEnemiesDefeatedEvent;
     public RoomDelegate onRoomClear;
+    public RoomDelegate onRoomReset;
     public static RoomDelegate OnEnter;
     public static RoomDelegate OnClear;
 
@@ -203,6 +204,7 @@ public class RoomManager : MonoBehaviour
             childrenCopy[i] = childrenCopy[i]?.Replace();
         }
         OnClearRoom(false);
+        onRoomReset?.Invoke(player, this);
 
         dirtyTiles.SetFloor (floorCopy);
 
