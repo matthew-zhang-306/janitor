@@ -54,10 +54,6 @@ public class DialogueBubbleUI : BaseDialogueUI
         yield return new WaitForSeconds(openTime);
         */
     }
-
-    protected override IEnumerator OnStartLine() {
-        yield break;
-    }
     
     protected override IEnumerator OnContinue() {
         lineSkipped = false;
@@ -66,10 +62,6 @@ public class DialogueBubbleUI : BaseDialogueUI
 
     protected override IEnumerator OnSkip() {
         lineSkipped = true;
-        yield break;
-    }
-
-    protected override IEnumerator OnEndLine() {
         yield break;
     }
 

@@ -18,6 +18,9 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadAsynchronously (int sceneIndex)
     {
+        // give time for the loading screen to load
+        yield return new WaitForSeconds(0.5f);
+
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
         while (!operation.isDone)
@@ -26,7 +29,7 @@ public class LevelLoader : MonoBehaviour
             float progress = Mathf.Clamp01(operation.progress / .9f);
 
             slider.value = progress;
-            progressText.text = progress * 100f + "%";
+            progressText.text = (int)(progress * 100) + "%";
 
             yield return null;
         }

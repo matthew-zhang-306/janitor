@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using DG.Tweening;
 using TMPro;
 
@@ -32,11 +33,15 @@ public class BaseDialogueUI : MonoBehaviour
     public GameObject continueObject;
     
     public float scrollSpeed;
+    public float periodPauseAmount = 5f;
+    public float commaPauseAmount = 2f;
 
     protected Coroutine dialogueCoroutine;
     protected bool advanceInput;
     protected bool oldAdvanceInput;
     protected bool skipInput;
+
+    public UnityEvent OnDialogueEnd;
 
 
     private void Start() {
@@ -62,6 +67,7 @@ public class BaseDialogueUI : MonoBehaviour
         StopCoroutine(dialogueCoroutine);
         StartCoroutine(OnEndLine());
         StartCoroutine(OnEnd());
+        OnDialogueEnd?.Invoke();
     }
 
 
@@ -83,6 +89,7 @@ public class BaseDialogueUI : MonoBehaviour
         }
 
         yield return StartCoroutine(OnEnd());
+        OnDialogueEnd?.Invoke();
     }
 
     protected IEnumerator DisplayLine(string line) {
@@ -97,8 +104,16 @@ public class BaseDialogueUI : MonoBehaviour
                 oldAdvanceInput = advanceInput;
             } else {
                 scrollTimer -= scrollSpeed * Time.deltaTime;
-                if (scrollTimer <= 0) {
-                    scrollTimer += 1;
+                while (scrollTimer <= 0) {
+                    if (dialogueText.text.Length > dialogueText.maxVisibleCharacters && dialogueText.text[dialogueText.maxVisibleCharacters] == '.') {
+                        scrollTimer += periodPauseAmount;
+                    }
+                    else if (dialogueText.text.Length > dialogueText.maxVisibleCharacters && dialogueText.text[dialogueText.maxVisibleCharacters] == ',') {
+                        scrollTimer += commaPauseAmount;
+                    }
+                    else {
+                        scrollTimer += 1f;
+                    }
                     dialogueText.maxVisibleCharacters++;
                 }
 
@@ -111,6 +126,14 @@ public class BaseDialogueUI : MonoBehaviour
         while (!(advanceInput && !oldAdvanceInput) && !skipInput) {
             yield return 0;
         }
+
+        if (skipInput) {
+            yield return StartCoroutine(OnSkip());
+        }
+        else {
+            yield return StartCoroutine(OnContinue());
+        }
+
         oldAdvanceInput = advanceInput;
     }
 

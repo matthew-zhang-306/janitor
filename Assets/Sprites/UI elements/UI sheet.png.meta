@@ -1159,7 +1159,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 282
-        y: 2083
+        y: 2084
         width: 359
         height: 126
       alignment: 0
@@ -1179,8 +1179,8 @@ TextureImporter:
       name: UI Sheet_40
       rect:
         serializedVersion: 2
-        x: 735
-        y: 2048
+        x: 734
+        y: 2053
         width: 380
         height: 152
       alignment: 0
@@ -1305,10 +1305,10 @@ TextureImporter:
       name: UI Sheet_46
       rect:
         serializedVersion: 2
-        x: 687
-        y: 1834
-        width: 456
-        height: 210
+        x: 735
+        y: 1852
+        width: 380
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1390,9 +1390,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 735
-        y: 1630
+        y: 1661
         width: 380
-        height: 175
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
