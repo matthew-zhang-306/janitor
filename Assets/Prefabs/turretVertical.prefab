@@ -102,7 +102,7 @@ MonoBehaviour:
   velocity: {x: 0, y: -15}
   canShoot: 1
   Offset: {x: 0, y: 0}
-  cooldown: 2
+  cooldown: 1
   PlayerInRange: 0
   ignoreRoomStatus: 0
 --- !u!61 &4760135992735676751
