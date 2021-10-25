@@ -24,6 +24,7 @@ public class Explosion : MonoBehaviour
         }
 
         if (timer > aliveTime) {
+            Destroy(transform.parent.gameObject);
             Destroy(gameObject);
         }
     }
