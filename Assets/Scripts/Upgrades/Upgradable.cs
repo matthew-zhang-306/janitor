@@ -8,18 +8,23 @@ public class Upgradeable : MonoBehaviour
 {
     //Reflection method of finding all upgradable properties (should be m_{prop})
     protected Dictionary<string, float> baseProps;
+    protected Dictionary<string, float> modifier;
+
+    public void Awake ()
+    {
+        GetBaseProps();
+    }
 
     public void GetBaseProps ()
     {
         //should be called on START or reset.
         var hs = this.UpgradeableParameters();
         this.baseProps = new Dictionary<string, float>();
+        this.modifier = new Dictionary<string, float>();
         SerializedObject so = new SerializedObject (this);
         foreach (string prop in hs) {
             baseProps[prop] = so.FindProperty(prop).floatValue;
-        }
-        foreach (var k in baseProps) {
-            Debug.Log(k.Value);
+            modifier[prop] = 1;
         }
     }
 
@@ -41,9 +46,9 @@ public class Upgradeable : MonoBehaviour
         if (baseProps.ContainsKey(u.parameter))
         {
             SerializedObject so = new SerializedObject (this);
-
+            modifier[u.parameter] += u.value;
             //Fix this later
-            so.FindProperty(u.parameter).floatValue += u.value;
+            so.FindProperty(u.parameter).floatValue = baseProps[u.parameter] * modifier[u.parameter];
             so.ApplyModifiedProperties();
         }
     }
@@ -67,6 +72,7 @@ public class Upgradeable : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public struct Upgrade
 {
     //ALL UPGRADES ARE ADDITIVE PERCENTAGES

@@ -9,7 +9,9 @@ public class BaseProjectile : MonoBehaviour
     public Hitbox wallHitbox;
     public Collider2D hurtbox;
 
-    public float lifetime = 1f;
+    [SerializeField] protected float lifetime = 1f;
+    
+    
     private float m_time = 0f;
 
     protected new Rigidbody2D rigidbody;

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class StatUpgradeInteractable : Interactable
 {
-    private Upgradeable context;
+    [SerializeField] public Upgradeable context;
+
+    [SerializeField] private Upgrade[] ulist;
 
     void Start ()
     {
@@ -15,7 +17,12 @@ public class StatUpgradeInteractable : Interactable
     {
         this.GetComponent<Collider2D>().enabled = false;
 
-        pc.ApplyUpgrade(new Upgrade("maxSpeed", 10));
+        
+        foreach (Upgrade u in ulist)
+        {
+            i.ApplyUpgrade(u, context);
+        }
+        
         
         Destroy (gameObject);
     }

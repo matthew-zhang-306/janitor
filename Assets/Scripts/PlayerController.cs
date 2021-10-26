@@ -16,7 +16,7 @@ public class PlayerController : Upgradeable
     [SerializeField] private float maxSpeed = 1f;
 
     public WeaponSystem weapon;
-    private Health health;
+    public Health health;
     public Inventory inventory;
 
 
@@ -77,7 +77,7 @@ public class PlayerController : Upgradeable
             hitbox.OnTriggerEnter.AddListener(OnEnterHazard);
 
         checkpointSnapshot = new PlayerSnapShot(transform, health, weapon, inventory);
-        GetBaseProps();
+        
     }
 
     private void Update() {

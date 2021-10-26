@@ -13,7 +13,10 @@ public class SpongeGun : BaseWeapon
     }
     public override float HandleFire(Vector3 dir, Quaternion rotation)
     {
-        base.HandleFire(dir, rotation);
+        GameObject go;
+        base.HandleFire(dir, rotation, out go);
+        
+        go.GetComponent<BaseProjectile>().hurtbox.gameObject.GetComponent<Damage>().damage = (int) this.bulletDamage;
         gunAnimation.SetTrigger("active");
         return ammoDrain;
     }

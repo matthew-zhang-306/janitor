@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Health : MonoBehaviour
+public class Health : Upgradeable
 {
     [SerializeField] private int maxHealth = 1;
     [SerializeField] private int currentHealth = 1;
