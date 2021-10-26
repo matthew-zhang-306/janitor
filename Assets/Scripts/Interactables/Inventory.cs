@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     private PlayerController pc;
+
+    //For upgradables filled out in runtime. (might switch it to inspector stuff)
+    private Upgradeable[] upgradeComponents;
+
     public Vector3 tooltipOffset;
     public GameObject tooltip;
     private RectTransform rt;
@@ -23,14 +27,20 @@ public class Inventory : MonoBehaviour
 
     private List<Interactable> recent;
 
-    void Awake () {
-        
+    void Awake () 
+    {    
         recent = new List<Interactable>();
+        pc = this.GetComponent<PlayerController>();
+        upgradeComponents = new Upgradeable[3];
+        upgradeComponents[0] = pc;
+        upgradeComponents[1] = pc.health;
+        upgradeComponents[2] = pc.weapon.weapon;
+        // upgradeComponents[3] = pc.weapon.weapon.prefabBullet.GetComponent<BaseProjectile>();
     }
 
     void Start () 
     {
-        pc = this.GetComponent<PlayerController>();
+        
         if (canvas != null) {
             //create canvas here
             Debug.LogWarning ("Inserting Inventory tooltip to first canvas");
@@ -102,4 +112,17 @@ public class Inventory : MonoBehaviour
             recent.Remove (item);
         }
     }
+
+    public void ApplyUpgrade (Upgrade u, object o)
+    {
+        foreach (Upgradeable comp in upgradeComponents)
+        {
+            if (o.GetType() == comp.GetType()) {
+                comp.ApplyUpgrade (u);
+                return;
+            }
+
+        }
+        Debug.LogError ("Upgrade Fail (component not found / registered)");
+    }   
 }

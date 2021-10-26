@@ -104,7 +104,7 @@ public class WeaponSystem : MonoBehaviour
         
         Quaternion bulletRotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, dir));
 
-        if (_ammo - this.weapon.ammoDrain >= 0)
+        if (this.weapon.CanFire(_ammo))
         {
             var drain = this.weapon.HandleFire(dir, bulletRotation);
             _ammo -= drain;
