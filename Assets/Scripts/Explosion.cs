@@ -9,7 +9,7 @@ public class Explosion : MonoBehaviour
     private float timer;
     
     private Collider2D hurtbox;
-
+    [SerializeField] private bool BarrelBomb = false;
 
     private void Start() {
         timer = 0;
@@ -24,7 +24,11 @@ public class Explosion : MonoBehaviour
         }
 
         if (timer > aliveTime) {
-            Destroy(transform.parent.gameObject);
+            if (BarrelBomb)
+            {
+                Destroy(transform.parent.gameObject);
+            }
+            
             Destroy(gameObject);
         }
     }
