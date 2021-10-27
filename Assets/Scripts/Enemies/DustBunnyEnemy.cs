@@ -106,14 +106,16 @@ public class DustBunnyEnemy : BaseEnemy
         navigator.Stop();
         navigator.ClearPath();
 
-        animator.Play("BunnyIdle"); // note: replace this with an attack animation, when the bunny has one
-
         for (int i = 0; i < numShots; i++) {
+            animator.Play("BunnyAttack"); // note: replace this with an attack animation, when the bunny has one
+            yield return new WaitForSeconds(0.25f);
+
+            animator.Play("BunnyIdle");
             var bulletRot = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, player.transform.position - transform.position));
             GameObject.Instantiate(bullet, transform.position, bulletRot).GetComponent<Rigidbody2D>().velocity = bulletRot * Vector2.right * bulletSpeed;
             bunnyAttack.Play();
 
-            yield return new WaitForSeconds(1 / fireRate);
+            yield return new WaitForSeconds(1 / fireRate - 0.25f);
         }
 
         yield return new WaitForSeconds(rechargeTime);
