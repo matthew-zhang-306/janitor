@@ -22,19 +22,6 @@ public class WASDTutorial : MonoBehaviour
         {
             pcBuild = false;
         }
-
-
-        if (pcBuild)
-        {
-            StartCoroutine(AnimationDelay());
-            WASDUI.SetActive(true);
-            
-        }
-        else
-        {
-            StartCoroutine(AnimationDelay());
-            Joystick.SetActive(true);
-        }
     }
 
     IEnumerator AnimationDelay()
@@ -44,5 +31,33 @@ public class WASDTutorial : MonoBehaviour
         WASDUI.SetActive(false);
         Joystick.SetActive(false);
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            if (pcBuild)
+            {
+                
+                WASDUI.SetActive(true);
+
+            }
+            else
+            {
+                
+                Joystick.SetActive(true);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {  
+        if (collision.tag == "Player")
+        {
+            StartCoroutine(AnimationDelay());
+        }
+            
+
     }
 }

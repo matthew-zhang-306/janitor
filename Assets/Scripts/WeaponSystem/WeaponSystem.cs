@@ -40,7 +40,8 @@ public class WeaponSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Ammo = _maxAmmo;
+        //Ammo = _maxAmmo;
+        Ammo = 0;
        // meleeSound = meleeSE.GetComponent<AudioClip>();
     }
 
