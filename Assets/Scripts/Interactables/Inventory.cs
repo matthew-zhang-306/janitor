@@ -109,6 +109,7 @@ public class Inventory : MonoBehaviour
     {
         var item = other.GetComponent<Interactable>();
         if (item != null) {
+            if (CustomInput.GetButton("Interact")) { SoundManager.PlaySound(SoundManager.Sound.Med, 0.5f); }
             recent.Remove (item);
         }
     }
