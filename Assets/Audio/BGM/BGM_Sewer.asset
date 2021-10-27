@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc112f3ecb67c54eb81986c1ece572f, type: 3}
   m_Name: BGM_Sewer
   m_EditorClassIdentifier: 
-  calmClip: {fileID: 8300000, guid: 2722e5a284a0b6f45bb69164e3985629, type: 3}
-  tenseClip: {fileID: 8300000, guid: 4729c62e37c66014596879d8e99274c5, type: 3}
-  calmMenuClip: {fileID: 8300000, guid: 25d1b3bf69964744d80d1264943ae2d9, type: 3}
-  tenseMenuClip: {fileID: 8300000, guid: 28fb0291acb856242b5dcebc45a77fa1, type: 3}
-  loopStartTime: 4.8
-  loopEndTime: 120
+  calmClip: {fileID: 8300000, guid: 750213adbc3682e419e255c51504f31f, type: 3}
+  tenseClip: {fileID: 8300000, guid: 84299b81c3f88a147be429d4c0e06668, type: 3}
+  calmMenuClip: {fileID: 8300000, guid: 1a250363f086d8a4fbb9fd96fa2c6e0f, type: 3}
+  tenseMenuClip: {fileID: 8300000, guid: c1f71e3038f8c9d41814bb90839114e8, type: 3}
+  loopStartTime: 9
+  loopEndTime: 158.33
