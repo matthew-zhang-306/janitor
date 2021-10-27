@@ -1,7 +1,28 @@
 fileFormatVersion: 2
 guid: db1bf2cc409f37346921a1f47074dbf2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -463817961282902565
+    second: snake_animation_0
+  - first:
+      213: -5540151001699885942
+    second: snake_animation_1
+  - first:
+      213: -5341668623052134470
+    second: snake_animation_2
+  - first:
+      213: 6747665310003463631
+    second: snake_animation_3
+  - first:
+      213: 7118189279970957412
+    second: snake_animation_4
+  - first:
+      213: -390978003296536789
+    second: snake_animation_5
+  - first:
+      213: -3730587394840812372
+    second: snake_animation_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +92,168 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: snake_animation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 649.5
+        width: 649
+        height: 649.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd5694985003099f0800000000000000
+      internalID: -463817961282902565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snake_animation_1
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 649.5
+        width: 649
+        height: 649.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8c57a5540e6d13b0800000000000000
+      internalID: -5540151001699885942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snake_animation_2
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 649.5
+        width: 649
+        height: 649.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7a02f40b49ed5b0800000000000000
+      internalID: -5341668623052134470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snake_animation_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.5
+        width: 649
+        height: 649.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc58bf949d584ad50800000000000000
+      internalID: 6747665310003463631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snake_animation_4
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 0.5
+        width: 649
+        height: 649.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46899a4bf63e8c260800000000000000
+      internalID: 7118189279970957412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snake_animation_5
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 0.5
+        width: 649
+        height: 649.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b27b486d397f29af0800000000000000
+      internalID: -390978003296536789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snake_animation_6
+      rect:
+        serializedVersion: 2
+        x: 1947
+        y: 0.5
+        width: 649
+        height: 649.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca4a6f6a78a4a3cc0800000000000000
+      internalID: -3730587394840812372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
