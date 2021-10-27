@@ -79,21 +79,30 @@ public class SlimeEnemy : BaseEnemy
         
             navigator.DOKill();
             navigator.speed = seekSpeed;
-            DOTween.To(() => navigator.speed, s => navigator.speed = s, seekSpeed / 4f, actionTimer)
+            DOTween.Sequence()
+                .Append(DOTween.To(() => navigator.speed, s => navigator.speed = s, seekSpeed / 4f, actionTimer))
+                .InsertCallback(0.05f, SelectMoveAnimation)
                 .SetLink(gameObject).SetTarget(navigator);
-            
-            // select animation
-            float moveAngle = Vector2.SignedAngle(Vector2.right, navigator.GetMoveDirection());
-            int moveDir = Mathf.RoundToInt(moveAngle / 90f).Mod(4);
-            string moveString = new string[] { "Right", "Up", "Left", "Down" }[moveDir];
-            // Debug.Log("selecting animation " + navigator.GetMoveDirection());
 
-            // i have no idea what the "0f" parameter in this does. all i know is that it doesn't work without it
-            animator.Play("SlimeMove" + moveString, -1, 0f);
+            // the reason we have to delay selecting the move animation for 0.05 seconds is that
+            // very often the navigator finds a path that goes in one direction for a very short distance
+            // and then turns another direction, like so:
+            //   X
+            //   |------> (1 cell down, then 7 cells right)
+            // here if we didn't use a small delay, the slime would face straight down even though it
+            // is primarily moving to the right
         });
         
     }
     
+
+    private void SelectMoveAnimation() {
+        float moveAngle = Vector2.SignedAngle(Vector2.right, rb2d.velocity);
+        int moveDir = Mathf.RoundToInt(moveAngle / 90f).Mod(4);
+        string moveString = new string[] { "Right", "Up", "Left", "Down" }[moveDir];
+
+        animator.Play("SlimeMove" + moveString);
+    }
 
 
     protected override void TakeDamage(Collider2D other) {
