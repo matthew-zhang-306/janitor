@@ -6,8 +6,8 @@ public class DashTutorial : MonoBehaviour
 {
     public GameObject DashUI;
     public GameObject MobileDash;
-    bool playerInTrigger;
-    bool canflicker;
+    private bool playerInTrigger;
+    //private bool canflicker;
 
 
     bool pcBuild = true;
@@ -53,7 +53,7 @@ public class DashTutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         playerInTrigger = false;
-        canflicker = false;
+       // canflicker = false;
         DashUI.SetActive(false);
         MobileDash.SetActive(false);
         StopCoroutine("UIStaysOn");
