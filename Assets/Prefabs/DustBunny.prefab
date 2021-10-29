@@ -769,3 +769,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTags:
   - PlayerProjectile
+  - Hazard

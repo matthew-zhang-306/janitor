@@ -34,14 +34,20 @@ public class WeaponSystem : MonoBehaviour
     public GameObject meleePrefab;
     //public AudioSource gunSound;
     //public AudioSource meleeSound;
-   // public AudioClip[] meleeEffects;
+    // public AudioClip[] meleeEffects;
+
+    [SerializeField] private bool ZeroAmmoStart;
 
     public BaseWeapon weapon;
     // Start is called before the first frame update
     void Start()
     {
-        //Ammo = _maxAmmo;
-        Ammo = 0;
+        Ammo = _maxAmmo;
+        if (ZeroAmmoStart)
+        {
+            Ammo = 0;
+        }
+        
        // meleeSound = meleeSE.GetComponent<AudioClip>();
     }
 
