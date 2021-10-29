@@ -18,11 +18,13 @@ public class ScreenFade : MonoBehaviour
     private void OnEnable() {
         PlayerController.OnDeath += FadeOutReset;
         PlayerController.OnRestart += FadeInReset;
+        LevelEndZone.OnLevelEnd += FadeOutEnd;
     }
 
     private void OnDisable() {
         PlayerController.OnDeath -= FadeOutReset;
         PlayerController.OnRestart -= FadeInReset;
+        LevelEndZone.OnLevelEnd -= FadeOutEnd;
     }
 
 
@@ -42,5 +44,10 @@ public class ScreenFade : MonoBehaviour
 
     private void FadeInReset(PlayerController _) {
         FadeIn();   
+    }
+
+    private void FadeOutEnd() {
+        fadeTime = 2f;
+        FadeOut();
     }
 }
