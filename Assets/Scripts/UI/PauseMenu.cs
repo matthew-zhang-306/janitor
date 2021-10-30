@@ -5,15 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    bool canPause = true;
+
     public static bool GamePaused = false;
     public static bool IgnoreEsc = false;
     public GameObject PauseMenuUI;
 
     public static EmptyDelegate OnPause;
     public static EmptyDelegate OnResume;
+
+    private void OnEnable() {
+        LevelEndZone.OnLevelEnd += DisablePause;
+    }
+    private void OnDisable() {
+        LevelEndZone.OnLevelEnd -= DisablePause;
+    }
     
     void Update()
     {
+        if (!canPause)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Escape) && !IgnoreEsc)
         {
             if (GamePaused == true)
@@ -48,5 +60,12 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+
+    private void DisablePause() {
+        if (GamePaused)
+            ResumeGame();
+        canPause = false;
     }
 }
