@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class WeaponSystem : MonoBehaviour
+public class WeaponSystem : Upgradeable
 {
     public Camera cam;
 
