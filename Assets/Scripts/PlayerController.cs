@@ -22,6 +22,7 @@ public class PlayerController : Upgradeable
 
     public Transform cameraPos;
     public SpriteRenderer spriteRenderer;
+    public SpriteRenderer shadowRenderer;
     public SpriteFlash spriteFlash;
     public AudioSource damageSound;
     private Animator animator;
@@ -65,6 +66,8 @@ public class PlayerController : Upgradeable
     [SerializeField] private float knockbackFriction = 1f;
     [SerializeField] private float invincibilityTime = 1f;
 
+    private float shadowBaseAlpha;
+
 
     private void Start() {
         animator = GetComponent<Animator>();
@@ -79,6 +82,7 @@ public class PlayerController : Upgradeable
 
         checkpointSnapshot = new PlayerSnapShot(transform, health, weapon, inventory);
         
+        shadowBaseAlpha = shadowRenderer.color.a;
     }
 
     private void Update() {
@@ -324,7 +328,18 @@ public class PlayerController : Upgradeable
             child.gameObject.SetActive(true);
         }
         isDead = false;
+        spriteRenderer.DOKill();
+        spriteRenderer.color = spriteRenderer.color.WithAlpha(1);
+        shadowRenderer.color = shadowRenderer.color.WithAlpha(shadowBaseAlpha);
+        
         OnRestart?.Invoke(this);
+    }
+
+    public void FadeSprite() {
+        DOTween.Sequence()
+            .Insert(0, spriteRenderer.DOFade(0f, 0.5f).SetEase(Ease.Linear))
+            .Insert(0, shadowRenderer.DOFade(0f, 0.5f).SetEase(Ease.Linear))
+            .SetTarget(spriteRenderer).SetLink(gameObject);
     }
 
     

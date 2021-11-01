@@ -419,6 +419,7 @@ MonoBehaviour:
   inventory: {fileID: 3954033827353741344}
   cameraPos: {fileID: 1177657900237155362}
   spriteRenderer: {fileID: 1177657899049150887}
+  shadowRenderer: {fileID: 1177657899241807257}
   spriteFlash: {fileID: 139230260956536365}
   damageSound: {fileID: 6406329726557768504}
   dashTime: 0.2

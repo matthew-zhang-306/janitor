@@ -13,6 +13,9 @@ public class SpriteFlash : MonoBehaviour
     public float tiltAngle = 30f;
     public float tiltTime = 0.3f;
 
+    private bool oldIsBlinking;
+    public bool IsBlinking { get; private set; }
+
     private void Start() {
         flashSprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -27,6 +30,14 @@ public class SpriteFlash : MonoBehaviour
         flashSprite.transform.localPosition = originalSprite.transform.localPosition;
         flashSprite.transform.localRotation = originalSprite.transform.localRotation;
         flashSprite.transform.localScale = originalSprite.transform.localScale;
+
+        if (IsBlinking) {
+            originalSprite.color = originalSprite.color.WithAlpha(flashSprite.color.a + 0.25f);
+        }
+        else if (oldIsBlinking) {
+            originalSprite.color = originalSprite.color.WithAlpha(1);
+        }
+        oldIsBlinking = IsBlinking;
     }
 
 
@@ -37,8 +48,14 @@ public class SpriteFlash : MonoBehaviour
         DOTween.Sequence()
             .Append(visualsContainer.DOLocalRotate(Vector3.zero, tiltTime).SetEase(Ease.OutBack))
             .InsertCallback(0, () => animator.Play("Flash"))
-            .InsertCallback(Mathf.Min(time, timeUntilBlink), () => animator.Play("FlashBlink"))
-            .InsertCallback(time, () => animator.Play("FlashStart"))
+            .InsertCallback(Mathf.Min(time, timeUntilBlink), () => {
+                animator.Play("FlashBlink");
+                IsBlinking = true;
+            })
+            .InsertCallback(time, () => {
+                animator.Play("FlashStart");
+                IsBlinking = false;
+            })
             .SetTarget(this).SetLink(gameObject);
     }
 
