@@ -234,6 +234,7 @@ MonoBehaviour:
     type: 3}
   meleePrefab: {fileID: 5219044330624146800, guid: e187dfc48e2b33544a61633816c22589,
     type: 3}
+  ZeroAmmoStart: 0
   weapon: {fileID: 4942271700562673720}
 --- !u!1 &1177657899866666903
 GameObject:
@@ -323,6 +324,7 @@ GameObject:
   - component: {fileID: 1273050895}
   - component: {fileID: 3954033827353741344}
   - component: {fileID: 271945634574504756}
+  - component: {fileID: 7782726570581956811}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -491,6 +493,84 @@ MonoBehaviour:
     type: 3}
   playerSpriteRenderer: {fileID: 1177657899049150887}
   spawnTime: 0.05
+--- !u!114 &7782726570581956811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177657900103972658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a3701e6531d0242898557810c8dd8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputMap:
+    m_Name: Input Map
+    m_Id: 2cb8c5a4-0989-4b56-b1b8-35db18862c2f
+    m_Asset: {fileID: 0}
+    m_Actions:
+    - m_Name: MoveRight
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 5b66de38-3128-423c-8713-a9b96fd0658d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    - m_Name: MoveLeft
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 3d2be0bb-bb7a-4ebc-a457-0d557f7bed89
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    - m_Name: MoveUp
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: e9ade92f-989e-41a6-967e-a8954c7dbc8e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    - m_Name: MoveDown
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 432c1a5d-9a58-44a1-87d7-6adbed0ef05a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    m_Bindings:
+    - m_Name: 
+      m_Id: aa575891-ebbd-42df-8ea5-83f09c5cce7d
+      m_Path: <Keyboard>/d
+      m_Interactions: Hold
+      m_Processors: 
+      m_Groups: 
+      m_Action: MoveRight
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 137a707e-bfe4-4de1-85ca-d6d52f658298
+      m_Path: <Keyboard>/a
+      m_Interactions: Hold
+      m_Processors: 
+      m_Groups: 
+      m_Action: MoveLeft
+      m_Flags: 0
+    - m_Name: 
+      m_Id: f8711a90-414c-41a2-9199-8826c5584380
+      m_Path: <Keyboard>/w
+      m_Interactions: Hold
+      m_Processors: 
+      m_Groups: 
+      m_Action: MoveUp
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 281efa7a-04f8-40e1-b0f5-fa3960d5322c
+      m_Path: <Keyboard>/s
+      m_Interactions: Hold
+      m_Processors: 
+      m_Groups: 
+      m_Action: MoveDown
+      m_Flags: 0
 --- !u!1 &1177657900136032884
 GameObject:
   m_ObjectHideFlags: 0
