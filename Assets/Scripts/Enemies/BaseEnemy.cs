@@ -22,6 +22,7 @@ public class BaseEnemy : Upgradeable
     [Header("Optional Components")]
     public GameObject floorMarker; // enemy will not necessarily have one
     public Animator animator;
+    public SpriteFlash spriteFlash;
     [HideInInspector] public PathNavigator navigator; // enemy will not necessarily have one
     [HideInInspector] public PlayerController player;
 
@@ -38,8 +39,7 @@ public class BaseEnemy : Upgradeable
     protected Dictionary<string, EnemyActionDelegate> actionTable;
    
 
-    protected virtual void Awake() {
-        
+    protected virtual void Awake() {    
         navigator = GetComponent<PathNavigator>();
     }
 
@@ -107,6 +107,7 @@ public class BaseEnemy : Upgradeable
         health.ChangeHealth(-hitAmount);
 
         invincibilityTimer = invincibilityTime;
+        spriteFlash?.Flash(invincibilityTime, other.transform.position.x - transform.position.x);
 
         if (health.GetHealth() <= 0) {
             CanAct = false;

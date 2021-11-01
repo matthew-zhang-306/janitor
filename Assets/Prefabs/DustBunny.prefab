@@ -282,6 +282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6244604203033025391}
+  - {fileID: 7477697235633709416}
   m_Father: {fileID: 6244604202452305631}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -380,6 +381,7 @@ MonoBehaviour:
   hitbox: {fileID: 6244604203042620170}
   floorMarker: {fileID: 0}
   animator: {fileID: 1651635099683370450}
+  spriteFlash: {fileID: 4814894117227322096}
   navigator: {fileID: 0}
   player: {fileID: 0}
   invincibilityTime: 0.2
@@ -770,3 +772,95 @@ MonoBehaviour:
   targetTags:
   - PlayerProjectile
   - Hazard
+--- !u!1001 &3695504974555632511
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6244604202283549168}
+    m_Modifications:
+    - target: {fileID: 1091284265138130714, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_Name
+      value: SpriteFlash
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185541369282955663, guid: 4c4dc70972ec5f2438441b01653c760c,
+        type: 3}
+      propertyPath: originalSprite
+      value: 
+      objectReference: {fileID: 6244604203033025390}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c4dc70972ec5f2438441b01653c760c, type: 3}
+--- !u!4 &7477697235633709416 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6093102245611434519, guid: 4c4dc70972ec5f2438441b01653c760c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3695504974555632511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4814894117227322096 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8185541369282955663, guid: 4c4dc70972ec5f2438441b01653c760c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3695504974555632511}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf9fa71e567faf41b090b529db05ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
