@@ -22,6 +22,7 @@ public class PlayerController : Upgradeable
 
     public Transform cameraPos;
     public SpriteRenderer spriteRenderer;
+    public SpriteFlash spriteFlash;
     public AudioSource damageSound;
     private Animator animator;
     private Rigidbody2D rb2d;
@@ -98,9 +99,6 @@ public class PlayerController : Upgradeable
         if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != animation) {
             animator.Play("Player" + animation, 0);
         }
-
-        // iframae indicator (needs to be replaced with something better looking)
-        spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
     }
 
     private void FixedUpdate() {
@@ -133,7 +131,7 @@ public class PlayerController : Upgradeable
         }
 
         //Should be set to 0, but for debug purposes
-        int hitAmount = damage?.damage ?? 1;            
+        int hitAmount = damage?.damage ?? 1; 
 
         health.ChangeHealth(-hitAmount);
         damageSound.Play();
@@ -148,6 +146,9 @@ public class PlayerController : Upgradeable
         knockbackTimer = knockbackTime;
 
         invincibilityTimer = invincibilityTime;
+        if (health.GetHealth() > 0) {
+            spriteFlash.Flash(invincibilityTime - 0.1f, -knockbackDir.x, knockbackTime);
+        }
     }
 
     private void HandleMotion() {

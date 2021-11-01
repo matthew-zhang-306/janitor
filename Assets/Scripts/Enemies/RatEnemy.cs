@@ -84,7 +84,6 @@ public class RatEnemy : BaseEnemy
         }
 
         navigator.speed = invincibilityTimer == 0 ? seekSpeed : seekSpeed / 3f;
-        spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
     }
 
 
