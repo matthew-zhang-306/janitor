@@ -20,6 +20,7 @@ public class SongPlayer : MonoBehaviour
         PlayerController.OnRestart += OnRestart;
         PauseMenu.OnPause += OnPause;
         PauseMenu.OnResume += OnResume;
+        LevelEndZone.OnLevelEnd += OnLevelEnd;
         PlaySong();
     }
 
@@ -29,6 +30,7 @@ public class SongPlayer : MonoBehaviour
         PlayerController.OnRestart -= OnRestart;
         PauseMenu.OnPause -= OnPause;
         PauseMenu.OnResume -= OnResume;
+        LevelEndZone.OnLevelEnd -= OnLevelEnd;
     }
 
     public void PlaySong() {
@@ -108,5 +110,9 @@ public class SongPlayer : MonoBehaviour
 
     private void OnResume() {
         SwitchSource(menuAudioSource.clip == song.calmMenuClip ? calmAudioSource : tenseAudioSource, 0.5f);
+    }
+
+    private void OnLevelEnd() {
+        SwitchSource(null, 2f);
     }
 }
