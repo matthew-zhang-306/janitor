@@ -54,8 +54,8 @@ public class BaseDialogueUI : MonoBehaviour
 
     protected virtual void GetInput() {
         oldAdvanceInput = advanceInput;
-        advanceInput = Input.GetAxisRaw("Fire1") > 0;
-        skipInput = Input.GetAxisRaw("Fire2") > 0;
+        advanceInput = CustomInput.GetAxis("Fire1") > 0;
+        skipInput = CustomInput.GetAxis("Fire2") > 0;
     }
 
 
