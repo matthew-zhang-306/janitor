@@ -226,7 +226,6 @@ MonoBehaviour:
   hurtbox: {fileID: 849050538764606042}
   lifetime: 2
   anim: {fileID: 5151423625937946325}
-  hurtbox: {fileID: 0}
   sr: {fileID: 3097103433370163163}
 --- !u!1 &3821085317150688344
 GameObject:
@@ -478,7 +477,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0036346316, y: 0.0039122403}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -489,7 +488,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6553899, y: 0.45720088}
+  m_Size: {x: 0.4, y: 0.16}
   m_EdgeRadius: 0
 --- !u!114 &1258294583182293416
 MonoBehaviour:

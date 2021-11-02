@@ -8,7 +8,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 
 
-public class BaseEnemy : MonoBehaviour
+public class BaseEnemy : Upgradeable
 {
     [HideInInspector] public bool CanAct = false;
 
@@ -22,6 +22,7 @@ public class BaseEnemy : MonoBehaviour
     [Header("Optional Components")]
     public GameObject floorMarker; // enemy will not necessarily have one
     public Animator animator;
+    public SpriteFlash spriteFlash;
     [HideInInspector] public PathNavigator navigator; // enemy will not necessarily have one
     [HideInInspector] public PlayerController player;
 
@@ -38,8 +39,7 @@ public class BaseEnemy : MonoBehaviour
     protected Dictionary<string, EnemyActionDelegate> actionTable;
    
 
-    protected virtual void Awake() {
-        
+    protected virtual void Awake() {    
         navigator = GetComponent<PathNavigator>();
     }
 
@@ -107,6 +107,7 @@ public class BaseEnemy : MonoBehaviour
         health.ChangeHealth(-hitAmount);
 
         invincibilityTimer = invincibilityTime;
+        spriteFlash?.Flash(invincibilityTime, other.transform.position.x - transform.position.x);
 
         if (health.GetHealth() <= 0) {
             CanAct = false;

@@ -90,18 +90,23 @@ public class ShopUI : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (CustomInput.GetButton("Close"))
         {
-            closeTween?.Kill();
-            closeTween = DOTween.To(() => render.alpha, x => render.alpha = (float) x, 0f, fadeDuration).SetUpdate(true);
-            this.Invoke(() => {
-                onClose?.Invoke();
-                onClose = null;
-                PauseMenu.IgnoreEsc = false;
-                
-            }, fadeDuration + (float) 1e-3);
+            Close();
 
         }
+    }
+
+    public void Close ()
+    {
+        closeTween?.Kill();
+        closeTween = DOTween.To(() => render.alpha, x => render.alpha = (float) x, 0f, fadeDuration).SetUpdate(true);
+        this.Invoke(() => {
+            onClose?.Invoke();
+            onClose = null;
+            PauseMenu.IgnoreEsc = false;
+                
+        }, fadeDuration + (float) 1e-3);
     }
 
     void Spawn (string name)

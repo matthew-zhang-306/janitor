@@ -22,6 +22,8 @@ public class PlayerController : Upgradeable
 
     public Transform cameraPos;
     public SpriteRenderer spriteRenderer;
+    public SpriteRenderer shadowRenderer;
+    public SpriteFlash spriteFlash;
     public AudioSource damageSound;
     private Animator animator;
     private Rigidbody2D rb2d;
@@ -64,6 +66,8 @@ public class PlayerController : Upgradeable
     [SerializeField] private float knockbackFriction = 1f;
     [SerializeField] private float invincibilityTime = 1f;
 
+    private float shadowBaseAlpha;
+
 
     private void Start() {
         animator = GetComponent<Animator>();
@@ -78,6 +82,7 @@ public class PlayerController : Upgradeable
 
         checkpointSnapshot = new PlayerSnapShot(transform, health, weapon, inventory);
         
+        shadowBaseAlpha = shadowRenderer.color.a;
     }
 
     private void Update() {
@@ -98,9 +103,6 @@ public class PlayerController : Upgradeable
         if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != animation) {
             animator.Play("Player" + animation, 0);
         }
-
-        // iframae indicator (needs to be replaced with something better looking)
-        spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
     }
 
     private void FixedUpdate() {
@@ -133,7 +135,7 @@ public class PlayerController : Upgradeable
         }
 
         //Should be set to 0, but for debug purposes
-        int hitAmount = damage?.damage ?? 1;            
+        int hitAmount = damage?.damage ?? 1; 
 
         health.ChangeHealth(-hitAmount);
         SoundManager.PlaySound(SoundManager.Sound.Damage, 0.6f);
@@ -148,6 +150,9 @@ public class PlayerController : Upgradeable
         knockbackTimer = knockbackTime;
 
         invincibilityTimer = invincibilityTime;
+        if (health.GetHealth() > 0) {
+            spriteFlash.Flash(invincibilityTime - 0.1f, -knockbackDir.x, knockbackTime);
+        }
     }
 
     private void HandleMotion() {
@@ -323,7 +328,18 @@ public class PlayerController : Upgradeable
             child.gameObject.SetActive(true);
         }
         isDead = false;
+        spriteRenderer.DOKill();
+        spriteRenderer.color = spriteRenderer.color.WithAlpha(1);
+        shadowRenderer.color = shadowRenderer.color.WithAlpha(shadowBaseAlpha);
+        
         OnRestart?.Invoke(this);
+    }
+
+    public void FadeSprite() {
+        DOTween.Sequence()
+            .Insert(0, spriteRenderer.DOFade(0f, 0.5f).SetEase(Ease.Linear))
+            .Insert(0, shadowRenderer.DOFade(0f, 0.5f).SetEase(Ease.Linear))
+            .SetTarget(spriteRenderer).SetLink(gameObject);
     }
 
     

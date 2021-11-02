@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class WeaponSystem : MonoBehaviour
+public class WeaponSystem : Upgradeable
 {
     public Camera cam;
 
@@ -32,9 +32,6 @@ public class WeaponSystem : MonoBehaviour
 
     public GameObject bulletPrefab;
     public GameObject meleePrefab;
-    //public AudioSource gunSound;
-    //public AudioSource meleeSound;
-    // public AudioClip[] meleeEffects;
 
     [SerializeField] private bool ZeroAmmoStart;
 
@@ -61,7 +58,7 @@ public class WeaponSystem : MonoBehaviour
         Vector2 dir = new Vector2 (CustomInput.axis2x, CustomInput.axis2y).normalized;
 
         #else 
-        Vector3 hit = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 hit = cam.ScreenToWorldPoint(CustomInput.GetMousePosition());
         Debug.DrawLine (hit, transform.position);
         Vector2 dir = (hit - transform.position).ToVector2().normalized;
         #endif
@@ -77,14 +74,12 @@ public class WeaponSystem : MonoBehaviour
                 && CustomInput.ranged
                 && dir.magnitude != 0
                 #else
-                && Input.GetButton("Fire1") 
+                && CustomInput.GetButton("Fire1") 
                 #endif
             ) {
-            Vector3 mousePos = CustomInput.GetMousePosition();
 
             Fire (dir);
-            //gunSound.Play();
-            SoundManager.PlaySound(SoundManager.Sound.spongeGun, 0.5f);
+            
             m_ftime = 0;
         }
         if (m_ftime > meleerate  
@@ -92,10 +87,9 @@ public class WeaponSystem : MonoBehaviour
                 && CustomInput.melee
                 && dir.magnitude != 0
                 #else
-                && Input.GetButton("Fire2")                
+                && CustomInput.GetButton("Fire2")                
                 #endif
             ) {
-            Vector3 mousePos = CustomInput.GetMousePosition();
 
             Swing (dir);
             //meleeSound.clip = meleeEffects[Random.Range(0, meleeEffects.Length)];
@@ -104,6 +98,17 @@ public class WeaponSystem : MonoBehaviour
             m_ftime = 0;
         }
         m_ftime += Time.deltaTime;
+
+        //check for ammo and if ammo is low flash the low ammo UI above player and make the ammo bar blink
+        if (_ammo < 10)
+        {
+            AmmoOnboarding.AmmoLow = true;
+        }
+        if (_ammo > 10)
+        {
+            AmmoOnboarding.AmmoLow = false;
+        }
+
     }
 
     public void Fire (Vector3 dir) {
@@ -115,8 +120,14 @@ public class WeaponSystem : MonoBehaviour
         {
             var drain = this.weapon.HandleFire(dir, bulletRotation);
             _ammo -= drain;
+            //gun fire sound here
+            SoundManager.PlaySound(SoundManager.Sound.spongeGun, 0.5f);
         }
-
+        else
+        {
+            //play the can't fire sound
+            //put the can't fire sound connection here boram
+        }
         //Maybe change to Entity System Later
         
         
@@ -144,4 +155,6 @@ public class WeaponSystem : MonoBehaviour
             Ammo += value * ammoRestorationScale;
         };
     }
+
+   
 }

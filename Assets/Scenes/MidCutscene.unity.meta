@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/link.xml.meta
+guid: 7bf53cd091dd252469313f9bb2c190e9
+TextScriptImporter:
+=======
 guid: 0eb36796cf0433b478c6e74b281ea42e
 DefaultImporter:
+>>>>>>> ca4d8a13f78b0d96ee681c2e1529e35b2e785591:Assets/Scenes/MidCutscene.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

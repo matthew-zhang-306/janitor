@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
+using Newtonsoft.Json;
+using System;
 
 public class Upgradeable : MonoBehaviour
 {
@@ -21,22 +23,29 @@ public class Upgradeable : MonoBehaviour
         var hs = this.UpgradeableParameters();
         this.baseProps = new Dictionary<string, float>();
         this.modifier = new Dictionary<string, float>();
-        SerializedObject so = new SerializedObject (this);
+        var obj = JsonUtility.ToJson(this);
+        var values = JsonConvert.DeserializeObject<Dictionary<string, object>>(obj);
+
+        // JsonUtility.FromJsonOverwrite(obj, this.baseProps);
         foreach (string prop in hs) {
-            baseProps[prop] = so.FindProperty(prop).floatValue;
-            modifier[prop] = 1;
+            this.baseProps[prop] = Convert.ToSingle (values[prop]);
+            this.modifier[prop] = 1;
         }
+        
     }
 
     public HashSet<string> UpgradeableParameters()
     {
         var propset = new HashSet<string>();
-        SerializedObject so = new SerializedObject (this);
-        SerializedProperty it = so.GetIterator();
-        while (it.Next(true)) {
-            if (it.type == "float") {
-                propset.Add(it.name);
+        var obj = JsonUtility.ToJson(this);
+        var test = JsonConvert.DeserializeObject<Dictionary<string, object>>(obj);
+
+        // JsonUtility.FromJsonOverwrite(obj, this.baseProps);
+        foreach (var key in test) {
+            if (key.Value is Double || key.Value is Int64) {
+                propset.Add (key.Key);
             }
+            
         }
         return propset;
     }
@@ -45,22 +54,26 @@ public class Upgradeable : MonoBehaviour
     {
         if (baseProps.ContainsKey(u.parameter))
         {
-            SerializedObject so = new SerializedObject (this);
+            var obj = JsonUtility.ToJson(this);
+            var values = JsonConvert.DeserializeObject<Dictionary<string, object>>(obj);
+
             modifier[u.parameter] += u.value;
-            //Fix this later
-            so.FindProperty(u.parameter).floatValue = baseProps[u.parameter] * modifier[u.parameter];
-            so.ApplyModifiedProperties();
+            values[u.parameter] = baseProps[u.parameter] * modifier[u.parameter];
+            
+            JsonUtility.FromJsonOverwrite (JsonConvert.SerializeObject(values), this);
         }
     }
 
     public void Reset()
     {
-        SerializedObject so = new SerializedObject (this);
+        var obj = JsonUtility.ToJson(this);
+        var values = JsonConvert.DeserializeObject<Dictionary<string, object>>(obj);
+
         foreach (var x in baseProps) 
         {
-            so.FindProperty (x.Key).floatValue = x.Value;
+            values[x.Key] = x.Value;
         }
-        so.ApplyModifiedProperties();
+        JsonUtility.FromJsonOverwrite (JsonConvert.SerializeObject(values), this);
     }
 
     public void ApplyAllUpgrades(List<Upgrade> ulist)
