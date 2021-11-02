@@ -136,7 +136,7 @@ public class PlayerController : Upgradeable
         int hitAmount = damage?.damage ?? 1;            
 
         health.ChangeHealth(-hitAmount);
-        damageSound.Play();
+        SoundManager.PlaySound(SoundManager.Sound.Damage, 0.6f);
         if (health.GetHealth() <= 0) {
             StartCoroutine(Die());
         }

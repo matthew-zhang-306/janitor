@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class SnakeEnemy : BaseEnemy
 {
+
     [SerializeField] private float startTime;
     [SerializeField] private float reloadTime;
     [SerializeField] private float aimTime;
@@ -76,9 +77,10 @@ public class SnakeEnemy : BaseEnemy
         SnakeBullet projectile =
             Instantiate(bulletPrefab, bulletSpawnLocation.position, Quaternion.identity)
             .GetComponent<SnakeBullet>();
-
+        SoundManager.PlaySound(SoundManager.Sound.Snake, 1f);
         // tell the projectile where the player is
         projectile.SetTarget(player.transform.position);
+
     }
 
 }

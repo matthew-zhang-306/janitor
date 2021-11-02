@@ -17,8 +17,11 @@ public static class SoundManager {
         Broom,
         Quad,
         Med,
-        Turret
-        
+        Turret,
+        Diaper,
+        Kitty,
+        Snake,
+        Damage
 
     }
     public static void PlaySound(Sound sound, float SEvolume)

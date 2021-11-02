@@ -69,7 +69,7 @@ public class CatEnemy : BaseEnemy
     private IEnumerator Action_Attack() {
         shouldPickAction = false;
         navigator.Stop();
-
+        SoundManager.PlaySound(SoundManager.Sound.Kitty, 1f);
         spriteRenderer.color = Color.blue;
         yield return new WaitForSeconds(chargeTime);
         

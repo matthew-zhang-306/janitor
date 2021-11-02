@@ -60,3 +60,11 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: d57593ba5ba08324fa9f9bf6d4e6db5b, type: 3}
   - sound: 7
     audioClip: {fileID: 8300000, guid: aac80a75923d777448a483719a115471, type: 3}
+  - sound: 8
+    audioClip: {fileID: 8300000, guid: 8ec4cf904e4566c409a05fb3d27f8d12, type: 3}
+  - sound: 9
+    audioClip: {fileID: 8300000, guid: ccde4c6e8c7b2dd4c84c3dce8796b2e6, type: 3}
+  - sound: 10
+    audioClip: {fileID: 8300000, guid: e2eee4603afafa94b85d013c0bcfdb96, type: 3}
+  - sound: 11
+    audioClip: {fileID: 8300000, guid: e847ce93edbcb5f429ab96d6b92cc3a0, type: 3}
