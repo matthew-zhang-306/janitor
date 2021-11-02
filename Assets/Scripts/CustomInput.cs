@@ -14,6 +14,20 @@ public static class CustomInput
 
     public static bool dash;
     public static bool interact;
+
+    public static bool primary;
+    public static bool secondary;
+
+    public static InputAction reset;
+    public static InputAction close;
+
+    #if DEVELOPMENT_BUILD || UNITY_EDITOR
+
+    public static InputAction DEBUG_roomClear;
+
+    #endif
+
+
     public static float GetAxis (string axis)
     {
         // #if (UNITY_ANDROID || UNITY_IPHONE)
@@ -23,6 +37,9 @@ public static class CustomInput
                 return moveAxisHx;
             case "Vertical":
                 return moveAxisVy;
+            default:
+                Debug.Log ("throwing axis: " + axis);
+                break;
         }
 
         // #else
@@ -42,18 +59,23 @@ public static class CustomInput
     }
     public static bool GetButton (string button)
     {
-        // #if (UNITY_ANDROID || UNITY_IPHONE)
+        //Used for INGAME button usages. Should not be used for UI.
+        //Use callbacks for infrequent requests.
         switch (button) 
         {
             case "Jump":
                 return dash;
             case "Interact":
                 return interact;
+            case "Fire1":
+                return primary;
+            case "Fire2":
+                return secondary;
+            default:
+                Debug.Log("throwing: " + button);
+                break;
         }
 
-        // #else
-        // return Input.GetButton (button);
-        // #endif
         
         return false;
     }

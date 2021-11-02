@@ -81,7 +81,11 @@ public class RoomManager : MonoBehaviour
             
         }
 
-        
+        CustomInput.DEBUG_roomClear.started += ctx => {
+            if (roomState == RoomState.ACTIVE) {
+                ForceClearRoom();
+            }
+        };
 
         // Eventually the plan will be to reuse Grid instances when entering rooms
         // Each level will not store either own dirtyTiles
@@ -136,7 +140,7 @@ public class RoomManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (roomState == RoomState.UNCLEARED && roomTriggerHitbox.IsColliding && roomTriggerHitbox.enabled) {
+        if (roomTriggerHitbox.enabled && roomState == RoomState.UNCLEARED && roomTriggerHitbox.IsColliding ) {
             Debug.Log ("hi there I will now start the room");
             OnEnterRoom(roomTriggerHitbox.OtherCollider.GetComponent<PlayerController>());
             roomTriggerHitbox.enabled = false;
@@ -147,9 +151,7 @@ public class RoomManager : MonoBehaviour
             OnClearRoom(true);
         }
 
-        if (roomState == RoomState.ACTIVE && Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.L)) {
-            ForceClearRoom();
-        }
+        
     }
     
     private void OnEnterRoom(PlayerController player) {

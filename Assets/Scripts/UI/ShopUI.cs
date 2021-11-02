@@ -90,7 +90,7 @@ public class ShopUI : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (CustomInput.GetButton("Close"))
         {
             Close();
 

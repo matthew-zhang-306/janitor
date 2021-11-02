@@ -12,20 +12,46 @@ public class PlayerInputMap : MonoBehaviour
 
     // private InputAction dashAction;
     // private InputAction interact
-    void Start()
+    void Awake()
     {
-        inputMap.Disable();
+        inputMap.Enable();
         // inputMap.FindAction("MoveRight").started += ctx => MoveVertical(ctx, false);
         // inputMap.FindAction("MoveLeft").started += ctx => MoveVertical(ctx, true);
-        moveAction = new InputAction();
+        moveAction = inputMap.FindAction("Move");
 
-        moveAction.AddCompositeBinding("2DVector")
-            .With("Right", inputMap.FindAction("MoveRight").bindings[0].path)
-            .With("Left", inputMap.FindAction("MoveLeft").bindings[0].path)
-            .With("Up", inputMap.FindAction("MoveUp").bindings[0].path)
-            .With("Down", inputMap.FindAction("MoveDown").bindings[0].path);
+        inputMap.FindAction("Jump").started += ctx => Button(ctx, ref CustomInput.dash, true);
+        inputMap.FindAction("Jump").canceled += ctx => Button(ctx, ref CustomInput.dash, false);
+        inputMap.FindAction("Jump").performed += ctx => Button(ctx, ref CustomInput.dash, false);
+        
 
-        moveAction.Enable();
+        inputMap.FindAction("Interact").started += ctx => Button(ctx, ref CustomInput.interact, true);
+        inputMap.FindAction("Interact").canceled += ctx => Button(ctx, ref CustomInput.interact, false);
+        inputMap.FindAction("Interact").performed += ctx => Button(ctx, ref CustomInput.interact, false);
+
+
+        inputMap.FindAction("Fire1").started += ctx => Button(ctx, ref CustomInput.primary, true);
+        inputMap.FindAction("Fire1").canceled += ctx => Button(ctx, ref CustomInput.primary, false);
+        inputMap.FindAction("Fire1").performed += ctx => Button(ctx, ref CustomInput.primary, false);
+
+
+        inputMap.FindAction("Fire2").started += ctx => Button(ctx, ref CustomInput.secondary, true);
+        inputMap.FindAction("Fire2").canceled += ctx => Button(ctx, ref CustomInput.secondary, false);
+        inputMap.FindAction("Fire2").performed += ctx => Button(ctx, ref CustomInput.secondary, false);
+
+
+        CustomInput.reset = inputMap.FindAction("Reset");
+        CustomInput.close = inputMap.FindAction("Close");
+
+        #if DEVELOPMENT_BUILD || UNITY_EDITOR
+
+        CustomInput.DEBUG_roomClear = inputMap.FindAction("Debug_Clear");
+
+        #endif
+    }
+
+    void Button (InputAction.CallbackContext ctx, ref bool tf, bool value) 
+    {
+        tf = value;
     }
 
     void Update()
