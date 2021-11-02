@@ -28,8 +28,6 @@ public class Upgradeable : MonoBehaviour
 
         // JsonUtility.FromJsonOverwrite(obj, this.baseProps);
         foreach (string prop in hs) {
-            Debug.Log (values[prop].GetType());
-
             this.baseProps[prop] = Convert.ToSingle (values[prop]);
             this.modifier[prop] = 1;
         }
