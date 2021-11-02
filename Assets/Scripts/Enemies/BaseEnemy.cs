@@ -8,7 +8,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 
 
-public class BaseEnemy : MonoBehaviour
+public class BaseEnemy : Upgradeable
 {
     [HideInInspector] public bool CanAct = false;
 

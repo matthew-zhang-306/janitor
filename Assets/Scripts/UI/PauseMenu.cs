@@ -20,23 +20,37 @@ public class PauseMenu : MonoBehaviour
     private void OnDisable() {
         LevelEndZone.OnLevelEnd -= DisablePause;
     }
-    
+    void Start ()
+    {
+        CustomInput.close.started += ctx => {
+            if (canPause && !IgnoreEsc) {
+                if (GamePaused == true)
+                {
+                    ResumeGame();
+                }
+                else if (GamePaused == false)
+                {
+                    PauseGame();
+                }
+            }
+        };
+    }
     void Update()
     {
-        if (!canPause)
-            return;
+        // if (!canPause)
+        //     return;
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !IgnoreEsc)
-        {
-            if (GamePaused == true)
-            {
-                ResumeGame();
-            }
-            else if (GamePaused == false)
-            {
-                PauseGame();
-            }
-        }
+        // if (CustomInput.GetButton("Close") && !IgnoreEsc)
+        // {
+        //     if (GamePaused == true)
+        //     {
+        //         ResumeGame();
+        //     }
+        //     else if (GamePaused == false)
+        //     {
+        //         PauseGame();
+        //     }
+        // }
     }
 
     public void ResumeGame()

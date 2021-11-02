@@ -11,21 +11,22 @@ PrefabInstance:
         type: 3}
       propertyPath: context
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4271501809376710238, guid: 1b81a2d893f152743a3e41ec798f28e9,
+        type: 3}
     - target: {fileID: 3041527383733658840, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
       propertyPath: ulist.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3041527383733658840, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
       propertyPath: ulist.Array.data[0].value
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3041527383733658840, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
       propertyPath: ulist.Array.data[1].value
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3041527383733658840, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
@@ -40,12 +41,12 @@ PrefabInstance:
     - target: {fileID: 3041527383733658840, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
       propertyPath: ulist.Array.data[0].parameter
-      value: firerate
+      value: ammoDrain
       objectReference: {fileID: 0}
     - target: {fileID: 3041527383733658840, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
       propertyPath: ulist.Array.data[1].parameter
-      value: bulletDamage
+      value: ammoDrain
       objectReference: {fileID: 0}
     - target: {fileID: 3041527383733658840, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
@@ -60,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 7585635246832292158, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
       propertyPath: m_Name
-      value: sample upgrade
+      value: very heavy bullets
       objectReference: {fileID: 0}
     - target: {fileID: 7585635246832292159, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}

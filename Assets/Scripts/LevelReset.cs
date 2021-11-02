@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class LevelReset : MonoBehaviour
 {
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.R)) {
+    void Start ()
+    {
+        CustomInput.reset.performed += ctx => {
             Debug.Log("reset");
             UnityEngine.SceneManagement.SceneManager.LoadScene(
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
             );
-        }
+        };
     }
+
 }

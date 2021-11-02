@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class WeaponSystem : MonoBehaviour
+public class WeaponSystem : Upgradeable
 {
     public Camera cam;
 
@@ -58,7 +58,7 @@ public class WeaponSystem : MonoBehaviour
         Vector2 dir = new Vector2 (CustomInput.axis2x, CustomInput.axis2y).normalized;
 
         #else 
-        Vector3 hit = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 hit = cam.ScreenToWorldPoint(CustomInput.GetMousePosition());
         Debug.DrawLine (hit, transform.position);
         Vector2 dir = (hit - transform.position).ToVector2().normalized;
         #endif
@@ -74,10 +74,9 @@ public class WeaponSystem : MonoBehaviour
                 && CustomInput.ranged
                 && dir.magnitude != 0
                 #else
-                && Input.GetButton("Fire1") 
+                && CustomInput.GetButton("Fire1") 
                 #endif
             ) {
-            Vector3 mousePos = CustomInput.GetMousePosition();
 
             Fire (dir);
             
@@ -88,10 +87,9 @@ public class WeaponSystem : MonoBehaviour
                 && CustomInput.melee
                 && dir.magnitude != 0
                 #else
-                && Input.GetButton("Fire2")                
+                && CustomInput.GetButton("Fire2")                
                 #endif
             ) {
-            Vector3 mousePos = CustomInput.GetMousePosition();
 
             Swing (dir);
             //meleeSound.clip = meleeEffects[Random.Range(0, meleeEffects.Length)];

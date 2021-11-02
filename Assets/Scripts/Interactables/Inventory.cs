@@ -31,10 +31,11 @@ public class Inventory : MonoBehaviour
     {    
         recent = new List<Interactable>();
         pc = this.GetComponent<PlayerController>();
-        upgradeComponents = new Upgradeable[3];
+        upgradeComponents = new Upgradeable[4];
         upgradeComponents[0] = pc;
         upgradeComponents[1] = pc.health;
         upgradeComponents[2] = pc.weapon.weapon;
+        upgradeComponents[3] = pc.weapon; 
         // upgradeComponents[3] = pc.weapon.weapon.prefabBullet.GetComponent<BaseProjectile>();
     }
 
