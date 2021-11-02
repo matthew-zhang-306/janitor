@@ -32,9 +32,6 @@ public class WeaponSystem : Upgradeable
 
     public GameObject bulletPrefab;
     public GameObject meleePrefab;
-    //public AudioSource gunSound;
-    //public AudioSource meleeSound;
-    // public AudioClip[] meleeEffects;
 
     [SerializeField] private bool ZeroAmmoStart;
 
@@ -82,8 +79,7 @@ public class WeaponSystem : Upgradeable
             ) {
 
             Fire (dir);
-            //gunSound.Play();
-            SoundManager.PlaySound(SoundManager.Sound.spongeGun, 0.5f);
+            
             m_ftime = 0;
         }
         if (m_ftime > meleerate  
@@ -102,6 +98,17 @@ public class WeaponSystem : Upgradeable
             m_ftime = 0;
         }
         m_ftime += Time.deltaTime;
+
+        //check for ammo and if ammo is low flash the low ammo UI above player and make the ammo bar blink
+        if (_ammo < 10)
+        {
+            AmmoOnboarding.AmmoLow = true;
+        }
+        if (_ammo > 10)
+        {
+            AmmoOnboarding.AmmoLow = false;
+        }
+
     }
 
     public void Fire (Vector3 dir) {
@@ -113,8 +120,14 @@ public class WeaponSystem : Upgradeable
         {
             var drain = this.weapon.HandleFire(dir, bulletRotation);
             _ammo -= drain;
+            //gun fire sound here
+            SoundManager.PlaySound(SoundManager.Sound.spongeGun, 0.5f);
         }
-
+        else
+        {
+            //play the can't fire sound
+            //put the can't fire sound connection here boram
+        }
         //Maybe change to Entity System Later
         
         
@@ -142,4 +155,6 @@ public class WeaponSystem : Upgradeable
             Ammo += value * ammoRestorationScale;
         };
     }
+
+   
 }
