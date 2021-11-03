@@ -7,17 +7,11 @@ public class PanelOpener : MonoBehaviour
     
     public GameObject Panel;
 
-        public void TogglePanel()
+    public void TogglePanel()
     {
-        if(Panel != null)
-
-        {
-           bool isActive = Panel.activeSelf;
-
+        if(Panel != null) {
+            bool isActive = Panel.activeSelf;
             Panel.SetActive(!isActive);
         }
-        
     }
-
-   
 }
