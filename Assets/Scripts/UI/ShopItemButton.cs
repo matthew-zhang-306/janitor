@@ -25,8 +25,6 @@ public class ShopItemButton : MonoBehaviour
 
     public void OnClick()
     {
-        
         onClickEvent?.Invoke(this.name);
-
     }
 }

@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: fd686846c2d01f748ac664e95d31a1ca
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -81067192875300208
+    second: skelekitty_walk_front-back_0
+  - first:
+      213: -4445869972000192375
+    second: skelekitty_walk_front-back_1
+  - first:
+      213: -223226310261497505
+    second: skelekitty_walk_front-back_2
+  - first:
+      213: -4386557842027642254
+    second: skelekitty_walk_front-back_3
+  - first:
+      213: -6244612276536973781
+    second: skelekitty_walk_front-back_4
+  - first:
+      213: 4069790466140565274
+    second: skelekitty_walk_front-back_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +89,147 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: skelekitty_walk_front-back_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 650
+        width: 649
+        height: 650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09acabd41ddffdef0800000000000000
+      internalID: -81067192875300208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_walk_front-back_1
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 650
+        width: 649
+        height: 650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9884a51d0d81d42c0800000000000000
+      internalID: -4445869972000192375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_walk_front-back_2
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 650
+        width: 649
+        height: 650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f51a7508ad0f6ecf0800000000000000
+      internalID: -223226310261497505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_walk_front-back_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 649
+        height: 650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2720d3732e0df13c0800000000000000
+      internalID: -4386557842027642254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_walk_front-back_4
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 0
+        width: 649
+        height: 650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2668f8483ea659a0800000000000000
+      internalID: -6244612276536973781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_walk_front-back_5
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 0
+        width: 649
+        height: 650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f6494cddcca7830800000000000000
+      internalID: 4069790466140565274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

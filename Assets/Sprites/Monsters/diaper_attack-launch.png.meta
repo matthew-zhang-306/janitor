@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: 50e79999dd4824b438f40549fd8e18f4
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5842880859350372140
+    second: diaper_attack-launch_0
+  - first:
+      213: 3241332670744825725
+    second: diaper_attack-launch_1
+  - first:
+      213: -9165862636794172512
+    second: diaper_attack-launch_2
+  - first:
+      213: -1554025626359675503
+    second: diaper_attack-launch_3
+  - first:
+      213: 822469521401191873
+    second: diaper_attack-launch_4
+  - first:
+      213: -7240081758699365072
+    second: diaper_attack-launch_5
+  - first:
+      213: 1690894754385857891
+    second: diaper_attack-launch_6
+  - first:
+      213: 7182588532801782397
+    second: diaper_attack-launch_7
+  - first:
+      213: -8987663862318096903
+    second: diaper_attack-launch_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +98,210 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: diaper_attack-launch_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1300
+        width: 650
+        height: 650
+      alignment: 9
+      pivot: {x: 0.44903702, y: 0.49731782}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2f02864f25161150800000000000000
+      internalID: 5842880859350372140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: diaper_attack-launch_1
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 1300
+        width: 650
+        height: 650
+      alignment: 9
+      pivot: {x: 0.45708394, y: 0.5026823}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7f0d9604e68bfc20800000000000000
+      internalID: 3241332670744825725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: diaper_attack-launch_2
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 1300
+        width: 650
+        height: 650
+      alignment: 9
+      pivot: {x: 0.45708403, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ababd1ae705cc080800000000000000
+      internalID: -9165862636794172512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: diaper_attack-launch_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 650
+        width: 650
+        height: 650
+      alignment: 9
+      pivot: {x: 0.41396615, y: 0.49762797}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1954af82dedfe6ae0800000000000000
+      internalID: -1554025626359675503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: diaper_attack-launch_4
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 650
+        width: 650
+        height: 650
+      alignment: 9
+      pivot: {x: 0.39550048, y: 0.49762797}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd14bd0caff96b00800000000000000
+      internalID: 822469521401191873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: diaper_attack-launch_5
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 650
+        width: 650
+        height: 650
+      alignment: 9
+      pivot: {x: 0.36980975, y: 0.49288368}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d50f30000168b90800000000000000
+      internalID: -7240081758699365072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: diaper_attack-launch_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 650
+        height: 650
+      alignment: 9
+      pivot: {x: 0.46052364, y: 0.5017164}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36d8db302d3477710800000000000000
+      internalID: 1690894754385857891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: diaper_attack-launch_7
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 0
+        width: 650
+        height: 650
+      alignment: 9
+      pivot: {x: 0.44335994, y: 0.49485087}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d72c171373eada360800000000000000
+      internalID: 7182588532801782397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: diaper_attack-launch_8
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 0
+        width: 650
+        height: 650
+      alignment: 9
+      pivot: {x: 0.44507626, y: 0.4982836}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd1aedf557654380800000000000000
+      internalID: -8987663862318096903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

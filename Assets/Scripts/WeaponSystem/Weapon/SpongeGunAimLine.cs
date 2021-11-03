@@ -30,7 +30,7 @@ public class SpongeGunAimLine : MonoBehaviour
             transform.rotation.eulerAngles.z,
             transform.right,
             50f,
-            LayerMask.GetMask("Wall", "Sides")
+            LayerMask.GetMask("Wall")
         );
 
         LineLength = hit.collider != null ? hit.distance : 50f;

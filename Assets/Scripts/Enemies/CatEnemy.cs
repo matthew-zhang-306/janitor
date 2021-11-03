@@ -38,6 +38,32 @@ public class CatEnemy : BaseEnemy
             .SetLink(gameObject);
     }
 
+
+    private void Update() {
+        if (navigator.canNavigate) {
+            // set a move animation
+            string moveString = "";
+
+            Vector2 moveDir = Vector2.zero;
+            if (navigator.isFollowingPath) {
+                moveDir = navigator.GetMoveDirection();
+            }
+
+            if (Mathf.Abs(moveDir.x) >= 0.2f) {
+                moveString = moveDir.x > 0 ? "MoveRight" : "MoveLeft";
+            }
+            else if (Mathf.Abs(moveDir.y) >= 0.2f) {
+                moveString = moveDir.y > 0 ? "MoveUp" : "MoveDown";
+            } else {
+                moveString = "Idle";
+            }
+
+            if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Skelekitty" + moveString) {
+                animator.Play("Skelekitty" + moveString, 0, 0f);
+            }
+        }
+    }
+
     protected override void FixedUpdate() {
         base.FixedUpdate();
         
@@ -69,15 +95,14 @@ public class CatEnemy : BaseEnemy
     private IEnumerator Action_Attack() {
         shouldPickAction = false;
         navigator.Stop();
-        SoundManager.PlaySound(SoundManager.Sound.Kitty, 1f);
-        spriteRenderer.color = Color.blue;
+
+        animator.Play("SkelekittyAttack");
         yield return new WaitForSeconds(chargeTime);
         
-        spriteRenderer.color = Color.red;
         Instantiate(shockwavePrefab, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(attackTime);
 
-        spriteRenderer.color = Color.white;
+        animator.Play("SkelekittyIdle");
         shouldPickAction = true;
         navigator.canNavigate = true;
         rechargeTimer = rechargeTime;

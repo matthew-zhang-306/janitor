@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: c3ef4236d21f21f468f3280f4266ffce
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5729770138953690350
+    second: skelekitty_attack_0
+  - first:
+      213: 3234997355462455562
+    second: skelekitty_attack_1
+  - first:
+      213: 2193252262601548974
+    second: skelekitty_attack_2
+  - first:
+      213: -3267793757307162717
+    second: skelekitty_attack_3
+  - first:
+      213: 4773271871197326634
+    second: skelekitty_attack_4
+  - first:
+      213: 526415923796897154
+    second: skelekitty_attack_5
+  - first:
+      213: -996212405255288895
+    second: skelekitty_attack_6
+  - first:
+      213: -8146441830933327964
+    second: skelekitty_attack_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +95,189 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: skelekitty_attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 899.75
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeca9f0759b348f40800000000000000
+      internalID: 5729770138953690350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_attack_1
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 900
+        width: 899.75
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01faad74f405ec20800000000000000
+      internalID: 3234997355462455562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_attack_2
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 900
+        width: 899.75
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea4ef2fff4fff6e10800000000000000
+      internalID: 2193252262601548974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_attack_3
+      rect:
+        serializedVersion: 2
+        x: 2697
+        y: 900
+        width: 899.75
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3afa77824e676a2d0800000000000000
+      internalID: -3267793757307162717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_attack_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 899.75
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2da41b1a711e3240800000000000000
+      internalID: 4773271871197326634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_attack_5
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 0
+        width: 899.75
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28de50e5e743e4700800000000000000
+      internalID: 526415923796897154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_attack_6
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 0
+        width: 899.75
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c7cbe7781ebc22f0800000000000000
+      internalID: -996212405255288895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skelekitty_attack_7
+      rect:
+        serializedVersion: 2
+        x: 2697
+        y: 0
+        width: 899.75
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4af06d3015602fe80800000000000000
+      internalID: -8146441830933327964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -30,14 +30,14 @@ MonoBehaviour:
     prefab: {fileID: 6003392166522410723, guid: 4a1c97af78db62f45b897ac909e7c810,
       type: 3}
   - name: Diaper
-    color: {r: 0.27438745, g: 0.990566, b: 0, a: 1}
+    color: {r: 0.09135652, g: 0.3301887, b: 0, a: 1}
     prefab: {fileID: 3514881736578162423, guid: 8ba286c9cd4043f4295944d2db70bdc2,
       type: 3}
   - name: Skat
-    color: {r: 0.27438745, g: 0.990566, b: 0, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 1}
     prefab: {fileID: 5026708350714426291, guid: 45f3c6ae9808e3a498cb871cf09c905b,
       type: 3}
   - name: Snake
-    color: {r: 0.27438745, g: 0.990566, b: 0, a: 1}
+    color: {r: 1, g: 0, b: 0.72183037, a: 1}
     prefab: {fileID: 3668824906190789109, guid: e9a9fe7a1d3f61444929f0f075561416,
       type: 3}
