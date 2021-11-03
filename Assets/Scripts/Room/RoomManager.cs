@@ -81,11 +81,13 @@ public class RoomManager : MonoBehaviour
             
         }
 
+        #if DEVELOPMENT_BUILD || UNITY_EDITOR
         CustomInput.DEBUG_roomClear.started += ctx => {
             if (roomState == RoomState.ACTIVE) {
                 ForceClearRoom();
             }
         };
+        #endif
 
         // Eventually the plan will be to reuse Grid instances when entering rooms
         // Each level will not store either own dirtyTiles
