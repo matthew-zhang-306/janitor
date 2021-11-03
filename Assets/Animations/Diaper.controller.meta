@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Animations/Diaper.controller.meta
 guid: b632b20f7f90a9e4da2a73c1a2d2fd95
 NativeFormatImporter:
+=======
+guid: d534602a5d6375944aaadd9aceff23ca
+PrefabImporter:
+>>>>>>> 264087f36d17c95111fa0a690ed9512587e5c9b5:Assets/Prefabs/UI Prefabs/EditBindings.prefab.meta
   externalObjects: {}
   mainObjectFileID: 9100000
   userData: 
