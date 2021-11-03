@@ -92,7 +92,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3514881736801281935}
   hitbox: {fileID: 3514881738266504107}
   floorMarker: {fileID: 3514881737028698212}
-  animator: {fileID: 0}
+  animator: {fileID: 8877932832527030615}
   spriteFlash: {fileID: 7518049350825895994}
   navigator: {fileID: 0}
   player: {fileID: 0}
@@ -106,6 +106,8 @@ MonoBehaviour:
   chargeAcceleration: 2
   chargeTurnSpeed: 1
   chargeStartTime: 0.5
+  flightBobAmount: 0.1
+  flightBobTime: 0.5
   explosionTrigger: {fileID: 3514881737719861980}
   explosionPrefab: {fileID: 1563058234831587846, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
     type: 3}
@@ -181,6 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3514881736801281932}
   - component: {fileID: 3514881736801281935}
+  - component: {fileID: 8877932832527030615}
   m_Layer: 10
   m_Name: New Sprite
   m_TagString: Untagged
@@ -241,7 +244,7 @@ SpriteRenderer:
   m_SortingLayerID: 1270654867
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1889450485676766510, guid: 398ff720530f1be438a1ac7d5c1efe44,
+  m_Sprite: {fileID: -160620280014593461, guid: 398ff720530f1be438a1ac7d5c1efe44,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -253,6 +256,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8877932832527030615
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3514881736801281933}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b632b20f7f90a9e4da2a73c1a2d2fd95, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3514881737028698212
 GameObject:
   m_ObjectHideFlags: 0

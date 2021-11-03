@@ -24,6 +24,17 @@ public class DiaperEnemy : BaseEnemy
         navigator.speed = wanderSpeed;
     }
 
+    private void Update() {
+        string animationName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        if (animationName.Contains("Fly")) {
+            // might need to switch flying animations
+            string newAnimationName = "DiaperFly" + GetDirection(rb2d.velocity);
+            if (newAnimationName != animationName) {
+                animator.Play(newAnimationName);
+            }
+        }
+    }
+
     protected override void FixedUpdate() {
         base.FixedUpdate();
 
@@ -77,6 +88,7 @@ public class DiaperEnemy : BaseEnemy
         
         // step 1: spotting the player animation
         Vector3 chargeDirection = (player.transform.position - transform.position).normalized;
+        animator.Play("DiaperLaunch" + GetDirection(chargeDirection));
         for (float startTime = 0f; startTime < chargeStartTime; startTime += Time.deltaTime) {
             // the enemy backs up slightly first
             rb2d.velocity = -chargeDirection * wanderSpeed * Mathf.Lerp(2, 0, startTime / chargeStartTime);
@@ -118,5 +130,23 @@ public class DiaperEnemy : BaseEnemy
         onDeath = null;
 
         Die();
+    }
+
+    private string GetDirection(Vector3 vector) {
+        float moveAngle = Vector2.SignedAngle(Vector2.right, vector);
+        int moveDir = Mathf.RoundToInt(moveAngle / 90f).Mod(4);
+        switch (moveDir) {
+            case 0:
+                return "Right";
+            case 1:
+                return "Up";
+            case 2:
+                return "Left";
+            case 3:
+                return "Down";
+            default:
+                // this should never happen
+                return "";
+        }
     }
 }
