@@ -28,3 +28,15 @@ MonoBehaviour:
   - name: 
     prefab: {fileID: 0}
     shopPrice: 9999
+  - name: Health Upgrade
+    prefab: {fileID: 1397528314866414740, guid: 449a69cebb7d141468153877f6841aa9,
+      type: 3}
+    shopPrice: 15
+  - name: Speed Upgrade
+    prefab: {fileID: 6585421367981238351, guid: d64d0a08f7c0d554795f11d198b2e0c5,
+      type: 3}
+    shopPrice: 20
+  - name: Bullet Upgrade
+    prefab: {fileID: 4348534934923345922, guid: 1202bbe3e2efd0748a6f9ddff0fc899c,
+      type: 3}
+    shopPrice: 30
