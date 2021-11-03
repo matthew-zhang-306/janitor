@@ -17,6 +17,20 @@ public class DialogueBubbleUI : BaseDialogueUI
     Vector3 offPosition;
 
     bool lineSkipped;
+    bool oldContinueInput;
+
+
+    protected override void Update() {
+        base.Update();
+
+        bool continueInput = CustomInput.GetButton("Interact");
+        if (continueInput && !oldContinueInput) {
+            Continue();
+        }
+        oldContinueInput = continueInput;
+
+        isSkipping = CustomInput.GetButton("Fire2");
+    }
 
 
     protected override IEnumerator OnStart() {

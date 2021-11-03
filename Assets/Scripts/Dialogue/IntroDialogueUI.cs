@@ -17,18 +17,9 @@ public class IntroDialogueUI : BaseDialogueUI
         continueObject.SetActive(false);
 
         dialogueText.DOKill();
-        yield return DOTween.To(
-            () => maxVisibleCharactersF,
-            f => {
-                maxVisibleCharactersF = f;
-                dialogueText.maxVisibleCharacters = (int)maxVisibleCharactersF;
-            },
-            0,
-            Mathf.Min(maxVisibleCharactersF / (scrollSpeed * 3), 0.5f)
-        ).SetEase(Ease.Linear)
-        .SetLink(gameObject)
-        .SetTarget(dialogueText)
-        .WaitForCompletion();
+        yield return dialogueText.DOFade(0f, 0.5f).SetEase(Ease.Linear).WaitForCompletion();
+        dialogueText.color = dialogueText.color.WithAlpha(1);
+        dialogueText.maxVisibleCharacters = 0;
     
         yield return new WaitForSeconds(0.1f);
     }
