@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/MidCutscene.unity
+    guid: 7bf53cd091dd252469313f9bb2c190e9
   - enabled: 0
     path: Assets/Scenes/City.unity
     guid: a2ce3c9b4dd331d4db673af1e661b653
