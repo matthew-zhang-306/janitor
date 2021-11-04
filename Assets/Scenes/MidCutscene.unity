@@ -483,13 +483,65 @@ MonoBehaviour:
   - speaker: 
     lines: 'JT. It''s me.
 
-      It looks like you''re going from Level 1 to Level
-      2.
+      We had a look at that school you cleaned last time.
 
-      This is the placeholder dialogue for when that happens.
+      Spray
+      and Praise HQ were able to salvage good material from the turrets that were
+      there.
 
-      -
-      GR'
+      As for me, I''m just glad everything went alright.
+
+      But
+      the lead that was there? Nothing.
+
+      You told us you didn''t see anything
+      there, and we searched and found nothing.
+
+      I''m not sure-
+
+      ...
+
+      Oh?
+
+      Hang
+      on.
+
+      ...
+
+      What''s this?
+
+      Ah. I see.
+
+      Forget what I
+      told you just now. I received some new intel from one of our scout agents.
+
+      And
+      this means you have a new assignment.
+
+      We have discovered a buildup of
+      grime in some tunnels underneath the school. I think they call them...
+
+      Sewers?
+
+      They''re
+      those water tunnels under the city that people maintained in the past. You''ve
+      heard of them.
+
+      The lead that Spray and Praise had earlier might have
+      actually been about those tunnels. Not the school on top.
+
+      So you might
+      have an uphill battle in front of you.
+
+      But if you can clean the sewer,
+      our lead migiht still be alive.
+
+      Consider this your most urgent task
+      yet.
+
+      Good luck.
+
+      - GR'
   speakers:
   - speakerName: 
     actor: {fileID: 0}
