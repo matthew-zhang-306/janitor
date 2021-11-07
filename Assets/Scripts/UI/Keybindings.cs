@@ -10,11 +10,21 @@ public class Keybindings : MonoBehaviour
 
     public BindingButton prefab;
 
+    void Awake()
+    {
+        if (pim == null) {
+            pim = GameObject.Find("InputMap")?.GetComponent<PlayerInputMap>();
+            if (pim == null) {
+                //if still null, find the player
+                pim = GameObject.Find("Player")?.GetComponent<PlayerInputMap>();
+            }
+        }
+    }
     void Start()
     {
         //generate keybinds here
         int itr = 0;
-        foreach (var act in pim.inputMap.actions) {
+        foreach (var act in PlayerInputMap.sInputMap.actions) {
             if (!act.name.StartsWith("Debug")) {
                 var go = Instantiate(prefab, transform);
                 go.GetComponent<RectTransform>().anchoredPosition -= new Vector2 (0, (++itr) * 100);
@@ -27,10 +37,10 @@ public class Keybindings : MonoBehaviour
     }
     void OnEnable ()
     {
-        pim.inputMap.Disable();
+        PlayerInputMap.sInputMap.Disable();
     }
     void OnDisable()
     {
-        pim.inputMap.Enable();
+        PlayerInputMap.sInputMap.Enable();
     }
 }

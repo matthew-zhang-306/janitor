@@ -16,6 +16,6 @@ public class LevelCleanBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cleanBar.value = Mathf.Clamp01(Floor.GetCleanPercent() / cleanThreshold);
+        cleanBar.value = Mathf.Clamp01(Floor.GetCleanPercent());
     }
 }

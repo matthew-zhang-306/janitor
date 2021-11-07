@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pim: {fileID: 0}
-  prefab: {fileID: 8078305124207995674, guid: d534602a5d6375944aaadd9aceff23ca, type: 3}
+  prefab: {fileID: 8078305124207995674, guid: 8f21c716fce5dec4a8f17f05a12ce7d5, type: 3}
 --- !u!1 &5475072542121715055
 GameObject:
   m_ObjectHideFlags: 0

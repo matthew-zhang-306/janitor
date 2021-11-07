@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 1273050895}
   - component: {fileID: 3954033827353741344}
   - component: {fileID: 271945634574504756}
-  - component: {fileID: 7782726570581956811}
+  - component: {fileID: 3299904139429683122}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -495,7 +495,7 @@ MonoBehaviour:
     type: 3}
   playerSpriteRenderer: {fileID: 1177657899049150887}
   spawnTime: 0.05
---- !u!114 &7782726570581956811
+--- !u!114 &3299904139429683122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
