@@ -15,6 +15,10 @@ public class Interactable : MonoBehaviour
         private set => _tooltip = value;
     }
 
+    public virtual void OnEnter(PlayerController pc, Inventory i) {}
+    public virtual void OnExit(PlayerController pc, Inventory i) {}
+
+
     public virtual void DoAction (PlayerController pc, Inventory i)
     {
         Destroy (gameObject);

@@ -22,6 +22,9 @@ public class Inventory : MonoBehaviour
     private int _money;
     public int money {get => _money; set => _money = Mathf.Clamp(value, 0, 1000);}
 
+    private int _numKeys;
+    public int numKeys { get => _numKeys; set => _numKeys = Mathf.Clamp(value, 0, 4); }
+
     private float interactBuffer = 0.5f;
     private bool canInteract = true;
 
@@ -94,6 +97,8 @@ public class Inventory : MonoBehaviour
     {
         var item = other.GetComponent<Interactable>();
         if (item != null) {
+            item.OnEnter(pc, this);
+
             if (item.autoInteract) {
                 //Should be for cash or such
                 Debug.Log ("hi there");
@@ -110,6 +115,7 @@ public class Inventory : MonoBehaviour
         var item = other.GetComponent<Interactable>();
         if (item != null) {
             if (CustomInput.GetButton("Interact")) { SoundManager.PlaySound(SoundManager.Sound.Med, 0.5f); }
+            item.OnExit(pc, this);
             recent.Remove (item);
         }
     }

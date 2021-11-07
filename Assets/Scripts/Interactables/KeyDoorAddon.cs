@@ -22,11 +22,31 @@ public class KeyDoorAddon : Interactable
         lockedOverlay.enabled = Random.Range(0f, 1f) < 0.95f;
     }
 
+    public override void OnEnter(PlayerController pc, Inventory i)
+    {
+        if (isOpen)
+            return;
+        
+        if (i.numKeys == 0) {
+            _tooltip = "Requires Key Card";
+        }
+        else {
+            _tooltip = "[e] Unlock";   
+        }
+    }
+
     public override void DoAction (PlayerController pc, Inventory i)
     {
         if (isOpen)
             return;
+        
+        if (i.numKeys == 0) {
+            // do some animation or something to indicate lockedness
+            return;
+        }
+
         isOpen = true;
+        i.numKeys -= 1;
         _tooltip = "";
 
         GetComponent<Door>().OpenDoor();

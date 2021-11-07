@@ -50,6 +50,7 @@ public class MoneyUI : MonoBehaviour
         else {
             if ((!batchFade.IsActive() || !batchFade.IsPlaying()) && _batch != 0) {
                 batchFade = DOTween.To((x) => subgroup.alpha = x, 1f, 0f, fadeTime)
+                        .SetLink(gameObject).SetTarget(this)
                         .OnComplete(()=> {_batch = 0;});
             }
             else {
