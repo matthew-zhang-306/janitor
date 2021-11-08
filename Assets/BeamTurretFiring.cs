@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BeamTurretFiring : MonoBehaviour
 {
-
-    public bool canShoot;
+    public GameObject QuadTurretManagerSprite;
+    private QuadTurretBeamVersion QuadTurretManager;
+    private bool canShoot;
     public Vector2 Offset = new Vector2(0, 0);
 
     public GameObject BeamSprite;
@@ -15,6 +16,8 @@ public class BeamTurretFiring : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        QuadTurretManager = GetComponentInParent<QuadTurretBeamVersion>();
+        canShoot = QuadTurretManager.canShoot;
         BeamAnim = BeamSprite.GetComponent<Animator>();
     }
 
@@ -22,6 +25,7 @@ public class BeamTurretFiring : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        canShoot = QuadTurretManager.canShoot;
         if (!PauseMenu.GamePaused)
         {
             if (canShoot && Stupid)
