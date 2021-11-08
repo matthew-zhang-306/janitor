@@ -131,8 +131,7 @@ public class RoomManager : MonoBehaviour
 
             ec.CanAct = true;
             ec.player = player;
-            if (ec.navigator != null)
-            {
+            if (ec.navigator != null) {
                 ec.navigator.pathfinding = pathfinding;
             }
             
@@ -164,7 +163,7 @@ public class RoomManager : MonoBehaviour
         room.SetActive(true);
 
         PlayerController.OnRestart += ResetRoom;
-
+        
         //Copy room for restart
         //should NOT include initial enemies due to binds and such
         foreach (RoomComponentCopy child in childrenCopy)
@@ -189,6 +188,8 @@ public class RoomManager : MonoBehaviour
         foreach (Transform enemyTransform in enemiesContainer) {
             InitEnemy (enemyTransform);
         }
+
+        player.weapon.target = enemiesContainer;
 
         CloseDoors();
 
