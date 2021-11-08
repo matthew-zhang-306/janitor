@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent (typeof(PlayerController))]
+// [RequireComponent (typeof(PlayerController))]
 public class PlayerInputMap : MonoBehaviour
 {
+    public static InputActionMap sInputMap;
     public InputActionMap inputMap;
 
     private InputAction moveAction;
@@ -14,39 +15,50 @@ public class PlayerInputMap : MonoBehaviour
     // private InputAction interact
     void Awake()
     {
-        inputMap.Enable();
-        // inputMap.FindAction("MoveRight").started += ctx => MoveVertical(ctx, false);
-        // inputMap.FindAction("MoveLeft").started += ctx => MoveVertical(ctx, true);
-        moveAction = inputMap.FindAction("Move");
+        if (sInputMap == null) {
+            sInputMap = inputMap;
 
-        inputMap.FindAction("Jump").started += ctx => Button(ctx, ref CustomInput.dash, true);
-        inputMap.FindAction("Jump").canceled += ctx => Button(ctx, ref CustomInput.dash, false);
-        inputMap.FindAction("Jump").performed += ctx => Button(ctx, ref CustomInput.dash, false);
-        
+            inputMap.Enable();
+            // inputMap.FindAction("MoveRight").started += ctx => MoveVertical(ctx, false);
+            // inputMap.FindAction("MoveLeft").started += ctx => MoveVertical(ctx, true);
+            moveAction = inputMap.FindAction("Move");
 
-        inputMap.FindAction("Interact").started += ctx => Button(ctx, ref CustomInput.interact, true);
-        inputMap.FindAction("Interact").canceled += ctx => Button(ctx, ref CustomInput.interact, false);
-        inputMap.FindAction("Interact").performed += ctx => Button(ctx, ref CustomInput.interact, false);
+            inputMap.FindAction("Jump").started += ctx => Button(ctx, ref CustomInput.dash, true);
+            inputMap.FindAction("Jump").canceled += ctx => Button(ctx, ref CustomInput.dash, false);
+            inputMap.FindAction("Jump").performed += ctx => Button(ctx, ref CustomInput.dash, false);
+            
 
-
-        inputMap.FindAction("Fire1").started += ctx => Button(ctx, ref CustomInput.primary, true);
-        inputMap.FindAction("Fire1").canceled += ctx => Button(ctx, ref CustomInput.primary, false);
-        inputMap.FindAction("Fire1").performed += ctx => Button(ctx, ref CustomInput.primary, false);
+            inputMap.FindAction("Interact").started += ctx => Button(ctx, ref CustomInput.interact, true);
+            inputMap.FindAction("Interact").canceled += ctx => Button(ctx, ref CustomInput.interact, false);
+            inputMap.FindAction("Interact").performed += ctx => Button(ctx, ref CustomInput.interact, false);
 
 
-        inputMap.FindAction("Fire2").started += ctx => Button(ctx, ref CustomInput.secondary, true);
-        inputMap.FindAction("Fire2").canceled += ctx => Button(ctx, ref CustomInput.secondary, false);
-        inputMap.FindAction("Fire2").performed += ctx => Button(ctx, ref CustomInput.secondary, false);
+            inputMap.FindAction("Fire1").started += ctx => Button(ctx, ref CustomInput.primary, true);
+            inputMap.FindAction("Fire1").canceled += ctx => Button(ctx, ref CustomInput.primary, false);
+            inputMap.FindAction("Fire1").performed += ctx => Button(ctx, ref CustomInput.primary, false);
 
 
-        CustomInput.reset = inputMap.FindAction("Reset");
-        CustomInput.close = inputMap.FindAction("Close");
+            inputMap.FindAction("Fire2").started += ctx => Button(ctx, ref CustomInput.secondary, true);
+            inputMap.FindAction("Fire2").canceled += ctx => Button(ctx, ref CustomInput.secondary, false);
+            inputMap.FindAction("Fire2").performed += ctx => Button(ctx, ref CustomInput.secondary, false);
 
-        #if DEVELOPMENT_BUILD || UNITY_EDITOR
 
-        CustomInput.DEBUG_roomClear = inputMap.FindAction("Debug_Clear");
+            CustomInput.reset = inputMap.FindAction("Reset");
+            CustomInput.close = inputMap.FindAction("Close");
 
-        #endif
+            #if DEVELOPMENT_BUILD || UNITY_EDITOR
+
+            CustomInput.DEBUG_roomClear = inputMap.FindAction("Debug_Clear");
+
+            #endif
+
+            DontDestroyOnLoad(this);
+        }
+        else {
+            Debug.Log(" hi there ");
+            inputMap.Disable();
+            this.enabled = false;
+        }
     }
 
     void Button (InputAction.CallbackContext ctx, ref bool tf, bool value) 
