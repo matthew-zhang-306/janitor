@@ -17,10 +17,7 @@ public class QuadTurretBeamVersion : BaseRoomObject
     // Start is called before the first frame update
     void Start()
     {
-        //QuadTurretFiring.CanShootTrue(true);
         canRotate = false;
-        //BeamTurret = GetComponentInChildren<BeamTurretFiring>();
-        //BeamTurret.canShoot = canShoot;
         QuadAnim = QuadTurretSprite.GetComponent<Animator>();
 
         StartCoroutine("Cooldown");
@@ -28,6 +25,12 @@ public class QuadTurretBeamVersion : BaseRoomObject
         if ((IsRoomActive || ignoreRoomStatus))
         {
             canShoot = true;
+            canRotate = true;
+        }
+        else
+        {
+            canShoot = false;
+            canRotate = false;
         }
     }
 
