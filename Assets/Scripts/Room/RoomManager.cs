@@ -28,6 +28,8 @@ public class RoomManager : MonoBehaviour
     private Hitbox roomTriggerHitbox;
 
     public Canvas roomUI;
+    public LevelCleanBar cleanUIPrefab;
+
     public Cinemachine.CinemachineVirtualCamera vcam;
 
     private List<RoomComponentCopy> childrenCopy;
@@ -51,6 +53,8 @@ public class RoomManager : MonoBehaviour
     public RoomDelegate onRoomReset;
     public static RoomDelegate OnEnter;
     public static RoomDelegate OnClear;
+    public RoomDelegate roomSpecificOnEnter;
+    public RoomDelegate roomSpecificOnClear;
 
     public FloorController dirtyTiles;
     public Pathfinding pathfinding;
@@ -115,6 +119,16 @@ public class RoomManager : MonoBehaviour
         roomUI.enabled = false;
         vcam.Priority = 0;
         vcam.Follow = player.cameraPos;
+
+        if (cleanUIPrefab) {
+            var ui = Instantiate(cleanUIPrefab, roomUI.transform);
+            ui.floor = dirtyTiles;
+            ui.gameObject.SetActive(true);
+            
+            cleanUIPrefab = ui;
+        }
+            
+
     }
 
     public void PrepareForEnemy() {
@@ -131,8 +145,7 @@ public class RoomManager : MonoBehaviour
 
             ec.CanAct = true;
             ec.player = player;
-            if (ec.navigator != null)
-            {
+            if (ec.navigator != null) {
                 ec.navigator.pathfinding = pathfinding;
             }
             
@@ -160,11 +173,12 @@ public class RoomManager : MonoBehaviour
         if (roomState == RoomState.ACTIVE) {
             return;
         }
+
         roomState = RoomState.ACTIVE;
         room.SetActive(true);
 
         PlayerController.OnRestart += ResetRoom;
-
+        
         //Copy room for restart
         //should NOT include initial enemies due to binds and such
         foreach (RoomComponentCopy child in childrenCopy)
@@ -173,7 +187,14 @@ public class RoomManager : MonoBehaviour
         }
         floorCopy = dirtyTiles.SaveFloor();
 
+
+
         OnEnter?.Invoke(player, this);
+        roomSpecificOnEnter?.Invoke(player, this);
+
+        
+        //UI stuff do after OnEnter as Wave might add to UI as well
+        cleanUIPrefab.AddGoal(roomClearThreshold);
 
         //Activate the Room Objects
         foreach (BaseRoomObject roomObject in RoomObjects)
@@ -190,10 +211,14 @@ public class RoomManager : MonoBehaviour
             InitEnemy (enemyTransform);
         }
 
+        player.weapon.target = enemiesContainer;
+
         CloseDoors();
 
         roomUI.enabled = true;
         vcam.Priority = 20;
+
+        
     }
 
     private void ResetRoom (PlayerController player) {
@@ -239,6 +264,7 @@ public class RoomManager : MonoBehaviour
 
         
         OnClear?.Invoke(player, this);
+        roomSpecificOnClear?.Invoke(player, this);
         // InteractableSpawner.i.SpawnItem("Health Pickup", player.transform.position);
         
         //Cancel enemy spawn here
