@@ -58,9 +58,10 @@ public class LevelCleanBar : MonoBehaviour
     }
     public void Clear ()
     {
+        Debug.Log("clearing room flags");
         //Clear previous wave (use for when resetting)
         foreach (Transform flags in flagParent) {
-            Destroy(flags);
+            Destroy(flags.gameObject);
         }
     }
 
