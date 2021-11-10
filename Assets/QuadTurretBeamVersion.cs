@@ -20,12 +20,11 @@ public class QuadTurretBeamVersion : BaseRoomObject
         canRotate = false;
         QuadAnim = QuadTurretSprite.GetComponent<Animator>();
 
-        StartCoroutine("Cooldown");
+        
 
         if ((IsRoomActive || ignoreRoomStatus))
         {
-            canShoot = true;
-            canRotate = true;
+            StartCoroutine("Cooldown");
         }
         else
         {
@@ -37,7 +36,7 @@ public class QuadTurretBeamVersion : BaseRoomObject
     // Update is called once per frame
     void Update()
     {
-        if (!PauseMenu.GamePaused)
+        if (!PauseMenu.GamePaused && (IsRoomActive || ignoreRoomStatus))
         {
             //BeamTurret.canShoot = canShoot;
 
@@ -46,6 +45,12 @@ public class QuadTurretBeamVersion : BaseRoomObject
             transform.Rotate(0, 0, .15f);
             }
             
+        }
+        else
+        {
+            canShoot = false;
+            canRotate = false;
+            StopAllCoroutines();
         }
 
     }
