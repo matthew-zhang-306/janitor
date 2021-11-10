@@ -97,6 +97,7 @@ public class CatEnemy : BaseEnemy
         navigator.Stop();
 
         animator.Play("SkelekittyAttack");
+        SoundManager.PlaySound(SoundManager.Sound.Kitty, 0.3f);
         yield return new WaitForSeconds(chargeTime);
         
         Instantiate(shockwavePrefab, transform.position, Quaternion.identity);

@@ -21,8 +21,12 @@ public static class SoundManager {
         Diaper,
         Kitty,
         Snake,
-        Damage
-
+        Damage,
+        Walk,
+        SlimeBarrel,
+        Coin,
+        BunnyAttack,
+        Barrel,
     }
     public static void PlaySound(Sound sound, float SEvolume)
     {
@@ -32,6 +36,17 @@ public static class SoundManager {
         audioSource.PlayOneShot(ac, SEvolume);
         Object.Destroy(soundGameObject, ac.length);
     }
+
+    public static void PlaySoundBroom(Sound sound, Sound sound2, float SEvolume) {
+        Sound[] list = { sound, sound2 };
+        GameObject soundGameObject = new GameObject("Sound");
+        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        var number = Random.Range(0, list.Length);
+        var ac = GetAudioClip(list[number]);
+        audioSource.PlayOneShot(ac, SEvolume);
+        Object.Destroy(soundGameObject, ac.length);
+    }
+
 
 
     private static AudioClip GetAudioClip(Sound sound)
@@ -47,5 +62,7 @@ public static class SoundManager {
         return null;
     }
 
-    
+   private static IEnumerator Wait() {
+        yield return new WaitForSeconds(1f);
+    }
 }

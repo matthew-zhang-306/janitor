@@ -14,6 +14,7 @@ public class BarrelExplosion : MonoBehaviour
         {
             barrel.SetActive(false);
             explosion.SetActive(true);
+            SoundManager.PlaySound(SoundManager.Sound.Barrel, 1f);
         }
     }
 }

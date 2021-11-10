@@ -6,7 +6,6 @@ public class DustBunnyEnemy : BaseEnemy
 {
     private bool shouldPickAction;
 
-    public AudioSource bunnyAttack;
     public AudioSource bunnyMove;
     public float moveSpeed;
     public float fireRate;
@@ -93,7 +92,6 @@ public class DustBunnyEnemy : BaseEnemy
 
             navigator.canNavigate = true;
             navigator.SetDestination(player.transform.position, null);
-            bunnyMove.Play();
 
             yield return new WaitForSeconds(0.5f);
         }
@@ -113,7 +111,7 @@ public class DustBunnyEnemy : BaseEnemy
             animator.Play("BunnyIdle");
             var bulletRot = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, player.transform.position - transform.position));
             GameObject.Instantiate(bullet, transform.position, bulletRot).GetComponent<Rigidbody2D>().velocity = bulletRot * Vector2.right * bulletSpeed;
-            bunnyAttack.Play();
+            SoundManager.PlaySound(SoundManager.Sound.BunnyAttack, 1f);
 
             yield return new WaitForSeconds(1 / fireRate - 0.25f);
         }
