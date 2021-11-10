@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 3668824906190789108}
   - component: {fileID: 3668824906190789111}
   - component: {fileID: 3668824906190789110}
+  - component: {fileID: 3040118815770930187}
   m_Layer: 10
   m_Name: Snake
   m_TagString: Enemy
@@ -272,8 +273,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f4bb461a5785a4abaae4e8b7672e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 20
   currentHealth: 1
+--- !u!114 &3040118815770930187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668824906190789109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c8689a17a999545ae4163ea410ea68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
+  - name: Bullet Upgrade
+    probability: 0.03
+  - name: Speed Upgrade
+    probability: 0.03
+  - name: Health Upgrade
+    probability: 0.04
+  - name: 
+    probability: 0.5
+  - name: HealthKit
+    probability: 0.15
+  - name: Coin10
+    probability: 0.15
 --- !u!1 &9183987741354225838
 GameObject:
   m_ObjectHideFlags: 0
