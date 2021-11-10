@@ -22,20 +22,26 @@ public class RoomWaveAddon : MonoBehaviour
     {
         enemyTypes = enemyTypesSO.GetEnemyTypes();
 
-        StartCoroutine (WaitForRoom ());
+        // StartCoroutine (WaitForRoom ());
+        roomManager.roomSpecificOnEnter += WaitForRoom;
+
         roomManager.onRoomReset += (a, b) => {
             StopAllCoroutines();
-            StartCoroutine (WaitForRoom ());
+            // StartCoroutine (WaitForRoom ());
         };
+
+        
     }
 
-    public IEnumerator WaitForRoom ()
+    public void WaitForRoom (PlayerController a, RoomManager r)
     {
-        yield return new WaitUntil (() => roomManager.IsRoomActive);
+        // yield return new WaitUntil (() => roomManager.IsRoomActive);
 
         var tm = roomManager.dirtyTiles.gameObject.GetComponent<Tilemap>();
+        roomManager.cleanUIPrefab?.Clear();
         foreach (var wave in waves) {
             foreach (var waveSpawn in wave.spawns) {
+                roomManager.cleanUIPrefab?.AddWave(wave.thresh);
                 StartCoroutine(SetWaveSpawn(waveSpawn, wave.thresh, tm));
             }
         }

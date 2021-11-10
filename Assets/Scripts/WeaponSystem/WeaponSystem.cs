@@ -35,6 +35,10 @@ public class WeaponSystem : Upgradeable
 
     [SerializeField] private bool ZeroAmmoStart;
 
+    [Header("1 for 100% snap to target, 0 for none. ")]
+    [SerializeField] private float aimAssist; 
+    [HideInInspector] public Transform target;
+    
     public BaseWeapon weapon;
     // Start is called before the first frame update
     void Start()
@@ -63,6 +67,24 @@ public class WeaponSystem : Upgradeable
         Vector2 dir = (hit - transform.position).ToVector2().normalized;
         #endif
 
+        //Aim assist here
+        //Get distance and angle from player to each enemy
+        if (aimAssist > 0.05 && target) {
+
+            //Priorty to Closest Enemy
+            var best = (dir, 1000f);
+
+            foreach (Transform enemy in target) {
+                var dist = Vector2.Distance(enemy.position, transform.position);
+                var angle = Vector2.Angle(dir, enemy.position - transform.position);
+                if (best.Item2 > dist && Mathf.Deg2Rad * angle < aimAssist) {
+                    best = ((enemy.position - transform.position).ToVector2(), dist);
+                }
+
+            }
+            dir = best.Item1;
+        }
+        dir.Normalize();
         
         this.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, dir));
         //well we should probs consider top and bottom rotations too

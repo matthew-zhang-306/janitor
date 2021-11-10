@@ -36,7 +36,6 @@ public class HoleDecorator : MonoBehaviour
 
     public void AddHole (Vector3Int cell)
     {
-        Debug.Log("Adding hole");
         holeSet.Add (cell);
     }
 

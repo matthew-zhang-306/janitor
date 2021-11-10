@@ -37,9 +37,8 @@ public class BaseDialogueUI : MonoBehaviour
     public float commaPauseAmount = 2f;
 
     protected Coroutine dialogueCoroutine;
-    protected bool advanceInput;
-    protected bool oldAdvanceInput;
-    protected bool skipInput;
+    protected bool isContinuing;
+    protected bool isSkipping;
 
     public UnityEvent OnDialogueEnd;
 
@@ -49,13 +48,10 @@ public class BaseDialogueUI : MonoBehaviour
     }
 
     protected virtual void Update() {
-        GetInput();
     }
 
-    protected virtual void GetInput() {
-        oldAdvanceInput = advanceInput;
-        advanceInput = CustomInput.GetButton("Fire1");
-        skipInput = CustomInput.GetButton("Fire2");
+    public virtual void Continue() {
+        isContinuing = true;
     }
 
 
@@ -80,7 +76,7 @@ public class BaseDialogueUI : MonoBehaviour
 
             foreach (string line in lines.lines.Split('\n')) {
                 // reset input to not carry over an input from the previous dialogue bubble into this one
-                GetInput();
+                isContinuing = false;
 
                 yield return StartCoroutine(OnStartLine());
                 yield return StartCoroutine(DisplayLine(line));
@@ -99,9 +95,9 @@ public class BaseDialogueUI : MonoBehaviour
 
         float scrollTimer = 1;
         while (dialogueText.maxVisibleCharacters < line.Length) {
-            if ((advanceInput && !oldAdvanceInput) || skipInput) {
+            if (isContinuing || isSkipping) {
                 dialogueText.maxVisibleCharacters = line.Length;
-                oldAdvanceInput = advanceInput;
+                isContinuing = false;
             } else {
                 scrollTimer -= scrollSpeed * Time.deltaTime;
                 while (scrollTimer <= 0) {
@@ -123,18 +119,18 @@ public class BaseDialogueUI : MonoBehaviour
 
         continueObject.SetActive(true);
 
-        while (!(advanceInput && !oldAdvanceInput) && !skipInput) {
+        while (!isContinuing && !isSkipping) {
             yield return 0;
         }
 
-        if (skipInput) {
+        if (isSkipping) {
             yield return StartCoroutine(OnSkip());
         }
         else {
             yield return StartCoroutine(OnContinue());
         }
 
-        oldAdvanceInput = advanceInput;
+        isContinuing = false;
     }
 
     protected virtual IEnumerator OnStart() {
