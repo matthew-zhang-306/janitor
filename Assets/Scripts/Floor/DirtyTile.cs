@@ -32,7 +32,7 @@ public class DirtyTile : Tile
         dup = tilemap.GetTile<DirtyTile>(l4)?.dirtyLevel ?? 0;
         ddown = tilemap.GetTile<DirtyTile>(l3)?.dirtyLevel ?? 0;
 
-        
+
         RefreshIfIsLower (l1, tilemap);
         RefreshIfIsLower (l2, tilemap);
         RefreshIfIsLower (l3, tilemap);
@@ -46,7 +46,7 @@ public class DirtyTile : Tile
         // red.Apply(true);
 
         base.GetTileData(position, tilemap, ref tileData);
-        tileData.sprite = sprites[dup,ddown,dright,dleft];
+        // tileData.sprite = sprites[dup,ddown,dright,dleft];
 
     }
 
