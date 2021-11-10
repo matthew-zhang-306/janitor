@@ -149,13 +149,13 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -203,6 +203,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -211,9 +223,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 200
-        width: 40
-        height: 40
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,10 +243,10 @@ TextureImporter:
       name: slime_floor_continuous_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 200
-        width: 40
-        height: 40
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,10 +264,10 @@ TextureImporter:
       name: slime_floor_continuous_2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 200
-        width: 40
-        height: 40
+        x: 64
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,10 +285,10 @@ TextureImporter:
       name: slime_floor_continuous_3
       rect:
         serializedVersion: 2
-        x: 120
-        y: 200
-        width: 40
-        height: 40
+        x: 96
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,10 +306,10 @@ TextureImporter:
       name: slime_floor_continuous_4
       rect:
         serializedVersion: 2
-        x: 160
-        y: 200
-        width: 40
-        height: 40
+        x: 128
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,10 +327,10 @@ TextureImporter:
       name: slime_floor_continuous_5
       rect:
         serializedVersion: 2
-        x: 200
-        y: 200
-        width: 40
-        height: 40
+        x: 160
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,9 +349,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
-        width: 40
-        height: 40
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -357,10 +369,10 @@ TextureImporter:
       name: slime_floor_continuous_7
       rect:
         serializedVersion: 2
-        x: 40
-        y: 160
-        width: 40
-        height: 40
+        x: 32
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,10 +390,10 @@ TextureImporter:
       name: slime_floor_continuous_8
       rect:
         serializedVersion: 2
-        x: 80
-        y: 160
-        width: 40
-        height: 40
+        x: 64
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -399,10 +411,10 @@ TextureImporter:
       name: slime_floor_continuous_9
       rect:
         serializedVersion: 2
-        x: 120
-        y: 160
-        width: 40
-        height: 40
+        x: 96
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -420,10 +432,10 @@ TextureImporter:
       name: slime_floor_continuous_10
       rect:
         serializedVersion: 2
-        x: 160
-        y: 160
-        width: 40
-        height: 40
+        x: 128
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -441,10 +453,10 @@ TextureImporter:
       name: slime_floor_continuous_11
       rect:
         serializedVersion: 2
-        x: 200
-        y: 160
-        width: 40
-        height: 40
+        x: 160
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -463,9 +475,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 120
-        width: 40
-        height: 40
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -483,10 +495,10 @@ TextureImporter:
       name: slime_floor_continuous_13
       rect:
         serializedVersion: 2
-        x: 40
-        y: 120
-        width: 40
-        height: 40
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -504,10 +516,10 @@ TextureImporter:
       name: slime_floor_continuous_14
       rect:
         serializedVersion: 2
-        x: 80
-        y: 120
-        width: 40
-        height: 40
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -525,10 +537,10 @@ TextureImporter:
       name: slime_floor_continuous_15
       rect:
         serializedVersion: 2
-        x: 120
-        y: 120
-        width: 40
-        height: 40
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -546,10 +558,10 @@ TextureImporter:
       name: slime_floor_continuous_16
       rect:
         serializedVersion: 2
-        x: 160
-        y: 120
-        width: 40
-        height: 40
+        x: 128
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -567,10 +579,10 @@ TextureImporter:
       name: slime_floor_continuous_17
       rect:
         serializedVersion: 2
-        x: 200
-        y: 120
-        width: 40
-        height: 40
+        x: 160
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -589,9 +601,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
-        width: 40
-        height: 40
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -609,10 +621,10 @@ TextureImporter:
       name: slime_floor_continuous_19
       rect:
         serializedVersion: 2
-        x: 40
-        y: 80
-        width: 40
-        height: 40
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -630,10 +642,10 @@ TextureImporter:
       name: slime_floor_continuous_20
       rect:
         serializedVersion: 2
-        x: 80
-        y: 80
-        width: 40
-        height: 40
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -651,10 +663,10 @@ TextureImporter:
       name: slime_floor_continuous_21
       rect:
         serializedVersion: 2
-        x: 120
-        y: 80
-        width: 40
-        height: 40
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -672,10 +684,10 @@ TextureImporter:
       name: slime_floor_continuous_22
       rect:
         serializedVersion: 2
-        x: 160
-        y: 80
-        width: 40
-        height: 40
+        x: 128
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -693,10 +705,10 @@ TextureImporter:
       name: slime_floor_continuous_23
       rect:
         serializedVersion: 2
-        x: 200
-        y: 80
-        width: 40
-        height: 40
+        x: 160
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -715,9 +727,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 40
-        width: 40
-        height: 40
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -735,10 +747,10 @@ TextureImporter:
       name: slime_floor_continuous_25
       rect:
         serializedVersion: 2
-        x: 40
-        y: 40
-        width: 40
-        height: 40
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -756,10 +768,10 @@ TextureImporter:
       name: slime_floor_continuous_26
       rect:
         serializedVersion: 2
-        x: 80
-        y: 40
-        width: 40
-        height: 40
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -777,10 +789,10 @@ TextureImporter:
       name: slime_floor_continuous_27
       rect:
         serializedVersion: 2
-        x: 120
-        y: 40
-        width: 40
-        height: 40
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -798,10 +810,10 @@ TextureImporter:
       name: slime_floor_continuous_28
       rect:
         serializedVersion: 2
-        x: 160
-        y: 40
-        width: 40
-        height: 40
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -819,10 +831,10 @@ TextureImporter:
       name: slime_floor_continuous_29
       rect:
         serializedVersion: 2
-        x: 200
-        y: 40
-        width: 40
-        height: 40
+        x: 160
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -842,8 +854,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 40
-        height: 40
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -861,10 +873,10 @@ TextureImporter:
       name: slime_floor_continuous_31
       rect:
         serializedVersion: 2
-        x: 40
+        x: 32
         y: 0
-        width: 40
-        height: 40
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -882,10 +894,10 @@ TextureImporter:
       name: slime_floor_continuous_32
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 40
-        height: 40
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -903,10 +915,10 @@ TextureImporter:
       name: slime_floor_continuous_33
       rect:
         serializedVersion: 2
-        x: 120
+        x: 96
         y: 0
-        width: 40
-        height: 40
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -924,10 +936,10 @@ TextureImporter:
       name: slime_floor_continuous_34
       rect:
         serializedVersion: 2
-        x: 160
+        x: 128
         y: 0
-        width: 40
-        height: 40
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -945,10 +957,10 @@ TextureImporter:
       name: slime_floor_continuous_35
       rect:
         serializedVersion: 2
-        x: 200
+        x: 160
         y: 0
-        width: 40
-        height: 40
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

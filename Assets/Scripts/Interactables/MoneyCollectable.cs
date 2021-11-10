@@ -11,7 +11,7 @@ public class MoneyCollectable : Interactable
     }
     public override void DoAction (PlayerController pc, Inventory i)
     {
-        autoInteract = false;
+        if (!this.GetComponent<Collider2D>().enabled) return;
         this.GetComponent<Collider2D>().enabled = false;
 
         i.money += amount;
