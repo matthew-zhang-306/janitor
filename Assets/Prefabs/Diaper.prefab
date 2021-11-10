@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3514881736578162417}
   - component: {fileID: 3514881736578162416}
   - component: {fileID: 828717387934299738}
+  - component: {fileID: 8956078687640686275}
   m_Layer: 10
   m_Name: Diaper
   m_TagString: Untagged
@@ -106,8 +107,6 @@ MonoBehaviour:
   chargeAcceleration: 2
   chargeTurnSpeed: 1
   chargeStartTime: 0.5
-  flightBobAmount: 0.1
-  flightBobTime: 0.5
   explosionTrigger: {fileID: 3514881737719861980}
   explosionPrefab: {fileID: 1563058234831587846, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
     type: 3}
@@ -141,6 +140,25 @@ MonoBehaviour:
   canNavigate: 0
   unitSize: 1
   speed: 0
+--- !u!114 &8956078687640686275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3514881736578162423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c8689a17a999545ae4163ea410ea68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
+  - name: 
+    probability: 0.75
+  - name: HealthKit
+    probability: 0.125
+  - name: Coin10
+    probability: 0.125
 --- !u!1 &3514881736770068077
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +284,7 @@ Animator:
   m_GameObject: {fileID: 3514881736801281933}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b632b20f7f90a9e4da2a73c1a2d2fd95, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

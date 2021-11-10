@@ -15,7 +15,8 @@ public class MoneyCollectable : Interactable
         this.GetComponent<Collider2D>().enabled = false;
 
         i.money += amount;
-        
+        SoundManager.PlaySound(SoundManager.Sound.Coin, 1f);
+
         Destroy (gameObject);
     }
 }

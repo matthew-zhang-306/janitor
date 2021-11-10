@@ -99,7 +99,7 @@ public class DiaperEnemy : BaseEnemy
         GetComponent<Collider2D>().enabled = false;
         floorMarker.GetComponent<FloorMarker>().markAmount *= 10;
         rb2d.velocity = Vector2.zero;
-        SoundManager.PlaySound(SoundManager.Sound.Diaper, 1f);
+        SoundManager.PlaySound(SoundManager.Sound.Diaper, 1.5f);
         // step 3: charge
         while (!explosionTrigger.IsColliding) {
             chargeDirection = (player.transform.position - transform.position).normalized;

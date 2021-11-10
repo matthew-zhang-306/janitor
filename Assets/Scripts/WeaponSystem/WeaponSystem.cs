@@ -116,7 +116,7 @@ public class WeaponSystem : Upgradeable
             Swing (dir);
             //meleeSound.clip = meleeEffects[Random.Range(0, meleeEffects.Length)];
             //meleeSound.Play();
-            SoundManager.PlaySound(SoundManager.Sound.Broom, SettingsMenu.SEvolume);
+            SoundManager.PlaySoundBroom(SoundManager.Sound.Broom1, SoundManager.Sound.Broom, 0.4f);
             m_ftime = 0;
         }
         m_ftime += Time.deltaTime;
@@ -177,6 +177,4 @@ public class WeaponSystem : Upgradeable
             Ammo += value * ammoRestorationScale;
         };
     }
-
-   
 }

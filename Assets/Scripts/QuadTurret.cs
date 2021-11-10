@@ -34,7 +34,7 @@ public class QuadTurret : MonoBehaviour
     {
         QuadTurretFiring.canShoot = true;
         QuadAnim.SetTrigger("Firing");
-        //SoundManager.PlaySound(SoundManager.Sound.Quad, 0.5f);
+        if (this.GetComponentInChildren<QuadTurretFiring>().PlayerInRange == true) { SoundManager.PlaySound(SoundManager.Sound.Quad, 0.5f); }
         canRotate = true;
         yield return new WaitForSeconds(5);
         StartCoroutine("Cooldown");

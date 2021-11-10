@@ -31,6 +31,9 @@ public class ShopUI : MonoBehaviour
     Tween closeTween;
     public float fadeDuration = 0.5f;
 
+    public GameObject MoneyFail;
+    public GameObject Sucker;
+
     void Awake()
     {
         render = this.GetComponent<CanvasGroup>();
@@ -93,12 +96,13 @@ public class ShopUI : MonoBehaviour
         if (CustomInput.GetButton("Close"))
         {
             Close();
-
+            
         }
     }
 
     public void Close ()
     {
+        
         closeTween?.Kill();
         closeTween = DOTween.To(() => render.alpha, x => render.alpha = (float) x, 0f, fadeDuration).SetUpdate(true);
         this.Invoke(() => {
@@ -133,11 +137,14 @@ public class ShopUI : MonoBehaviour
                 Debug.Log("confirming");
                 playerInventory.money -= price;
                 Spawn (focusedItem);
-
+                Sucker.SetActive(true);
                 DeFocus();
             }
             else {
                 Debug.Log ("Buy failed");
+                //not enough money onboarding
+                MoneyFail.SetActive(true);
+
             }
         }
     }
@@ -147,4 +154,6 @@ public class ShopUI : MonoBehaviour
         confirmMenu.SetActive(false);
         focusedItem = "";
     }
+
+
 }

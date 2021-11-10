@@ -11,7 +11,7 @@ public class MasterVolume : MonoBehaviour
     private int firstPlayInt;
     public Slider backgroundSlider, soundEffectsSlider;
     private float backgroundFloat, soundEffectsFloat;
-    public AudioSource backgroundAudio;
+    public AudioSource[] backgroundAudio;
     public AudioSource[] soundEffectsAudio;
 
     void Start()
@@ -53,7 +53,10 @@ public class MasterVolume : MonoBehaviour
 
     public void UpdateSound()
     {
-        backgroundAudio.volume = backgroundSlider.value;
+        for (int i = 0; i < backgroundAudio.Length; i++)
+        {
+            backgroundAudio[i].volume = backgroundSlider.value;
+        }
 
         for(int i = 0; i < soundEffectsAudio.Length; i++)
         {
