@@ -46,13 +46,16 @@ public class PlayerInputMap : MonoBehaviour
             CustomInput.reset = inputMap.FindAction("Reset");
             CustomInput.close = inputMap.FindAction("Close");
 
+            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(gameObject);
+
             #if DEVELOPMENT_BUILD || UNITY_EDITOR
 
             CustomInput.DEBUG_roomClear = inputMap.FindAction("Debug_Clear");
 
             #endif
 
-            DontDestroyOnLoad(this);
+            
         }
         else {
             Debug.Log(" hi there ");

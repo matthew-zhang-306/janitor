@@ -6,36 +6,56 @@ using UnityEngine.Tilemaps;
 public class DirtyTile : Tile
 {
     [SerializeField] private int dirtyLevel = 0;
+
+    [HideInInspector]
+    public Sprite[,,,] sprites = new Sprite[4,4,4,4];
+
+    private int dup;
+    private int ddown;
+    private int dleft;
+    private int dright;
+
     public override void RefreshTile(Vector3Int position, ITilemap tilemap)
     {
         // this.sprite = null;
         base.RefreshTile(position, tilemap);
-        for (int xd = -1; xd <= 1; xd++) {
-            for (int yd = -1; yd <= 1; yd++) {
-                if (yd == xd && xd == 0) {
-                    continue;
-                }
-                Vector3Int location = new Vector3Int(position.x + xd, position.y + yd, position.z);
-                if (IsLower (location, tilemap)) {
-                    tilemap.RefreshTile(location);
-                }
-            }
-        }
+
+        //loop unrolled for optim
+        var l1 = new Vector3Int(position.x + 1, position.y, position.z);
+        var l2 = new Vector3Int(position.x - 1, position.y, position.z);
+        var l3 = new Vector3Int(position.x, position.y + 1, position.z);
+        var l4 = new Vector3Int(position.x, position.y - 1, position.z);
+
+        
+        dright = tilemap.GetTile<DirtyTile>(l1)?.dirtyLevel ?? 0;
+        dleft = tilemap.GetTile<DirtyTile>(l2)?.dirtyLevel ?? 0;
+        dup = tilemap.GetTile<DirtyTile>(l4)?.dirtyLevel ?? 0;
+        ddown = tilemap.GetTile<DirtyTile>(l3)?.dirtyLevel ?? 0;
+
+
+        RefreshIfIsLower (l1, tilemap);
+        RefreshIfIsLower (l2, tilemap);
+        RefreshIfIsLower (l3, tilemap);
+        RefreshIfIsLower (l4, tilemap);
     }
 
-    // public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
-    // {
-    //     Texture2D red = new Texture2D (1, 1, TextureFormat.RGBA32, 1, true);
-    //     red.SetPixel(0,0, Color.red);
-    //     red.Apply(true);
-
-    //     tileData.sprite = Sprite.Create(red, new Rect(0,0,1,1), Vector2.one / 2f, 2);
-    //     // base.GetTileData(position, tilemap, ref tileData);
-    // }
-
-    private bool IsLower(Vector3Int pos, ITilemap tm) 
+    public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
     {
+        // Texture2D red = new Texture2D (1, 1, TextureFormat.RGBA32, 1, true);
+        // red.SetPixel(0,0, Color.red);
+        // red.Apply(true);
 
+        base.GetTileData(position, tilemap, ref tileData);
+        // tileData.sprite = sprites[dup,ddown,dright,dleft];
+
+    }
+
+    private bool RefreshIfIsLower(Vector3Int pos, ITilemap tm) 
+    {
+        var t = tm.GetTile<DirtyTile>(pos);
+        if ((t?.dirtyLevel ?? 100) < this.dirtyLevel) {
+            t.RefreshTile(pos, tm);
+        }
         return true;
     }
     

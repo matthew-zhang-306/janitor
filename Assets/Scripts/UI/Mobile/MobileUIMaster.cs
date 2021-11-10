@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 [RequireComponent (typeof (Canvas))]
 public class MobileUIMaster : MonoBehaviour
@@ -11,7 +13,9 @@ public class MobileUIMaster : MonoBehaviour
     void Start ()
     {
         #if (UNITY_ANDROID || UNITY_IPHONE)
-        cam = this.GetComponent<Canvas>().worldCamera;        
+        cam = this.GetComponent<Canvas>().worldCamera;    
+        EnhancedTouchSupport.Enable();
+    
         #else
         this.gameObject.SetActive(false);
         #endif
@@ -19,21 +23,24 @@ public class MobileUIMaster : MonoBehaviour
     }
     void Update ()
     {
+        var touches = UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches;
         foreach (var ui in elements) {
             bool used = false;
-            for (int i = 0; i < Input.touchCount; i++) 
-            {
-                var touch = Input.GetTouch (i);
 
-                var worldPos = cam.ScreenToWorldPoint(touch.position);
-                if (ui.Within(touch.position, cam))
-                {
-                    ui.Apply(touch.position, cam);
+            for (int i = 0; i < touches.Count; i++) 
+            {
+                var touch = touches[i];
+
+                var worldPos = cam.ScreenToWorldPoint(touch.screenPosition);
+                if (ui.Within(touch.screenPosition, cam)) {
+                
+                    ui.Apply(touch.screenPosition, cam);
                     used = true;
                     //one touch per elem
-                    break;
+                    
                 }
             }   
+
             if (!used)
             {
                 ui.Reset();

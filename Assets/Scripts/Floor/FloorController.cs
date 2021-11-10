@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System;
+using System.IO;
+
 public class FloorMarkerData
 {
     public FloorMarker floorMarker;
@@ -23,7 +25,7 @@ public class FloorController : MonoBehaviour
 
     private Tilemap tm;
     private static DirtyTile[][] tiles = null;
-    private static Sprite[][] sprites = null;
+    private static Sprite[][][,,,] sprites = null;
     public int maxTileHealth = 3;
     private Dictionary<Collider2D, FloorMarkerData> floorMarkers;
 
@@ -58,7 +60,7 @@ public class FloorController : MonoBehaviour
             
             //Load sprite
             //Lower number is lower health
-            sprites = new Sprite[maxTileHealth + 1][];
+            sprites = new Sprite[maxTileHealth + 1][][,,,];
 
             //Size refers the the original texture size (non cut)
             int size = original[0].texture.width;
@@ -69,31 +71,103 @@ public class FloorController : MonoBehaviour
 
             sideLength = (int) Math.Sqrt (original.Length);
 
+            int tilesize = size / sideLength;
+
             if (original.Length - sideLength * sideLength != 0) {
                 Debug.LogError("Sprite sheet slice went wrong");
             }
 
             //honestly I have no clue how pivot works but eh I think this does it
             float pivot = original[0].pivot.x / (size / sideLength);
-            
+            byte ratio = (byte) ((1f / maxTileHealth) * 0.65f * 255);
             for (int i = 0; i < maxTileHealth + 1; i++) {
-                sprites[i] = new Sprite[original.Length];
-                ////May need to look into removing these texture on destroy in case it sticks in memory for some reason
-                Texture2D text = new Texture2D(size, size, TextureFormat.RGBA32, 1, true);
                 
-                var colors = original[0].texture.GetPixels();
-                for (int j = 0; j < colors.Length; j++) {
-                    colors[j].a = i * (1f / maxTileHealth) * 0.65f;
-                }
-                text.SetPixels(colors);
-                text.Apply(true);
-
-                //Create sprites sheet for each layer here. 
+                sprites[i] = new Sprite[original.Length][,,,];
                 for (int j = 0; j < original.Length; j++) {
-                    sprites[i][j] = Sprite.Create(text, original[j].rect, new Vector2(pivot,pivot), 2 * size / sideLength);
+                    sprites[i][j] = new Sprite[4,4,4,4];
                 }
-                
+                for (int up = 0; up < 4; up ++) {      
+                for (int down = 0; down < 4; down++) {
+                for (int left = 0; left < 4; left++) {
+                for (int right = 0; right < 4; right ++) {
+                    Texture2D text = new Texture2D(size, size, TextureFormat.RGBA32, 0, true);
+
+                    var colors = original[0].texture.GetPixels32();
+                    // Debug.Log(colors.Length);
+                    // Debug.Log(sideLength);
+                    // Debug.Log(tilesize);
+                    // return;
+                    //Bleed over textures (if neighbors have higher dirt, then current tile gets dirt)
+                    for (int k = 0; k < colors.Length; k++) {
+                        
+                        // colors[k] = Color.black;
+                        colors[k].a = (byte) (i * ratio);
+                        //change to local coords
+                        //Shift left
+                        int row = (size - (k / size) - 1) % tilesize;
+                        int col = (size - (k % size) - 1) % tilesize;
+
+                        // if (row == col) {
+                        //     if (row > 3) {
+                        //         colors[k] = Color.black;
+                        //     }
+                        //     else {
+                        //         colors[k] = Color.white;
+
+                        //     }   
+                        // }
+
+                        if (up > i) {
+                            if (row > 2 * tilesize / 3) {
+                                // colors[k] = Color.blue;
+                                colors[k].a = (byte) (up * ratio);
+                            }
+                        }
+                        if (down > i) {
+                            if (row < tilesize / 3) {
+                                // colors[k] = Color.red;
+                                colors[k].a = (byte) (right * ratio);
+                            }
+                        }
+                        if (right > i) {
+                            if (col > 2 * tilesize / 3) {
+                                // colors[k] = Color.green;
+                                colors[k].a = (byte) (down * ratio);
+
+                            }
+                        }
+                        if (left > i) {
+                            if (col < tilesize / 3) {
+                                // colors[k] = Color.yellow;
+                                colors[k].a = (byte) (left * ratio);
+
+                            }
+                        }
+                    }
+
+                    text.SetPixels32(colors);
+                    text.Apply(true);
+
+                    //then Save To Disk as PNG
+                    // byte[] bytes = text.EncodeToPNG();
+                    // var dirPath = Application.dataPath + "/../SaveImages/";
+                    // if(!Directory.Exists(dirPath)) {
+                    //     Directory.CreateDirectory(dirPath);
+                    // }
+                    // File.WriteAllBytes(dirPath + String.Format ("Image{0}{1}{2}{3}{4}.png",up,down,left,right, i), bytes);
+
+                    
+                    for (int j = 0; j < original.Length; j++) {
+                        var r = original[j].rect;
+                        sprites[i][j][up,down,left,right] = Sprite.Create(text, r, 
+                                new Vector2(pivot,pivot), 
+                                2 * size / sideLength);
+                    }
+                    // i = tile health, j = sprite index, u d l r are for surrounding tiles
+                }}}}
             }
+
+            
 
             tiles = new DirtyTile[maxTileHealth + 1][];
             for (int health = 0; health < maxTileHealth + 1; health++) {
@@ -104,11 +178,11 @@ public class FloorController : MonoBehaviour
                 for (int i = 0; i < sprites[health].Length; i++) {
                     
                     tiles[health][i] = ScriptableObject.CreateInstance<DirtyTile>();                
-                    tiles[health][i].sprite = sprites[health][i];
+                    tiles[health][i].sprite = sprites[health][i][health,health,health,health];
                     tiles[health][i].SetDirty(health);
                     //we probs shouldn't base the dirtyness of a tile by its name...
                     tiles[health][i].name = "Dirty" + health.ToString();
-                    
+                    tiles[health][i].sprites = sprites[health][i];
                 }
             }
         }
