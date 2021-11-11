@@ -69,7 +69,7 @@ public class QuadTurretBeamVersion : BaseRoomObject
     {
         canShoot = true;
         QuadAnim.SetTrigger("Firing");
-        //SoundManager.PlaySound(SoundManager.Sound.Quad, 0.5f);
+        SoundManager.PlaySound(SoundManager.Sound.Quad, 0.5f);
         canRotate = true;
         yield return new WaitForSeconds(5);
         StartCoroutine("Cooldown");
