@@ -15,6 +15,7 @@ public class RoomWaveAddon : MonoBehaviour
     private Dictionary<string, EnemyTypesSO.EnemyType> enemyTypes;
 
     public GameObject spawnMarkerPrefab;
+    public BaseEnemy bossEnemy;
 
     [SerializeField] private Wave[] waves;
 
@@ -29,8 +30,6 @@ public class RoomWaveAddon : MonoBehaviour
             StopAllCoroutines();
             // StartCoroutine (WaitForRoom ());
         };
-
-        
     }
 
     public void WaitForRoom (PlayerController a, RoomManager r)
@@ -55,7 +54,16 @@ public class RoomWaveAddon : MonoBehaviour
             yield break;
         }
 
-        yield return new WaitUntil(() => roomManager.dirtyTiles.GetCleanPercent() >= thresh);
+        yield return new WaitUntil(() => {
+            // if there is a boss, we will base spawns off of the boss health
+            // otherwise, we use the level of cleanliness in the room
+            if (bossEnemy != null) {
+                return 1f - bossEnemy.health.GetHealthPercent() >= thresh;
+            }
+            else {
+                return roomManager.dirtyTiles.GetCleanPercent() >= thresh;
+            }
+        });
 
         roomManager.PrepareForEnemy();
         yield return new WaitForSeconds(waveSpawn.delay);

@@ -150,6 +150,8 @@ public class RoomManager : MonoBehaviour
             }
             
             ec.onDeath += DecreaseEnemyCount;
+
+            ec.OnInit();
         }
     }
 

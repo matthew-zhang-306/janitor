@@ -125,6 +125,11 @@ public class RoomWaveEditor : Editor
         EditorGUILayout.PropertyField(so.FindProperty("enemyTypesSO"));
         EditorGUILayout.Space(20);
 
+        EditorGUILayout.LabelField("If there is a boss, the room will spawn enemies based on");
+        EditorGUILayout.LabelField("the health of the boss, rather than the cleanliness of the room");
+        EditorGUILayout.PropertyField(so.FindProperty("bossEnemy"));
+        EditorGUILayout.Space(20);
+
         // a high-level printout, to see at a glance how much is in the room
         EditorGUILayout.LabelField("OVERVIEW", EditorStyles.boldLabel);
         if (propWaves.arraySize > 0) {

@@ -15,7 +15,7 @@ public class BaseEnemy : Upgradeable
     [Header("Components")]
     public SpriteRenderer spriteRenderer;
     protected Rigidbody2D rb2d;
-    protected Health health;
+    public Health health { get; protected set; }
     public Hitbox hitbox;
     
 
@@ -74,6 +74,13 @@ public class BaseEnemy : Upgradeable
             }
         }
     }
+
+
+    public virtual void OnInit() {
+        // doesn't need to do anything right now
+        // roommanager has already set our player, pathfinding, and canAct bool
+    }
+
 
     protected virtual void FixedUpdate() {
         invincibilityTimer = Mathf.MoveTowards(invincibilityTimer, 0f, Time.deltaTime);
