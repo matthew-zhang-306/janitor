@@ -12,7 +12,9 @@ public class QuadTurretBeamVersion : BaseRoomObject
     public bool ignoreRoomStatus = false;
     //private BeamTurretFiring BeamTurret;
     public bool canShoot;
-    
+    public float rotationSpeed = .15f;
+    public float cooldownTime;
+    public float firingTime;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,7 @@ public class QuadTurretBeamVersion : BaseRoomObject
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!PauseMenu.GamePaused && (IsRoomActive || ignoreRoomStatus))
         {
@@ -42,7 +44,7 @@ public class QuadTurretBeamVersion : BaseRoomObject
 
             if (canRotate)
             {
-            transform.Rotate(0, 0, .15f);
+            transform.Rotate(0, 0, rotationSpeed);
             }
             
         }
@@ -71,7 +73,7 @@ public class QuadTurretBeamVersion : BaseRoomObject
         QuadAnim.SetTrigger("Firing");
         SoundManager.PlaySound(SoundManager.Sound.Quad, 0.5f);
         canRotate = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(firingTime);
         StartCoroutine("Cooldown");
     }
     IEnumerator Cooldown()
@@ -79,7 +81,7 @@ public class QuadTurretBeamVersion : BaseRoomObject
         QuadAnim.SetTrigger("Reload");
         canShoot = false;
         canRotate = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(cooldownTime);
         StartCoroutine("Firing");
 
 

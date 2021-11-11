@@ -123,6 +123,9 @@ MonoBehaviour:
   canRotate: 0
   ignoreRoomStatus: 0
   canShoot: 0
+  rotationSpeed: 0.15
+  cooldownTime: 3
+  firingTime: 5
 --- !u!1 &4915541716497439874
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,8 +219,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4770166449024606150}
-  - component: {fileID: 459992666518993742}
-  - component: {fileID: 4441860976221382495}
   - component: {fileID: 5111180426604419133}
   m_Layer: 0
   m_Name: Turret
@@ -241,43 +242,6 @@ Transform:
   m_Father: {fileID: 7651219939758024966}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!58 &459992666518993742
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5111180426604419130}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 20
---- !u!50 &4441860976221382495
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5111180426604419130}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &5111180426604419133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,8 +834,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8084826438687142607}
-  - component: {fileID: 8084826438687142605}
-  - component: {fileID: 8084826438687142604}
   - component: {fileID: 5276023247905154563}
   m_Layer: 0
   m_Name: Turret (3)
@@ -895,43 +857,6 @@ Transform:
   m_Father: {fileID: 7651219939758024966}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!58 &8084826438687142605
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8084826438687142606}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 20
---- !u!50 &8084826438687142604
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8084826438687142606}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &5276023247905154563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -956,8 +881,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8084826439724547787}
-  - component: {fileID: 8084826439724547785}
-  - component: {fileID: 8084826439724547784}
   - component: {fileID: 5276023248185254561}
   m_Layer: 0
   m_Name: Turret (2)
@@ -981,43 +904,6 @@ Transform:
   m_Father: {fileID: 7651219939758024966}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!58 &8084826439724547785
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8084826439724547786}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 20
---- !u!50 &8084826439724547784
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8084826439724547786}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &5276023248185254561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,8 +928,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8084826440254963062}
-  - component: {fileID: 8084826440254963060}
-  - component: {fileID: 8084826440254963063}
   - component: {fileID: 5276023248902283909}
   m_Layer: 0
   m_Name: Turret (1)
@@ -1067,43 +951,6 @@ Transform:
   m_Father: {fileID: 7651219939758024966}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &8084826440254963060
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8084826440254963081}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 20
---- !u!50 &8084826440254963063
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8084826440254963081}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &5276023248902283909
 MonoBehaviour:
   m_ObjectHideFlags: 0
