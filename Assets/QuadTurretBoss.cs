@@ -17,7 +17,6 @@ public class QuadTurretBoss : BaseEnemy
     private BossHealthBar healthBar;
 
 
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
@@ -25,7 +24,7 @@ public class QuadTurretBoss : BaseEnemy
         canShoot = false;
     }
 
-    // Update is called once per frame
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();

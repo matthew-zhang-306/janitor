@@ -36,8 +36,10 @@ public class SlimeEnemy : BaseEnemy
 
 
     // Update is called once per frame
-    void Update()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         if (CanAct && m_time > actionTimer) {
             m_time -= actionTimer;
 
@@ -53,12 +55,6 @@ public class SlimeEnemy : BaseEnemy
             }
         }
         m_time += Time.deltaTime;
-    }
-
-    protected override void FixedUpdate() {
-        base.FixedUpdate();
-
-        spriteRenderer.color = invincibilityTimer > 0 ? new Color(1, 0.4f, 0.4f) : Color.white;
     }
 
 
@@ -101,7 +97,11 @@ public class SlimeEnemy : BaseEnemy
         int moveDir = Mathf.RoundToInt(moveAngle / 90f).Mod(4);
         string moveString = new string[] { "Right", "Up", "Left", "Down" }[moveDir];
 
-        animator.Play("SlimeMove" + moveString);
+        // yes! you have to specify the two other parameters -1 and 0.
+        // for some reason animator.Play(clip) works COMPLETELY DIFFERENTLY from
+        // animator.Play(clip, number, number) if you try to play an animation
+        // that the animator is already playing. it's extremely dumb
+        animator.Play("SlimeMove" + moveString, -1, 0);
     }
 
 
