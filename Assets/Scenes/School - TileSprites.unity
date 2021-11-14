@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -983,7 +983,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240361776}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f296296dd6993ad41a7c286331b5759f, type: 3}
   m_Name: 
@@ -1007,6 +1007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypesSO: {fileID: 0}
+  spawnMarkerPrefab: {fileID: 0}
+  bossEnemy: {fileID: 0}
   waves: []
 --- !u!1 &300218602
 GameObject:
@@ -4152,6 +4154,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7122484523099650369, guid: 491d07b6cf4208947b051099d59b372f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7957443720243828657, guid: 491d07b6cf4208947b051099d59b372f,
         type: 3}
       propertyPath: m_Enabled
@@ -6612,18 +6619,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1747536867 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4803664296904731265, guid: 491d07b6cf4208947b051099d59b372f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1150695157}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010aa83583d087340b4ab1a62c589764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1757789007
 GameObject:
   m_ObjectHideFlags: 0
@@ -130774,6 +130769,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3f755762fdd6f4cb81e2c50eccb8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateOnRuntime: 1
+  min: {x: 0, y: 0, z: 0}
+  max: {x: 0, y: 0, z: 0}
 --- !u!1 &1999739665
 GameObject:
   m_ObjectHideFlags: 0
@@ -131068,9 +131066,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399f9ccc177956b4a8979eaf38fe8ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Floor: {fileID: 1747536867}
+  floor: {fileID: 0}
   cleanBar: {fileID: 2111401643}
   cleanThreshold: 0
+  flagParent: {fileID: 0}
+  flagPrefab: {fileID: 0}
+  main: {fileID: 0}
 --- !u!114 &2111401643
 MonoBehaviour:
   m_ObjectHideFlags: 0
