@@ -83,4 +83,6 @@ public class QuadTurretBoss : BaseEnemy
         yield return new WaitForSeconds(time);
         StartCoroutine("Firing");
     }
+
+
 }
