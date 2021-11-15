@@ -542,7 +542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTags:
   - PlayerProjectile
-  - Hazard
+  - Explosion
 --- !u!1 &4271501810380128879
 GameObject:
   m_ObjectHideFlags: 0

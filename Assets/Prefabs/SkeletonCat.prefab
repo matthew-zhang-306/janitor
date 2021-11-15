@@ -342,7 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTags:
   - PlayerProjectile
-  - Hazard
+  - Explosion
 --- !u!61 &5026708351329908316
 BoxCollider2D:
   m_ObjectHideFlags: 0

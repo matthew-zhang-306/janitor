@@ -514,7 +514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTags:
   - PlayerProjectile
-  - Hazard
+  - Explosion
 --- !u!1001 &3695504974555632511
 PrefabInstance:
   m_ObjectHideFlags: 0
