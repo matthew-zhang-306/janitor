@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System;
 
 [RequireComponent (typeof(Collider2D))]
 public class Interactable : MonoBehaviour
@@ -11,7 +13,9 @@ public class Interactable : MonoBehaviour
 
     public virtual string ToolTip
     {
-        get => _tooltip;
+        get => String.Format("[{0}] {1}", PlayerInputMap.sInputMap.FindAction("Interact").GetBindingDisplayString(0, 
+            InputBinding.DisplayStringOptions.DontIncludeInteractions
+            ) ?? "None", _tooltip);
         private set => _tooltip = value;
     }
 

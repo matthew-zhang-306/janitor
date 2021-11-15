@@ -36,9 +36,8 @@ public class DirtyTile : Tile
 
     public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
     {
-        // Texture2D red = new Texture2D (1, 1, TextureFormat.RGBA32, 1, true);
-        // red.SetPixel(0,0, Color.red);
-        // red.Apply(true);
+        base.GetTileData(position, tilemap, ref tileData);
+
         var l1 = new Vector3Int(position.x + 1, position.y, position.z);
         var l2 = new Vector3Int(position.x - 1, position.y, position.z);
         var l3 = new Vector3Int(position.x, position.y + 1, position.z);
@@ -50,7 +49,7 @@ public class DirtyTile : Tile
         dup = tilemap.GetTile<DirtyTile>(l3)?.dirtyLevel ?? 0;
         ddown = tilemap.GetTile<DirtyTile>(l4)?.dirtyLevel ?? 0;
 
-        base.GetTileData(position, tilemap, ref tileData);
+        
         tileData.sprite = sprites[dup,ddown,dright,dleft];
 
     }

@@ -84,6 +84,43 @@ public class FloorController : MonoBehaviour
             int bilscale = tilesize * tilesize;
             int half = tilesize / 2;
 
+            #if UNITY_EDITOR
+            for (int i = 0; i < maxTileHealth + 1; i++) {
+                
+                sprites[i] = new Sprite[original.Length][,,,];
+                for (int j = 0; j < original.Length; j++) {
+                    sprites[i][j] = new Sprite[4,4,4,4];
+                }
+                Texture2D text = new Texture2D(size, size, TextureFormat.RGBA32, 0, true);
+                
+
+                var colors = original[0].texture.GetPixels32();
+
+                for (int k = 0; k < colors.Length; k++) {
+                    
+                    colors[k].a = (byte) (i * ratio);
+                    
+                }
+
+                text.SetPixels32(colors);
+                text.Apply(true);
+
+                for (int up = 0; up < 4; up ++) {      
+                for (int down = 0; down < 4; down++) {
+                for (int left = 0; left < 4; left++) {
+                for (int right = 0; right < 4; right ++) {
+                    
+                    for (int j = 0; j < original.Length; j++) {
+                        var r = original[j].rect;
+                        sprites[i][j][up,down,left,right] = Sprite.Create(text, r, 
+                                new Vector2(pivot,pivot), 
+                                2 * (size / sideLength));
+                    }            
+                }}}}
+            }
+
+
+            #else
             for (int i = 0; i < maxTileHealth + 1; i++) {
                 
                 sprites[i] = new Sprite[original.Length][,,,];
@@ -142,12 +179,12 @@ public class FloorController : MonoBehaviour
                     text.Apply(true);
 
                     //then Save To Disk as PNG
-                    byte[] bytes = text.EncodeToPNG();
-                    var dirPath = Application.dataPath + "/../SaveImages/";
-                    if(!Directory.Exists(dirPath)) {
-                        Directory.CreateDirectory(dirPath);
-                    }
-                    File.WriteAllBytes(dirPath + String.Format ("Image{0}{1}{2}{3}{4}.png",up,down,left,right, i), bytes);
+                    // byte[] bytes = text.EncodeToPNG();
+                    // var dirPath = Application.dataPath + "/../SaveImages/";
+                    // if(!Directory.Exists(dirPath)) {
+                    //     Directory.CreateDirectory(dirPath);
+                    // }
+                    // File.WriteAllBytes(dirPath + String.Format ("Image{0}{1}{2}{3}{4}.png",up,down,left,right, i), bytes);
 
                     
                     for (int j = 0; j < original.Length; j++) {
@@ -159,8 +196,10 @@ public class FloorController : MonoBehaviour
                     // i = tile health, j = sprite index, u d l r are for surrounding tiles
                 }}}}
             }
-
             
+            #endif
+
+
 
             tiles = new DirtyTile[maxTileHealth + 1][];
             for (int health = 0; health < maxTileHealth + 1; health++) {

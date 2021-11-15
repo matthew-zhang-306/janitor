@@ -16,6 +16,7 @@ public class LevelCleanBar : MonoBehaviour
 
     public Transform flagParent;
     public Image flagPrefab;
+    public Image clearFlagPrefab;
     [SerializeField] private TextMeshProUGUI main;
 
     private static NumberFormatInfo nfi = new CultureInfo( "en-US", false ).NumberFormat;
@@ -40,8 +41,8 @@ public class LevelCleanBar : MonoBehaviour
             Debug.Log("invalid wave thresh");
             return;
         }
-        var flag = Instantiate(flagPrefab, flagParent);
-        flag.color = Color.cyan;
+        var flag = Instantiate(clearFlagPrefab, flagParent);
+        
         flag.rectTransform.anchoredPosition += new Vector2 (0, thresh * 36);
     }
 
@@ -53,12 +54,12 @@ public class LevelCleanBar : MonoBehaviour
         }
 
         var flag = Instantiate(flagPrefab, flagParent);
-        flag.color = Color.red;
+        
         flag.rectTransform.anchoredPosition += new Vector2 (0, thresh * 36);
     }
     public void Clear ()
     {
-        Debug.Log("clearing room flags");
+        
         //Clear previous wave (use for when resetting)
         foreach (Transform flags in flagParent) {
             Destroy(flags.gameObject);
