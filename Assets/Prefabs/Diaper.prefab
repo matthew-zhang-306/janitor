@@ -505,6 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTags:
   - PlayerProjectile
+  - Explosion
 --- !u!1001 &1859309952359031221
 PrefabInstance:
   m_ObjectHideFlags: 0

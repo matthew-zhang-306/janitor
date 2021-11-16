@@ -80,6 +80,47 @@ public class FloorController : MonoBehaviour
             //honestly I have no clue how pivot works but eh I think this does it
             float pivot = original[0].pivot.x / (size / sideLength);
             byte ratio = (byte) ((1f / maxTileHealth) * 0.65f * 255);
+
+            int bilscale = tilesize * tilesize;
+            int half = tilesize / 2;
+
+            #if UNITY_EDITOR
+            for (int i = 0; i < maxTileHealth + 1; i++) {
+                
+                sprites[i] = new Sprite[original.Length][,,,];
+                for (int j = 0; j < original.Length; j++) {
+                    sprites[i][j] = new Sprite[4,4,4,4];
+                }
+                Texture2D text = new Texture2D(size, size, TextureFormat.RGBA32, 0, true);
+                
+
+                var colors = original[0].texture.GetPixels32();
+
+                for (int k = 0; k < colors.Length; k++) {
+                    
+                    colors[k].a = (byte) (i * ratio);
+                    
+                }
+
+                text.SetPixels32(colors);
+                text.Apply(true);
+
+                for (int up = 0; up < 4; up ++) {      
+                for (int down = 0; down < 4; down++) {
+                for (int left = 0; left < 4; left++) {
+                for (int right = 0; right < 4; right ++) {
+                    
+                    for (int j = 0; j < original.Length; j++) {
+                        var r = original[j].rect;
+                        sprites[i][j][up,down,left,right] = Sprite.Create(text, r, 
+                                new Vector2(pivot,pivot), 
+                                2 * (size / sideLength));
+                    }            
+                }}}}
+            }
+
+
+            #else
             for (int i = 0; i < maxTileHealth + 1; i++) {
                 
                 sprites[i] = new Sprite[original.Length][,,,];
@@ -92,6 +133,16 @@ public class FloorController : MonoBehaviour
                 for (int right = 0; right < 4; right ++) {
                     Texture2D text = new Texture2D(size, size, TextureFormat.RGBA32, 0, true);
 
+                    int tr = ratio * (up + right) / 2;
+                    int tl = ratio * (up + left) / 2;
+                    int br = ratio * (down + right) / 2;
+                    int bl = ratio * (down + left) / 2;
+
+                    //bilinear filter here
+                    //assume that each side is of unit 1.
+                    //May want to treat corners as not an average lol
+
+
                     var colors = original[0].texture.GetPixels32();
                     // Debug.Log(colors.Length);
                     // Debug.Log(sideLength);
@@ -100,49 +151,28 @@ public class FloorController : MonoBehaviour
                     //Bleed over textures (if neighbors have higher dirt, then current tile gets dirt)
                     for (int k = 0; k < colors.Length; k++) {
                         
-                        // colors[k] = Color.black;
+                        // colors[k] = Color.green;
                         colors[k].a = (byte) (i * ratio);
                         //change to local coords
                         //Shift left
-                        int row = (size - (k / size) - 1) % tilesize;
-                        int col = (size - (k % size) - 1) % tilesize;
+                        int row = ((k / size)) % tilesize;
+                        int col = ((k % size)) % tilesize;
 
-                        // if (row == col) {
-                        //     if (row > 3) {
-                        //         colors[k] = Color.black;
-                        //     }
-                        //     else {
-                        //         colors[k] = Color.white;
+                        int ax = col;
+                        int xb = tilesize - col;
+                        int cx = row;
+                        int xd = tilesize - row;
 
-                        //     }   
-                        // }
+                        float value = xd * (xb * br + ax * bl) + cx * (xb * tr + ax * tl);
+                        value /= bilscale;
+                        
+                        //now assert middle value with distance calc by manhat
 
-                        if (up > i) {
-                            if (row > 2 * tilesize / 3) {
-                                // colors[k] = Color.blue;
-                                colors[k].a = (byte) (up * ratio);
-                            }
-                        }
-                        if (down > i) {
-                            if (row < tilesize / 3) {
-                                // colors[k] = Color.red;
-                                colors[k].a = (byte) (right * ratio);
-                            }
-                        }
-                        if (right > i) {
-                            if (col > 2 * tilesize / 3) {
-                                // colors[k] = Color.green;
-                                colors[k].a = (byte) (down * ratio);
-
-                            }
-                        }
-                        if (left > i) {
-                            if (col < tilesize / 3) {
-                                // colors[k] = Color.yellow;
-                                colors[k].a = (byte) (left * ratio);
-
-                            }
-                        }
+                        int rdif = Math.Abs(row - half);
+                        int cdif = Math.Abs(col - half);
+                        float cratio = Mathf.Clamp01 (3f / (rdif + cdif + 1e-4f));
+                        colors[k].a = (byte) ( (1 - cratio) * value + cratio * i * ratio);
+                        // colors[k].a = (byte) ((value > i * ratio) ? value : i * ratio);
                     }
 
                     text.SetPixels32(colors);
@@ -161,13 +191,15 @@ public class FloorController : MonoBehaviour
                         var r = original[j].rect;
                         sprites[i][j][up,down,left,right] = Sprite.Create(text, r, 
                                 new Vector2(pivot,pivot), 
-                                2 * size / sideLength);
+                                2 * (size / sideLength));
                     }
                     // i = tile health, j = sprite index, u d l r are for surrounding tiles
                 }}}}
             }
-
             
+            #endif
+
+
 
             tiles = new DirtyTile[maxTileHealth + 1][];
             for (int health = 0; health < maxTileHealth + 1; health++) {
@@ -230,6 +262,9 @@ public class FloorController : MonoBehaviour
         var col = GetComponent<BoxCollider2D>();
         col.size = levelBounds.size;
         col.offset = levelBounds.offset;
+
+
+        tm.RefreshAllTiles();
     }
 
     private void OnTriggerEnter2D(Collider2D col) {

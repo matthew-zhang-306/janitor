@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1497054569589010645}
   m_Layer: 11
   m_Name: Explosion
-  m_TagString: Hazard
+  m_TagString: Explosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: 0.25
   aliveTime: 0.5
+  BarrelBomb: 0
 --- !u!1 &2950519115708766782
 GameObject:
   m_ObjectHideFlags: 0

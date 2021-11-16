@@ -45,7 +45,7 @@ public class Inventory : MonoBehaviour
     void Start () 
     {
         
-        if (canvas != null) {
+        if (canvas == null) {
             //create canvas here
             Debug.LogWarning ("Inserting Inventory tooltip to first canvas");
             var c = GameObject.Find("Canvas");
@@ -78,6 +78,7 @@ public class Inventory : MonoBehaviour
             
 
             rt.position = item.transform.position + tooltipOffset; //RectTransformUtility.WorldToScreenPoint(camera, );
+            rt.anchoredPosition3D -= Vector3.forward * rt.anchoredPosition3D.z;
             text.text = item.ToolTip;
         }
         else {

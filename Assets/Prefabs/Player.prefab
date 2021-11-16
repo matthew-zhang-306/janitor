@@ -235,6 +235,8 @@ MonoBehaviour:
   meleePrefab: {fileID: 5219044330624146800, guid: e187dfc48e2b33544a61633816c22589,
     type: 3}
   ZeroAmmoStart: 0
+  aimAssist: 0
+  target: {fileID: 0}
   weapon: {fileID: 4942271700562673720}
 --- !u!1 &1177657899866666903
 GameObject:
@@ -308,6 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTags:
   - Hazard
+  - Explosion
 --- !u!1 &1177657900103972658
 GameObject:
   m_ObjectHideFlags: 0
