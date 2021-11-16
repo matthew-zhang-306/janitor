@@ -374,9 +374,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1723294416293659179}
-  - component: {fileID: 9014493241546652439}
-  - component: {fileID: 9014493241546652438}
-  m_Layer: 0
+  - component: {fileID: 5073183216987215889}
+  - component: {fileID: 3084355581111704602}
+  - component: {fileID: 87390008586931179}
+  m_Layer: 13
   m_Name: FloorMarker
   m_TagString: FloorMarker
   m_Icon: {fileID: 0}
@@ -397,7 +398,7 @@ Transform:
   m_Father: {fileID: 6967380929018763219}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9014493241546652439
+--- !u!114 &5073183216987215889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -406,13 +407,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 9014493241546652432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be5b555c26c1273408c8addee2fd1d96, type: 3}
+  m_Script: {fileID: 11500000, guid: 1866518a76b9d29408ce0de99835037c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   markAmount: 2
-  lifetime: 0.5
---- !u!61 &9014493241546652438
-BoxCollider2D:
+--- !u!50 &3084355581111704602
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014493241546652432}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &87390008586931179
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -421,19 +442,9 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05296707, y: 0.00881958}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 5.1322556, y: 5.008667}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
