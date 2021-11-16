@@ -27,6 +27,13 @@ public static class SoundManager {
         Coin,
         BunnyAttack,
         Barrel,
+        EnemySpawn,
+        EnemyDamage,
+        AmmoAlert,
+        PlayerDeath,
+        WaterBarrel,
+        KeyCollecting,
+        MouseClick,
     }
     public static void PlaySound(Sound sound, float SEvolume)
     {

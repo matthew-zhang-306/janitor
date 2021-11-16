@@ -15,6 +15,7 @@ public class HealthCollectable : Interactable
         var health = pc.GetComponent<Health>();
 
         health?.ChangeHealth (healthAmount);
+        SoundManager.PlaySound(SoundManager.Sound.Med, 0.5f);
         Destroy (gameObject);
     }
     

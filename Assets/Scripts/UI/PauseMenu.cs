@@ -55,6 +55,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MouseClick, 1.0f);
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GamePaused = false;
@@ -63,6 +64,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void PauseGame()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MouseClick, 1.0f);
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GamePaused = true;
@@ -73,6 +75,7 @@ public class PauseMenu : MonoBehaviour
     
     public void QuitGame()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MouseClick, 1.0f);
         Application.Quit();
     }
 
@@ -80,6 +83,7 @@ public class PauseMenu : MonoBehaviour
     private void DisablePause() {
         if (GamePaused)
             ResumeGame();
+        SoundManager.PlaySound(SoundManager.Sound.MouseClick, 1.0f);
         canPause = false;
     }
 }

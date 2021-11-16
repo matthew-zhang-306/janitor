@@ -48,8 +48,7 @@ public class WeaponSystem : Upgradeable
         {
             Ammo = 0;
         }
-        
-       // meleeSound = meleeSE.GetComponent<AudioClip>();
+   
     }
 
     // Update is called once per frame
@@ -114,8 +113,6 @@ public class WeaponSystem : Upgradeable
             ) {
 
             Swing (dir);
-            //meleeSound.clip = meleeEffects[Random.Range(0, meleeEffects.Length)];
-            //meleeSound.Play();
             SoundManager.PlaySound(SoundManager.Sound.Broom1, 0.4f);
             m_ftime = 0;
         }
@@ -125,6 +122,7 @@ public class WeaponSystem : Upgradeable
         if (_ammo < 10)
         {
             AmmoOnboarding.AmmoLow = true;
+           // SoundManager.PlaySound(SoundManager.Sound.AmmoAlert, 0.4f);
         }
         if (_ammo > 10)
         {
