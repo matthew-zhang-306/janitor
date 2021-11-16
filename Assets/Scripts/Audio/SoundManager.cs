@@ -4,10 +4,37 @@ using UnityEngine;
 
 public static class SoundManager {
     //From Code Monkey Tutorial simple sound manager
+    private class Buffer : MonoBehaviour {
+        public System.Action ResetBuffer;
+        public float delay;
+        public AudioClip aclip;
+        public AudioSource asource;
 
-    
-    
+        public bool canPlay;
 
+        void Start ()
+        {
+            canPlay = true;
+            // this.Invoke(() => gameObject.SetActive(false), aclip.length);
+            // this.Invoke(() => gameObject.SetActive(false), delay);
+        }
+        
+        public void Play (float volume)
+        {
+            if (canPlay) {
+                this.Invoke(()=> canPlay = true, delay);
+                asource.PlayOneShot(aclip, volume);
+                canPlay = false;
+            }
+            
+        }
+
+        void OnEnable ()
+        {
+            canPlay = true;
+
+        }
+    }
     public enum Sound
     {
         spongeGun,
@@ -35,13 +62,42 @@ public static class SoundManager {
         KeyCollecting,
         MouseClick,
     }
-    public static void PlaySound(Sound sound, float SEvolume)
+    
+    private static Dictionary<Sound, Buffer> buffer = new Dictionary<Sound, Buffer>();
+    
+    public static AudioSource PlaySound(Sound sound, float SEvolume)
     {
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         var ac = GetAudioClip(sound);
         audioSource.PlayOneShot(ac, SEvolume);
         Object.Destroy(soundGameObject, ac.length);
+
+        //Can be null on access so plz check
+        return audioSource;
+    }
+
+    public static void PlaySoundBuffered(Sound sound, float SEvolume, float maxRate)
+    {
+        //Plays Sound, but only at maxRate frequency
+        if (!buffer.ContainsKey(sound)){
+            var soundGameObject = new GameObject("BufferedSound");
+            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            var ac = GetAudioClip(sound);
+            // audioSource.PlayOneShot(ac, SEvolume);
+            Buffer buf = soundGameObject.AddComponent<Buffer>();
+
+            buf.delay = maxRate;
+            buf.aclip = ac;
+            buf.asource = audioSource;
+
+            buffer[sound] = buf;
+            buf.Play(SEvolume);
+        }
+        else {
+            buffer[sound].Play(SEvolume);
+        }
+        
     }
 
     public static void PlaySoundBroom(Sound sound, Sound sound2, float SEvolume) {

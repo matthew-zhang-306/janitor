@@ -64,7 +64,10 @@ public class WeaponSystem : Upgradeable
         Vector3 hit = cam.ScreenToWorldPoint(CustomInput.GetMousePosition());
         Debug.DrawLine (hit, transform.position);
         Vector2 dir = (hit - transform.position).ToVector2().normalized;
+
         #endif
+
+        Vector2 odir = dir;
 
         //Aim assist here
         //Get distance and angle from player to each enemy
@@ -93,7 +96,7 @@ public class WeaponSystem : Upgradeable
         if (m_ftime > weapon.firerate
                 #if (UNITY_ANDROID || UNITY_IPHONE)
                 && CustomInput.ranged
-                && dir.magnitude != 0
+                && odir.magnitude != 0
                 #else
                 && CustomInput.GetButton("Fire1") 
                 #endif
@@ -106,14 +109,13 @@ public class WeaponSystem : Upgradeable
         if (m_ftime > meleerate  
                 #if (UNITY_ANDROID || UNITY_IPHONE)
                 && CustomInput.melee
-                && dir.magnitude != 0
+                && odir.magnitude != 0
                 #else
                 && CustomInput.GetButton("Fire2")                
                 #endif
             ) {
 
             Swing (dir);
-            SoundManager.PlaySound(SoundManager.Sound.Broom1, 0.4f);
             m_ftime = 0;
         }
         m_ftime += Time.deltaTime;
@@ -174,5 +176,7 @@ public class WeaponSystem : Upgradeable
         fm.callback += (value) => {
             Ammo += value * ammoRestorationScale;
         };
+        SoundManager.PlaySoundBuffered(SoundManager.Sound.Broom1, 0.4f, meleerate + 0.01f);
+
     }
 }
