@@ -187,6 +187,8 @@ public class PlayerController : Upgradeable
     }
 
     private IEnumerator DoDash(Vector2 dashDirection) {
+
+        SoundManager.PlaySound(SoundManager.Sound.Dash, 1.0f);
         if (dashDirection == Vector2.zero) {
             dashDirection = previousMoveInput.normalized;
         }
