@@ -85,22 +85,19 @@ public class Inventory : MonoBehaviour
             tooltip.SetActive (false);
         }
 
-        if (CustomInput.GetButton("Interact") && canInteract)
-        {
+        if (CustomInput.GetButton("Interact") && canInteract) {
             var interactable = recent.LastOrDefault();
+
+            
+            if (interactable) {   
+                recent.RemoveLast();
+                recent.AddFirst(interactable);
+            }
 
             interactable?.DoAction(pc, this);
             canInteract = false;
             //Look at helper.cs
             this.Invoke (() => canInteract = true, interactBuffer);
-
-            if (interactable)
-            {
-                recent.RemoveLast();
-                recent.AddFirst(interactable);
-            }
-                
-            
             
         }
     }
@@ -113,7 +110,6 @@ public class Inventory : MonoBehaviour
 
             if (item.autoInteract) {
                 //Should be for cash or such
-                Debug.Log ("hi there");
                 item.DoAction (pc, this);
             }
             else {

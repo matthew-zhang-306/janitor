@@ -12,18 +12,18 @@ public class PlayerHPCell : MonoBehaviour {
 
     private float index;
     private float amt;
-    public void Setup (Health hp, int count, int amt) {
+    private Color initial;
+    private Color final = new Color(.217f, 0.1013f, 0.1013f);
+    public void Setup (Health hp, int count, int amt, int maxamt) {
         health = hp;
-        this.index = count * amt;
+        this.index = count * maxamt;
         this.amt = amt;
-
+        initial = fill.color;
     }
     public void UpdateFill(float val) {
-        var temp = fill.color;
-        temp.a = val;
-
-        fill.color = temp;
-
+        
+        fill.color = Color.Lerp(initial, final, 1 - val);;
+        
     }
 
     void Update() 

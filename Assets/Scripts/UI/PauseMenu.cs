@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+
 
 public class PauseMenu : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class PauseMenu : MonoBehaviour
     public static EmptyDelegate OnPause;
     public static EmptyDelegate OnResume;
 
+    public InputAction close;
+
     private void OnEnable() {
         LevelEndZone.OnLevelEnd += DisablePause;
     }
@@ -22,16 +26,21 @@ public class PauseMenu : MonoBehaviour
     }
     void Start ()
     {
+        
         CustomInput.close.started += ctx => {
             if (canPause && !IgnoreEsc) {
-                if (GamePaused == true)
-                {
-                    ResumeGame();
-                }
-                else if (GamePaused == false)
-                {
-                    PauseGame();
-                }
+                close?.Dispose();
+                close = new InputAction("Pause Close", InputActionType.Button, PlayerInputMap.sInputMap.FindAction("Close").bindings[0].effectivePath);
+
+                close.started += ctx2 => {
+                    Debug.Log("hi there");
+                    if (GamePaused) {
+                        ResumeGame();
+                        close.Disable();
+                    }
+                };
+                close.Enable();
+                PauseGame();
             }
         };
     }
@@ -61,6 +70,7 @@ public class PauseMenu : MonoBehaviour
         GamePaused = false;
 
         OnResume?.Invoke();
+        PlayerInputMap.sInputMap.Enable();
     }
     public void PauseGame()
     {
@@ -71,6 +81,7 @@ public class PauseMenu : MonoBehaviour
 
         Debug.Log("on pause");
         OnPause?.Invoke();
+        PlayerInputMap.sInputMap.Disable();
     }
     
     public void QuitGame()
@@ -79,11 +90,16 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-
     private void DisablePause() {
         if (GamePaused)
             ResumeGame();
         SoundManager.PlaySound(SoundManager.Sound.MouseClick, 1.0f);
         canPause = false;
     }
+
+    public void QuitConfirmOpen () {
+        
+    }
+
 }
+

@@ -31,7 +31,17 @@ public class AmmoUI : MonoBehaviour
         ammoBar.value = playerController.weapon.Ammo;
         ammoBar.maxValue = playerController.weapon.MaxAmmo;
         float drain = playerController.weapon?.weapon?.AmmoDrain ?? 0;
-        if (drain != 0)
-            text.text = String.Format (nfi, "{0:N} / {1:N}", ammoBar.value / drain, ammoBar.maxValue / drain);
+        if (drain != 0) {
+            text.text = String.Format (nfi, "{0:N} / {1:N}", Mathf.Floor(ammoBar.value / drain) , ammoBar.maxValue / drain);
+
+            if ((int) ammoBar.value / drain <= 2) {
+                text.color = Color.red;
+            }
+            else {
+                text.color = Color.white;
+            }
+        }
+
+        
     }
 }
