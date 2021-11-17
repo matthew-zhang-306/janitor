@@ -25,5 +25,7 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    
+    public void ClickSound() {
+        SoundManager.PlaySound(SoundManager.Sound.MouseClick, 1.0f);
+    }
 }

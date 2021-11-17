@@ -8,6 +8,9 @@ public class BaseWeapon : Upgradeable
     public GameObject prefabBullet;
     [SerializeField] public float firerate = 0.5f;
     [SerializeField] protected float ammoDrain = 1f;
+
+    public float AmmoDrain {get => ammoDrain;}
+
     [SerializeField] protected float force = 1000;
     [SerializeField] protected float bulletDamage = 5;
 

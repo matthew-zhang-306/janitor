@@ -28,11 +28,11 @@ public class Inventory : MonoBehaviour
     private float interactBuffer = 0.5f;
     private bool canInteract = true;
 
-    private List<Interactable> recent;
+    private LinkedList<Interactable> recent;
 
     void Awake () 
     {    
-        recent = new List<Interactable>();
+        recent = new LinkedList<Interactable>();
         pc = this.GetComponent<PlayerController>();
         upgradeComponents = new Upgradeable[4];
         upgradeComponents[0] = pc;
@@ -85,12 +85,20 @@ public class Inventory : MonoBehaviour
             tooltip.SetActive (false);
         }
 
-        if (CustomInput.GetButton("Interact") && canInteract)
-        {
-            recent.LastOrDefault()?.DoAction(pc, this);
+        if (CustomInput.GetButton("Interact") && canInteract) {
+            var interactable = recent.LastOrDefault();
+
+            
+            if (interactable) {   
+                recent.RemoveLast();
+                recent.AddFirst(interactable);
+            }
+
+            interactable?.DoAction(pc, this);
             canInteract = false;
             //Look at helper.cs
             this.Invoke (() => canInteract = true, interactBuffer);
+            
         }
     }
 
@@ -102,11 +110,10 @@ public class Inventory : MonoBehaviour
 
             if (item.autoInteract) {
                 //Should be for cash or such
-                Debug.Log ("hi there");
                 item.DoAction (pc, this);
             }
             else {
-                recent.Add (item);
+                recent.AddLast (item);
             }
         }
     }
@@ -115,7 +122,7 @@ public class Inventory : MonoBehaviour
     {
         var item = other.GetComponent<Interactable>();
         if (item != null) {
-            if (CustomInput.GetButton("Interact")) { SoundManager.PlaySound(SoundManager.Sound.Med, 0.5f); }
+         //   if (CustomInput.GetButton("Interact")) { SoundManager.PlaySound(SoundManager.Sound.Med, 0.5f); }
             item.OnExit(pc, this);
             recent.Remove (item);
         }
@@ -125,7 +132,10 @@ public class Inventory : MonoBehaviour
     {
         foreach (Upgradeable comp in upgradeComponents)
         {
-            if (o.GetType() == comp.GetType()) {
+            // Debug.Log(o.GetType());
+            // Debug.Log(comp.GetType());
+            // Debug.Log(comp.GetType().IsInstanceOfType(o));
+            if (comp.GetType().IsInstanceOfType(o)) {
                 comp.ApplyUpgrade (u);
                 return;
             }

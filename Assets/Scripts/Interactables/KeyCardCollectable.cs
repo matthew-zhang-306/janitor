@@ -16,5 +16,6 @@ public class KeyCardCollectable : Interactable
         i.numKeys += 1;
         spriteContainer.DOKill();
         Destroy (gameObject);
+        SoundManager.PlaySound(SoundManager.Sound.KeyCollecting, 1f);
     }
 }

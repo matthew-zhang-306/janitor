@@ -89,6 +89,9 @@ public class ShopUI : MonoBehaviour
         render.alpha = 0;
         openTween?.Kill();
         openTween = DOTween.To(() => render.alpha, x => render.alpha = (float) x, 1f, fadeDuration).SetUpdate(true);
+        //Go ahead and stop firing inputs
+        PlayerInputMap.sInputMap.FindAction("Fire1")?.Disable();
+        PlayerInputMap.sInputMap.FindAction("Move")?.Disable();
     }
 
     void Update ()
@@ -109,7 +112,8 @@ public class ShopUI : MonoBehaviour
             onClose?.Invoke();
             onClose = null;
             PauseMenu.IgnoreEsc = false;
-                
+            PlayerInputMap.sInputMap.FindAction("Fire1")?.Enable();
+            PlayerInputMap.sInputMap.FindAction("Move")?.Enable();
         }, fadeDuration + (float) 1e-3);
     }
 

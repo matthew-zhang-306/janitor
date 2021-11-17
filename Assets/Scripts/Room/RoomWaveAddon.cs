@@ -72,9 +72,10 @@ public class RoomWaveAddon : MonoBehaviour
             spawnMarkerPrefab,
             WaveSpawn.XYToPosition(waveSpawn.xcoord, waveSpawn.ycoord, tm),
             Quaternion.identity,
-            roomManager.enemiesContainer
+            roomManager.enemiesContainer           
         );
         created.GetComponent<EnemySpawnMarker>().SetEnemy(enemyTypes[waveSpawn.enemy].prefab, roomManager);
+        SoundManager.PlaySound(SoundManager.Sound.EnemySpawn, 0.5f);
     }
     
     [System.Serializable]

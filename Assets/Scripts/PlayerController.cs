@@ -187,6 +187,8 @@ public class PlayerController : Upgradeable
     }
 
     private IEnumerator DoDash(Vector2 dashDirection) {
+
+        SoundManager.PlaySound(SoundManager.Sound.Dash, 1.0f);
         if (dashDirection == Vector2.zero) {
             dashDirection = previousMoveInput.normalized;
         }
@@ -310,6 +312,7 @@ public class PlayerController : Upgradeable
         isDead = true;
         
         animator.Play("PlayerDeath");
+        SoundManager.PlaySound(SoundManager.Sound.PlayerDeath, 1.3f);
         foreach (Transform child in transform) {
             if (child.name == "Visuals") {
                 // keep the visuals of the player on

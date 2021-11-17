@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2397197443813821925, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: m_Name
+      value: bullets bonus
+      objectReference: {fileID: 0}
     - target: {fileID: 3041527383733658840, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
       propertyPath: context
@@ -62,6 +67,58 @@ PrefabInstance:
         type: 3}
       propertyPath: ulist.Array.data[3].parameter
       value: ammoDrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451435357586039540, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6363286017259722686, guid: 56fe9ec554dbb45409246d8298c0d89c,
+        type: 3}
+    - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: context
+      value: 
+      objectReference: {fileID: 1062732299683918443, guid: 8b6178af89f4eca43ab264e430d6758e,
+        type: 3}
+    - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: _tooltip
+      value: Increases Bullet Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: ulist.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: ulist.Array.data[0].value
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: ulist.Array.data[1].value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: ulist.Array.data[2].value
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: ulist.Array.data[0].parameter
+      value: force
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: ulist.Array.data[1].parameter
+      value: bulletDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: ulist.Array.data[2].parameter
+      value: firerate
       objectReference: {fileID: 0}
     - target: {fileID: 7585635246832292158, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
@@ -122,6 +179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915178719940407858, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: m_Name
+      value: UpgradeSprite
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8cc355c16a87544a8a4e8604f2e668a, type: 3}

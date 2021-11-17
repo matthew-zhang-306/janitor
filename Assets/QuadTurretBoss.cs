@@ -16,12 +16,15 @@ public class QuadTurretBoss : BaseEnemy
     public GameObject bossHealthBarPrefab;
     private BossHealthBar healthBar;
 
+    public GameObject BeamContainer;
+    BeamTurretFiring[] beams;
 
     protected override void Start()
     {
         base.Start();
         canRotate = false;
         canShoot = false;
+        beams = BeamContainer.GetComponentsInChildren<BeamTurretFiring>();
     }
 
 
@@ -70,6 +73,10 @@ public class QuadTurretBoss : BaseEnemy
     {
         canShoot = true;
         animator.SetTrigger("Firing");
+        foreach (BeamTurretFiring Beam in beams)
+        {
+            Beam.StartFiring();
+        }
         SoundManager.PlaySound(SoundManager.Sound.Quad, 0.5f);
         canRotate = true;
         yield return new WaitForSeconds(firingTime);
@@ -78,6 +85,10 @@ public class QuadTurretBoss : BaseEnemy
     IEnumerator Cooldown(float time)
     {
         animator.SetTrigger("Reload");
+        foreach (BeamTurretFiring Beam in beams)
+        {
+            Beam.StopFiring();
+        }
         canShoot = false;
         canRotate = false;
         yield return new WaitForSeconds(time);

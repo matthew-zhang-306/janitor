@@ -23,4 +23,8 @@ public class IntroDialogueUI : BaseDialogueUI
     
         yield return new WaitForSeconds(0.1f);
     }
+
+    public void ClickSound() {
+        SoundManager.PlaySound(SoundManager.Sound.MouseClick, 1.0f);
+    }
 }

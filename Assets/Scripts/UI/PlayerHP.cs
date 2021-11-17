@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    public GameObject Player;
+    public PlayerController Player;
     private Health health;
 
     [SerializeField] private int hpPerCell = 10;
@@ -25,7 +25,7 @@ public class PlayerHP : MonoBehaviour
     {
         // healthBar.maxValue = health.GetMaxHealth();
         // healthBar.value = health.GetHealth();
-        if (health.GetMaxHealth() - cellCount * hpPerCell > hpPerCell) {
+        if (health.GetMaxHealth() - cellCount * hpPerCell > 0) {
             Debug.Log("health changed");
             SetCells();
         }
@@ -43,12 +43,22 @@ public class PlayerHP : MonoBehaviour
                 Destroy(child.gameObject);  
         }
 
+        int mhptotal = mhp;
         for (int i = 0; i < mhp; i += hpPerCell) {
             var go = Instantiate<PlayerHPCell>(hpCellPrefab, cellContainer);
+            var rect = go.GetComponent<RectTransform>();
+            rect.anchoredPosition += new Vector2(rect.rect.width * cellCount, 0);
 
-            go.GetComponent<RectTransform>().anchoredPosition += new Vector2(16 * cellCount, 0);
-            go.Setup(health, cellCount, hpPerCell);
+            //Make sure last cell scales 
+            int amt = Mathf.Min(mhptotal, hpPerCell);
+            mhptotal -= amt;
+
+            go.Setup(health, cellCount, amt, hpPerCell);
             cellCount++;
+        }
+
+        if (mhptotal != 0) {
+            Debug.LogWarning("HP CELLS NOT SCALED");
         }
     }
 }

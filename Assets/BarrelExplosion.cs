@@ -14,7 +14,9 @@ public class BarrelExplosion : MonoBehaviour
         {
             barrel.SetActive(false);
             explosion.SetActive(true);
-            SoundManager.PlaySound(SoundManager.Sound.Barrel, 1f);
+            if (gameObject.name.Contains("Water")) { SoundManager.PlaySound(SoundManager.Sound.WaterBarrel, 1f);}
+            else if (gameObject.name.Contains("Exploding")) { SoundManager.PlaySound(SoundManager.Sound.Barrel, 1f); }
+
         }
     }
 }

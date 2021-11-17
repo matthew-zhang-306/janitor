@@ -55,12 +55,14 @@ public class MasterVolume : MonoBehaviour
     {
         for (int i = 0; i < backgroundAudio.Length; i++)
         {
-            backgroundAudio[i].volume = backgroundSlider.value;
+            if (backgroundAudio[i] != null)
+                backgroundAudio[i].volume = backgroundSlider.value;
         }
 
         for(int i = 0; i < soundEffectsAudio.Length; i++)
         {
-            soundEffectsAudio[i].volume = soundEffectsSlider.value;
+            if (soundEffectsAudio[i] != null)
+                soundEffectsAudio[i].volume = soundEffectsSlider.value;
         }
     }
 }

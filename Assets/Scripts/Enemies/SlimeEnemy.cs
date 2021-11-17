@@ -110,6 +110,7 @@ public class SlimeEnemy : BaseEnemy
 
         float per = (1 - health.GetHealthPercent())/2 + health.GetHealthPercent();
         this.transform.localScale = Vector3.one * per;
+        //SoundManager.PlaySound(SoundManager.Sound.EnemyDamage, 1.5f); delete this line since the sound makes the whole sound dirty
     }
 
     private void PlayRandom() { //0915BR

@@ -55,7 +55,7 @@ public class BindingButton : MonoBehaviour
         rebind.OnComplete(ctx => {
             Debug.Log("Rebind Complete");
             SetString();
-            this.Invoke(()=>isBinding = false, 0.5f);
+            this.Invoke(()=>isBinding = false, 0.5f, true);
             ctx.Dispose();
         });
         rebind.OnCancel(ctx => {
