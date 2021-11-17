@@ -340,6 +340,7 @@ GameObject:
   - component: {fileID: 6114331370593949519}
   - component: {fileID: 1634902088}
   - component: {fileID: 5274422496399337948}
+  - component: {fileID: 6314022102928811337}
   m_Layer: 10
   m_Name: Rat
   m_TagString: Untagged
@@ -487,13 +488,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootTable:
   - name: HealthKit
-    probability: 0.23195602
+    probability: 0.1
+  - name: 
+    probability: 0.9
+--- !u!114 &6314022102928811337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6114331370593949514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c8689a17a999545ae4163ea410ea68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
   - name: Coin10
-    probability: 0.09278241
+    probability: 0.5
   - name: 
-    probability: 0.21134946
-  - name: 
-    probability: 0.46391204
+    probability: 0.5
 --- !u!1 &6114331371366629506
 GameObject:
   m_ObjectHideFlags: 0
