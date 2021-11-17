@@ -38,15 +38,21 @@ public static class Helpers {
     return a - mod * Mathf.FloorToInt((float)a / (float)mod);
   }
 
-  public static void Invoke(this MonoBehaviour mb, System.Action f, float delay)
+  public static void Invoke(this MonoBehaviour mb, System.Action f, float delay, bool useUnscaled=false)
   {
-      mb.StartCoroutine(InvokeRoutine(f, delay));
+    mb.StartCoroutine(InvokeRoutine(f, delay, useUnscaled));
   }
 
-  private static System.Collections.IEnumerator InvokeRoutine(System.Action f, float delay)
+  private static System.Collections.IEnumerator InvokeRoutine(System.Action f, float delay, bool useUnscaled)
   {
+    if (useUnscaled) {
+      yield return new WaitForSecondsRealtime(delay);
+    }
+    else {
       yield return new WaitForSeconds(delay);
-      f();
+    }
+    
+    f();
   }
 
 

@@ -196,7 +196,7 @@ public class RoomManager : MonoBehaviour
 
         
         //UI stuff do after OnEnter as Wave might add to UI as well
-        cleanUIPrefab.AddGoal(roomClearThreshold);
+        cleanUIPrefab?.AddGoal(roomClearThreshold);
 
         //Activate the Room Objects
         foreach (BaseRoomObject roomObject in RoomObjects)
