@@ -61,6 +61,7 @@ public class PlayerInputMap : MonoBehaviour
             Debug.Log(" hi there ");
             inputMap.Disable();
             this.enabled = false;
+            Destroy(gameObject);
         }
     }
 
