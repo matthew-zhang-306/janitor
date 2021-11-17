@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class ShopUI : MonoBehaviour
 {
@@ -92,7 +93,10 @@ public class ShopUI : MonoBehaviour
         //Go ahead and stop firing inputs
         PlayerInputMap.sInputMap.FindAction("Fire1")?.Disable();
         PlayerInputMap.sInputMap.FindAction("Move")?.Disable();
-        
+        PlayerInputMap.sInputMap.FindAction("Interact")?.Disable();
+        PauseMenu.IgnoreEsc = true;
+        CustomInput.close.started += CtxClose;
+
     }
 
     void Update ()
@@ -102,6 +106,11 @@ public class ShopUI : MonoBehaviour
             Close();
             
         }
+    }
+
+    private void CtxClose (InputAction.CallbackContext ctx)
+    {
+        Close();
     }
 
     public void Close ()
@@ -115,7 +124,11 @@ public class ShopUI : MonoBehaviour
             PauseMenu.IgnoreEsc = false;
             PlayerInputMap.sInputMap.FindAction("Fire1")?.Enable();
             PlayerInputMap.sInputMap.FindAction("Move")?.Enable();
+            PlayerInputMap.sInputMap.FindAction("Interact")?.Enable();
+
+            CustomInput.close.started -= CtxClose;
         }, fadeDuration + (float) 1e-3);
+
     }
 
     void Spawn (string name)
