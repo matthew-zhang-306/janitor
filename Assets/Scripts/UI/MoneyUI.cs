@@ -42,7 +42,7 @@ public class MoneyUI : MonoBehaviour
             }
             
             _batch = _buffer - _before;
-            Debug.Log (_buffer + " " + _batch + " " + _before);
+            // Debug.Log (_buffer + " " + _batch + " " + _before);
             
             
             _main += (int) Mathf.Sign(_buffer - _main);
