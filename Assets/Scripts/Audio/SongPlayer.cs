@@ -31,6 +31,7 @@ public class SongPlayer : MonoBehaviour
         PauseMenu.OnPause -= OnPause;
         PauseMenu.OnResume -= OnResume;
         LevelEndZone.OnLevelEnd -= OnLevelEnd;
+        Debug.Log("disabling");
     }
 
     public void PlaySong() {

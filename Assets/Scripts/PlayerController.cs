@@ -360,6 +360,7 @@ public class PlayerController : Upgradeable
 
             //Add weapon ammo and stuff here!
             ammo = playerWeapon.Ammo;
+            
         }
 
         public void Apply (PlayerController pc) 

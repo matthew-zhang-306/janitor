@@ -92,6 +92,7 @@ public class ShopUI : MonoBehaviour
         //Go ahead and stop firing inputs
         PlayerInputMap.sInputMap.FindAction("Fire1")?.Disable();
         PlayerInputMap.sInputMap.FindAction("Move")?.Disable();
+        
     }
 
     void Update ()
