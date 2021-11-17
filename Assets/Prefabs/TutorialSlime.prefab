@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 6003392166522410725}
   - component: {fileID: 6003392166522410724}
   - component: {fileID: 7500526505216376398}
+  - component: {fileID: -6451136868109363131}
   m_Layer: 10
   m_Name: TutorialSlime
   m_TagString: Untagged
@@ -390,6 +391,7 @@ MonoBehaviour:
   hitbox: {fileID: 6003392166979724223}
   floorMarker: {fileID: 6003392165899339888}
   animator: {fileID: 2331474612865468200}
+  spriteFlash: {fileID: 0}
   navigator: {fileID: 0}
   player: {fileID: 0}
   invincibilityTime: 0.2
@@ -432,6 +434,21 @@ MonoBehaviour:
   canNavigate: 0
   unitSize: 1
   speed: 0
+--- !u!114 &-6451136868109363131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003392166522410723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c8689a17a999545ae4163ea410ea68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
+  - name: Coin10
+    probability: 1
 --- !u!1 &6003392166979724221
 GameObject:
   m_ObjectHideFlags: 0
