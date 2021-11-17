@@ -28,11 +28,11 @@ public class Inventory : MonoBehaviour
     private float interactBuffer = 0.5f;
     private bool canInteract = true;
 
-    private List<Interactable> recent;
+    private LinkedList<Interactable> recent;
 
     void Awake () 
     {    
-        recent = new List<Interactable>();
+        recent = new LinkedList<Interactable>();
         pc = this.GetComponent<PlayerController>();
         upgradeComponents = new Upgradeable[4];
         upgradeComponents[0] = pc;
@@ -87,10 +87,21 @@ public class Inventory : MonoBehaviour
 
         if (CustomInput.GetButton("Interact") && canInteract)
         {
-            recent.LastOrDefault()?.DoAction(pc, this);
+            var interactable = recent.LastOrDefault();
+
+            interactable?.DoAction(pc, this);
             canInteract = false;
             //Look at helper.cs
             this.Invoke (() => canInteract = true, interactBuffer);
+
+            if (interactable)
+            {
+                recent.RemoveLast();
+                recent.AddFirst(interactable);
+            }
+                
+            
+            
         }
     }
 
@@ -106,7 +117,7 @@ public class Inventory : MonoBehaviour
                 item.DoAction (pc, this);
             }
             else {
-                recent.Add (item);
+                recent.AddLast (item);
             }
         }
     }
