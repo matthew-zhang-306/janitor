@@ -30,8 +30,12 @@ public class Inventory : MonoBehaviour
 
     private LinkedList<Interactable> recent;
 
+    private List<StatUpgradeInteractable> upgradeList;
+
+
     void Awake () 
     {    
+        upgradeList = new List<StatUpgradeInteractable>();
         recent = new LinkedList<Interactable>();
         pc = this.GetComponent<PlayerController>();
         upgradeComponents = new Upgradeable[4];
@@ -143,4 +147,23 @@ public class Inventory : MonoBehaviour
         }
         Debug.LogError ("Upgrade Fail (component not found / registered)");
     }   
+
+    public void SaveUpgrade (StatUpgradeInteractable sui)
+    {
+        upgradeList.Add(sui);
+        sui.transform.SetParent(this.transform);
+    }
+
+    public class InventorySnapShot
+    {
+        int moneyss;
+        int keyss;
+
+        public InventorySnapShot (int money, int key)
+        {
+            moneyss = money;
+            keyss = key;
+        }
+
+    }
 }
