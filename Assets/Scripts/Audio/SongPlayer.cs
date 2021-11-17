@@ -12,6 +12,7 @@ public class SongPlayer : MonoBehaviour
     [SerializeField] private float volume;
     private AudioSource currentAudio;
 
+    private bool hasLayers => tenseAudioSource != null || menuAudioSource != null;
     private bool isFadingOut;
 
     private void OnEnable() {
@@ -36,16 +37,17 @@ public class SongPlayer : MonoBehaviour
 
     public void PlaySong() {
         calmAudioSource.volume = volume;
-        tenseAudioSource.volume = 0;
-        menuAudioSource.volume = 0;
-
         calmAudioSource.clip = song.calmClip;
-        tenseAudioSource.clip = song.tenseClip;
-        menuAudioSource.clip = song.calmMenuClip;
-
         calmAudioSource.Play();
-        tenseAudioSource.Play();
-        menuAudioSource.Play();
+
+        if (hasLayers) {
+            tenseAudioSource.volume = 0;
+            menuAudioSource.volume = 0;
+            tenseAudioSource.clip = song.tenseClip;
+            menuAudioSource.clip = song.calmMenuClip;
+            tenseAudioSource.Play();
+            menuAudioSource.Play();
+        }
 
         currentAudio = calmAudioSource;
     }
@@ -54,14 +56,22 @@ public class SongPlayer : MonoBehaviour
         if (calmAudioSource.time > song.loopEndTime) {
             // loop everything
             calmAudioSource.time -= song.loopEndTime - song.loopStartTime;
-            tenseAudioSource.time = calmAudioSource.time;
-            menuAudioSource.time = calmAudioSource.time;
+            
+            if (hasLayers) {
+                tenseAudioSource.time = calmAudioSource.time;
+                menuAudioSource.time = calmAudioSource.time;
+            }
         }
     }
 
 
     private Tween GetFadeTween(AudioSource audioSource, bool shouldPlay, float duration) {
-        return audioSource.DOFade(shouldPlay ? volume : 0, duration).SetEase(shouldPlay ? Ease.OutQuad : Ease.InQuad);
+        Ease ease = Ease.Linear;
+        if (hasLayers) {
+            ease = shouldPlay ? Ease.OutCubic : Ease.InCubic;
+        }
+
+        return audioSource.DOFade(shouldPlay ? volume : 0, duration).SetEase(ease);
     }
 
     private void SwitchSource(AudioSource desired, float duration) {
@@ -76,6 +86,11 @@ public class SongPlayer : MonoBehaviour
     }
 
     private void SetMenuAudio() {
+        if (!hasLayers) {
+            Debug.LogError("SongPlayer " + this + " can't switch to menu audio because it has no layers");
+            return;
+        }
+
         if (currentAudio == calmAudioSource) {
             menuAudioSource.clip = song.calmMenuClip;
         }
@@ -87,7 +102,13 @@ public class SongPlayer : MonoBehaviour
     }
 
     public void StopSong() {
-        SwitchSource(null, 2f);
+        if (hasLayers) {
+            SwitchSource(null, 2f);
+        }
+        else {
+            calmAudioSource.DOKill();
+            GetFadeTween(calmAudioSource, false, 2f);
+        }
     }
 
 

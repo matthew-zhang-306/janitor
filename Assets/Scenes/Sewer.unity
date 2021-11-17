@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -136337,6 +136337,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 877178401}
+  close:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!114 &1189452402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137448,6 +137456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WASDUI: {fileID: 973424076}
+  Joystick: {fileID: 0}
+  TimeDisplayed: 0
 --- !u!1001 &1409498657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -137460,6 +137470,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 561398850}
+    - target: {fileID: 6734201924479244963, guid: 91a5be092c603594cb39cb076ef97794,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7048791273997084536, guid: 91a5be092c603594cb39cb076ef97794,
         type: 3}
       propertyPath: m_Name
@@ -138026,6 +138041,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523837525}
   m_CullTransparentMesh: 0
+--- !u!1001 &1536050705
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.8988276
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.4819126
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.88438815
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702697, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479866252775702703, guid: a92e45c9e6dbf5c41bef319990246e71,
+        type: 3}
+      propertyPath: m_Name
+      value: InputMap
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a92e45c9e6dbf5c41bef319990246e71, type: 3}
 --- !u!1 &1542831717
 GameObject:
   m_ObjectHideFlags: 0
@@ -150504,6 +150588,7 @@ MonoBehaviour:
   RoomManager: {fileID: 824648607}
   ClickButton: {fileID: 1990062378}
   SweepTextUI: {fileID: 977481326}
+  MobileButton: {fileID: 0}
 --- !u!1 &1941997328
 GameObject:
   m_ObjectHideFlags: 0
