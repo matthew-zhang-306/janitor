@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    public GameObject Player;
+    public PlayerController Player;
     private Health health;
 
     [SerializeField] private int hpPerCell = 10;
@@ -25,7 +25,7 @@ public class PlayerHP : MonoBehaviour
     {
         // healthBar.maxValue = health.GetMaxHealth();
         // healthBar.value = health.GetHealth();
-        if (health.GetMaxHealth() - cellCount * hpPerCell > hpPerCell) {
+        if (health.GetMaxHealth() - cellCount * hpPerCell > 0) {
             Debug.Log("health changed");
             SetCells();
         }

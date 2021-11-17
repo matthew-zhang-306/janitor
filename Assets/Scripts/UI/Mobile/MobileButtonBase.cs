@@ -19,7 +19,6 @@ public class MobileButtonBase : MobileBase
         max_dist = Mathf.Abs (Vector2.Distance (cam.WorldToScreenPoint(this.transform.position), 
                 cam.WorldToScreenPoint(center.position)));
         center.anchoredPosition += new Vector2 (25, 0);
-        Debug.Log (max_dist);
     }
 
     public override bool Within (Vector2 pos, Camera cam)

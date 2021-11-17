@@ -125,7 +125,10 @@ public class Inventory : MonoBehaviour
     {
         foreach (Upgradeable comp in upgradeComponents)
         {
-            if (o.GetType() == comp.GetType()) {
+            // Debug.Log(o.GetType());
+            // Debug.Log(comp.GetType());
+            // Debug.Log(comp.GetType().IsInstanceOfType(o));
+            if (comp.GetType().IsInstanceOfType(o)) {
                 comp.ApplyUpgrade (u);
                 return;
             }
