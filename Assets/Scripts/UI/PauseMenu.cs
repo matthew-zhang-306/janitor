@@ -24,10 +24,16 @@ public class PauseMenu : MonoBehaviour
     private void OnDisable() {
         LevelEndZone.OnLevelEnd -= DisablePause;
     }
+    void Awake()
+    {
+        
+    }
     void Start ()
     {
         
         CustomInput.close.started += ctx => {
+            Debug.Log(canPause);
+            Debug.Log(IgnoreEsc);
             if (canPause && !IgnoreEsc) {
                 close?.Dispose();
                 close = new InputAction("Pause Close", InputActionType.Button, PlayerInputMap.sInputMap.FindAction("Close").bindings[0].effectivePath);
@@ -43,6 +49,7 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         };
+        gameObject.SetActive(false);
     }
     void Update()
     {

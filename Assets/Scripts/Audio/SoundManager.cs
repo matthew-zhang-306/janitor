@@ -80,7 +80,7 @@ public static class SoundManager {
     public static void PlaySoundBuffered(Sound sound, float SEvolume, float maxRate)
     {
         //Plays Sound, but only at maxRate frequency
-        if (!buffer.ContainsKey(sound)){
+        if (!buffer.ContainsKey(sound) || buffer[sound] == null){
             var soundGameObject = new GameObject("BufferedSound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
             var ac = GetAudioClip(sound);

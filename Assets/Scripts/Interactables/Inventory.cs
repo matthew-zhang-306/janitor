@@ -32,6 +32,7 @@ public class Inventory : MonoBehaviour
 
     private List<StatUpgradeInteractable> upgradeList;
 
+    private GameObject upgradesHolder;
 
     void Awake () 
     {    
@@ -71,6 +72,9 @@ public class Inventory : MonoBehaviour
 
         rt = tooltip.GetComponent<RectTransform>();
         text = tooltip.GetComponent<Text>();
+        // Destroy(upgradesHolder);
+        upgradesHolder = new GameObject("uholder(generated)");
+        upgradesHolder.transform.SetParent(this.transform);
     }
 
     void Update ()
@@ -150,8 +154,9 @@ public class Inventory : MonoBehaviour
 
     public void SaveUpgrade (StatUpgradeInteractable sui)
     {
+        sui.gameObject.SetActive(false);
         upgradeList.Add(sui);
-        sui.transform.SetParent(this.transform);
+        sui.transform.SetParent(this.upgradesHolder.transform);
     }
 
     public class InventorySnapShot
@@ -161,7 +166,8 @@ public class Inventory : MonoBehaviour
 
         public InventorySnapShot (int money, int key)
         {
-            moneyss = money;
+            //let money accumulate
+            // moneyss = money;
             keyss = key;
         }
 
