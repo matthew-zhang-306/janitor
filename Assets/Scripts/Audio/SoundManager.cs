@@ -72,6 +72,9 @@ public static class SoundManager {
         
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        var soundMixer = Resources.Load<AudioMixer>("AudioMixer");
+        var soundMixerGroup = soundMixer.FindMatchingGroups("SFX")[0]; 
+        audioSource.outputAudioMixerGroup = soundMixerGroup;
         var ac = GetAudioClip(sound);
         
         audioSource.PlayOneShot(ac, SEvolume);
