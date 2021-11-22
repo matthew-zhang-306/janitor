@@ -13,6 +13,7 @@ public class BeamTurretFiring : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public float disappearTime;
     Collider2D hurtBox;
+    public SpriteRenderer floorMarkerSprite;
     GameObject floorMarker;
 
     // Start is called before the first frame update
@@ -22,7 +23,9 @@ public class BeamTurretFiring : MonoBehaviour
         layerMask = LayerMask.GetMask("Wall", "Sides");
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.size = new Vector2(spriteRenderer.size.x, 0);
+        floorMarkerSprite.size = new Vector2(spriteRenderer.size.x, 0);
         hurtBox = GetComponent<Collider2D>();
+
         floorMarker = transform.GetChild(0).gameObject;
     }
 
@@ -38,10 +41,12 @@ public class BeamTurretFiring : MonoBehaviour
             {
                 float pointHit = hitWall.distance;
                 spriteRenderer.size = new Vector2(spriteRenderer.size.x, pointHit);
+                floorMarkerSprite.size = new Vector2(spriteRenderer.size.x, pointHit);
             }
             else
             {
                 spriteRenderer.size = new Vector2(spriteRenderer.size.x, maxDistance);
+                floorMarkerSprite.size = new Vector2(spriteRenderer.size.x, maxDistance);
             }
         }
 
