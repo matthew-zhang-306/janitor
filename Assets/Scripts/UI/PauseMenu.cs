@@ -32,14 +32,12 @@ public class PauseMenu : MonoBehaviour
     {
         
         CustomInput.close.started += ctx => {
-            Debug.Log(canPause);
-            Debug.Log(IgnoreEsc);
             if (canPause && !IgnoreEsc) {
                 close?.Dispose();
+                
                 close = new InputAction("Pause Close", InputActionType.Button, PlayerInputMap.sInputMap.FindAction("Close").bindings[0].effectivePath);
 
                 close.started += ctx2 => {
-                    Debug.Log("hi there");
                     if (GamePaused) {
                         ResumeGame();
                         close.Disable();
