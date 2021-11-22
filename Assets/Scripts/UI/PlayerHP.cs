@@ -13,21 +13,24 @@ public class PlayerHP : MonoBehaviour
 
     public Transform cellContainer;
     private int cellCount;
+
+    private int healthCache;
     // Start is called before the first frame update
     void Start()
     {
         health = Player.GetComponent<Health>();
         SetCells();
+        healthCache = health.GetMaxHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // healthBar.maxValue = health.GetMaxHealth();
-        // healthBar.value = health.GetHealth();
-        if (health.GetMaxHealth() - cellCount * hpPerCell > 0) {
+        //Make new HP cells or Destroy them if HP increased / decreased.
+        if (healthCache != health.GetMaxHealth()) {
             Debug.Log("health changed");
             SetCells();
+            healthCache = health.GetMaxHealth();
         }
 
     }

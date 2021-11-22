@@ -242,20 +242,20 @@ public class FloorController : MonoBehaviour
                     tm.SetTile(cell, tiles[maxTileHealth][GetCoords(x,y)]);
                     totalFloorHealth += maxTileHealth;
                 }
-                else if (overlap.gameObject?.layer == LayerMask.NameToLayer("Hole")) {
-                    //communicate with hole deco
-                    holeDeco?.AddHole(cell);
-                }
+                // else if (overlap.gameObject?.layer == LayerMask.NameToLayer("Hole")) {
+                //     //communicate with hole deco
+                //     holeDeco?.AddHole(cell);
+                // }
                 
             }
         }
-        var set = holeDeco?.Apply();
-        if (set != null) 
-        {
-            foreach (var cell in set) {
-                tm.SetTile(cell, tiles[maxTileHealth - 1][GetCoords(cell.x, cell.y)]);
-            }
-        }
+        // var set = holeDeco?.Apply();
+        // if (set != null) 
+        // {
+        //     foreach (var cell in set) {
+        //         tm.SetTile(cell, tiles[maxTileHealth - 1][GetCoords(cell.x, cell.y)]);
+        //     }
+        // }
 
         currentFloorHealth = totalFloorHealth;
 

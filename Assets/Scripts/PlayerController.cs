@@ -327,6 +327,8 @@ public class PlayerController : Upgradeable
 
         // reset the player
         checkpointSnapshot?.Apply(this);
+        Debug.Log(this.health.GetHealth());
+
         foreach (Transform child in transform) {
             child.gameObject.SetActive(true);
         }
@@ -352,6 +354,8 @@ public class PlayerController : Upgradeable
         public readonly Vector3 position;
         public readonly int maxHealth;
         public readonly float ammo;
+        public readonly Inventory.InventorySnapShot iss;
+
 
         public PlayerSnapShot (Transform playerTransform, Health playerHealth, WeaponSystem playerWeapon, Inventory inv)
         {
@@ -360,15 +364,21 @@ public class PlayerController : Upgradeable
 
             //Add weapon ammo and stuff here!
             ammo = playerWeapon.Ammo;
-            
+            iss = new Inventory.InventorySnapShot(inv);
         }
 
         public void Apply (PlayerController pc) 
         {
+            
+            iss.Apply(pc.inventory);
+
             pc.transform.position = this.position;
-            pc.health.SetMaxHealth(maxHealth);
+            // pc.health.SetMaxHealth(maxHealth);
             pc.health.ChangeHealth(maxHealth);
+            
+
             pc.weapon.Ammo = ammo;
+
         }
     }
 }

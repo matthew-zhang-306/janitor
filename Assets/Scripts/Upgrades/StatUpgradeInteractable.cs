@@ -21,17 +21,16 @@ public class StatUpgradeInteractable : Interactable
     {
         this.GetComponent<Collider2D>().enabled = false;
 
-        // Destroy(this.GetComponent<Collider2D>());
 
         foreach (Upgrade u in ulist)
         {
-            i.ApplyUpgrade(u, context);
+            i.ApplyUpgrade(u, context.GetType());
         }
         
-        i.SaveUpgrade(this);
+        i.SaveUpgrade(ulist, context.GetType());
 
+        //Don't destroy as it fucks with a few references
         gameObject.SetActive(false);
 
-        // Destroy (gameObject);
     }
 }

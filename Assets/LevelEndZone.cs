@@ -9,20 +9,20 @@ public class LevelEndZone : MonoBehaviour
 
     public void SkipLevel()
     {
-        LoadNextLevel();
+        
+        OnLevelEnd?.Invoke();
+        Helpers.Invoke(this, LoadNextLevel, 2f);
         
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
-            LoadNextLevel();
+            OnLevelEnd?.Invoke();
+            Helpers.Invoke(this, LoadNextLevel, 2f);
         }
     }
 
    void LoadNextLevel() {
-        OnLevelEnd?.Invoke();
-
-        this.Invoke(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1), 2f);
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

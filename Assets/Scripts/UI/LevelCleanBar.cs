@@ -43,7 +43,8 @@ public class LevelCleanBar : MonoBehaviour
         }
         var flag = Instantiate(clearFlagPrefab, flagParent);
         
-        flag.rectTransform.anchoredPosition -= new Vector2 (0, thresh * 36);
+        //Places flags (top of CleanBar UI is at unit 36. If you change Clean bar you have to change this too)
+        flag.rectTransform.anchoredPosition -= new Vector2 (0,  (thresh) * 36);
     }
 
     public void AddWave(float thresh)
