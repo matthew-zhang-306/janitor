@@ -17,4 +17,4 @@ MonoBehaviour:
   calmMenuClip: {fileID: 8300000, guid: ced48c22ae84c284094d837feccc1105, type: 3}
   tenseMenuClip: {fileID: 8300000, guid: ced48c22ae84c284094d837feccc1105, type: 3}
   loopStartTime: 6
-  loopEndTime: 239.33
+  loopEndTime: 48.67
