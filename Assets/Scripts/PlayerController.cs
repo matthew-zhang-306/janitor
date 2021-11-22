@@ -302,7 +302,7 @@ public class PlayerController : Upgradeable
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Checkpoint")) {
-            checkpointSnapshot = new PlayerSnapShot(transform, health, weapon, inventory);
+            checkpointSnapshot = new PlayerSnapShot(other.transform, health, weapon, inventory);
             OnHitCheckpoint?.Invoke(this);
         }
     }
@@ -353,9 +353,9 @@ public class PlayerController : Upgradeable
         public readonly int maxHealth;
         public readonly float ammo;
 
-        public PlayerSnapShot (Transform playerTransform, Health playerHealth, WeaponSystem playerWeapon, Inventory inv)
+        public PlayerSnapShot (Transform checkpointTransform, Health playerHealth, WeaponSystem playerWeapon, Inventory inv)
         {
-            position = playerTransform.position;
+            position = checkpointTransform.position;
             maxHealth = playerHealth.GetMaxHealth();
 
             //Add weapon ammo and stuff here!
