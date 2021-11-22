@@ -332,6 +332,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2394623746447934949}
     m_Modifications:
+    - target: {fileID: 577793560133201068, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
+        type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1497054569589010645, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
         type: 3}
       propertyPath: BarrelBomb
@@ -446,6 +451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Radius
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683110590636834714, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f6e4261c5247ec4593dcb32bf0c62fb, type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public static class SoundManager {
     //From Code Monkey Tutorial simple sound manager
@@ -14,6 +15,7 @@ public static class SoundManager {
 
         void Start ()
         {
+            
             canPlay = true;
             // this.Invoke(() => gameObject.SetActive(false), aclip.length);
             // this.Invoke(() => gameObject.SetActive(false), delay);
@@ -67,9 +69,14 @@ public static class SoundManager {
     
     public static AudioSource PlaySound(Sound sound, float SEvolume)
     {
+        
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        var soundMixer = Resources.Load<AudioMixer>("AudioMixer");
+        var soundMixerGroup = soundMixer.FindMatchingGroups("SFX")[0]; 
+        audioSource.outputAudioMixerGroup = soundMixerGroup;
         var ac = GetAudioClip(sound);
+        
         audioSource.PlayOneShot(ac, SEvolume);
         Object.Destroy(soundGameObject, ac.length);
 
@@ -118,6 +125,7 @@ public static class SoundManager {
         {
             if (soundAudioClip.sound == sound)
             {
+                
                 return soundAudioClip.audioClip;
             }
         }
