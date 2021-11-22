@@ -526,6 +526,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water Particle
       objectReference: {fileID: 0}
+    - target: {fileID: 1140795615979683207, guid: d61d5328be0c3a54d8b316e6d9664a5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3108963298501255952, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
       propertyPath: m_Size.x

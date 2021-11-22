@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1866518a76b9d29408ce0de99835037c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markAmount: -1
+  markAmount: -2
 --- !u!70 &6654494091257807285
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -470,8 +470,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14808466, y: 0.020044789}
-  m_Size: {x: 6.587924, y: 3.219775}
+  m_Offset: {x: 0.14808474, y: 0.73218066}
+  m_Size: {x: 6.587926, y: 6.434553}
   m_Direction: 1
 --- !u!1 &7407698331254132125
 GameObject:
