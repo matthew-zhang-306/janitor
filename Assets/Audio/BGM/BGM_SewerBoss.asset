@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc112f3ecb67c54eb81986c1ece572f, type: 3}
+  m_Name: BGM_SewerBoss
+  m_EditorClassIdentifier: 
+  calmClip: {fileID: 8300000, guid: 72a8b3203a8890d468d3af77efe75192, type: 3}
+  tenseClip: {fileID: 8300000, guid: 72a8b3203a8890d468d3af77efe75192, type: 3}
+  calmMenuClip: {fileID: 8300000, guid: ced48c22ae84c284094d837feccc1105, type: 3}
+  tenseMenuClip: {fileID: 8300000, guid: ced48c22ae84c284094d837feccc1105, type: 3}
+  loopStartTime: 6
+  loopEndTime: 239.33

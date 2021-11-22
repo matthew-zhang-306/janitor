@@ -51,6 +51,14 @@ public class SongPlayer : MonoBehaviour
         currentAudio = calmAudioSource;
     }
 
+    public void RestartSong() {
+        calmAudioSource.time = 0f;
+        if (hasLayers) {
+            tenseAudioSource.time = 0f;
+            menuAudioSource.time = 0f;
+        }
+    }
+
     private void Update() {
         if (calmAudioSource.time > song.loopEndTime) {
             // loop everything

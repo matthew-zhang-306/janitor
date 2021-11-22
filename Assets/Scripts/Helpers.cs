@@ -60,6 +60,15 @@ public static class Helpers {
     return new Color(color.r, color.g, color.b, alpha);
   }
 
+
+  public static float DBToVolume(float db) {
+    return Mathf.Pow(10f, db / 20f);
+  }
+
+  public static float VolumeToDB(float volume) {
+    return Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20f;
+  }
+
 }
 
 
