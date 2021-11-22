@@ -32,7 +32,6 @@ public class RoomManager : MonoBehaviour
 
     public Cinemachine.CinemachineVirtualCamera vcam;
 
-    private List<RoomComponentCopy> childrenCopy;
     private GameObject enemiesCopy;
     private FloorController.FloorData floorCopy;
 
@@ -74,16 +73,6 @@ public class RoomManager : MonoBehaviour
             AllEnemiesDefeatedEvent = new UnityEvent();
 
         roomTriggerHitbox = roomTriggerBounds.GetComponent<Hitbox>();
-
-
-        childrenCopy = new List<RoomComponentCopy>();
-        foreach (Transform child in this.transform) {
-            var rcc = child.GetComponent<RoomComponentCopy>();
-            if (rcc != null) {
-                childrenCopy.Add (rcc);
-            }
-            
-        }
 
         #if DEVELOPMENT_BUILD || UNITY_EDITOR
         CustomInput.DEBUG_roomClear.started += ctx => {
@@ -180,13 +169,7 @@ public class RoomManager : MonoBehaviour
         room.SetActive(true);
 
         PlayerController.OnRestart += ResetRoom;
-        
-        //Copy room for restart
-        //should NOT include initial enemies due to binds and such
-        foreach (RoomComponentCopy child in childrenCopy)
-        {
-            child?.CreateCopy();
-        }
+
         floorCopy = dirtyTiles.SaveFloor();
 
 
@@ -231,9 +214,6 @@ public class RoomManager : MonoBehaviour
 
         PlayerController.OnHitCheckpoint -= SaveRoom;
 
-        for (int i = 0; i < childrenCopy.Count; i++) {
-            childrenCopy[i] = childrenCopy[i]?.Replace();
-        }
         OnClearRoom(false);
         onRoomReset?.Invoke(player, this);
 

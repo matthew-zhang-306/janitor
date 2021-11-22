@@ -30,9 +30,9 @@ public class LevelCleanBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cleanBar.value = Mathf.Clamp01(floor.GetCleanPercent());
+        cleanBar.value = 1 - Mathf.Clamp01(floor.GetCleanPercent());
 
-        main.text = cleanBar.value.ToString("P", nfi);
+        main.text = (1 - cleanBar.value).ToString("P", nfi);
     }
 
     public void AddGoal(float thresh) 
@@ -43,7 +43,8 @@ public class LevelCleanBar : MonoBehaviour
         }
         var flag = Instantiate(clearFlagPrefab, flagParent);
         
-        flag.rectTransform.anchoredPosition += new Vector2 (0, thresh * 36);
+        //Places flags (top of CleanBar UI is at unit 36. If you change Clean bar you have to change this too)
+        flag.rectTransform.anchoredPosition -= new Vector2 (0,  (thresh) * 36);
     }
 
     public void AddWave(float thresh)
@@ -55,7 +56,7 @@ public class LevelCleanBar : MonoBehaviour
 
         var flag = Instantiate(flagPrefab, flagParent);
         
-        flag.rectTransform.anchoredPosition += new Vector2 (0, thresh * 36);
+        flag.rectTransform.anchoredPosition -= new Vector2 (0, thresh * 36);
     }
     public void Clear ()
     {

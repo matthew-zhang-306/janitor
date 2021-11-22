@@ -30,12 +30,13 @@ public class Inventory : MonoBehaviour
 
     private LinkedList<Interactable> recent;
 
-    private List<StatUpgradeInteractable> upgradeList;
+    protected List<(Upgrade[], System.Type)> upgradeList;
 
+    private GameObject upgradesHolder;
 
     void Awake () 
     {    
-        upgradeList = new List<StatUpgradeInteractable>();
+        upgradeList = new List<(Upgrade[], System.Type)>();
         recent = new LinkedList<Interactable>();
         pc = this.GetComponent<PlayerController>();
         upgradeComponents = new Upgradeable[4];
@@ -71,6 +72,9 @@ public class Inventory : MonoBehaviour
 
         rt = tooltip.GetComponent<RectTransform>();
         text = tooltip.GetComponent<Text>();
+        // Destroy(upgradesHolder);
+        upgradesHolder = new GameObject("uholder(generated)");
+        upgradesHolder.transform.SetParent(this.transform);
     }
 
     void Update ()
@@ -132,14 +136,15 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void ApplyUpgrade (Upgrade u, object o)
+    public void ApplyUpgrade (Upgrade u, System.Type o)
     {
         foreach (Upgradeable comp in upgradeComponents)
         {
             // Debug.Log(o.GetType());
             // Debug.Log(comp.GetType());
             // Debug.Log(comp.GetType().IsInstanceOfType(o));
-            if (comp.GetType().IsInstanceOfType(o)) {
+            
+            if (o.IsInstanceOfType(comp)) {
                 comp.ApplyUpgrade (u);
                 return;
             }
@@ -148,10 +153,23 @@ public class Inventory : MonoBehaviour
         Debug.LogError ("Upgrade Fail (component not found / registered)");
     }   
 
-    public void SaveUpgrade (StatUpgradeInteractable sui)
+    public void ResetAndApplyAllUpgrades (InventorySnapShot iss)
     {
-        upgradeList.Add(sui);
-        sui.transform.SetParent(this.transform);
+        foreach (Upgradeable comp in upgradeComponents)
+        {
+            comp.Reset();
+
+        }
+        foreach (var u in iss.ulist) {
+            ApplyUpgrade(u.Item1, u.Item2);
+        }
+    }
+
+    public void SaveUpgrade (Upgrade[] sui, System.Type t)
+    {
+        // sui.gameObject.SetActive(false);
+        upgradeList.Add((sui, t));
+        // sui.transform.SetParent(this.upgradesHolder.transform);
     }
 
     public class InventorySnapShot
@@ -159,10 +177,25 @@ public class Inventory : MonoBehaviour
         int moneyss;
         int keyss;
 
-        public InventorySnapShot (int money, int key)
+        public List <(Upgrade, System.Type)> ulist;
+
+
+        public InventorySnapShot (Inventory inv)
         {
-            moneyss = money;
-            keyss = key;
+            moneyss = inv._money;
+            keyss = inv._numKeys;
+            ulist = new List<(Upgrade, System.Type)>();
+            foreach (var sui in  inv.upgradeList) {
+                foreach (var upgrade in sui.Item1) {
+                    ulist.Add((upgrade, sui.Item2));
+                }
+            }
+        }
+
+        public void Apply (Inventory inv)
+        {
+            inv.ResetAndApplyAllUpgrades(this);
+
         }
 
     }
