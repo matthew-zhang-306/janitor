@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc112f3ecb67c54eb81986c1ece572f, type: 3}
   m_Name: BGM_SchoolBoss
   m_EditorClassIdentifier: 
-  calmClip: {fileID: 0}
-  tenseClip: {fileID: 0}
-  calmMenuClip: {fileID: 0}
-  tenseMenuClip: {fileID: 0}
-  loopStartTime: 0
-  loopEndTime: 0
+  calmClip: {fileID: 8300000, guid: 1676d66a96a47b04b8b827a4eb9f9a50, type: 3}
+  tenseClip: {fileID: 8300000, guid: 1676d66a96a47b04b8b827a4eb9f9a50, type: 3}
+  calmMenuClip: {fileID: 8300000, guid: e059b1d087fdc4a47ad3e88bb0c18a5b, type: 3}
+  tenseMenuClip: {fileID: 8300000, guid: e059b1d087fdc4a47ad3e88bb0c18a5b, type: 3}
+  loopStartTime: 4.2
+  loopEndTime: 42.6

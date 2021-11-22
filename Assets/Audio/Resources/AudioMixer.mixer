@@ -30,6 +30,7 @@ AudioMixerGroupController:
   m_GroupID: 4dd2634feec4946c9a87da8f98a591a4
   m_Children:
   - {fileID: 3023761724773657736}
+  - {fileID: 2256371046866836594}
   m_Volume: 04a001990c8784ba8a8893130de154b4
   m_Pitch: 8dae0b2c8d9b843a08e49e0a5f0cc2c5
   m_Send: 00000000000000000000000000000000
@@ -39,6 +40,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-499048915600048147
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 2a944326b3bee5946a09e7d515ccf413
+  m_EffectName: Attenuation
+  m_MixLevel: 42dbdfe15f3d2f74dab01cd67b5fd106
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -54,13 +69,24 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: d13bfa95aabac2f43944a3d713119caa
+    name: bossVolume
+  - guid: 38451a0731c434ef492fba686198b702
+    name: levelVolume
+  - guid: b9f491f5ebe634197a47e85a57ecde4f
+    name: masterVolume
+  - guid: 04a001990c8784ba8a8893130de154b4
+    name: musicVolume
+  - guid: 6e4ad2bf4dd31443a91c0c27c652999c
+    name: sfxVolume
   m_AudioMixerGroupViews:
   - guids:
     - 23a05ec517749473f8f0830e94136cce
     - e82c4a49def784e79a76b353714fbc37
     - 4dd2634feec4946c9a87da8f98a591a4
     - 4a6aba2684d9243fb98f87aabbc3f860
+    - 2ecca079f35810e41a72353f3861aeee
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -108,8 +134,28 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 644c0c77f9e8944d3bded16c00efc31b
-  m_FloatValues: {}
+  m_FloatValues:
+    b9f491f5ebe634197a47e85a57ecde4f: -0.02577656
   m_TransitionOverrides: {}
+--- !u!243 &2256371046866836594
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Boss Music
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 2ecca079f35810e41a72353f3861aeee
+  m_Children: []
+  m_Volume: d13bfa95aabac2f43944a3d713119caa
+  m_Pitch: b94aa55f009d173489e150afc4f43327
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -499048915600048147}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &3023761724773657736
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
