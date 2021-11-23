@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 5026708350714426253}
   - component: {fileID: 4085405237408741310}
   - component: {fileID: -6002618095968300042}
+  - component: {fileID: -5145381789714267952}
   m_Layer: 10
   m_Name: SkeletonCat
   m_TagString: Untagged
@@ -217,12 +218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootTable:
-  - name: Bullet Upgrade
-    probability: 0.05
-  - name: Health Upgrade
-    probability: 0.05
   - name: HealthKit1
-    probability: 0.1
+    probability: 0.2
   - name: 
     probability: 0.8
 --- !u!114 &-6002618095968300042
@@ -242,6 +239,27 @@ MonoBehaviour:
     probability: 0.5
   - name: 
     probability: 0.5
+--- !u!114 &-5145381789714267952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026708350714426291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c8689a17a999545ae4163ea410ea68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable:
+  - name: Bullet Upgrade
+    probability: 0.025
+  - name: Health Upgrade
+    probability: 0.025
+  - name: Speed Upgrade
+    probability: 0.025
+  - name: 
+    probability: 0.925
 --- !u!1 &5026708351247742684
 GameObject:
   m_ObjectHideFlags: 0

@@ -184,9 +184,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootTable:
   - name: HealthKit
-    probability: 0.05
+    probability: 0.1
   - name: 
-    probability: 0.95
+    probability: 0.9
 --- !u!114 &8943426842390423671
 MonoBehaviour:
   m_ObjectHideFlags: 0
