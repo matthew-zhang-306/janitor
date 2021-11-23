@@ -901,7 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootTable:
-  - name: Coin10
+  - name: Bullet Upgrade
     probability: 1
 --- !u!114 &-720129660937894314
 MonoBehaviour:
