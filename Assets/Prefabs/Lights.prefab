@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9221766728914315736}
   - component: {fileID: 3687556940060768798}
   - component: {fileID: 7658358247121324279}
+  - component: {fileID: 8556527828077224038}
   m_Layer: 12
   m_Name: Lights
   m_TagString: Untagged
@@ -133,6 +134,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &8556527828077224038
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934852584808422526}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cd301aab97ea45a085054bc2a6c341f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3500390587502499558
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +272,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 3
   m_FalloffIntensity: 0.877
   m_Color: {r: 0.30113026, g: 0.37113976, b: 0.6320754, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.4
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 0000000013b3bb190d0b53b293a7bc4b9370c401
   m_LightCookieSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
