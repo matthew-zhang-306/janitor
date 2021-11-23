@@ -927,7 +927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7320747185403680950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: -0.23, z: 0}
+  m_LocalPosition: {x: -0.179, y: -0.183, z: 0}
   m_LocalScale: {x: 2.2451599, y: 2.2451599, z: 2.2451599}
   m_Children: []
   m_Father: {fileID: 1177657900103972652}
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.569
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.45
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 0000000013b3bb190d0b53b293a7bc4b9370c401
   m_LightCookieSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
