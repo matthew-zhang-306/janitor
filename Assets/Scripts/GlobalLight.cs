@@ -8,14 +8,15 @@ public class GlobalLight : MonoBehaviour
 {
     private new Light2D light;
 
-    [SerializeField] private Color normalColor = Color.white;
-    [SerializeField] private Color dimColor = Color.gray;
-    [SerializeField] private Color flashColor = Color.white;
+    [SerializeField] private float normalIntensity = default;
+    [SerializeField] private float dimIntensity = default;
+    [SerializeField] private float flashIntensity = default;
 
     [SerializeField] float dimTime = 0f;
 
     private void Start() {
         light = GetComponent<Light2D>();
+        light.intensity = normalIntensity;
     }
 
     private void OnEnable() {
@@ -29,29 +30,31 @@ public class GlobalLight : MonoBehaviour
         PlayerController.OnRestart -= OnRestart;
     }
 
-    private void OnRoomEnter(PlayerController _, RoomManager __) {
+    private void OnRoomEnter(PlayerController _, RoomManager room) {
+        if (room.IsLeavable)
+            return;
+        
         light.DOKill();
         DOTween.To(
-            () => light.color,
-            color => light.color = color,
-            dimColor,
+            v => light.intensity = v,
+            light.intensity,
+            dimIntensity,
             dimTime
         ).SetTarget(light).SetLink(gameObject);
     }
 
-    private void OnRoomClear(PlayerController _, RoomManager __) {
+    private void OnRoomClear(PlayerController _, RoomManager room) {
         light.DOKill();
-        light.color = flashColor;
         DOTween.To(
-            () => light.color,
-            color => light.color = color,
-            normalColor,
+            v => light.intensity = v,
+            flashIntensity,
+            normalIntensity,
             dimTime
         ).SetTarget(light).SetLink(gameObject);
     }
 
     private void OnRestart(PlayerController _) {
         light.DOKill();
-        light.color = normalColor;
+        light.intensity = normalIntensity;
     }
 }

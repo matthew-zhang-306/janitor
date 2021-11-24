@@ -17,6 +17,7 @@ public class RoomManager : MonoBehaviour
 
     private RoomState roomState = RoomState.UNCLEARED;
     public bool IsRoomActive => roomState == RoomState.ACTIVE;
+    public bool IsLeavable = false;
 
 
     [Header("Specify the boundary where the room camera will live. (White)")]
