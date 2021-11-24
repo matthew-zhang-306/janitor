@@ -225,6 +225,7 @@ MonoBehaviour:
   enemyTypesSO: {fileID: 11400000, guid: 540f860f4efcbec42a17c53dc5f07b9c, type: 2}
   spawnMarkerPrefab: {fileID: 314350932904179255, guid: af800ade7815d6d44908bb4307f68dca,
     type: 3}
+  bossEnemy: {fileID: 0}
   waves: []
 --- !u!1 &2940157033199333926
 GameObject:
@@ -328,6 +329,7 @@ GameObject:
   - component: {fileID: 5461937994829476288}
   - component: {fileID: 1334126822547092329}
   - component: {fileID: 7008402320007331358}
+  - component: {fileID: 5143848314481100979}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -410,6 +412,23 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &5143848314481100979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701450199753445109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 5
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &4147689318871381239
 GameObject:
   m_ObjectHideFlags: 0
@@ -7655,6 +7674,7 @@ GameObject:
   - component: {fileID: 5585866885942116788}
   - component: {fileID: 497717261617105086}
   - component: {fileID: 813091653161628016}
+  - component: {fileID: 6962697339743187015}
   m_Layer: 0
   m_Name: RoomVCam
   m_TagString: Untagged
@@ -7729,6 +7749,20 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 5266131374573249235}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &6962697339743187015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5265979414678480057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57a38fd04789314aad71d2f0438fbab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeIntensity: 2
+  shakeTime: 0.5
 --- !u!1 &6817042079047960953
 GameObject:
   m_ObjectHideFlags: 0

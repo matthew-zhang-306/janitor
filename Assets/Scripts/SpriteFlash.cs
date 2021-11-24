@@ -43,6 +43,7 @@ public class SpriteFlash : MonoBehaviour
 
     public void Flash(float time, float tiltDirection, float timeUntilBlink = 0.15f) {
         this.DOKill();
+        flashSprite.color = flashSprite.color.WithAlpha(1);
         visualsContainer.localRotation = Quaternion.Euler(0, 0, tiltAngle * Mathf.Sign(tiltDirection));
 
         DOTween.Sequence()
