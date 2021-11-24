@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: White
-  m_Shader: {fileID: -6465566751694194690, guid: 5722eb4021c282d44b24c177ff048b87,
+  m_Shader: {fileID: -6465566751694194690, guid: e4238a1aaf4b01e49bd0cef1c4d4debb,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 0

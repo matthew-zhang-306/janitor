@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    public static EmptyDelegate OnExplode;
+
     [SerializeField] private float activeTime;
     [SerializeField] private float aliveTime;
     private float timer;
@@ -12,6 +14,8 @@ public class Explosion : MonoBehaviour
     [SerializeField] private bool BarrelBomb = false;
 
     private void Start() {
+        OnExplode?.Invoke();
+        
         timer = 0;
         hurtbox = GetComponent<Collider2D>();
     }

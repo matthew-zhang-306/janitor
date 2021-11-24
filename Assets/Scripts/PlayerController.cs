@@ -36,6 +36,7 @@ public class PlayerController : Upgradeable
 
     private bool isDead;
     public static PlayerEvent OnDash;
+    public static PlayerEvent OnTakeDamage;
     public static PlayerEvent OnHitCheckpoint;
     public static PlayerEvent OnDeath;
     public static PlayerEvent OnRestart;
@@ -65,6 +66,7 @@ public class PlayerController : Upgradeable
     [SerializeField] private float knockbackTime = 1f;
     [SerializeField] private float knockbackFriction = 1f;
     [SerializeField] private float invincibilityTime = 1f;
+    [SerializeField] private GameObject hitsparks;
 
     private float shadowBaseAlpha;
 
@@ -146,10 +148,13 @@ public class PlayerController : Upgradeable
         int hitAmount = damage?.damage ?? 1; 
 
         health.ChangeHealth(-hitAmount);
+        OnTakeDamage?.Invoke(this);
         SoundManager.PlaySound(SoundManager.Sound.Damage, 0.6f);
         if (health.GetHealth() <= 0) {
             StartCoroutine(Die());
         }
+
+        StartCoroutine(DoHitSparksFreezeFrame());
 
         // handle knockback
         Vector2 knockbackDir = transform.position - other.transform.position;
@@ -161,6 +166,14 @@ public class PlayerController : Upgradeable
         if (health.GetHealth() > 0) {
             spriteFlash.Flash(invincibilityTime - 0.1f, -knockbackDir.x, knockbackTime);
         }
+    }
+
+    private IEnumerator DoHitSparksFreezeFrame() {
+        hitsparks.SetActive(true);
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.12f);
+        hitsparks.SetActive(false);
+        Time.timeScale = 1;
     }
 
     private void HandleMotion() {
