@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: 3c81df0415b570f4bbf3f33921e02ae1
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 273112870413292505
+    second: boss_slime_separated_top_0
+  - first:
+      213: 4998532803952741420
+    second: boss_slime_separated_top_1
+  - first:
+      213: -5325146564019231975
+    second: boss_slime_separated_top_2
+  - first:
+      213: -4627136894464875860
+    second: boss_slime_separated_top_3
+  - first:
+      213: -5554948551944610361
+    second: boss_slime_separated_top_4
+  - first:
+      213: -8734669020644917854
+    second: boss_slime_separated_top_5
+  - first:
+      213: 9206295268081776225
+    second: boss_slime_separated_top_6
+  - first:
+      213: -7943885961265213522
+    second: boss_slime_separated_top_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +95,189 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: boss_slime_separated_top_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1600
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d3529865ba4ac300800000000000000
+      internalID: 273112870413292505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_slime_separated_top_1
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 1600
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2c8db11a1b5e5540800000000000000
+      internalID: 4998532803952741420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_slime_separated_top_2
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 1600
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 913edb2f9674916b0800000000000000
+      internalID: -5325146564019231975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_slime_separated_top_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca22156928b19cfb0800000000000000
+      internalID: -4627136894464875860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_slime_separated_top_4
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 800
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd55cf29bbd8e2b0800000000000000
+      internalID: -5554948551944610361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_slime_separated_top_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2adb9d1ddc838c680800000000000000
+      internalID: -8734669020644917854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_slime_separated_top_6
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 0
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 166bf5fe4c453cf70800000000000000
+      internalID: 9206295268081776225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_slime_separated_top_7
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 0
+        width: 799.6667
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaf03968ec5a1c190800000000000000
+      internalID: -7943885961265213522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

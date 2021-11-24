@@ -23,6 +23,8 @@ public class LargeSlimeBoss : BaseEnemy
     private int movesUntilDash;
     private bool shouldAimDash;
 
+    [SerializeField] private SpriteFlash secondSpriteFlash;
+
 
     protected override void Start()
     {
@@ -37,7 +39,7 @@ public class LargeSlimeBoss : BaseEnemy
             dashIndicator.transform.rotation = Quaternion.Euler(0, 0, 
                 Vector2.SignedAngle(Vector2.right, player.transform.position - transform.position)
             );
-            // animator.Play("SlimeFace" + GetDirectionString(dashIndicator.transform.right));
+            animator.Play("RedSlimeFace" + GetDirectionString(dashIndicator.transform.right));
         }
 
         if (CanAct && shouldPickAction) {
@@ -94,6 +96,11 @@ public class LargeSlimeBoss : BaseEnemy
         }, 1f);
     }
 
+    protected override void TakeDamage(Collider2D other) {
+        base.TakeDamage(other);
+        secondSpriteFlash?.Flash(invincibilityTime, other.transform.position.x - transform.position.x);
+    }
+
 
     // same as the slime
     private IEnumerator Action_Move ()
@@ -112,7 +119,7 @@ public class LargeSlimeBoss : BaseEnemy
                     // for some reason animator.Play(clip) works COMPLETELY DIFFERENTLY from
                     // animator.Play(clip, number, number) if you try to play an animation
                     // that the animator is already playing. it's extremely dumb
-                    animator.Play("SlimeMove" + GetDirectionString(rb2d.velocity), -1, 0);
+                    animator.Play("RedSlimeMove" + GetDirectionString(rb2d.velocity), -1, 0);
                 })
                 .SetLink(gameObject).SetTarget(navigator);
         });
@@ -139,7 +146,7 @@ public class LargeSlimeBoss : BaseEnemy
         // dash
         float moveTimer = 0f;
         rb2d.velocity = dashIndicator.transform.right * dashSpeed;
-        animator.Play("SlimeMove" + GetDirectionString(rb2d.velocity), -1, 0);
+        animator.Play("RedSlimeMove" + GetDirectionString(rb2d.velocity), -1, 0);
         Helpers.Invoke(this, () => {
             // shockwave
             Instantiate(shockwavePrefab, transform.position, Quaternion.identity);
