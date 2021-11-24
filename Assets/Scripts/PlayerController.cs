@@ -39,7 +39,7 @@ public class PlayerController : Upgradeable
     public static PlayerEvent OnHitCheckpoint;
     public static PlayerEvent OnDeath;
     public static PlayerEvent OnRestart;
-    private PlayerSnapShot checkpointSnapshot;
+    private static PlayerSnapShot checkpointSnapshot;
 
     private Vector2 previousMoveInput;
     private Vector2 knockback;
@@ -80,7 +80,15 @@ public class PlayerController : Upgradeable
         foreach (Hitbox hitbox in hitboxes)
             hitbox.OnTriggerEnter.AddListener(OnEnterHazard);
 
-        checkpointSnapshot = new PlayerSnapShot(transform, health, weapon, inventory);
+        if (checkpointSnapshot == null) {
+            checkpointSnapshot = new PlayerSnapShot(transform, health, weapon, inventory);
+        }
+        else {
+            var initpos = this.transform.position;
+            checkpointSnapshot.Apply(this);
+            this.transform.position = initpos;
+        }
+        
         
         shadowBaseAlpha = shadowRenderer.color.a;
     }
