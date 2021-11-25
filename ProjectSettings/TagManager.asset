@@ -62,6 +62,9 @@ TagManager:
   - name: Entities
     uniqueID: 1270654867
     locked: 0
+  - name: Lights
+    uniqueID: 1300439569
+    locked: 0
   - name: UI
     uniqueID: 29651091
     locked: 0
