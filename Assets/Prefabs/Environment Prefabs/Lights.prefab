@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7658358247121324279}
   - component: {fileID: 3982356390669060993}
   - component: {fileID: 3573701048814580979}
+  - component: {fileID: -4478824519556388420}
   m_Layer: 12
   m_Name: Lights
   m_TagString: Untagged
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934852584808422526}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61e8e4a86e28b9842b6b26d3765a2fbb, type: 3}
   m_Name: 
@@ -167,6 +168,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-4478824519556388420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934852584808422526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3846711e683d2948907bb823f7dc653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3500390587502499558
 GameObject:
   m_ObjectHideFlags: 0

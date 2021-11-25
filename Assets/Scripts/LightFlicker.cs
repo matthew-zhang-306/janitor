@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.LWRP;
 
-public class LightFlicker : MonoBehaviour
+public class LightFlicker : BaseRoomObject
 {
     float randomDelay;
     public bool flicker;
@@ -12,6 +12,7 @@ public class LightFlicker : MonoBehaviour
     float StartingIntensity;
     private UnityEngine.Experimental.Rendering.Universal.Light2D Light;
     private UnityEngine.Experimental.Rendering.Universal.Light2D Light2;
+    bool turnOn;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,25 +20,23 @@ public class LightFlicker : MonoBehaviour
         SpriteLight = transform.Find("Sprite Light 2D");
         Light = SpriteLight.GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
         Light2 = PointLight.GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
-        StartingIntensity = Light.intensity;
-        flicker = true;
+        Light.enabled = false;
+        Light2.enabled = false;
     }
     private void Update()
     {
-        if (flicker)
+        if (IsRoomActive)
         {
-            flicker = false;
-            StartCoroutine("RandomFlickering");
+            StartCoroutine("randomTurnOn");
+            
         }
     }
-    IEnumerator RandomFlickering()
+    IEnumerator randomTurnOn()
     {
-        randomDelay = Random.Range(0,1.5f);
-        Light.intensity = .1f;
-        Light2.intensity = .1f;
+        randomDelay = Random.Range(0,.5f);
+
         yield return new WaitForSeconds(randomDelay);
-        Light.intensity = StartingIntensity;
-        Light2.intensity = StartingIntensity;
-        flicker = true;
+        Light.enabled = true;
+        Light2.enabled = true;
     }
 }
