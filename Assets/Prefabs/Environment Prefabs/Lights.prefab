@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3687556940060768798}
   - component: {fileID: 7658358247121324279}
   - component: {fileID: 3982356390669060993}
+  - component: {fileID: 3573701048814580979}
   m_Layer: 12
   m_Name: Lights
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1270654867
   m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 6481463350319733354, guid: 39856575f84a742b3bc6d9df4cf40437,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0045353677, y: 0.012549803}
+  m_Offset: {x: -0.0012152046, y: -0.02507627}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.103732124, y: 0.34876916}
+  m_Size: {x: 0.24759689, y: 0.4240213}
   m_EdgeRadius: 0
 --- !u!50 &7658358247121324279
 Rigidbody2D:
@@ -147,6 +148,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flicker: 0
+--- !u!95 &3573701048814580979
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934852584808422526}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cd301aab97ea45a085054bc2a6c341f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3500390587502499558
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +216,7 @@ MonoBehaviour:
   m_Color: {r: 0.52398545, g: 0.6463599, b: 0.7075472, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0.085
-  m_ApplyToSortingLayers: 0000000013b3bb199370c4010d0b53b2
+  m_ApplyToSortingLayers: 0000000013b3bb199370c4010d0b53b293a7bc4b
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
