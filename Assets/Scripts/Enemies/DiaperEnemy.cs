@@ -25,7 +25,12 @@ public class DiaperEnemy : BaseEnemy
     }
 
     private void Update() {
-        string animationName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        var clipInfo = animator.GetCurrentAnimatorClipInfo(0);
+        if (clipInfo == null || clipInfo.Length == 0)
+            return;
+
+        string animationName = clipInfo[0].clip.name;
+
         if (animationName.Contains("Fly")) {
             // might need to switch flying animations
             string newAnimationName = "DiaperFly" + GetDirection(rb2d.velocity);
