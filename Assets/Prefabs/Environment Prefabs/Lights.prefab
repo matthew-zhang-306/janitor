@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3687556940060768798}
   - component: {fileID: 7658358247121324279}
   - component: {fileID: 3982356390669060993}
+  - component: {fileID: 4463999919220972687}
   m_Layer: 12
   m_Name: Lights
   m_TagString: Untagged
@@ -147,6 +148,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flicker: 0
+--- !u!95 &4463999919220972687
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934852584808422526}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cd301aab97ea45a085054bc2a6c341f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3500390587502499558
 GameObject:
   m_ObjectHideFlags: 0
