@@ -19,6 +19,7 @@ public class MobileAxisBase : MobileBase
     protected bool buffer = false;
 
     private float max_dist;
+    private Vector2 initialPos;
     protected virtual void Start ()
     {
         rt = childstick.GetComponent<RectTransform>();
@@ -27,7 +28,7 @@ public class MobileAxisBase : MobileBase
                 cam.WorldToScreenPoint(center.position)));
         brt = GetComponent<RectTransform>();
         render = GetComponent<CanvasGroup>();
-
+        initialPos = rt.anchoredPosition;
     }
 
     public override void Apply(Vector2 pos, Camera cam)
@@ -54,8 +55,8 @@ public class MobileAxisBase : MobileBase
 
     public override void Reset ()
     {
-        rt.anchoredPosition = Vector2.zero;
+        rt.anchoredPosition = initialPos;
         isTouched = false;
-        render.alpha = 0;
+        render.alpha = 0.2f;
     }
 }
