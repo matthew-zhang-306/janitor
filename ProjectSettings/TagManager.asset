@@ -16,6 +16,8 @@ TagManager:
   - Hazard
   - FloorHazard
   - Explosion
+  - Boss1
+  - Boss2
   layers:
   - Default
   - TransparentFX

@@ -92,3 +92,19 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 4f9a59f2f49cc9446b920099d94aac86, type: 3}
   - sound: 22
     audioClip: {fileID: 8300000, guid: 9e8a5291c86c30e4199ae35b2b27eedc, type: 3}
+  - sound: 25
+    audioClip: {fileID: 8300000, guid: 3b4e2d66a37e57047af90a5b6d0dad2b, type: 3}
+  - sound: 24
+    audioClip: {fileID: 8300000, guid: 471556f4c70c1b74ba0e2c6df89ce82c, type: 3}
+  - sound: 26
+    audioClip: {fileID: 8300000, guid: cc7aa7535710696419c6fafa5f81a273, type: 3}
+  - sound: 27
+    audioClip: {fileID: 8300000, guid: f09d2be797a5c8f4b8048c97432aaa23, type: 3}
+  - sound: 28
+    audioClip: {fileID: 8300000, guid: eac125bdb4f03d24994e6e4c5b76302b, type: 3}
+  - sound: 29
+    audioClip: {fileID: 8300000, guid: 256663d725091634f890f3ec5ce31fbf, type: 3}
+  - sound: 30
+    audioClip: {fileID: 8300000, guid: 230f760fa92140c41be266526ceb3010, type: 3}
+  - sound: 31
+    audioClip: {fileID: 8300000, guid: edf384ae26e57a942a409d73783f8778, type: 3}

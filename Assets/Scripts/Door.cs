@@ -18,12 +18,14 @@ public class Door : MonoBehaviour
             return;
         isOpened = true;
         animator.SetTrigger("Open");
+        SoundManager.PlaySound(SoundManager.Sound.DoorOpen, 0.5f);
     }
     public void CloseDoor() {
         if (!isOpened)
             return;
         isOpened = false;
         animator.SetTrigger("Closed");
+        SoundManager.PlaySound(SoundManager.Sound.DoorClose, 0.5f);
     }
 
 

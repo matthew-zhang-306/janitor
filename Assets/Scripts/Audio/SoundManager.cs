@@ -63,6 +63,14 @@ public static class SoundManager {
         WaterBarrel,
         KeyCollecting,
         MouseClick,
+        DoorOpen,
+        DoorClose,
+        TurretBossDamage,
+        RedSlimeDamage,
+        RedSlimeAiming,
+        RedSlimeAttack,
+        RedSlimeDeath,
+        RedSlimeMove1,
     }
     
     private static Dictionary<Sound, Buffer> buffer = new Dictionary<Sound, Buffer>();

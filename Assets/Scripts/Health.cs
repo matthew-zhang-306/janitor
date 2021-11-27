@@ -18,6 +18,8 @@ public class Health : Upgradeable
     public void ChangeHealth (int delta) 
     {   
         currentHealth += delta;
+        if( this.CompareTag("Boss1")) { SoundManager.PlaySound(SoundManager.Sound.TurretBossDamage, 1f); }
+        else if (this.CompareTag("Boss2")) { SoundManager.PlaySound(SoundManager.Sound.RedSlimeDamage, 1f); }
         
         if (currentHealth > maxHealth) {
             currentHealth = maxHealth;

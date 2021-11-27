@@ -81,6 +81,7 @@ public class LargeSlimeBoss : BaseEnemy
     protected override void Die() {
         Helpers.Invoke(healthBar, healthBar.Destroy, 2f);
         base.Die();
+        SoundManager.PlaySound(SoundManager.Sound.RedSlimeDeath, 1f);
     }
 
     protected override void OnPlayerDied(PlayerController player) {
@@ -106,7 +107,7 @@ public class LargeSlimeBoss : BaseEnemy
     private IEnumerator Action_Move ()
     {
         movesUntilDash--;
-
+        SoundManager.PlaySound(SoundManager.Sound.RedSlimeMove1, 3f);
         navigator.SetDestination(player.transform.position, () => {
             navigator.DOKill();
             navigator.speed = seekSpeed;
@@ -123,7 +124,7 @@ public class LargeSlimeBoss : BaseEnemy
                 })
                 .SetLink(gameObject).SetTarget(navigator);
         });
-        
+       
         yield return new WaitForSeconds(moveTime);
         shouldPickAction = true;
     }
@@ -134,6 +135,7 @@ public class LargeSlimeBoss : BaseEnemy
         navigator.Stop();
         dashIndicator.SetActive(true);
         shouldAimDash = true;
+        SoundManager.PlaySound(SoundManager.Sound.RedSlimeAiming, 2f);
         yield return new WaitForSeconds(dashAimTime);
 
         // lock
@@ -151,6 +153,7 @@ public class LargeSlimeBoss : BaseEnemy
             // shockwave
             Instantiate(shockwavePrefab, transform.position, Quaternion.identity);
         }, shockwaveDelay);
+        SoundManager.PlaySound(SoundManager.Sound.RedSlimeAttack, 1f);
 
         while (moveTimer < moveTime) {
             yield return new WaitForFixedUpdate();
