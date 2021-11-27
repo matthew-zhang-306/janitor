@@ -5,15 +5,14 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu]
 public class DirtyTile : Tile
 {
+    private TilemapRenderer tmr;
+
     [SerializeField] private int dirtyLevel = 0;
 
     [HideInInspector]
     public Sprite[,,,] sprites = new Sprite[4,4,4,4];
 
-    private int dup;
-    private int ddown;
-    private int dleft;
-    private int dright;
+    private int[,] dvals = new int[3,3];
 
     public override void RefreshTile(Vector3Int position, ITilemap tilemap)
     {
@@ -24,34 +23,46 @@ public class DirtyTile : Tile
         
 
        
-        var l1 = new Vector3Int(position.x + 1, position.y, position.z);
-        var l2 = new Vector3Int(position.x - 1, position.y, position.z);
-        var l3 = new Vector3Int(position.x, position.y + 1, position.z);
-        var l4 = new Vector3Int(position.x, position.y - 1, position.z);
-        RefreshIfIsLower (l1, tilemap);
-        RefreshIfIsLower (l2, tilemap);
-        RefreshIfIsLower (l3, tilemap);
-        RefreshIfIsLower (l4, tilemap);
+        // var l1 = new Vector3Int(position.x + 1, position.y, position.z);
+        // var l2 = new Vector3Int(position.x - 1, position.y, position.z);
+        // var l3 = new Vector3Int(position.x, position.y + 1, position.z);
+        // var l4 = new Vector3Int(position.x, position.y - 1, position.z);
+        // RefreshIfIsLower (l1, tilemap);
+        // RefreshIfIsLower (l2, tilemap);
+        // RefreshIfIsLower (l3, tilemap);
+        // RefreshIfIsLower (l4, tilemap);
+        // dvals = new int[3,3];
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                RefreshIfIsLower (new Vector3Int(position.x + x, position.y+y, position.z), tilemap);
+                
+            }
+        }
+        
+        
     }
 
     public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
     {
         base.GetTileData(position, tilemap, ref tileData);
-
-        var l1 = new Vector3Int(position.x + 1, position.y, position.z);
-        var l2 = new Vector3Int(position.x - 1, position.y, position.z);
-        var l3 = new Vector3Int(position.x, position.y + 1, position.z);
-        var l4 = new Vector3Int(position.x, position.y - 1, position.z);
-
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                dvals[x+1,y+1] = tilemap.GetTile<DirtyTile>(new Vector3Int(position.x + x, position.y+y, position.z))?.dirtyLevel ?? 0;
+            }
+        }
+        // tileData.color = new Color32 ((byte)57,0,0,0);
+        // tileData.color = new Color32((byte)((dvals[0,0] << 6) + (dvals[0,1] << 4) + (dvals[0,2] << 2) + (dvals[1,0])), 
+        //                              (byte)((dvals[1,1] << 6) + (dvals[1,2] << 4) + (dvals[2,0] << 2) + (dvals[2,1])), 
+        //                              (byte) dvals[2,2], 0);
+        if (dvals[0,0] > 3) {
+            Debug.Log(dvals[0,0] << 4 + dvals[0,1]);
+        }
         
-        dright = tilemap.GetTile<DirtyTile>(l1)?.dirtyLevel ?? 0;
-        dleft = tilemap.GetTile<DirtyTile>(l2)?.dirtyLevel ?? 0;
-        dup = tilemap.GetTile<DirtyTile>(l3)?.dirtyLevel ?? 0;
-        ddown = tilemap.GetTile<DirtyTile>(l4)?.dirtyLevel ?? 0;
-
+        tileData.color = new Color32 ((byte)((dvals[0,0] << 4) + dvals[0,1]), 
+                                     (byte)((dvals[0,2] << 4) + dvals[1,0]),
+                                     (byte)((dvals[1,2] << 4) + dvals[2,0]),
+                                     (byte)((dvals[2,1] << 4) + dvals[2,2]));
         
-        tileData.sprite = sprites[dup,ddown,dright,dleft];
-
     }
 
     private bool RefreshIfIsLower(Vector3Int pos, ITilemap tm) 

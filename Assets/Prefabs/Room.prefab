@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433602c22a1663c46a8db5e4b5d4f0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLeavable: 0
   roomCameraBounds: {fileID: 5266131374573249235}
   roomFloorBounds: {fileID: 1225549231154585961}
   roomTriggerBounds: {fileID: 5370551841910211039}
@@ -7438,7 +7439,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9209b6391688a8d40b4c69e0fdb23af3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
