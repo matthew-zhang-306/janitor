@@ -176,7 +176,7 @@ Shader "DirtyFloorShader"
                 // return float4 (value * ratio, 0, 0, 1);
                 //float4 mul = float4 (1,1,1,value);
                 
-                main.w = value * ratio > main.w ? value * ratio : main.w;
+                main.w = main.w > value * ratio  ? lerp (main.w, value * ratio, 0) : value * ratio;
                 // main.y = clamp (main.y + clamp (unity_gradientNoise(i.worldPos), _PerlinMin , 1) * _PerlinMax, 0, 1);
                 half4 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, i.uv);
 

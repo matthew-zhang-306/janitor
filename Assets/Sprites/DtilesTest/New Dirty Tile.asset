@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643cb080fd1996743adb396fb16afaea, type: 3}
   m_Name: New Dirty Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2933163385061137520, guid: e1d195d698fbe2744b5ea7eefab52a4a,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -34,4 +35,4 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  dirtyLevel: 0
+  dirtyLevel: 3
