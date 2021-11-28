@@ -16,27 +16,27 @@ MonoBehaviour:
   - name: HealthKit
     prefab: {fileID: 4141881051329465572, guid: 130f3e57a3bc3fc46a4cb82f09201fbb,
       type: 3}
-    shopPrice: 5
+    shopPrice: 15
   - name: HealthKit1
     prefab: {fileID: 4141881051329465572, guid: 130f3e57a3bc3fc46a4cb82f09201fbb,
       type: 3}
-    shopPrice: 20
+    shopPrice: 15
   - name: Coin10
     prefab: {fileID: 4859447886560472258, guid: d3f62622b6823ff4b9387cb97f3ae648,
       type: 3}
-    shopPrice: 200
+    shopPrice: 10
   - name: 
     prefab: {fileID: 0}
     shopPrice: 9999
   - name: Health Upgrade
     prefab: {fileID: 1397528314866414740, guid: 449a69cebb7d141468153877f6841aa9,
       type: 3}
-    shopPrice: 15
+    shopPrice: 60
   - name: Speed Upgrade
     prefab: {fileID: 6585421367981238351, guid: d64d0a08f7c0d554795f11d198b2e0c5,
       type: 3}
-    shopPrice: 20
+    shopPrice: 60
   - name: Bullet Upgrade
     prefab: {fileID: 4348534934923345922, guid: 1202bbe3e2efd0748a6f9ddff0fc899c,
       type: 3}
-    shopPrice: 30
+    shopPrice: 90
