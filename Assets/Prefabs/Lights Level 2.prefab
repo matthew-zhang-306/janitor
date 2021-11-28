@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3687556940060768798}
   - component: {fileID: 7658358247121324279}
   - component: {fileID: 8556527828077224038}
+  - component: {fileID: 3681411125059544436}
   m_Layer: 12
   m_Name: Lights Level 2
   m_TagString: Untagged
@@ -153,6 +154,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3681411125059544436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934852584808422526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e8e4a86e28b9842b6b26d3765a2fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IgnoreRoomStatus: 0
 --- !u!1 &3500390587502499558
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine.Experimental.Rendering.LWRP;
 public class LightFlicker : BaseRoomObject
 {
     float randomDelay;
-    public bool flicker;
+    public bool IgnoreRoomStatus;
     private Transform PointLight;
     private Transform SpriteLight;
     float StartingIntensity;
@@ -25,7 +25,7 @@ public class LightFlicker : BaseRoomObject
     }
     private void Update()
     {
-        if (IsRoomActive)
+        if (IsRoomActive || IgnoreRoomStatus)
         {
             StartCoroutine("randomTurnOn");
             
