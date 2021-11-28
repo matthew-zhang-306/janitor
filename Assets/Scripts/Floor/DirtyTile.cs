@@ -20,8 +20,6 @@ public class DirtyTile : Tile
         base.RefreshTile(position, tilemap);
 
         //loop unrolled for optim
-        
-
        
         // var l1 = new Vector3Int(position.x + 1, position.y, position.z);
         // var l2 = new Vector3Int(position.x - 1, position.y, position.z);

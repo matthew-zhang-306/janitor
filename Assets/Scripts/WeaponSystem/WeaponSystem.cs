@@ -43,6 +43,7 @@ public class WeaponSystem : Upgradeable
     // Start is called before the first frame update
     void Start()
     {
+        GetBaseProps();
         Ammo = _maxAmmo;
         if (ZeroAmmoStart)
         {

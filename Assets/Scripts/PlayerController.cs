@@ -71,7 +71,8 @@ public class PlayerController : Upgradeable
     private float shadowBaseAlpha;
 
 
-    private void Start() {
+    protected void Start() {
+        GetBaseProps();
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();

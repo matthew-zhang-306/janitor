@@ -12,10 +12,10 @@ public class Upgradeable : MonoBehaviour
     protected Dictionary<string, float> baseProps;
     protected Dictionary<string, float> modifier;
 
-    public void Awake ()
-    {
-        GetBaseProps();
-    }
+    // protected virtual void Start ()
+    // {
+    //     GetBaseProps();
+    // }
 
     public void GetBaseProps ()
     {
@@ -66,12 +66,16 @@ public class Upgradeable : MonoBehaviour
 
     public void Reset()
     {
+        // Debug.Log("reseting " + gameObject.name);
         var obj = JsonUtility.ToJson(this);
         var values = JsonConvert.DeserializeObject<Dictionary<string, object>>(obj);
 
         foreach (var x in baseProps) 
         {
             values[x.Key] = x.Value;
+            this.modifier[x.Key] = 1;
+            // Debug.Log(String.Format ("{0} {1} {2}", gameObject.name, x.Key, x.Value));
+
         }
         JsonUtility.FromJsonOverwrite (JsonConvert.SerializeObject(values), this);
     }

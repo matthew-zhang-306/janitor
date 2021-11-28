@@ -19,6 +19,8 @@ public class BaseWeapon : Upgradeable
 
     protected virtual void Start () 
     {
+        GetBaseProps();
+
         CreatePool();
         
     }
