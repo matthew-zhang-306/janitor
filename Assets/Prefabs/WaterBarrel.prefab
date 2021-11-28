@@ -536,6 +536,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6967380929018763219}
     m_Modifications:
+    - target: {fileID: 633540547277037538, guid: d61d5328be0c3a54d8b316e6d9664a5b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bb6d46577e946554f9ac6eeae2fc9196, type: 2}
     - target: {fileID: 1140795615979683206, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
       propertyPath: m_RootOrder
@@ -544,22 +549,22 @@ PrefabInstance:
     - target: {fileID: 1140795615979683206, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1140795615979683206, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1140795615979683206, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03
+      value: 0.024
       objectReference: {fileID: 0}
     - target: {fileID: 1140795615979683206, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 1140795615979683206, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
@@ -609,17 +614,17 @@ PrefabInstance:
     - target: {fileID: 1140795615979683207, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3108963298501255952, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
       propertyPath: m_Size.x
-      value: 2.5700393
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3108963298501255952, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
       propertyPath: m_Size.y
-      value: 2.56
+      value: 1.0009766
       objectReference: {fileID: 0}
     - target: {fileID: 3108963298501255952, guid: d61d5328be0c3a54d8b316e6d9664a5b,
         type: 3}
