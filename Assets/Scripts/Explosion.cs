@@ -13,9 +13,13 @@ public class Explosion : MonoBehaviour
     private Collider2D hurtbox;
     [SerializeField] private bool BarrelBomb = false;
 
-    private void Start() {
+    private bool hasNotExploded;
+
+    private void OnEnable() {
         OnExplode?.Invoke();
-        
+    }
+
+    private void Start() {        
         timer = 0;
         hurtbox = GetComponent<Collider2D>();
     }

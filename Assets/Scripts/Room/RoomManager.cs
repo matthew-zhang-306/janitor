@@ -89,6 +89,13 @@ public class RoomManager : MonoBehaviour
         // dirtyTiles = levelGrid.gameObject.transform.GetChild(1).GetComponent<FloorController>();
         InitializeRoom();
     }
+
+
+    void OnDestroy() {
+        // make sure these event subscriptions are gone
+        PlayerController.OnRestart -= ResetRoom;
+        PlayerController.OnHitCheckpoint -= SaveRoom;
+    }
     
 
     public void InitializeRoom () {
@@ -173,11 +180,8 @@ public class RoomManager : MonoBehaviour
 
         floorCopy = dirtyTiles.SaveFloor();
 
-
-
         OnEnter?.Invoke(player, this);
         roomSpecificOnEnter?.Invoke(player, this);
-
         
         //UI stuff do after OnEnter as Wave might add to UI as well
         cleanUIPrefab?.AddGoal(roomClearThreshold);
@@ -203,8 +207,6 @@ public class RoomManager : MonoBehaviour
 
         roomUI.enabled = true;
         vcam.Priority = 20;
-
-        
     }
 
     private void ResetRoom (PlayerController player) {

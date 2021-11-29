@@ -161,12 +161,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934852584808422526}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61e8e4a86e28b9842b6b26d3765a2fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IgnoreRoomStatus: 0
+  IgnoreRoomStatus: 1
 --- !u!1 &3500390587502499558
 GameObject:
   m_ObjectHideFlags: 0
