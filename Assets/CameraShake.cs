@@ -21,10 +21,12 @@ public class CameraShake : MonoBehaviour
     private void OnEnable() {
         PlayerController.OnTakeDamage += OnTakeDamage;
         Explosion.OnExplode += OnExplode;
+        WeaponSystem.OnWeaponFire += OnWeaponFire;
     }
     private void OnDisable() {
         PlayerController.OnTakeDamage -= OnTakeDamage;
         Explosion.OnExplode -= OnExplode;
+        WeaponSystem.OnWeaponFire -= OnWeaponFire;
     }
 
 
@@ -33,6 +35,9 @@ public class CameraShake : MonoBehaviour
     }
     private void OnExplode() {
         Shake(shakeIntensity, shakeTime);
+    }
+    private void OnWeaponFire() {
+        // Shake(shakeIntensity, shakeTime / 3f);
     }
 
 

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WeaponSystem : Upgradeable
 {
+    public static EmptyDelegate OnWeaponFire;
+
     public Camera cam;
 
     //Change later (move to weapon)
@@ -144,6 +146,7 @@ public class WeaponSystem : Upgradeable
             _ammo -= drain;
             //gun fire sound here
             SoundManager.PlaySound(SoundManager.Sound.spongeGun, 0.5f);
+            OnWeaponFire?.Invoke();
         }
         else
         {
