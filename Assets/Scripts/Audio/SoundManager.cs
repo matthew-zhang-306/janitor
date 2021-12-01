@@ -71,6 +71,7 @@ public static class SoundManager {
         RedSlimeAttack,
         RedSlimeDeath,
         RedSlimeMove1,
+        TurretBossDeath,
     }
     
     private static Dictionary<Sound, Buffer> buffer = new Dictionary<Sound, Buffer>();
