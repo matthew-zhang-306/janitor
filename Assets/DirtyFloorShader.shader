@@ -142,10 +142,10 @@ Shader "DirtyFloorShader"
 
                 //Diagonals
                 //Note diagonals have slight effects from cardinals to prevent sticking out
-                o.tileuv[0][2] = (float ((convert.y >> 4) & 3) * 2 + o.tileuv[0][1] + o.tileuv[1][2]) / 4.0;
-                o.tileuv[2][2] = (float ((convert.w) & 3) * 2 + o.tileuv[2][1] + o.tileuv[1][2]) / 4.0;
-                o.tileuv[0][0] = (float ((convert.x >> 4) & 3) * 2 + o.tileuv[0][1] + o.tileuv[1][0]) / 4.0;
-                o.tileuv[2][0] = (float ((convert.z) & 3) * 2 + o.tileuv[1][0] + o.tileuv[2][1]) / 4.0;
+                o.tileuv[0][2] = float ((convert.y >> 4) & 3);
+                o.tileuv[2][2] = float ((convert.w) & 3);
+                o.tileuv[0][0] = float ((convert.x >> 4) & 3);
+                o.tileuv[2][0] = float ((convert.z) & 3);
                 return o;
             }
 
@@ -159,13 +159,17 @@ Shader "DirtyFloorShader"
                 i.tileuv[1][1] = ceil (main.w / ratio);
                 float2 suv = (i.uv * 6 - floor (i.uv * 6));
 
+                // if ((suv.x - 0.5) * (suv.x - 0.5) + (suv.y - 0.5) * (suv.y - 0.5) <= 0.05 ) {
+                //     return float4(1,0,0,1);
+                // }
+
                 int cx = suv.x > 0.5;
                 int cy = suv.y > 0.5;
 
-                float bl = i.tileuv[cx][cy];
-                float tl = i.tileuv[cx][cy+1];
-                float br = i.tileuv[cx+1][cy];
-                float tr = i.tileuv[cx+1][cy+1];
+                float bl = (i.tileuv[cx][cy] + i.tileuv[1][1]) / 2.0;
+                float tl = (i.tileuv[cx][cy+1] + i.tileuv[1][1]) / 2.0;
+                float br = (i.tileuv[cx+1][cy] + i.tileuv[1][1]) / 2.0;
+                float tr = (i.tileuv[cx+1][cy+1] + i.tileuv[1][1]) /2.0;
 
                 // if (i.tileuv[1][1] == 51) {
                 //     return float4 (0,1,0,1);    
@@ -175,8 +179,8 @@ Shader "DirtyFloorShader"
                 float value = lerp (lerp (bl, br, suv.x), lerp (tl, tr, suv.x), suv.y);
                 // return float4 (value * ratio, 0, 0, 1);
                 //float4 mul = float4 (1,1,1,value);
-                
-                main.w = main.w > value * ratio  ? lerp (main.w, value * ratio, 0) : value * ratio;
+                main.w = value * ratio;
+                // main.w = main.w > value * ratio  ? lerp (main.w, value * ratio, 0) : value * ratio;
                 // main.y = clamp (main.y + clamp (unity_gradientNoise(i.worldPos), _PerlinMin , 1) * _PerlinMax, 0, 1);
                 half4 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, i.uv);
 
