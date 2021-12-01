@@ -53,6 +53,7 @@ public class QuadTurretBoss : BaseEnemy
 
         Helpers.Invoke(healthBar, healthBar.Destroy, 2f);
         base.Die();
+        SoundManager.PlaySound(SoundManager.Sound.TurretBossDeath, 1f);
     }
 
     protected override void OnPlayerDied(PlayerController player) {

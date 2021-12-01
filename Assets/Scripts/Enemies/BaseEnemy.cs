@@ -114,6 +114,7 @@ public class BaseEnemy : Upgradeable
             Debug.LogError (other.gameObject.name + " is doing damage for some reason!");
         }
         health.ChangeHealth(-hitAmount);
+        if(this.CompareTag("Boss1")) {SoundManager.PlaySound(SoundManager.Sound.TurretBossDamage, 0.3f); }
 
         invincibilityTimer = invincibilityTime;
         spriteFlash?.Flash(invincibilityTime, other.transform.position.x - transform.position.x);
