@@ -131,21 +131,20 @@ Shader "DirtyFloorShader"
                 o.color = v.color;  
                 
                 uint4 convert = floor(256 * v.color);
-                
-                o.tileuv[0][1] = float ((convert.x) & 3);
-                
-                //Cardinals
-                o.tileuv[1][0] = float((convert.y) & 3);
                 o.tileuv[1][1] = 0;//(convert.y >> 4) & 3;
-                o.tileuv[1][2] = float((convert.z >> 4) & 3);
-                o.tileuv[2][1] = float((convert.w >> 4) & 3);
+    
+                //Cardinals
+                o.tileuv[1][0] = float((convert.y) & 3) / 2;
+                o.tileuv[0][1] = float ((convert.x) & 3) / 2;
+                o.tileuv[1][2] = float((convert.z >> 4) & 3) / 2;
+                o.tileuv[2][1] = float((convert.w >> 4) & 3) / 2;
 
                 //Diagonals
                 //Note diagonals have slight effects from cardinals to prevent sticking out
-                o.tileuv[0][2] = float ((convert.y >> 4) & 3);
-                o.tileuv[2][2] = float ((convert.w) & 3);
-                o.tileuv[0][0] = float ((convert.x >> 4) & 3);
-                o.tileuv[2][0] = float ((convert.z) & 3);
+                o.tileuv[0][2] = (float ((convert.y >> 4) & 3) + o.tileuv[0][1] + o.tileuv[1][2]) / 4.0;
+                o.tileuv[2][2] = (float ((convert.w) & 3) + o.tileuv[2][1] + o.tileuv[1][2]) / 4.0;
+                o.tileuv[0][0] = (float ((convert.x >> 4) & 3) + o.tileuv[0][1] + o.tileuv[1][0]) / 4.0;
+                o.tileuv[2][0] = (float ((convert.z) & 3) + o.tileuv[1][0] + o.tileuv[2][1]) / 4.0;
                 return o;
             }
 
@@ -157,30 +156,38 @@ Shader "DirtyFloorShader"
                 static const float ratio = ((1.0 / 3) * 0.65);
                 half4 main = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv); // + float4(0, clamp (, 0, 1) , 0,0);
                 i.tileuv[1][1] = ceil (main.w / ratio);
-                float2 suv = (i.uv * 6 - floor (i.uv * 6));
 
-                // if ((suv.x - 0.5) * (suv.x - 0.5) + (suv.y - 0.5) * (suv.y - 0.5) <= 0.05 ) {
-                //     return float4(1,0,0,1);
-                // }
+                i.tileuv[1][0] += i.tileuv[1][1] / 2;
+                i.tileuv[0][1] += i.tileuv[1][1] / 2;
+                i.tileuv[1][2] += i.tileuv[1][1] / 2;
+                i.tileuv[2][1] += i.tileuv[1][1] / 2;
+
+                //Diagonals
+                //Note diagonals have slight effects from cardinals to prevent sticking out
+                i.tileuv[0][2] += i.tileuv[1][1] / 4;
+                i.tileuv[2][2] += i.tileuv[1][1] / 4;
+                i.tileuv[0][0] += i.tileuv[1][1] / 4;
+                i.tileuv[2][0] += i.tileuv[1][1] / 4;
+
+
+                float2 suv = (i.uv * 6 - floor (i.uv * 6));
 
                 int cx = suv.x > 0.5;
                 int cy = suv.y > 0.5;
 
-                float bl = (i.tileuv[cx][cy] + i.tileuv[1][1]) / 2.0;
-                float tl = (i.tileuv[cx][cy+1] + i.tileuv[1][1]) / 2.0;
-                float br = (i.tileuv[cx+1][cy] + i.tileuv[1][1]) / 2.0;
-                float tr = (i.tileuv[cx+1][cy+1] + i.tileuv[1][1]) /2.0;
+                float bl = i.tileuv[cx][cy];
+                float tl = i.tileuv[cx][cy+1];
+                float br = i.tileuv[cx+1][cy];
+                float tr = i.tileuv[cx+1][cy+1];
 
-                // if (i.tileuv[1][1] == 51) {
-                //     return float4 (0,1,0,1);    
-                // }
                 
                 suv = suv * 2 - floor (suv * 2);
                 float value = lerp (lerp (bl, br, suv.x), lerp (tl, tr, suv.x), suv.y);
                 // return float4 (value * ratio, 0, 0, 1);
                 //float4 mul = float4 (1,1,1,value);
-                main.w = value * ratio;
+                
                 // main.w = main.w > value * ratio  ? lerp (main.w, value * ratio, 0) : value * ratio;
+                main.w = value * ratio;
                 // main.y = clamp (main.y + clamp (unity_gradientNoise(i.worldPos), _PerlinMin , 1) * _PerlinMax, 0, 1);
                 half4 mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, i.uv);
 
