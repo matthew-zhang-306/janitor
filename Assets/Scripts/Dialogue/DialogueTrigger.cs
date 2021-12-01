@@ -25,17 +25,17 @@ public class DialogueTrigger : MonoBehaviour
             dialogue.script = script;
             dialogue.speakers = speakers;
             dialogue.StartDialogue();
-
-            if (isOneShot) {
-                gameObject.SetActive(false);
-            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (!isOneShot && other.CompareTag("Player") && inDialogue) {
+        if (other.CompareTag("Player") && inDialogue) {
             dialogue.StopDialogue();
             dialogue = null;
+        }
+
+        if (isOneShot) {
+            gameObject.SetActive(false);
         }
     }
 

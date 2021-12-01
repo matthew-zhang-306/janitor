@@ -18,7 +18,7 @@ public class RoomManager : MonoBehaviour
     private RoomState roomState = RoomState.UNCLEARED;
     public bool IsRoomActive => roomState == RoomState.ACTIVE;
     public bool IsLeavable = false;
-
+    private bool containsBoss;
 
     [Header("Specify the boundary where the room camera will live. (White)")]
     public PolygonCollider2D roomCameraBounds;
@@ -64,6 +64,12 @@ public class RoomManager : MonoBehaviour
 
     [Header("Put the Player into this")]
     public PlayerController player; // later we need to load this in some other way
+
+    void Awake() {
+        var waves = GetComponent<RoomWaveAddon>();
+        if (waves != null && waves.bossEnemy != null)
+            containsBoss = true;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -225,6 +231,10 @@ public class RoomManager : MonoBehaviour
         Destroy (enemiesContainer.gameObject);
         enemiesContainer = enemiesCopy.transform;
         enemiesContainer.gameObject.SetActive(true);
+        if (containsBoss) {
+            // we had a boss here before, so just grab the first enemy
+            GetComponent<RoomWaveAddon>().bossEnemy = enemiesContainer.GetComponentInChildren<BaseEnemy>();
+        }
         roomTriggerHitbox.enabled = true;
     }
 
