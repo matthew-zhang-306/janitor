@@ -23,7 +23,7 @@ public class FloorController : MonoBehaviour
     [Tooltip("Use a BoxCollider2D to specify the area in which the dirty floor should spawn.")]
     public BoxCollider2D levelBounds;
 
-    private Tilemap tm;
+    public Tilemap tm { get; private set; }
     private static DirtyTile[][] tiles = null;
     private static Sprite[][] sprites = null;
     public int maxTileHealth = 3;

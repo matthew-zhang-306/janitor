@@ -8,6 +8,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(RoomManager))]
 public class RoomSpawnerAddon : MonoBehaviour
 {
+    public EnemyTypesSO enemyTypesSO;
+    private Dictionary<string, EnemyTypesSO.EnemyType> enemyTypes;
+
     // public AudioSource spawnSound;
     public int spawnAreaCount = 3;
     public float spawnTimer = 15f;
@@ -15,14 +18,19 @@ public class RoomSpawnerAddon : MonoBehaviour
     private RoomManager rm;
 
     public GameObject[] glist;
+    public string[] enemyTypesToSpawn;
+    public GameObject enemySpawnPrefab;
 
     public Tile tileToFlicker;
     private Tilemap overlay;
 
     void Start ()
     {
+        enemyTypes = enemyTypesSO.GetEnemyTypes();
+        
         m_spawnTimer = spawnTimer;
         rm = this.GetComponent<RoomManager>();
+        /*
         var generatedFloor = new GameObject ("dirty spawn marker overlay");
         generatedFloor.transform.SetParent (rm.dirtyTiles.transform.parent);
         generatedFloor.transform.localPosition = Vector3.zero;
@@ -44,10 +52,11 @@ public class RoomSpawnerAddon : MonoBehaviour
             tileToFlicker = ScriptableObject.CreateInstance<Tile>();                
             tileToFlicker.sprite = Sprite.Create(red, new Rect(0,0,1,1), Vector2.one / 2f, 1);
         }
+        */
 
         rm.onRoomClear += (a, b) => {
             StopAllCoroutines();
-            Destroy (generatedFloor);
+            // Destroy (generatedFloor);
         };
 
     }
@@ -76,19 +85,26 @@ public class RoomSpawnerAddon : MonoBehaviour
         var rx = Random.Range(min.x, max.x);
         var ry = Random.Range(min.y, max.y);
         if (rm.dirtyTiles.IsTileDirty(new Vector2Int(rx,ry), .8f)) {
-            int m = glist.Length;
-            var g = glist[Random.Range(0, m)];
+            int m = enemyTypesToSpawn.Length;
+            var g = enemyTypesToSpawn[Random.Range(0, m)];
 
+            /*
             var mark = new Marker (rx,ry, 5f, g, tileToFlicker);
-
-           
-           
             StartCoroutine(mark.Begin(overlay,rm));
             // spawnSound.Play(); 
-            //Debug.Log("Halo2");         
+            //Debug.Log("Halo2");
+            */
+            GameObject created = Instantiate(
+                enemySpawnPrefab,
+                rm.dirtyTiles.tm.GetCellCenterWorld(new Vector3Int(rx, ry, 0)),
+                Quaternion.identity,
+                rm.enemiesContainer           
+            );
+            EnemySpawnMarker enemySpawn = created.GetComponent<EnemySpawnMarker>();
+            enemySpawn.SetEnemy(enemyTypes[g].prefab, rm);
+            SoundManager.PlaySound(SoundManager.Sound.EnemySpawn, 0.5f);
             
             return true;
-            
         }
         else {
             return false;
