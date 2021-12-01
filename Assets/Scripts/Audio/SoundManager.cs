@@ -4,6 +4,16 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 public static class SoundManager {
+
+    static AudioMixerGroup _soundMixerGroup;
+    static AudioMixerGroup SoundMixerGroup { get {
+        if (_soundMixerGroup == null) {
+            var soundMixer = Resources.Load<AudioMixer>("AudioMixer");
+            _soundMixerGroup = soundMixer.FindMatchingGroups("SFX")[0]; 
+        }
+        return _soundMixerGroup;
+    }}
+
     //From Code Monkey Tutorial simple sound manager
     private class Buffer : MonoBehaviour {
         public System.Action ResetBuffer;
@@ -77,16 +87,11 @@ public static class SoundManager {
     
     public static AudioSource PlaySound(Sound sound, float SEvolume)
     {
-        
-        GameObject soundGameObject = new GameObject("Sound");
-        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        var soundMixer = Resources.Load<AudioMixer>("AudioMixer");
-        var soundMixerGroup = soundMixer.FindMatchingGroups("SFX")[0]; 
-        audioSource.outputAudioMixerGroup = soundMixerGroup;
+        AudioSource audioSource = CreateAudioSource();
         var ac = GetAudioClip(sound);
         
         audioSource.PlayOneShot(ac, SEvolume);
-        Object.Destroy(soundGameObject, ac.length);
+        Object.Destroy(audioSource.gameObject, ac.length);
 
         //Can be null on access so plz check
         return audioSource;
@@ -96,11 +101,10 @@ public static class SoundManager {
     {
         //Plays Sound, but only at maxRate frequency
         if (!buffer.ContainsKey(sound) || buffer[sound] == null){
-            var soundGameObject = new GameObject("BufferedSound");
-            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            AudioSource audioSource = CreateAudioSource();
             var ac = GetAudioClip(sound);
             // audioSource.PlayOneShot(ac, SEvolume);
-            Buffer buf = soundGameObject.AddComponent<Buffer>();
+            Buffer buf = audioSource.gameObject.AddComponent<Buffer>();
 
             buf.delay = maxRate;
             buf.aclip = ac;
@@ -117,12 +121,11 @@ public static class SoundManager {
 
     public static void PlaySoundBroom(Sound sound, Sound sound2, float SEvolume) {
         Sound[] list = { sound, sound2 };
-        GameObject soundGameObject = new GameObject("Sound");
-        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        AudioSource audioSource = CreateAudioSource();
         var number = Random.Range(0, list.Length);
         var ac = GetAudioClip(list[number]);
         audioSource.PlayOneShot(ac, SEvolume);
-        Object.Destroy(soundGameObject, ac.length);
+        Object.Destroy(audioSource.gameObject, ac.length);
     }
 
 
@@ -133,7 +136,6 @@ public static class SoundManager {
         {
             if (soundAudioClip.sound == sound)
             {
-                
                 return soundAudioClip.audioClip;
             }
         }
@@ -143,5 +145,12 @@ public static class SoundManager {
 
    private static IEnumerator Wait() {
         yield return new WaitForSeconds(1f);
+    }
+
+    private static AudioSource CreateAudioSource() {
+        GameObject soundObject = new GameObject("Sound");
+        AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = SoundMixerGroup;
+        return audioSource;
     }
 }
