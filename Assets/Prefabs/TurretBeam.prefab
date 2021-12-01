@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 1480589625764173367}
   - component: {fileID: 8101840977130676067}
   - component: {fileID: 578989484890355718}
+  - component: {fileID: 7711337739047306840}
   m_Layer: 11
   m_Name: TurretBeam
   m_TagString: Hazard
@@ -290,6 +291,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7711337739047306840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799961755556173581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8255515ed9c3141b4352fa68d18b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
 --- !u!1 &4365116362266417521
 GameObject:
   m_ObjectHideFlags: 0
