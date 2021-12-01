@@ -16,38 +16,17 @@ public class RoomSpawnerAddon : MonoBehaviour
 
     public GameObject[] glist;
 
-    public Tile tileToFlicker;
     private Tilemap overlay;
+
+    public GameObject spawnMarkerPrefab;
 
     void Start ()
     {
         m_spawnTimer = spawnTimer;
         rm = this.GetComponent<RoomManager>();
-        var generatedFloor = new GameObject ("dirty spawn marker overlay");
-        generatedFloor.transform.SetParent (rm.dirtyTiles.transform.parent);
-        generatedFloor.transform.localPosition = Vector3.zero;
-
-        var tm = generatedFloor.AddComponent<Tilemap>();
-        tm.tileAnchor = new Vector3(0.5f,0.5f,0);
-        var tmr = generatedFloor.AddComponent<TilemapRenderer>();
-        tmr.sortingLayerName = "Floor";
-        tmr.sortingOrder = 3;
-        overlay = tm;
-
-        if (tileToFlicker == null) 
-        {
-            Debug.LogWarning ("Flicker tile for " + rm.gameObject.name + " is null! replacing with solid red");
-            Texture2D red = new Texture2D (1, 1, TextureFormat.RGBA32, 1, true);
-            red.SetPixel(0,0, Color.red);
-            red.Apply(true);
-
-            tileToFlicker = ScriptableObject.CreateInstance<Tile>();                
-            tileToFlicker.sprite = Sprite.Create(red, new Rect(0,0,1,1), Vector2.one / 2f, 1);
-        }
 
         rm.onRoomClear += (a, b) => {
             StopAllCoroutines();
-            Destroy (generatedFloor);
         };
 
     }
@@ -77,18 +56,12 @@ public class RoomSpawnerAddon : MonoBehaviour
         var ry = Random.Range(min.y, max.y);
         if (rm.dirtyTiles.IsTileDirty(new Vector2Int(rx,ry), .8f)) {
             int m = glist.Length;
-            var g = glist[Random.Range(0, m)];
+            var enemy = glist[Random.Range(0, m)];
 
-            var mark = new Marker (rx,ry, 5f, g, tileToFlicker);
-
+            var mark = new Marker (rx,ry, 5f, enemy);
            
-           
-            StartCoroutine(mark.Begin(overlay,rm));
-            // spawnSound.Play(); 
-            //Debug.Log("Halo2");         
-            
+            StartCoroutine(mark.Begin(rm.dirtyTiles.GetComponent<Tilemap>(), rm));
             return true;
-            
         }
         else {
             return false;
@@ -106,14 +79,13 @@ public class RoomSpawnerAddon : MonoBehaviour
         public float m_timer;
 
         public readonly GameObject enemy;
-        public readonly Tile t;
-        public Marker (int x, int y, float timer, GameObject obj, Tile tileToFlicker) 
+        
+        public Marker (int x, int y, float timer, GameObject obj) 
         {
             this.x = x;
             this.y = y;
             this.m_timer = timer;
             this.enemy = obj;
-            this.t = tileToFlicker;
         }
 
         public IEnumerator Begin (Tilemap tm, RoomManager rm)
@@ -125,24 +97,12 @@ public class RoomSpawnerAddon : MonoBehaviour
                 count ++;
 
                 m_timer -= 0.5f;
-                for (int xd = -2; xd <= 2; xd++) {
-                    for (int yd = -2; yd <= 2; yd++) {
-                        var loc = new Vector3Int (x + xd, y + yd, 0);
-                        
-                        tm.SetTile(loc, count % 2 == 0 ? t : null);
-                    }
-                }
-              
+                
+                
                 yield return new WaitForSeconds(0.5f);
 
             }
-            for (int xd = -2; xd <= 2; xd++) {
-                for (int yd = -2; yd <= 2; yd++) {
-                    var loc = new Vector3Int (x + xd, y + yd, 0);
-                    
-                    tm.SetTile(loc, null);
-                }
-            }
+            
             if (rm.dirtyTiles.IsTileDirty(new Vector2Int(x,y), 0.2f)) 
             {
                 // var rmnumber = GameObject.Find("Room (7)");
