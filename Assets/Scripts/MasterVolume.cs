@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class MasterVolume : MonoBehaviour
@@ -13,6 +14,7 @@ public class MasterVolume : MonoBehaviour
     private float backgroundFloat, soundEffectsFloat;
     public AudioSource[] backgroundAudio;
     public AudioSource[] soundEffectsAudio;
+    [SerializeField] private AudioMixer audioMixer;
 
     void Start()
     {
@@ -51,18 +53,13 @@ public class MasterVolume : MonoBehaviour
         }
     }
 
-    public void UpdateSound()
+    public void UpdateSound(float value)
     {
-        for (int i = 0; i < backgroundAudio.Length; i++)
-        {
-            if (backgroundAudio[i] != null)
-                backgroundAudio[i].volume = backgroundSlider.value;
-        }
+        audioMixer.SetFloat("sfxVolume", Helpers.VolumeToDB(value));
+    }
 
-        for(int i = 0; i < soundEffectsAudio.Length; i++)
-        {
-            if (soundEffectsAudio[i] != null)
-                soundEffectsAudio[i].volume = soundEffectsSlider.value;
-        }
+    public void UpdateMusic(float value)
+    {
+        audioMixer.SetFloat("musicVolume", Helpers.VolumeToDB(value));
     }
 }
