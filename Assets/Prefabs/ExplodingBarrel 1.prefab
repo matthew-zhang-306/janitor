@@ -401,6 +401,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2940747601068593456, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 53f563391e82e464494b91477b9371fe, type: 2}
     - target: {fileID: 2950519115708766782, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
         type: 3}
       propertyPath: m_Layer
@@ -426,10 +431,20 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3904521131732335473, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4464495716509308154, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
         type: 3}
       propertyPath: m_Radius
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804611729310811651, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
+        type: 3}
+      propertyPath: m_Name
+      value: fireexplosion
       objectReference: {fileID: 0}
     - target: {fileID: 7683110590636834714, guid: 2f6e4261c5247ec4593dcb32bf0c62fb,
         type: 3}

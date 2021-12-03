@@ -98,12 +98,12 @@ PrefabInstance:
     - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
       propertyPath: ulist.Array.data[1].value
-      value: 0.5
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
       propertyPath: ulist.Array.data[2].value
-      value: -0.1
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7076479121742706691, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}

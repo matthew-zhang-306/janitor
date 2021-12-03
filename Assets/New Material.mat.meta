@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/New Material.mat.meta
 guid: 807fb3d88835e1d468c83ae805c3ba38
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
+=======
+guid: e4584e5d705fa524eb9599bd1293ba01
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+>>>>>>> f60a14c746a32742834ee4e6187ac5c67f8d4fe8:Assets/Animations/fireExplosionAnimv2.anim.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
