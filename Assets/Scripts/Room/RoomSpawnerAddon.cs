@@ -21,8 +21,9 @@ public class RoomSpawnerAddon : MonoBehaviour
     public string[] enemyTypesToSpawn;
     public GameObject enemySpawnPrefab;
 
-    public Tile tileToFlicker;
     private Tilemap overlay;
+
+    public GameObject spawnMarkerPrefab;
 
     void Start ()
     {
@@ -122,14 +123,13 @@ public class RoomSpawnerAddon : MonoBehaviour
         public float m_timer;
 
         public readonly GameObject enemy;
-        public readonly Tile t;
-        public Marker (int x, int y, float timer, GameObject obj, Tile tileToFlicker) 
+        
+        public Marker (int x, int y, float timer, GameObject obj) 
         {
             this.x = x;
             this.y = y;
             this.m_timer = timer;
             this.enemy = obj;
-            this.t = tileToFlicker;
         }
 
         public IEnumerator Begin (Tilemap tm, RoomManager rm)
@@ -141,24 +141,12 @@ public class RoomSpawnerAddon : MonoBehaviour
                 count ++;
 
                 m_timer -= 0.5f;
-                for (int xd = -2; xd <= 2; xd++) {
-                    for (int yd = -2; yd <= 2; yd++) {
-                        var loc = new Vector3Int (x + xd, y + yd, 0);
-                        
-                        tm.SetTile(loc, count % 2 == 0 ? t : null);
-                    }
-                }
-              
+                
+
                 yield return new WaitForSeconds(0.5f);
 
             }
-            for (int xd = -2; xd <= 2; xd++) {
-                for (int yd = -2; yd <= 2; yd++) {
-                    var loc = new Vector3Int (x + xd, y + yd, 0);
-                    
-                    tm.SetTile(loc, null);
-                }
-            }
+            
             if (rm.dirtyTiles.IsTileDirty(new Vector2Int(x,y), 0.2f)) 
             {
                 // var rmnumber = GameObject.Find("Room (7)");

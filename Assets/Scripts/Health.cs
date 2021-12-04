@@ -10,8 +10,9 @@ public class Health : Upgradeable
     
     
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
+        GetBaseProps();
         currentHealth = maxHealth;
     }
 

@@ -51,6 +51,8 @@ public class BaseEnemy : Upgradeable
     }
 
     protected virtual void Start() {
+        GetBaseProps();
+
         health = GetComponent<Health>();
         rb2d = GetComponent<Rigidbody2D>();
 
