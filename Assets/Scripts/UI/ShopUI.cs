@@ -69,6 +69,7 @@ public class ShopUI : MonoBehaviour
         {
             if (index >= itemLocations.transform.childCount) break;
 
+            //Make shop icons here.
             GameObject button = Instantiate (buttonPrefab, itemParent.transform);
             var sib = button.GetComponent<ShopItemButton>();
             sib.name = key.Key;
@@ -99,15 +100,6 @@ public class ShopUI : MonoBehaviour
 
     }
 
-    void Update ()
-    {
-        if (CustomInput.GetButton("Close"))
-        {
-            Close();
-            
-        }
-    }
-
     private void CtxClose (InputAction.CallbackContext ctx)
     {
         Close();
@@ -127,7 +119,7 @@ public class ShopUI : MonoBehaviour
             PlayerInputMap.sInputMap.FindAction("Interact")?.Enable();
 
             CustomInput.close.started -= CtxClose;
-        }, fadeDuration + (float) 1e-3);
+        }, fadeDuration + 1e-3f);
 
     }
 
