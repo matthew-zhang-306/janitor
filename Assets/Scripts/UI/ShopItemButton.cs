@@ -25,6 +25,7 @@ public class ShopItemButton : MonoBehaviour
 
     public void OnClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MouseClick, 0.5f);
         onClickEvent?.Invoke(this.name);
     }
 }

@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 1735055516520390057}
   m_Layer: 0
   m_Name: Speed Upgrade
-  m_TagString: Untagged
+  m_TagString: SpeedUpgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,3 +265,4 @@ MonoBehaviour:
     value: 0.1
   - parameter: dashSpeed
     value: 0.1
+  image: {fileID: 0}

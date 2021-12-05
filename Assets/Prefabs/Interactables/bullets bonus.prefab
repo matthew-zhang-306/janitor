@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bullets bonus
       objectReference: {fileID: 0}
+    - target: {fileID: 2397197443813821925, guid: c8cc355c16a87544a8a4e8604f2e668a,
+        type: 3}
+      propertyPath: m_TagString
+      value: BulletUpgrade
+      objectReference: {fileID: 0}
     - target: {fileID: 3041527383733658840, guid: c8cc355c16a87544a8a4e8604f2e668a,
         type: 3}
       propertyPath: context

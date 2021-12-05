@@ -18,6 +18,9 @@ TagManager:
   - Explosion
   - Boss1
   - Boss2
+  - BulletUpgrade
+  - SpeedUpgrade
+  - HealthUpgrade
   layers:
   - Default
   - TransparentFX

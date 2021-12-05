@@ -30,6 +30,7 @@ public class ShopInteract : Interactable
         //open shop UI
         opened = !opened;
         ShopUICanvas.SetActive (opened);
+        SoundManager.PlaySound(SoundManager.Sound.ShopOpen, 0.5f);
         if (opened)
         {
             var shop = ShopUICanvas.GetComponent<ShopUI>();

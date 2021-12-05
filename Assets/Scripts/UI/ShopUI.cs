@@ -107,7 +107,7 @@ public class ShopUI : MonoBehaviour
 
     public void Close ()
     {
-        
+        SoundManager.PlaySound(SoundManager.Sound.ShopClose, 0.5f);
         closeTween?.Kill();
         closeTween = DOTween.To(() => render.alpha, x => render.alpha = (float) x, 0f, fadeDuration).SetUpdate(true);
         this.Invoke(() => {
@@ -144,6 +144,7 @@ public class ShopUI : MonoBehaviour
         if (focusedItem != "" && isFocused) {
             var price = InteractableSpawner.i.itemTypes.GetPrice(focusedItem);
             if (playerInventory.money - price >= 0) {
+                SoundManager.PlaySound(SoundManager.Sound.Coin, 0.5f);
                 Debug.Log("confirming");
                 playerInventory.money -= price;
                 Spawn (focusedItem);
@@ -151,6 +152,7 @@ public class ShopUI : MonoBehaviour
                 DeFocus();
             }
             else {
+                SoundManager.PlaySound(SoundManager.Sound.NoMoney, 0.5f);
                 Debug.Log ("Buy failed");
                 //not enough money onboarding
                 MoneyFail.SetActive(true);
@@ -160,6 +162,7 @@ public class ShopUI : MonoBehaviour
     }
     public void DeFocus ()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MouseClick, 0.5f);
         isFocused = false;
         confirmMenu.SetActive(false);
         focusedItem = "";

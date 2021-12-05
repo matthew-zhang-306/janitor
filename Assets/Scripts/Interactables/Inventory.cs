@@ -145,9 +145,9 @@ public class Inventory : MonoBehaviour
             // Debug.Log(comp.GetType().IsInstanceOfType(o));
             
             if (o.IsInstanceOfType(comp)) {
-                comp.ApplyUpgrade (u);
+                comp.ApplyUpgrade (u);               
                 return;
-            }
+            }           
 
         }
         Debug.LogError ("Upgrade Fail (component not found / registered)");

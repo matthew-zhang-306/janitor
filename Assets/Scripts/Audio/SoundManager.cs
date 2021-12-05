@@ -82,6 +82,12 @@ public static class SoundManager {
         RedSlimeDeath,
         RedSlimeMove1,
         TurretBossDeath,
+        ShopOpen,
+        ShopClose,
+        SpeedUp,
+        HealthUp,
+        BulletUp,
+        NoMoney,
     }
     
     private static Dictionary<Sound, Buffer> buffer = new Dictionary<Sound, Buffer>();
