@@ -104,6 +104,13 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: Hold(duration=2)
       m_SingletonActionBindings: []
+    - m_Name: Aim
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: aa00ec73-dcf3-4054-970f-e2369fba8a21
+      m_Processors: 
+      m_Interactions: Hold(duration=2)
+      m_SingletonActionBindings: []
     m_Bindings:
     - m_Name: WASD
       m_Id: ea3b548c-51f8-41ec-892a-5dc973fb9753
@@ -145,9 +152,57 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Move
       m_Flags: 8
+    - m_Name: LeftStick
+      m_Id: ee121aca-e8e1-4ec8-94e7-1d9aa39011de
+      m_Path: 2DVector(mode=2)
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 43a0070a-aeff-486d-be5b-625887651364
+      m_Path: <Gamepad>/leftStick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 9151ba9a-fb63-43d7-a284-a5ef4e0559a7
+      m_Path: <Gamepad>/leftStick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: b9c909d3-647a-4ec5-89bf-17a68f035b95
+      m_Path: <Gamepad>/leftStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 8d5d4af0-39db-4d3d-8fab-81b74220c004
+      m_Path: <Gamepad>/leftStick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
     - m_Name: 
       m_Id: 2c9b90b5-0a44-41a1-8aec-f1dc7dbec555
       m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 3682f29d-ec5f-4bd4-99fb-779b744d0eab
+      m_Path: <Gamepad>/rightShoulder
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -162,6 +217,14 @@ MonoBehaviour:
       m_Action: Interact
       m_Flags: 0
     - m_Name: 
+      m_Id: 7d552145-b6c3-476c-a975-bc126f823e41
+      m_Path: <Gamepad>/leftShoulder
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Interact
+      m_Flags: 0
+    - m_Name: 
       m_Id: 916e7704-13b7-4d2b-8779-031c7613ff26
       m_Path: <Mouse>/leftButton
       m_Interactions: 
@@ -170,8 +233,24 @@ MonoBehaviour:
       m_Action: Fire1
       m_Flags: 0
     - m_Name: 
+      m_Id: 9c072313-c24a-41bc-bfc4-693ecaa6d8f9
+      m_Path: <Gamepad>/leftTrigger
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fire1
+      m_Flags: 0
+    - m_Name: 
       m_Id: 8fb5919a-5f25-448e-80cd-bbc71d7409bd
       m_Path: <Mouse>/rightButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fire2
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 6865a3ad-851d-4757-a295-6768d49f07ad
+      m_Path: <Gamepad>/rightTrigger
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -224,4 +303,44 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Debug_Clear
+      m_Flags: 8
+    - m_Name: 2D Vector
+      m_Id: 4056d9eb-1e7a-46a3-b2e6-d62c795b691f
+      m_Path: 2DVector(mode=2)
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Aim
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 86629047-8cd5-44f9-a94a-212790e3afaa
+      m_Path: <Gamepad>/rightStick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Aim
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 95a98034-4e23-4865-a0c3-944586def845
+      m_Path: <Gamepad>/rightStick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Aim
+      m_Flags: 8
+    - m_Name: left
+      m_Id: bf232db0-e59c-4d1c-a208-7c5f62c8153d
+      m_Path: <Gamepad>/rightStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Aim
+      m_Flags: 8
+    - m_Name: right
+      m_Id: eaa8e1c5-741d-4c0b-82a9-e64b6323affc
+      m_Path: <Gamepad>/rightStick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Aim
       m_Flags: 8
