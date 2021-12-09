@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/StartMenu.unity
     guid: 87dc3a761d212ed41874b88ace5c1ee3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/IntroCutscene.unity
     guid: 453d75129ccaf9149afc36afc8c449e0
   - enabled: 0
@@ -32,15 +32,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Sewer.unity
     guid: cd7b9f937fa19354b84b34e1560d6eed
-  - enabled: 1
-    path: Assets/Scenes/Sewer_short V.2.unity
-    guid: f5a5ab976ddfe4bf796b564e5bdb9940
   - enabled: 0
     path: Assets/Scenes/Sewer_short.unity
     guid: 037659d90059e9344826fef65821f747
   - enabled: 0
     path: Assets/Scenes/Sewer Layout 3.unity
     guid: a820bec47925ab642a884c9a130e10c8
+  - enabled: 1
+    path: Assets/Scenes/Sewer_short V.2.unity
+    guid: f5a5ab976ddfe4bf796b564e5bdb9940
   - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 8f00fc906314e5042b2cc976f177babd
