@@ -204,6 +204,7 @@ public class PlayerController : Upgradeable
         
         // handle dashing
         bool isDash = CustomInput.GetButton("Jump");
+        Debug.Log(isDash + " " + dashTimer);
         if (isDash && dashTimer <= 0f) {
             StartCoroutine(DoDash(moveInput));
         }

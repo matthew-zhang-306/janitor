@@ -25,9 +25,10 @@ public class PlayerInputMap : MonoBehaviour
             moveAction = inputMap.FindAction("Move");
             aimAction = inputMap.FindAction("Aim");
 
-            inputMap.FindAction("Jump").started += ctx => Button(ctx, ref CustomInput.dash, true);
-            inputMap.FindAction("Jump").canceled += ctx => Button(ctx, ref CustomInput.dash, false);
-            inputMap.FindAction("Jump").performed += ctx => Button(ctx, ref CustomInput.dash, false);
+            inputMap.FindAction("Jump").started += ctx => { Button(ctx, ref CustomInput.dash, true); Debug.Log("Jump Started"); };
+            inputMap.FindAction("Jump").canceled += ctx => { Button(ctx, ref CustomInput.dash, false); Debug.Log("Jump Canceled"); };
+            inputMap.FindAction("Jump").performed += ctx => { Button(ctx, ref CustomInput.dash, false); Debug.Log("Jump Performed"); };
+            
             
 
             inputMap.FindAction("Interact").started += ctx => Button(ctx, ref CustomInput.interact, true);
