@@ -24,7 +24,7 @@ public class PlayerCamera : MonoBehaviour
         }
         else {
             
-            if (previousMouse != CustomInput.GetMousePosition()) {
+            if ((previousMouse - CustomInput.GetMousePosition()).magnitude > 1e-2 ) {
                 Vector2 mouseViewportPoint = cam.ScreenToViewportPoint(CustomInput.GetMousePosition());
 
                 mouseViewportPoint = new Vector2(Mathf.Clamp01(mouseViewportPoint.x), Mathf.Clamp01(mouseViewportPoint.y));
