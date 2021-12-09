@@ -27,12 +27,11 @@ public class Keybindings : MonoBehaviour
         int itr = 0;
         foreach (var act in PlayerInputMap.sInputMap.actions) {
             if (!act.name.StartsWith("Debug")) {
-                if (act.activeControl.device is Keyboard) {
-                    var go = Instantiate(prefab, transform);
-                    go.GetComponent<RectTransform>().anchoredPosition -= new Vector2 (0, (++itr) * 100);
-                    go.bindingAction = act;
-                    go.SetString();
-                }
+                
+                var go = Instantiate(prefab, transform);
+                go.GetComponent<RectTransform>().anchoredPosition -= new Vector2 (0, (++itr) * 100);
+                go.bindingAction = act;
+                go.SetString();
                 // if (act.bindings[0].isComposite) {
                 //     //Iterate through composite binding (move gets 4 different bindings)
                 //     for (int i = 1; i < act.bindings.Count; i++) {

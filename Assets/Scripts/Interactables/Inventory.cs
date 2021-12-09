@@ -161,6 +161,7 @@ public class Inventory : MonoBehaviour
 
         }
         foreach (var u in iss.ulist) {
+            Debug.Log(u.Item1 + " " + u.Item2.ToString());
             ApplyUpgrade(u.Item1, u.Item2);
         }
     }
@@ -185,6 +186,7 @@ public class Inventory : MonoBehaviour
             moneyss = inv._money;
             keyss = inv._numKeys;
             ulist = new List<(Upgrade, System.Type)>();
+            
             foreach (var sui in  inv.upgradeList) {
                 foreach (var upgrade in sui.Item1) {
                     ulist.Add((upgrade, sui.Item2));

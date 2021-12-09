@@ -41,6 +41,9 @@ public class WeaponSystem : Upgradeable
     private float aimAssist; 
     [HideInInspector] public Transform target;
     
+    private Vector2 mouseBefore;
+    private Vector2 prevControllerDir;
+    bool controllerMode;
     public BaseWeapon weapon;
     // Start is called before the first frame update
     void Start()
@@ -51,7 +54,7 @@ public class WeaponSystem : Upgradeable
         {
             Ammo = 0;
         }
-   
+        controllerMode = false;
     }
 
     // Update is called once per frame
@@ -61,14 +64,26 @@ public class WeaponSystem : Upgradeable
         Vector2 dir = new Vector2 (CustomInput.axis2x, CustomInput.axis2y).normalized;
 
         if (dir.magnitude == 0) {
-            Vector3 hit = cam.ScreenToWorldPoint(CustomInput.GetMousePosition());
-            Debug.DrawLine (hit, transform.position);
-            dir = (hit - transform.position).ToVector2().normalized;
+            if (!controllerMode || mouseBefore != CustomInput.GetMousePosition()) {
+                Vector3 hit = cam.ScreenToWorldPoint(CustomInput.GetMousePosition());
+                Debug.DrawLine (hit, transform.position);
+                dir = (hit - transform.position).ToVector2().normalized;
+                aimAssist = 0;
+                mouseBefore = CustomInput.GetMousePosition();
+                controllerMode = false;
+            }
+            else {
+                dir = prevControllerDir;
+            }
         }
         else {
+            prevControllerDir = dir;
+            controllerMode = true;
             aimAssist = 0.3f;
         }
-
+        if (dir.magnitude == 0) {
+            dir = Vector2.left;
+        }
         Vector2 odir = dir;
 
         //Aim assist here
