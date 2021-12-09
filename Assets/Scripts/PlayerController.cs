@@ -77,7 +77,7 @@ public class PlayerController : Upgradeable
         collider = GetComponent<Collider2D>();
         hitboxes = GetComponentsInChildren<Hitbox>();
         health = GetComponent<Health>();
-        dashCooldown += dashTime;
+        
 
         foreach (Hitbox hitbox in hitboxes)
             hitbox.OnTriggerEnter.AddListener(OnEnterHazard);
@@ -86,11 +86,13 @@ public class PlayerController : Upgradeable
             checkpointSnapshot = new PlayerSnapShot(transform, health, weapon, inventory);
         }
         else {
+            Debug.Log("Applying all upgrades");
             var initpos = this.transform.position;
             checkpointSnapshot.Apply(this);
             this.transform.position = initpos;
         }
         
+        dashCooldown += dashTime;
         
         shadowBaseAlpha = shadowRenderer.color.a;
     }
@@ -375,7 +377,7 @@ public class PlayerController : Upgradeable
         public readonly Vector3 position;
         public readonly int maxHealth;
         public readonly float ammo;
-        public readonly Inventory.InventorySnapShot iss;
+        public Inventory.InventorySnapShot iss;
 
 
         public PlayerSnapShot (Transform checkpointTransform, Health playerHealth, WeaponSystem playerWeapon, Inventory inv)
