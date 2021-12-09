@@ -95,6 +95,7 @@ public class RoomSpawnerAddon : MonoBehaviour
             // spawnSound.Play(); 
             //Debug.Log("Halo2");
             */
+            rm.PrepareForEnemy();
             GameObject created = Instantiate(
                 enemySpawnPrefab,
                 rm.dirtyTiles.tm.GetCellCenterWorld(new Vector3Int(rx, ry, 0)),
