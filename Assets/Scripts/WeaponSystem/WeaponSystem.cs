@@ -38,7 +38,7 @@ public class WeaponSystem : Upgradeable
     [SerializeField] private bool ZeroAmmoStart;
 
     [Header("1 for 100% snap to target, 0 for none. ")]
-    [SerializeField] private float aimAssist; 
+    private float aimAssist; 
     [HideInInspector] public Transform target;
     
     public BaseWeapon weapon;
@@ -57,24 +57,23 @@ public class WeaponSystem : Upgradeable
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log (Input.mousePosition);
-        // Debug.Log (CustomInput.GetMousePosition());
-
-        #if (UNITY_ANDROID || UNITY_IPHONE)
+    
         Vector2 dir = new Vector2 (CustomInput.axis2x, CustomInput.axis2y).normalized;
 
-        #else 
-        Vector3 hit = cam.ScreenToWorldPoint(CustomInput.GetMousePosition());
-        Debug.DrawLine (hit, transform.position);
-        Vector2 dir = (hit - transform.position).ToVector2().normalized;
-
-        #endif
+        if (dir.magnitude == 0) {
+            Vector3 hit = cam.ScreenToWorldPoint(CustomInput.GetMousePosition());
+            Debug.DrawLine (hit, transform.position);
+            dir = (hit - transform.position).ToVector2().normalized;
+        }
+        else {
+            aimAssist = 0.3f;
+        }
 
         Vector2 odir = dir;
 
         //Aim assist here
         //Get distance and angle from player to each enemy
-        if (aimAssist > 0.05 && target) {
+        if (target) {
 
             //Priorty to Closest Enemy
             var best = (dir, 1000f);

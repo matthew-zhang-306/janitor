@@ -19,7 +19,6 @@ public class PlayerController : Upgradeable
     public Health health;
     public Inventory inventory;
 
-
     public Transform cameraPos;
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer shadowRenderer;

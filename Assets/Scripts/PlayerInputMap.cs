@@ -10,6 +10,7 @@ public class PlayerInputMap : MonoBehaviour
     public InputActionMap inputMap;
 
     private InputAction moveAction;
+    private InputAction aimAction;
 
     // private InputAction dashAction;
     // private InputAction interact
@@ -22,6 +23,7 @@ public class PlayerInputMap : MonoBehaviour
             // inputMap.FindAction("MoveRight").started += ctx => MoveVertical(ctx, false);
             // inputMap.FindAction("MoveLeft").started += ctx => MoveVertical(ctx, true);
             moveAction = inputMap.FindAction("Move");
+            aimAction = inputMap.FindAction("Aim");
 
             inputMap.FindAction("Jump").started += ctx => Button(ctx, ref CustomInput.dash, true);
             inputMap.FindAction("Jump").canceled += ctx => Button(ctx, ref CustomInput.dash, false);
@@ -58,7 +60,6 @@ public class PlayerInputMap : MonoBehaviour
             
         }
         else {
-            Debug.Log(" hi there ");
             inputMap.Disable();
             this.enabled = false;
             Destroy(gameObject);
@@ -75,6 +76,12 @@ public class PlayerInputMap : MonoBehaviour
         var move = moveAction.ReadValue<Vector2>();
         CustomInput.moveAxisHx = move.x;
         CustomInput.moveAxisVy = move.y;
+
+        #if !(UNITY_ANDROID || UNITY_IPHONE)
+        var aim = aimAction.ReadValue<Vector2>();
+        CustomInput.axis2x = aim.x;
+        CustomInput.axis2y = aim.y;
+        #endif
     }
 
     void MoveVertical (InputAction.CallbackContext ctx, bool reverse)
