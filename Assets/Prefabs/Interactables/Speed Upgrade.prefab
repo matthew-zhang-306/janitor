@@ -262,7 +262,7 @@ MonoBehaviour:
   - parameter: acceleration
     value: 0.2
   - parameter: maxSpeed
-    value: 0.1
+    value: 0.2
   - parameter: dashSpeed
-    value: 0.1
+    value: 0.2
   image: {fileID: 0}
