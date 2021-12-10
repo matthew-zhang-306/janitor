@@ -36,7 +36,14 @@ public class Inventory : MonoBehaviour
 
     void Awake () 
     {    
-        upgradeList = new List<(Upgrade[], System.Type)>();
+        var snapshot = PlayerController.CheckpointSnapshot;
+        if (snapshot != null) {
+            upgradeList = snapshot.iss.ulist.Select(uss => (new Upgrade[] {uss.Item1}, uss.Item2)).ToList();
+        }
+        else {
+            upgradeList = new List<(Upgrade[], System.Type)>();
+        }
+        
         recent = new LinkedList<Interactable>();
         pc = this.GetComponent<PlayerController>();
         upgradeComponents = new Upgradeable[4];
@@ -175,8 +182,8 @@ public class Inventory : MonoBehaviour
 
     public class InventorySnapShot
     {
-        int moneyss;
-        int keyss;
+        public readonly int moneyss;
+        public readonly int keyss;
 
         public List <(Upgrade, System.Type)> ulist;
 

@@ -40,6 +40,7 @@ public class PlayerController : Upgradeable
     public static PlayerEvent OnDeath;
     public static PlayerEvent OnRestart;
     private static PlayerSnapShot checkpointSnapshot;
+    public static PlayerSnapShot CheckpointSnapshot { get { return checkpointSnapshot; }}
 
     private Vector2 previousMoveInput;
     private Vector2 knockback;
@@ -204,7 +205,6 @@ public class PlayerController : Upgradeable
         
         // handle dashing
         bool isDash = CustomInput.GetButton("Jump");
-        Debug.Log(isDash + " " + dashTimer);
         if (isDash && dashTimer <= 0f) {
             StartCoroutine(DoDash(moveInput));
         }
@@ -351,7 +351,6 @@ public class PlayerController : Upgradeable
 
         // reset the player
         checkpointSnapshot?.Apply(this);
-        Debug.Log(this.health.GetHealth());
 
         foreach (Transform child in transform) {
             child.gameObject.SetActive(true);
@@ -369,6 +368,29 @@ public class PlayerController : Upgradeable
             .Insert(0, spriteRenderer.DOFade(0f, 0.5f).SetEase(Ease.Linear))
             .Insert(0, shadowRenderer.DOFade(0f, 0.5f).SetEase(Ease.Linear))
             .SetTarget(spriteRenderer).SetLink(gameObject);
+    }
+
+
+    [ContextMenu("Print Player Snapshot")]
+    public void PrintPlayerSnapshot() {
+        Debug.Log("~~~ Player Snapshot ~~~");
+        if (checkpointSnapshot == null) {
+            Debug.Log("no snapshot");
+            return;
+        }
+
+        Debug.Log("position: " + checkpointSnapshot.position);
+        Debug.Log("maxHealth: " + checkpointSnapshot.maxHealth);
+        Debug.Log("ammo: " + checkpointSnapshot.ammo);
+        Debug.Log("moneyss: " + checkpointSnapshot.iss.moneyss);
+        Debug.Log("keyss: " + checkpointSnapshot.iss.keyss);
+
+        string ulistPrint = "[";
+        foreach (var u in checkpointSnapshot.iss.ulist) {
+            ulistPrint += "(" + u.Item1.parameter + ", " + u.Item1.value + "), ";
+        }
+        ulistPrint += "]";
+        Debug.Log("ulist: " + ulistPrint);
     }
 
     
