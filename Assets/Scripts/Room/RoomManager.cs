@@ -222,6 +222,7 @@ public class RoomManager : MonoBehaviour
         roomState = RoomState.UNCLEARED;
 
         PlayerController.OnHitCheckpoint -= SaveRoom;
+        PlayerController.OnRestart -= ResetRoom;
 
         OnClearRoom(false);
         onRoomReset?.Invoke(player, this);
