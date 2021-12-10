@@ -60,6 +60,9 @@ public class WeaponSystem : Upgradeable
     // Update is called once per frame
     void Update()
     {
+        if (Time.deltaTime == 0) {
+            return;
+        }
     
         Vector2 dir = new Vector2 (CustomInput.axis2x, CustomInput.axis2y).normalized;
 

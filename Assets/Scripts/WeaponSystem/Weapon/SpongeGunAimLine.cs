@@ -16,6 +16,10 @@ public class SpongeGunAimLine : MonoBehaviour
     }
 
     private void Update() {
+        if (Time.deltaTime == 0) {
+            return;
+        }
+
         lineRenderer.SetPosition(1, Vector3.right * LineLength);
 
         if (weaponSystem != null) {
@@ -24,6 +28,10 @@ public class SpongeGunAimLine : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        if (Time.deltaTime == 0) {
+            return;
+        }
+        
         RaycastHit2D hit = Physics2D.BoxCast(
             transform.position,
             Vector2.one * spongeWidth,
