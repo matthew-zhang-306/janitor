@@ -223,7 +223,7 @@ public class PlayerController : Upgradeable
         if (!collider.bounds.Contains(lastHolePosition)) {
             // this dash may cross over holes
             collisionDisabled = true;
-            collider.isTrigger = true;
+            gameObject.layer = LayerMask.NameToLayer("PlayerIgnoreHole");
         }
 
         OnDash?.Invoke(this);
@@ -232,7 +232,7 @@ public class PlayerController : Upgradeable
         while (dashTimer > dashCooldown - dashTime) {
             if (collisionDisabled && collider.bounds.Contains(lastHolePosition)) {
                 // done with the holes, let the rest of the dash play out with collision on
-                collider.isTrigger = false;
+                gameObject.layer = LayerMask.NameToLayer("Player");
             }
             
             rb2d.velocity = dashDirection * dashSpeed;
