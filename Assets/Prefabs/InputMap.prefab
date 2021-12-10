@@ -60,14 +60,14 @@ MonoBehaviour:
       m_ExpectedControlType: Button
       m_Id: ac03b729-99bf-42b4-bc9f-8f31d71d5441
       m_Processors: 
-      m_Interactions: Hold
+      m_Interactions: Tap
       m_SingletonActionBindings: []
     - m_Name: Interact
       m_Type: 1
       m_ExpectedControlType: Button
       m_Id: 83c49fb5-3b02-4317-a9b6-c835563d223a
       m_Processors: 
-      m_Interactions: Hold
+      m_Interactions: Tap
       m_SingletonActionBindings: []
     - m_Name: Fire1
       m_Type: 1
