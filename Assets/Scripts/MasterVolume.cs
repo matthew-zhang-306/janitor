@@ -16,43 +16,6 @@ public class MasterVolume : MonoBehaviour
     public AudioSource[] soundEffectsAudio;
     [SerializeField] private AudioMixer audioMixer;
 
-    void Start()
-    {
-        firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
-
-        if(firstPlayInt == 0)
-        {
-            backgroundFloat = .125f;
-            soundEffectsFloat = .75f;
-            backgroundSlider.value = backgroundFloat;
-            soundEffectsSlider.value = soundEffectsFloat;
-            PlayerPrefs.SetFloat(BackgroundPref, backgroundFloat);
-            PlayerPrefs.SetFloat(SoundEffectsPref, soundEffectsFloat);
-            PlayerPrefs.SetInt(FirstPlay, -1);
-        }
-        else
-        {
-            backgroundFloat = PlayerPrefs.GetFloat(BackgroundPref);
-            backgroundSlider.value = backgroundFloat;
-            soundEffectsFloat = PlayerPrefs.GetFloat(SoundEffectsPref);
-            soundEffectsSlider.value = soundEffectsFloat;
-        }
-    }
-
-    public void  SaveSoundSetting()
-    {
-        PlayerPrefs.SetFloat(BackgroundPref, backgroundSlider.value);
-        PlayerPrefs.SetFloat(SoundEffectsPref, soundEffectsSlider.value);
-    }
-
-    private void OnApplicationFocus(bool inFocus)
-    {
-        if(inFocus)
-        {
-            SaveSoundSetting();
-        }
-    }
-
     public void UpdateSound(float value)
     {
         audioMixer.SetFloat("sfxVolume", Helpers.VolumeToDB(value));
